@@ -98,7 +98,7 @@ input:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(79,70,
 .save-box .sv{font-size:20px;font-weight:800;color:var(--ok)}
 .cta{display:block;background:linear-gradient(135deg,#7c3aed,#dc2626);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
 .cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
-.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad{display:none;margin:0}.ad.box{display:none}
 .ad.box{min-height:250px}
 h2{font-size:20px;margin:26px 0 10px}
 h3{font-size:16px;margin:16px 0 6px}
@@ -392,24 +392,18 @@ function calc(){
   $('cSnowInt').textContent=usd(snowResult.totalInt);
   $('cAvalMo').textContent=avalResult.months+' months';
   $('cAvalInt').textContent=usd(avalResult.totalInt);
-  $('cmpSnow').className='cmp'+(method==='snowball'?' active':'');
-  $('cmpAval').className='cmp'+(method==='avalanche'?' active':'');
 
   const intDiff=snowResult.totalInt-avalResult.totalInt;
   const moDiff=snowResult.months-avalResult.months;
-  const saveBox=$('methodSaveBox');
-  if(Math.abs(intDiff)<5){
-    saveBox.innerHTML='Both methods yield nearly identical results for your debts.';
-  } else if(intDiff>0){
+  const saveBox=$('saveMsg');
+  if(intDiff>0.5){
     saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
   } else {
     saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific debts.`;
   }
 }
 
-// Init with default debts
 DEFAULT_DEBTS.forEach(d=>addRow(d));
 </script>
-
 </body>
 </html>
