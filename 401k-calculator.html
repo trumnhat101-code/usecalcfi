@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--
+  401k Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>401k Calculator — How Much Will My 401k Grow? (2026)</title>
+<meta name="description" content="Free 401k calculator. Project your 401k balance at retirement with employer match, annual contributions, and expected returns. See how much you'll have.">
+<link rel="canonical" href="https://usecalcfi.com/401k-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"401k Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much should I contribute to my 401k?","acceptedAnswer":{"@type":"Answer","text":"At minimum, contribute enough to get your full employer match — that's a 50–100% instant return on that money. Beyond that, aim for 10–15% of your gross income including the match. The 2025 IRS 401k contribution limit is $23,500 ($31,000 if you're 50 or older with catch-up contributions)."}},
+{"@type":"Question","name":"What is employer match in a 401k?","acceptedAnswer":{"@type":"Answer","text":"An employer match is free money your company adds to your 401k when you contribute. A common match is 50% up to 6% of salary — meaning if you earn $80,000 and contribute 6% ($4,800), your employer adds $2,400. Always contribute enough to capture the full match."}},
+{"@type":"Question","name":"What is a good 401k return rate?","acceptedAnswer":{"@type":"Answer","text":"A commonly used long-term average for a diversified stock-heavy 401k is 6–8% annually (adjusted for inflation). The S&P 500 has historically returned about 10% annually before inflation. More conservative allocations with bonds typically return 4–6%. Use 6–7% for conservative projections."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+.sublabel{font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#f5f3ff}.kpi.main .v{color:var(--ac)}
+.kpi.good .v{color:var(--ok)}
+/* Growth chart */
+.chart{display:flex;align-items:flex-end;gap:2px;height:130px;margin:18px 0 4px}
+.chart-col{flex:1;display:flex;flex-direction:column;align-items:center}
+.seg{width:100%;border-radius:2px 2px 0 0}
+.chart-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-bottom:4px}
+/* Stacked bar */
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+/* Match badge */
+.match-badge{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 14px;font-size:13px;margin-top:14px}
+.match-badge .mv{font-size:18px;font-weight:800;color:var(--ok)}
+.cta{display:block;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#f5f3ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>401k Calculator</h1>
+  <p class="lead">Project your 401k balance at retirement including employer match, salary increases, and compounding returns. See how your contributions grow over time.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Current age</label><input id="age" type="number" value="30"></div>
+          <div><label>Retirement age</label><input id="retAge" type="number" value="65"></div>
+          <div><label>Current 401k balance ($)</label><input id="balance" type="number" value="25000"></div>
+          <div><label>Annual salary ($)</label><input id="salary" type="number" value="75000"></div>
+          <div>
+            <label>Your contribution (%)</label>
+            <div class="sublabel">% of salary per year</div>
+            <input id="contrib" type="number" step="0.5" value="6">
+          </div>
+          <div>
+            <label>Employer match (%)</label>
+            <div class="sublabel">e.g. 50% match up to 6%</div>
+            <input id="matchPct" type="number" step="0.5" value="50">
+          </div>
+          <div>
+            <label>Match up to (% of salary)</label>
+            <input id="matchMax" type="number" step="0.5" value="6">
+          </div>
+          <div>
+            <label>Expected annual return (%)</label>
+            <input id="ret" type="number" step="0.1" value="7">
+          </div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rBalance">$0</div><div class="l">Projected 401k balance</div></div>
+          <div class="kpi good"><div class="v" id="rIncome">$0</div><div class="l">Est. monthly income (4% rule)</div></div>
+          <div class="kpi"><div class="v" id="rYourTotal">$0</div><div class="l">Your total contributions</div></div>
+          <div class="kpi"><div class="v" id="rMatchTotal">$0</div><div class="l">Employer match total</div></div>
+        </div>
+
+        <div class="match-badge">
+          💰 Annual employer match: <span class="mv" id="rAnnualMatch">$0</span>
+          <span style="color:var(--mut);font-size:12px;margin-left:6px">— don't leave this on the table!</span>
+        </div>
+
+        <div class="bar" style="margin-top:16px">
+          <i id="barBal" style="background:#7c3aed"></i>
+          <i id="barContrib" style="background:#4f46e5"></i>
+          <i id="barMatch" style="background:#16a34a"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:#7c3aed"></span>Investment growth</span>
+          <span><span class="dot" style="background:#4f46e5"></span>Your contributions</span>
+          <span><span class="dot" style="background:#16a34a"></span>Employer match</span>
+        </div>
+
+        <!-- Growth chart -->
+        <div class="chart-labels" id="chartLabels" style="margin-top:16px"></div>
+        <div class="chart" id="chart"></div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+      <div class="content">
+        <h2>How to maximize your 401k</h2>
+        <p>The 401k is one of the most powerful retirement savings tools available — contributions are pre-tax, growth is tax-deferred, and employer matches are essentially free money.</p>
+        <h3>Always capture the full employer match</h3>
+        <p>If your employer matches 50% of contributions up to 6% of salary, contribute at least 6%. Anything less leaves free money behind. A $4,500 match on a $75,000 salary is a 6% instant return before any market gains.</p>
+        <h3>2025 contribution limits</h3>
+        <p>The IRS 401k contribution limit for 2025 is <strong>$23,500</strong> ($31,000 if you're 50+ with catch-up contributions). Employer contributions don't count toward this limit.</p>
+        <h3>Traditional vs Roth 401k</h3>
+        <p>Traditional 401k: contributions are pre-tax, reducing your taxable income now. You pay taxes on withdrawals in retirement. Roth 401k: contributions are after-tax, but withdrawals in retirement are tax-free. If you expect to be in a higher tax bracket in retirement, Roth may be better.</p>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>How much should I contribute to my 401k?</h3>
+        <p>At minimum, contribute enough to get the full employer match. Beyond that, aim for 10–15% of gross income (including the match). Max out if possible — $23,500 in 2025.</p>
+        <h3>What is a good annual return for a 401k?</h3>
+        <p>6–7% is a reasonable long-term assumption for a diversified stock-heavy portfolio, adjusted for inflation. The S&P 500 has averaged ~10% historically before inflation.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Invest with Betterment
+        <small>Automated investing — get started free</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Track All Accounts — Empower
+        <small>Free retirement planner & net worth tracker</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/retirement-calculator">Retirement Calculator</a>
+          <a href="/compound-interest-calculator">Compound Interest</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Consult a financial advisor for personalized guidance.</p>
+</div></footer>
+
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+
+function calc(){
+  var age=+document.getElementById('age').value;
+  var retAge=+document.getElementById('retAge').value;
+  var bal=+document.getElementById('balance').value;
+  var salary=+document.getElementById('salary').value;
+  var contribPct=+document.getElementById('contrib').value/100;
+  var matchPct=+document.getElementById('matchPct').value/100;
+  var matchMax=+document.getElementById('matchMax').value/100;
+  var ret=+document.getElementById('ret').value/100;
+  var years=retAge-age;
+  if(years<=0)return;
+
+  var yourAnnual=salary*contribPct;
+  var matchAnnual=salary*Math.min(contribPct,matchMax)*matchPct;
+  var totalAnnual=yourAnnual+matchAnnual;
+  var r=ret;
+
+  // FV of current balance + FV of annual contributions
+  var fvBal=bal*Math.pow(1+r,years);
+  var fvContribs=totalAnnual*(Math.pow(1+r,years)-1)/r;
+  var total=fvBal+fvContribs;
+
+  var yourTotal=yourAnnual*years;
+  var matchTotal=matchAnnual*years;
+  var growth=total-yourTotal-matchTotal-bal;
+
+  document.getElementById('rBalance').textContent=fmt(total);
+  document.getElementById('rIncome').textContent=fmt(total*0.04/12);
+  document.getElementById('rYourTotal').textContent=fmt(yourTotal);
+  document.getElementById('rMatchTotal').textContent=fmt(matchTotal);
+  document.getElementById('rAnnualMatch').textContent=fmt(matchAnnual);
+
+  var growthPct=(growth/total)*100;
+  var yourPct=(yourTotal/total)*100;
+  var matchPct2=(matchTotal/total)*100;
+  document.getElementById('barBal').style.width=growthPct+'%';
+  document.getElementById('barContrib').style.width=yourPct+'%';
+  document.getElementById('barMatch').style.width=matchPct2+'%';
+
+  // Build chart (every 5 years or so)
+  var milestones=[];
+  var step=Math.max(1,Math.floor(years/6));
+  for(var y=step;y<=years;y+=step){milestones.push(y);}
+  if(milestones[milestones.length-1]!==years)milestones.push(years);
+
+  var maxVal=0;
+  var vals=milestones.map(function(y){
+    var b=bal*Math.pow(1+r,y)+totalAnnual*(Math.pow(1+r,y)-1)/r;
+    if(b>maxVal)maxVal=b;
+    return b;
+  });
+
+  var chartHTML='';
+  var labHTML='';
+  vals.forEach(function(v,i){
+    var h=Math.round((v/maxVal)*100);
+    chartHTML+='<div class="chart-col"><div class="seg" style="height:'+h+'%;background:#7c3aed;border-radius:3px 3px 0 0"></div></div>';
+    labHTML+='<span>'+(age+milestones[i])+'</span>';
+  });
+  document.getElementById('chart').innerHTML=chartHTML;
+  document.getElementById('chartLabels').innerHTML=labHTML;
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
+</script>
+</body>
+</html>

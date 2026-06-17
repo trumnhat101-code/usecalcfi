@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--
+  Tax Refund Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tax Refund Calculator 2025 — Estimate Your Federal Tax Refund</title>
+<meta name="description" content="Free 2025 federal tax refund calculator. Enter your income, withholding, and deductions to estimate your refund or amount owed before you file.">
+<link rel="canonical" href="https://usecalcfi.com/tax-refund-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Tax Refund Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How do I calculate my tax refund?","acceptedAnswer":{"@type":"Answer","text":"Your refund = federal tax withheld (W-2 Box 2) minus your actual tax liability. Your tax liability is calculated by applying the 2025 IRS brackets to your taxable income (AGI minus standard deduction), then subtracting any credits."}},
+{"@type":"Question","name":"What is the 2025 standard deduction?","acceptedAnswer":{"@type":"Answer","text":"For 2025 (tax year), the standard deduction is $15,000 for single filers, $30,000 for married filing jointly, $22,500 for head of household, and $15,000 for married filing separately (per IRS Rev. Proc. 2024-40)."}},
+{"@type":"Question","name":"Why is my tax refund smaller than last year?","acceptedAnswer":{"@type":"Answer","text":"Common reasons: you updated your W-4 withholding, had a raise or second job, had less withholding from a new employer, or your tax credits changed (e.g., child tax credit phase-out). A refund means you overpaid — adjusting your W-4 gives you more take-home pay each paycheck instead."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#e11d48;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+.sublabel{font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.refund-box{border-radius:12px;padding:20px;text-align:center;margin-top:18px}
+.refund-box.good{background:#f0fdf4;border:2px solid #86efac}
+.refund-box.owe{background:#fff1f2;border:2px solid #fca5a5}
+.refund-box .rv{font-size:36px;font-weight:800;margin-bottom:4px}
+.refund-box.good .rv{color:var(--ok)}
+.refund-box.owe .rv{color:var(--ac)}
+.refund-box .rl{font-size:14px;color:var(--mut)}
+/* Bracket table */
+.bracket-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}
+.bracket-table th{text-align:left;padding:7px 10px;background:var(--bg);font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase}
+.bracket-table td{padding:7px 10px;border-bottom:1px solid var(--bd)}
+.bracket-table tr.active td{background:#fff1f2;font-weight:700}
+.cta{display:block;background:linear-gradient(135deg,#e11d48,#dc2626);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#fff1f2;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Tax Refund Calculator 2025</h1>
+  <p class="lead">Estimate your 2025 federal tax refund or amount owed before you file. Enter your income, withholding from your W-2, and any credits.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Filing status</label>
+            <select id="status" onchange="calc()">
+              <option value="single">Single</option>
+              <option value="mfj" selected>Married Filing Jointly</option>
+              <option value="hoh">Head of Household</option>
+              <option value="mfs">Married Filing Separately</option>
+            </select>
+          </div>
+          <div>
+            <label>Gross income ($)</label>
+            <div class="sublabel">Total wages, salary, tips</div>
+            <input id="income" type="number" value="85000">
+          </div>
+          <div>
+            <label>Federal tax withheld ($)</label>
+            <div class="sublabel">W-2 Box 2</div>
+            <input id="withheld" type="number" value="10500">
+          </div>
+          <div>
+            <label>Pre-tax deductions ($)</label>
+            <div class="sublabel">401k, HSA, health insurance premiums</div>
+            <input id="pretax" type="number" value="5000">
+          </div>
+          <div>
+            <label>Child tax credit (# children)</label>
+            <div class="sublabel">$2,000 per qualifying child under 17</div>
+            <input id="children" type="number" value="0">
+          </div>
+          <div>
+            <label>Other credits ($)</label>
+            <div class="sublabel">Education, EV, energy credits, etc.</div>
+            <input id="credits" type="number" value="0">
+          </div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div id="refundBox" class="refund-box good">
+          <div class="rv" id="rRefund">$0</div>
+          <div class="rl" id="rRefundLabel">Estimated refund</div>
+        </div>
+
+        <div class="result">
+          <div class="kpi"><div class="v" id="rAGI">$0</div><div class="l">Adjusted gross income</div></div>
+          <div class="kpi"><div class="v" id="rTaxable">$0</div><div class="l">Taxable income</div></div>
+          <div class="kpi"><div class="v" id="rTaxOwed">$0</div><div class="l">Total tax owed</div></div>
+          <div class="kpi"><div class="v" id="rEffRate">0%</div><div class="l">Effective tax rate</div></div>
+        </div>
+
+        <h3 style="margin-top:16px">2025 Tax bracket breakdown</h3>
+        <table class="bracket-table">
+          <thead><tr><th>Rate</th><th>Taxable income range</th><th>Tax in bracket</th></tr></thead>
+          <tbody id="bracketBody"></tbody>
+        </table>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+      <div class="content">
+        <h2>How the 2025 federal tax refund works</h2>
+        <p>Throughout the year, your employer withholds federal income tax from each paycheck based on the W-4 you filed. At tax time, your actual tax liability is calculated. If you had more withheld than you owe, you get a refund. If less, you owe the difference.</p>
+        <h3>Getting a big refund isn't always good</h3>
+        <p>A large refund means you gave the government an interest-free loan all year. Adjusting your W-4 to withhold less gives you more take-home pay each paycheck — and you can invest or save that money instead. Aim to come close to breaking even at tax time.</p>
+        <h3>Key 2025 standard deductions</h3>
+        <ul>
+          <li><strong>Single:</strong> $15,000</li>
+          <li><strong>Married Filing Jointly:</strong> $30,000</li>
+          <li><strong>Head of Household:</strong> $22,500</li>
+          <li><strong>Married Filing Separately:</strong> $15,000</li>
+        </ul>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>How is my tax refund calculated?</h3>
+        <p>Refund = federal tax withheld − actual tax liability. Your liability comes from applying 2025 IRS brackets to your taxable income, then subtracting credits.</p>
+        <h3>Why is my refund smaller than last year?</h3>
+        <p>Common reasons: you updated your W-4, got a raise, had less withholding from a new employer, or your credits changed. A smaller refund often means more accurate withholding throughout the year.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        File with TurboTax
+        <small>Maximum refund guaranteed</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#16a34a,#059669)">
+        File with H&amp;R Block
+        <small>In-person or online — your choice</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/income-tax-calculator">Income Tax Calculator</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/401k-calculator">401k Calculator</a>
+          <a href="/retirement-calculator">Retirement Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial or tax advice. Consult a tax professional for your situation.</p>
+</div></footer>
+
+<script>
+// 2025 IRS brackets (Rev. Proc. 2024-40)
+var BRACKETS={
+  single:[[11925,0.10],[48475,0.12],[103350,0.22],[197300,0.24],[250525,0.32],[626350,0.35],[Infinity,0.37]],
+  mfj:[[23850,0.10],[96950,0.12],[206700,0.22],[394600,0.24],[501050,0.32],[751600,0.35],[Infinity,0.37]],
+  hoh:[[17000,0.10],[64850,0.12],[103350,0.22],[197300,0.24],[250500,0.32],[626350,0.35],[Infinity,0.37]],
+  mfs:[[11925,0.10],[48475,0.12],[103350,0.22],[197300,0.24],[250525,0.32],[375800,0.35],[Infinity,0.37]]
+};
+var STD={single:15000,mfj:30000,hoh:22500,mfs:15000};
+
+function calcTax(taxable,status){
+  var brackets=BRACKETS[status];
+  var tax=0;var prev=0;
+  for(var i=0;i<brackets.length;i++){
+    var top=brackets[i][0];var rate=brackets[i][1];
+    if(taxable<=prev)break;
+    var chunk=Math.min(taxable,top)-prev;
+    tax+=chunk*rate;
+    prev=top;
+  }
+  return tax;
+}
+
+function fmt(n){return '$'+Math.round(Math.abs(n)).toLocaleString()}
+
+function calc(){
+  var status=document.getElementById('status').value;
+  var income=+document.getElementById('income').value;
+  var withheld=+document.getElementById('withheld').value;
+  var pretax=+document.getElementById('pretax').value;
+  var children=+document.getElementById('children').value;
+  var credits=+document.getElementById('credits').value;
+  var childCredit=children*2000;
+  var totalCredits=childCredit+credits;
+
+  var agi=income-pretax;
+  var std=STD[status];
+  var taxable=Math.max(0,agi-std);
+  var taxOwed=Math.max(0,calcTax(taxable,status)-totalCredits);
+  var refund=withheld-taxOwed;
+  var effRate=income>0?(taxOwed/income)*100:0;
+
+  document.getElementById('rAGI').textContent=fmt(agi);
+  document.getElementById('rTaxable').textContent=fmt(taxable);
+  document.getElementById('rTaxOwed').textContent=fmt(taxOwed);
+  document.getElementById('rEffRate').textContent=effRate.toFixed(1)+'%';
+
+  var box=document.getElementById('refundBox');
+  var rv=document.getElementById('rRefund');
+  var rl=document.getElementById('rRefundLabel');
+  if(refund>=0){
+    box.className='refund-box good';
+    rv.textContent=fmt(refund);
+    rl.textContent='Estimated federal refund';
+  } else {
+    box.className='refund-box owe';
+    rv.textContent=fmt(-refund);
+    rl.textContent='Estimated amount owed';
+  }
+
+  // Bracket table
+  var brackets=BRACKETS[status];
+  var prev=0;var rows='';var marginal=0;
+  for(var i=0;i<brackets.length;i++){
+    var top=brackets[i][0];var rate=brackets[i][1];
+    if(taxable<=prev)break;
+    var chunk=Math.min(taxable,top)-prev;
+    var taxInBracket=chunk*rate;
+    var isActive=taxable>prev&&taxable<=top;
+    if(taxable>prev)marginal=rate;
+    var rangeStr=prev===0?'Up to $'+top.toLocaleString():'$'+prev.toLocaleString()+' – '+(top===Infinity?'+':'$'+top.toLocaleString());
+    rows+='<tr'+(isActive?' class="active"':'')+'><td>'+(rate*100)+'%</td><td>'+rangeStr+'</td><td>'+fmt(taxInBracket)+'</td></tr>';
+    prev=top;
+    if(taxable<=top)break;
+  }
+  document.getElementById('bracketBody').innerHTML=rows;
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
+</script>
+</body>
+</html>

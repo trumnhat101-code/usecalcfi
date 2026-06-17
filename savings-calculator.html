@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--
+  Savings Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savings Calculator — How Much Will My Savings Grow? (2026)</title>
+<meta name="description" content="Free savings calculator. See how your savings account grows over time with interest and monthly contributions. Compare rates and find your best HYSA option.">
+<link rel="canonical" href="https://usecalcfi.com/savings-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Savings Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a high-yield savings account (HYSA)?","acceptedAnswer":{"@type":"Answer","text":"A high-yield savings account pays a significantly higher APY than a traditional savings account. While traditional banks often pay 0.01–0.05% APY, online HYSAs typically offer 4–5% APY (as of 2024–2025). They are FDIC insured up to $250,000 and work the same as a regular savings account."}},
+{"@type":"Question","name":"How is savings account interest calculated?","acceptedAnswer":{"@type":"Answer","text":"Most savings accounts compound interest daily or monthly. Daily compounding means your balance earns interest every day, and that interest earns interest the next day. The formula is: A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding periods per year, and t is time in years."}},
+{"@type":"Question","name":"How much should I have in savings?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is 3–6 months of living expenses in an emergency fund, kept in a liquid account like an HYSA. Beyond that, money for goals (vacation, down payment, etc.) should also be in savings. Long-term money (10+ years away) typically belongs in investments like index funds, not savings accounts."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#0891b2;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#ecfeff}.kpi.main .v{color:var(--ac)}
+.kpi.good .v{color:var(--ok)}
+/* Chart */
+.chart{display:flex;align-items:flex-end;gap:3px;height:120px;margin:18px 0 4px}
+.chart-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end}
+.bar-dep{width:100%;background:#0891b2;border-radius:2px 2px 0 0}
+.bar-int{width:100%;background:#16a34a}
+.chart-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mut)}
+/* Stacked bar */
+.sbar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.sbar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+/* Rate comparison */
+.rate-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.rate-table th{text-align:left;padding:7px 10px;background:var(--bg);font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase}
+.rate-table td{padding:8px 10px;border-bottom:1px solid var(--bd)}
+.rate-table .hi{color:var(--ok);font-weight:700}
+.rate-table .lo{color:#dc2626}
+.cta{display:block;background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#ecfeff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Savings Calculator</h1>
+  <p class="lead">See how your savings account grows over time with interest compounding and regular monthly deposits. Compare what different rates — like a high-yield savings account vs. traditional bank — really mean for your money.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Starting balance ($)</label><input id="principal" type="number" value="5000"></div>
+          <div><label>Monthly deposit ($)</label><input id="monthly" type="number" value="300"></div>
+          <div><label>Annual interest rate (% APY)</label><input id="rate" type="number" step="0.01" value="4.5"></div>
+          <div><label>Savings period</label>
+            <select id="years">
+              <option value="1">1 year</option>
+              <option value="2">2 years</option>
+              <option value="3">3 years</option>
+              <option value="5" selected>5 years</option>
+              <option value="10">10 years</option>
+              <option value="20">20 years</option>
+              <option value="30">30 years</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rFV">$0</div><div class="l">Final balance</div></div>
+          <div class="kpi good"><div class="v" id="rInterest">$0</div><div class="l">Interest earned</div></div>
+          <div class="kpi"><div class="v" id="rDeposits">$0</div><div class="l">Total deposited</div></div>
+          <div class="kpi"><div class="v" id="rMonthlyInt">$0</div><div class="l">Interest in final month</div></div>
+        </div>
+
+        <div class="sbar">
+          <i id="sDep" style="background:#0891b2"></i>
+          <i id="sInt" style="background:#16a34a"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:#0891b2"></span>Deposits</span>
+          <span><span class="dot" style="background:#16a34a"></span>Interest earned</span>
+        </div>
+
+        <!-- Growth chart -->
+        <div class="chart-labels" id="chartLabels" style="margin-top:16px"></div>
+        <div class="chart" id="chart"></div>
+
+        <!-- Rate comparison -->
+        <h3>Rate comparison — same deposits, different rates</h3>
+        <table class="rate-table">
+          <thead><tr><th>Account type</th><th>APY</th><th>Final balance</th><th>Interest earned</th></tr></thead>
+          <tbody id="rateBody"></tbody>
+        </table>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+      <div class="content">
+        <h2>Make your savings work harder</h2>
+        <p>The difference between a 0.01% traditional savings account and a 4.5% high-yield savings account is enormous over time. On $10,000 with $300/month for 5 years, you'd earn about $60 in interest at the traditional rate — vs. over $3,500 at 4.5%.</p>
+        <h3>High-yield savings accounts (HYSAs)</h3>
+        <p>Online banks like Marcus (Goldman Sachs), Ally, and CIT Bank offer HYSAs with 4–5% APY — 10–50x more than most traditional banks. They're FDIC insured and work identically to a regular savings account. The only difference: you manage them online.</p>
+        <h3>When to use savings vs. investments</h3>
+        <ul>
+          <li><strong>Savings account:</strong> Emergency fund (3–6 months expenses), money needed within 1–3 years</li>
+          <li><strong>Investments:</strong> Money you won't need for 5+ years (retirement, long-term goals)</li>
+          <li><strong>CD (Certificate of Deposit):</strong> Locked savings for a fixed term at a guaranteed rate — good when you know you won't need the money</li>
+        </ul>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>What is a high-yield savings account?</h3>
+        <p>An HYSA pays significantly more than a traditional savings account — often 4–5% APY vs. 0.01–0.05%. FDIC insured, no risk. Available at online banks like Marcus, Ally, and CIT Bank.</p>
+        <h3>How much should I keep in savings?</h3>
+        <p>Keep 3–6 months of living expenses in an emergency fund. Beyond that, money you won't need for 5+ years is better invested in index funds for higher long-term returns.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Open a High-Yield Savings
+        <small>Marcus by Goldman Sachs — top-rated HYSA</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#16a34a,#059669)">
+        Ally Bank Savings
+        <small>No minimum, no fees, competitive APY</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/compound-interest-calculator">Compound Interest</a>
+          <a href="/retirement-calculator">Retirement Calculator</a>
+          <a href="/401k-calculator">401k Calculator</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Rates shown are illustrative and may not reflect current offers.</p>
+</div></footer>
+
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+
+function fv(P,monthly,rate,years){
+  var r=rate/100/12;
+  var n=years*12;
+  var fvP=P*Math.pow(1+r,n);
+  var fvM=r>0?monthly*(Math.pow(1+r,n)-1)/r:monthly*n;
+  return fvP+fvM;
+}
+
+function calc(){
+  var P=+document.getElementById('principal').value;
+  var monthly=+document.getElementById('monthly').value;
+  var rate=+document.getElementById('rate').value;
+  var years=+document.getElementById('years').value;
+  var totalDeposits=P+monthly*years*12;
+  var finalBal=fv(P,monthly,rate,years);
+  var interest=finalBal-totalDeposits;
+  var r=rate/100/12;
+  var lastBal=fv(P,monthly,rate,years-1/12);
+  var monthlyInt=lastBal*r;
+
+  document.getElementById('rFV').textContent=fmt(finalBal);
+  document.getElementById('rInterest').textContent=fmt(interest);
+  document.getElementById('rDeposits').textContent=fmt(totalDeposits);
+  document.getElementById('rMonthlyInt').textContent=fmt(monthlyInt);
+
+  var depPct=(totalDeposits/finalBal)*100;
+  document.getElementById('sDep').style.width=depPct+'%';
+  document.getElementById('sInt').style.width=(100-depPct)+'%';
+
+  // Chart by year
+  var maxVal=finalBal;
+  var chartHTML='',labHTML='';
+  for(var y=1;y<=years;y++){
+    var b=fv(P,monthly,rate,y);
+    var deps=P+monthly*y*12;
+    var intH=Math.round((b/maxVal)*100);
+    var depH=Math.round((deps/maxVal)*100);
+    var intOnly=intH-depH;
+    chartHTML+='<div class="chart-col"><div class="bar-int" style="height:'+Math.max(0,intOnly)+'%"></div><div class="bar-dep" style="height:'+depH+'%"></div></div>';
+    if(y===1||y===Math.ceil(years/2)||y===years)labHTML+='<span>Yr '+y+'</span>';
+    else labHTML+='<span></span>';
+  }
+  document.getElementById('chart').innerHTML=chartHTML;
+  document.getElementById('chartLabels').innerHTML=labHTML;
+
+  // Rate comparison table
+  var rates=[{label:'Traditional bank',apy:0.05,cls:'lo'},{label:'National avg',apy:0.6,cls:''},{label:'Good HYSA',apy:4.0,cls:''},{label:'Top HYSA (you)',apy:rate,cls:'hi'}];
+  var rows='';
+  rates.forEach(function(r){
+    var b=fv(P,monthly,r.apy,years);
+    var i=b-(P+monthly*years*12);
+    rows+='<tr><td>'+r.label+'</td><td class="'+r.cls+'">'+r.apy+'%</td><td class="'+r.cls+'">'+fmt(b)+'</td><td class="'+r.cls+'">'+fmt(i)+'</td></tr>';
+  });
+  document.getElementById('rateBody').innerHTML=rows;
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
+</script>
+</body>
+</html>

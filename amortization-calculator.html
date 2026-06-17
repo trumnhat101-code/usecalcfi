@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!--
+  Amortization Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amortization Calculator — Loan Amortization Schedule (2026)</title>
+<meta name="description" content="Free amortization calculator. See your full loan amortization schedule by month or year — principal, interest, balance remaining for any loan.">
+<link rel="canonical" href="https://usecalcfi.com/amortization-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Amortization Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is an amortization schedule?","acceptedAnswer":{"@type":"Answer","text":"An amortization schedule is a table showing each loan payment broken down into principal and interest. Early payments are mostly interest; later payments are mostly principal. The schedule shows exactly how your balance decreases over the life of the loan."}},
+{"@type":"Question","name":"How does amortization work?","acceptedAnswer":{"@type":"Answer","text":"Each monthly payment covers the interest on the remaining balance first, then the rest reduces the principal. Because the balance decreases over time, the interest portion shrinks each month and the principal portion grows — even though the payment stays the same."}},
+{"@type":"Question","name":"How can I pay off my loan faster?","acceptedAnswer":{"@type":"Answer","text":"Making extra principal payments — even small ones — can cut years off your loan and save thousands in interest. An extra $100/month on a 30-year mortgage can shorten it by 4–5 years. Apply any extra payment directly to principal for maximum impact."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#4f46e5;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#eef0ff}.kpi.main .v{color:var(--ac)}
+/* Toggle */
+.toggle{display:flex;gap:8px;margin:16px 0 8px}
+.tog{padding:7px 16px;border:2px solid var(--bd);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff}
+.tog.active{border-color:var(--ac);background:#eef0ff;color:var(--ac)}
+/* Amortization table */
+.amort-wrap{overflow-x:auto;margin-top:8px}
+.amort-table{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+.amort-table th{text-align:right;padding:8px 10px;background:var(--bg);font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--bd)}
+.amort-table th:first-child{text-align:left}
+.amort-table td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:right}
+.amort-table td:first-child{text-align:left;font-weight:600}
+.amort-table tr:hover td{background:#f5f7ff}
+.amort-table .int{color:#dc2626}
+.amort-table .prin{color:var(--ok)}
+/* Stacked bar */
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cta{display:block;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#eef0ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Amortization Calculator</h1>
+  <p class="lead">Enter any loan amount, rate, and term to see the full amortization schedule — every payment broken down into principal and interest, month by month or year by year.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Loan amount ($)</label><input id="loan" type="number" value="320000"></div>
+          <div><label>Annual interest rate (%)</label><input id="rate" type="number" step="0.01" value="6.5"></div>
+          <div><label>Loan term</label>
+            <select id="term">
+              <option value="30" selected>30 years</option>
+              <option value="20">20 years</option>
+              <option value="15">15 years</option>
+              <option value="10">10 years</option>
+            </select>
+          </div>
+          <div><label>Extra monthly payment ($)</label><input id="extra" type="number" value="0"></div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rPmt">$0</div><div class="l">Monthly payment</div></div>
+          <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest</div></div>
+          <div class="kpi"><div class="v" id="rTotal">$0</div><div class="l">Total paid</div></div>
+          <div class="kpi"><div class="v" id="rPayoff">—</div><div class="l">Payoff date</div></div>
+        </div>
+
+        <div class="bar">
+          <i id="barPrin" style="background:#4f46e5"></i>
+          <i id="barInt" style="background:#dc2626"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:#4f46e5"></span>Principal</span>
+          <span><span class="dot" style="background:#dc2626"></span>Interest</span>
+        </div>
+
+        <div class="toggle">
+          <button class="tog active" onclick="setView('year',this)">By year</button>
+          <button class="tog" onclick="setView('month',this)">By month</button>
+        </div>
+        <div class="amort-wrap">
+          <table class="amort-table">
+            <thead><tr><th>Period</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+            <tbody id="tBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+      <div class="content">
+        <h2>How amortization works</h2>
+        <p>Every fixed-rate loan payment is the same amount, but the split between principal and interest shifts over time. Early in the loan, most of each payment is interest. As the balance falls, more goes to principal.</p>
+        <h3>Why the early years are mostly interest</h3>
+        <p>Interest is calculated on the remaining balance. A $320,000 balance at 6.5% generates $1,733 in interest in the first month alone — leaving only $289 of a $2,022 payment to reduce principal. By year 25, that same payment is mostly principal.</p>
+        <h3>Impact of extra payments</h3>
+        <p>Extra principal payments are powerful because they reduce the balance on which future interest is calculated. Even $100/month extra on a 30-year loan can shave 4–5 years off the payoff date and save $30,000+ in interest.</p>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>What is an amortization schedule?</h3>
+        <p>A table showing each payment broken into principal and interest, with the remaining balance after each payment.</p>
+        <h3>How can I pay off my loan faster?</h3>
+        <p>Make extra principal payments. Even $50–100/month can cut years off the loan and save thousands in interest. Use the extra payment field above to see the impact.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Compare Mortgage Rates
+        <small>LendingTree — Free, no commitment</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Refinance & Save
+        <small>Credible — Compare multiple lenders</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/refinance-calculator">Refinance Calculator</a>
+          <a href="/home-affordability-calculator">Home Affordability</a>
+          <a href="/auto-loan-calculator">Auto Loan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Verify figures with a licensed lender.</p>
+</div></footer>
+
+<script>
+var scheduleData=[];
+var viewMode='year';
+
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function fmtDate(months){
+  var d=new Date();
+  d.setMonth(d.getMonth()+months);
+  return d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+}
+
+function calc(){
+  var P=+document.getElementById('loan').value;
+  var annual=+document.getElementById('rate').value;
+  var years=+document.getElementById('term').value;
+  var extra=+document.getElementById('extra').value;
+  var r=annual/100/12;
+  var n=years*12;
+  var pmt=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  var totalPmt=pmt+extra;
+
+  scheduleData=[];
+  var bal=P;
+  var totalInt=0;
+  var mo=0;
+  while(bal>0.01&&mo<n+1){
+    var intPart=bal*r;
+    var prinPart=Math.min(totalPmt-intPart,bal);
+    if(prinPart<0)prinPart=0;
+    bal-=prinPart;
+    totalInt+=intPart;
+    mo++;
+    scheduleData.push({mo:mo,pmt:prinPart+intPart,prin:prinPart,int:intPart,bal:Math.max(0,bal)});
+    if(bal<=0)break;
+  }
+
+  var totalPaid=P+totalInt;
+  document.getElementById('rPmt').textContent=fmt(pmt+(extra||0));
+  document.getElementById('rInt').textContent=fmt(totalInt);
+  document.getElementById('rTotal').textContent=fmt(totalPaid);
+  document.getElementById('rPayoff').textContent=fmtDate(mo);
+
+  var prinPct=(P/totalPaid)*100;
+  document.getElementById('barPrin').style.width=prinPct+'%';
+  document.getElementById('barInt').style.width=(100-prinPct)+'%';
+
+  renderTable();
+}
+
+function setView(mode,btn){
+  viewMode=mode;
+  document.querySelectorAll('.tog').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  renderTable();
+}
+
+function renderTable(){
+  var rows=[];
+  if(viewMode==='year'){
+    var yr=1;
+    while(true){
+      var slice=scheduleData.filter(function(r){return Math.ceil(r.mo/12)===yr});
+      if(!slice.length)break;
+      var totPmt=slice.reduce(function(a,r){return a+r.pmt},0);
+      var totPrin=slice.reduce(function(a,r){return a+r.prin},0);
+      var totInt=slice.reduce(function(a,r){return a+r.int},0);
+      var endBal=slice[slice.length-1].bal;
+      rows.push('<tr><td>Year '+yr+'</td><td>'+fmt(totPmt)+'</td><td class="prin">'+fmt(totPrin)+'</td><td class="int">'+fmt(totInt)+'</td><td>'+fmt(endBal)+'</td></tr>');
+      yr++;
+    }
+  } else {
+    scheduleData.forEach(function(r){
+      rows.push('<tr><td>Mo '+r.mo+'</td><td>'+fmt(r.pmt)+'</td><td class="prin">'+fmt(r.prin)+'</td><td class="int">'+fmt(r.int)+'</td><td>'+fmt(r.bal)+'</td></tr>');
+    });
+  }
+  document.getElementById('tBody').innerHTML=rows.join('');
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
+</script>
+</body>
+</html>

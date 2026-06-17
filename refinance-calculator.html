@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+  Refinance Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refinance Calculator — Should I Refinance My Mortgage? (2026)</title>
+<meta name="description" content="Free mortgage refinance calculator. Compare your current loan vs new rate, see monthly savings, total interest saved, and breakeven point in months.">
+<link rel="canonical" href="https://usecalcfi.com/refinance-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Refinance Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"When should I refinance my mortgage?","acceptedAnswer":{"@type":"Answer","text":"Refinancing typically makes sense when you can lower your rate by at least 0.5–1%, you plan to stay in the home past the breakeven point (closing costs ÷ monthly savings), and your credit score qualifies you for a better rate. Use the breakeven calculation to confirm it's worth it."}},
+{"@type":"Question","name":"How much does it cost to refinance?","acceptedAnswer":{"@type":"Answer","text":"Closing costs typically run 2–5% of the loan amount — usually $3,000–$6,000 on a $200,000 loan. Some lenders offer no-closing-cost refinances, but they roll the costs into a higher rate. Always factor in closing costs when calculating your true savings."}},
+{"@type":"Question","name":"What is a breakeven point in refinancing?","acceptedAnswer":{"@type":"Answer","text":"The breakeven point is how many months it takes for your monthly savings to offset the closing costs. If closing costs are $4,000 and you save $200/month, your breakeven is 20 months. If you plan to stay longer than that, refinancing saves money."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#f59e0b;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#fffbeb}.kpi.main .v{color:var(--ac)}
+.kpi.good .v{color:var(--ok)}
+/* Comparison table */
+.cmp-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:14px}
+.cmp-table th{text-align:left;padding:8px 10px;background:var(--bg);font-size:12px;color:var(--mut);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.cmp-table td{padding:10px 10px;border-bottom:1px solid var(--bd)}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .new{color:var(--ok);font-weight:700}
+.cmp-table .old{color:var(--mut)}
+/* Breakeven bar */
+.be-wrap{margin-top:16px}
+.be-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.be-bg{height:16px;border-radius:8px;background:#e5e7eb;overflow:hidden}
+.be-fill{height:100%;border-radius:8px;background:var(--ac);transition:width .4s}
+.verdict{border-radius:10px;padding:14px;margin-top:14px;font-size:14px;font-weight:600}
+.verdict.good{background:#f0fdf4;border:1px solid #86efac;color:#15803d}
+.verdict.warn{background:#fffbeb;border:1px solid #fcd34d;color:#92400e}
+.cta{display:block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#fffbeb;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Refinance Calculator</h1>
+  <p class="lead">Compare your current mortgage to a new rate. See your monthly savings, total interest saved, and exactly how many months until refinancing pays off.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <h3 style="margin-top:0;margin-bottom:14px;font-size:15px;color:var(--mut)">Current Loan</h3>
+        <div class="grid2">
+          <div><label>Remaining balance ($)</label><input id="balance" type="number" value="280000"></div>
+          <div><label>Current interest rate (%)</label><input id="curRate" type="number" step="0.01" value="7.5"></div>
+          <div><label>Remaining term (years)</label><input id="curTerm" type="number" value="25"></div>
+          <div></div>
+        </div>
+        <h3 style="margin-bottom:14px;font-size:15px;color:var(--mut)">New Loan</h3>
+        <div class="grid2">
+          <div><label>New interest rate (%)</label><input id="newRate" type="number" step="0.01" value="6.25"></div>
+          <div><label>New loan term (years)</label>
+            <select id="newTerm">
+              <option value="30" selected>30 years</option>
+              <option value="20">20 years</option>
+              <option value="15">15 years</option>
+              <option value="10">10 years</option>
+            </select>
+          </div>
+          <div><label>Closing costs ($)</label><input id="closing" type="number" value="4000"></div>
+          <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <table class="cmp-table">
+          <thead><tr><th></th><th>Current loan</th><th>New loan</th></tr></thead>
+          <tbody>
+            <tr><td>Monthly payment</td><td class="old" id="rCurPmt">—</td><td class="new" id="rNewPmt">—</td></tr>
+            <tr><td>Monthly savings</td><td colspan="2" style="font-weight:700" id="rSavings">—</td></tr>
+            <tr><td>Total interest</td><td class="old" id="rCurInt">—</td><td class="new" id="rNewInt">—</td></tr>
+            <tr><td>Interest saved</td><td colspan="2" style="font-weight:700;color:var(--ok)" id="rIntSaved">—</td></tr>
+          </tbody>
+        </table>
+
+        <div class="be-wrap">
+          <div class="be-label"><span>Breakeven progress</span><span id="rBreakeven">— months</span></div>
+          <div class="be-bg"><div class="be-fill" id="beBar" style="width:0%"></div></div>
+        </div>
+        <div class="verdict" id="verdict"></div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <!-- SEO Content -->
+      <div class="content">
+        <h2>Should you refinance your mortgage?</h2>
+        <p>Refinancing replaces your current mortgage with a new loan — ideally at a lower interest rate. The key question is whether the long-term savings outweigh the upfront closing costs.</p>
+        <h3>The breakeven rule</h3>
+        <p>Divide your closing costs by your monthly savings to find your breakeven point. If you plan to stay in the home longer than that number of months, refinancing saves money. If you might move sooner, the numbers may not work in your favor.</p>
+        <h3>When refinancing makes sense</h3>
+        <ul>
+          <li>Your new rate is at least 0.5–1% lower than your current rate</li>
+          <li>You plan to stay past the breakeven point</li>
+          <li>Your credit score has improved since your original loan</li>
+          <li>You want to switch from a 30-year to a 15-year to pay off faster</li>
+          <li>You want to remove PMI by reaching 20% equity</li>
+        </ul>
+        <h3>Watch out for</h3>
+        <ul>
+          <li>Resetting the clock — a new 30-year on a loan you've paid for 10 years adds years of interest</li>
+          <li>Rolling closing costs into the loan increases your balance</li>
+          <li>No-closing-cost loans typically carry a higher rate</li>
+        </ul>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>When should I refinance my mortgage?</h3>
+        <p>Refinancing typically makes sense when you can lower your rate by at least 0.5–1%, you plan to stay past the breakeven point, and your credit qualifies you for a better rate.</p>
+        <h3>How much does it cost to refinance?</h3>
+        <p>Closing costs typically run 2–5% of the loan amount — usually $3,000–$6,000 on a $200,000 loan. Always factor this into your savings calculation.</p>
+        <h3>What is a breakeven point?</h3>
+        <p>The number of months it takes for monthly savings to offset closing costs. Closing costs $4,000 ÷ savings $200/mo = 20-month breakeven.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Compare Refinance Rates
+        <small>LendingTree — Free, no commitment</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">
+        Get a Rate Quote
+        <small>Credible — Compare multiple lenders</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/home-affordability-calculator">Home Affordability</a>
+          <a href="/amortization-calculator">Amortization Schedule</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Verify figures with a licensed lender.</p>
+</div></footer>
+
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function pmt(P,r,n){if(r===0)return P/n;return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
+
+function calc(){
+  var bal=+document.getElementById('balance').value;
+  var cr=+document.getElementById('curRate').value/100/12;
+  var cn=+document.getElementById('curTerm').value*12;
+  var nr=+document.getElementById('newRate').value/100/12;
+  var nn=+document.getElementById('newTerm').value*12;
+  var cc=+document.getElementById('closing').value;
+
+  var curPmt=pmt(bal,cr,cn);
+  var newPmt=pmt(bal,nr,nn);
+  var savings=curPmt-newPmt;
+  var curTotalInt=curPmt*cn-bal;
+  var newTotalInt=newPmt*nn-bal;
+  var intSaved=curTotalInt-newTotalInt;
+  var breakeven=savings>0?Math.ceil(cc/savings):9999;
+
+  document.getElementById('rCurPmt').textContent=fmt(curPmt)+'/mo';
+  document.getElementById('rNewPmt').textContent=fmt(newPmt)+'/mo';
+  document.getElementById('rSavings').textContent=savings>0?fmt(savings)+'/mo saved':'↑ '+fmt(-savings)+'/mo higher';
+  document.getElementById('rCurInt').textContent=fmt(curTotalInt);
+  document.getElementById('rNewInt').textContent=fmt(newTotalInt);
+  document.getElementById('rIntSaved').textContent=intSaved>0?fmt(intSaved)+' saved':fmt(-intSaved)+' more interest';
+  document.getElementById('rBreakeven').textContent=savings>0?breakeven+' months':'N/A';
+
+  var pct=Math.min(100,savings>0?(breakeven/60)*100:100);
+  document.getElementById('beBar').style.width=pct+'%';
+
+  var v=document.getElementById('verdict');
+  if(savings<=0){
+    v.className='verdict warn';
+    v.textContent='⚠️ Your new payment would be higher. This refinance doesn\'t save money.';
+  } else if(breakeven<=24){
+    v.className='verdict good';
+    v.textContent='✅ Breakeven in '+breakeven+' months — refinancing looks worthwhile if you plan to stay.';
+  } else if(breakeven<=60){
+    v.className='verdict warn';
+    v.textContent='⏱️ Breakeven in '+breakeven+' months ('+Math.round(breakeven/12,1)+' years). Worth it only if you stay long-term.';
+  } else {
+    v.className='verdict warn';
+    v.textContent='⚠️ Breakeven takes '+breakeven+' months. High closing costs relative to savings.';
+  }
+}
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
+</script>
+</body>
+</html>
