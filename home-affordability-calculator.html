@@ -38,6 +38,7 @@ h1{font-size:28px;margin:22px 0 6px}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
 label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
 .sublabel{font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
 input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
@@ -130,7 +131,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <input id="ins" type="number" value="1800">
           </div>
           <div><label>HOA (monthly $)</label><input id="hoa" type="number" value="0"></div>
-          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Affordability</button></div>
+          <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Affordability</button></div>
         </div>
 
         <div class="result">
