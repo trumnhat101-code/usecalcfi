@@ -85,6 +85,13 @@ footer a:hover{color:var(--ac)}
   footer .wrap{flex-direction:column}
   .hero-cta{width:100%;text-align:center}
 }
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -255,28 +262,4 @@ footer a:hover{color:var(--ac)}
       <div class="why-item">
         <div class="why-icon">📱</div>
         <div class="why-item-title">Works on any device</div>
-        <div class="why-desc">Fully responsive — same experience on phone, tablet, or desktop.</div>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">✅</div>
-        <div class="why-item-title">Verified formulas</div>
-        <div class="why-desc">Standard financial math (amortization, IRS brackets, FICA) — not estimates.</div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<footer><div class="wrap">
-  <span>© 2026 FinCalc. For educational purposes only — not financial advice.</span>
-  <span>
-    <a href="/mortgage-calculator">Mortgage</a> ·
-    <a href="/auto-loan-calculator">Auto Loan</a> ·
-    <a href="/paycheck-calculator">Paycheck</a> ·
-    <a href="/retirement-calculator">Retirement</a> ·
-    <a href="/income-tax-calculator">Income Tax</a>
-  </span>
-</div></footer>
-
-</body>
-</html>
+        <div class="why-desc">Fully
