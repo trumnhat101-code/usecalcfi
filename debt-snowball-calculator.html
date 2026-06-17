@@ -390,4 +390,15 @@ function calc(){
   if(Math.abs(intDiff)<5){
     saveBox.innerHTML='Both methods yield nearly identical results for your debts.';
   } else if(intDiff>0){
-    saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Mat
+    saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
+  } else {
+    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific debts.`;
+  }
+}
+
+// Init with default debts
+DEFAULT_DEBTS.forEach(d=>addRow(d));
+</script>
+
+</body>
+</html>
