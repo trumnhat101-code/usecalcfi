@@ -1,4 +1,4 @@
-# robots.txt — FinCalc
+# robots.txt — UseCalcFi
 # TODO: thay usecalcfi.com
 
 User-agent: *
