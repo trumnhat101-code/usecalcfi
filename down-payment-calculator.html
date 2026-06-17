@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--
+  Down Payment Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Down Payment Calculator — How Much Do You Need? (2026)</title>
+<meta name="description" content="Free down payment calculator. Find out how much you need to save for a home down payment, monthly savings required, and how loan type affects your required amount.">
+<link rel="canonical" href="https://usecalcfi.com/down-payment-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Down Payment Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much down payment do I need to buy a house?","acceptedAnswer":{"@type":"Answer","text":"The minimum down payment depends on loan type. Conventional loans require as little as 3%, FHA loans require 3.5% (with 580+ credit score), VA and USDA loans require 0% for eligible borrowers. To avoid PMI on a conventional loan, you need 20% down. A larger down payment also means lower monthly payments and less interest paid over the life of the loan."}},
+{"@type":"Question","name":"What is PMI and how can I avoid it?","acceptedAnswer":{"@type":"Answer","text":"PMI (Private Mortgage Insurance) is required on conventional loans when your down payment is less than 20%. It typically costs 0.5–1.5% of the loan amount per year, adding $100–300/month to your payment. You can avoid PMI by putting 20% down, using a VA or USDA loan (no PMI ever), or using a piggyback loan (80/10/10 structure). PMI is automatically cancelled when your equity reaches 22%."}},
+{"@type":"Question","name":"Is it better to put more money down on a house?","acceptedAnswer":{"@type":"Answer","text":"A larger down payment reduces your monthly payment, eliminates PMI, lowers your interest rate, and means you pay less total interest over the loan life. However, it ties up more cash that could be invested elsewhere. Most financial advisors suggest at least 10–20% down if possible, while keeping 3–6 months of expenses in emergency savings."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#0284c7;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:480px){.result{grid-template-columns:1fr}}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#e0f2fe}.kpi.main .v{color:var(--ac)}
+.kpi.warn .v{color:#d97706}
+.loan-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{padding:8px 14px;border:2px solid var(--bd);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s}
+.tab.active{border-color:var(--ac);background:#e0f2fe;color:var(--ac)}
+.pmi-banner{background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:12px 14px;font-size:13px;color:#92400e;margin-top:14px;display:none}
+.pmi-banner.show{display:block}
+.savings-bar{margin-top:16px}
+.bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:4px}
+.bar-track{height:14px;background:var(--bd);border-radius:8px;overflow:hidden}
+.bar-fill{height:100%;background:var(--ac);border-radius:8px;transition:width .3s}
+table.comp{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+table.comp th{text-align:right;padding:8px 10px;background:var(--bg);font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--bd)}
+table.comp th:first-child{text-align:left}
+table.comp td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:right}
+table.comp td:first-child{text-align:left;font-weight:600}
+table.comp tr.active-row td{background:#e0f2fe;font-weight:700}
+.cta{display:block;background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#e0f2fe;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/home-affordability-calculator">Affordability</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/refinance-calculator">Refinance</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Down Payment Calculator</h1>
+  <p class="lead">See how much you need to save for a down payment, whether you'll need PMI, and compare down payment scenarios side by side.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--mut);margin-bottom:12px;font-weight:600">Select loan type:</p>
+        <div class="loan-tabs">
+          <button class="tab active" onclick="setLoan('conventional',this)">Conventional</button>
+          <button class="tab" onclick="setLoan('fha',this)">FHA</button>
+          <button class="tab" onclick="setLoan('va',this)">VA / USDA</button>
+        </div>
+
+        <div class="grid2">
+          <div><label>Home price ($)</label><input id="price" type="number" value="400000"></div>
+          <div><label>Down payment (%)</label><input id="dpPct" type="number" step="0.5" value="10" oninput="syncPct()"></div>
+          <div><label>Down payment ($)</label><input id="dpAmt" type="number" value="40000" oninput="syncAmt()"></div>
+          <div><label>Months to save</label><input id="months" type="number" value="24"></div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rDP">$0</div><div class="l">Down payment needed</div></div>
+          <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount</div></div>
+          <div class="kpi"><div class="v" id="rSave">$0</div><div class="l">Monthly savings needed</div></div>
+          <div class="kpi" id="pmiKpi"><div class="v" id="rPMI">—</div><div class="l">PMI required</div></div>
+        </div>
+
+        <div class="pmi-banner" id="pmiBanner">
+          ⚠️ PMI required — you're putting down less than 20%. PMI typically adds <strong id="pmiCost">$0</strong>/month to your payment. Put 20% down to eliminate it.
+        </div>
+
+        <div class="savings-bar" id="savingsBar">
+          <div class="bar-label"><span>Savings progress</span><span id="barPct">0%</span></div>
+          <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Down payment comparison</h3>
+        <div style="overflow-x:auto">
+          <table class="comp">
+            <thead><tr><th>Down %</th><th>Down $</th><th>Loan amount</th><th>Avoids PMI?</th></tr></thead>
+            <tbody id="compBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>How much down payment do you need?</h2>
+        <p>The minimum down payment depends on your loan type. Conventional loans go as low as 3%, but anything under 20% triggers PMI — a monthly fee that protects the lender, not you.</p>
+        <h3>Loan type minimums</h3>
+        <ul>
+          <li><strong>Conventional:</strong> 3–5% minimum, 20% to avoid PMI</li>
+          <li><strong>FHA:</strong> 3.5% minimum (580+ credit score), 10% if score is 500–579</li>
+          <li><strong>VA / USDA:</strong> 0% — no down payment required for eligible borrowers</li>
+          <li><strong>Jumbo:</strong> 10–20% typically required by lenders</li>
+        </ul>
+        <h3>Closing costs: don't forget these</h3>
+        <p>Beyond the down payment, plan for closing costs of 2–5% of the home price ($8,000–$20,000 on a $400k home). These are separate from your down payment and must be paid at closing.</p>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>What is PMI and how can I avoid it?</h3>
+        <p>PMI (Private Mortgage Insurance) is required on conventional loans when your down payment is less than 20%. It typically costs 0.5–1.5%/year (~$100–300/month). Avoid it by putting 20% down, using a VA/USDA loan, or with a piggyback loan.</p>
+        <h3>Is a 20% down payment required?</h3>
+        <p>No — but 20% eliminates PMI and gets you better rates. Many buyers use 5–10% and accept PMI temporarily. PMI cancels automatically when equity reaches 22%.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Compare Mortgage Rates
+        <small>LendingTree — Free, no commitment</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Get Pre-Approved Today
+        <small>Credible — Compare multiple lenders</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/home-affordability-calculator">Home Affordability</a>
+          <a href="/refinance-calculator">Refinance Calculator</a>
+          <a href="/amortization-calculator">Amortization Schedule</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Verify figures with a licensed lender.</p>
+</div></footer>
+
+<script>
+var loanType = 'conventional';
+var minPcts = {conventional:3, fha:3.5, va:0};
+
+function setLoan(type, btn){
+  loanType = type;
+  document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  // Set minimum pct
+  var minPct = minPcts[type];
+  var curPct = +document.getElementById('dpPct').value;
+  if(curPct < minPct){
+    document.getElementById('dpPct').value = minPct;
+    syncPct();
+  }
+  calc();
+}
+
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+function syncPct(){
+  var price = +document.getElementById('price').value||0;
+  var pct = +document.getElementById('dpPct').value||0;
+  document.getElementById('dpAmt').value = Math.round(price*pct/100);
+}
+function syncAmt(){
+  var price = +document.getElementById('price').value||0;
+  var amt = +document.getElementById('dpAmt').value||0;
+  document.getElementById('dpPct').value = price>0?+(amt/price*100).toFixed(2):0;
+}
+
+function calc(){
+  var price = +document.getElementById('price').value||0;
+  var dpPct = +document.getElementById('dpPct').value||0;
+  var months = +document.getElementById('months').value||1;
+
+  // Enforce minimum
+  var minPct = minPcts[loanType];
+  if(dpPct < minPct && loanType !== 'va') dpPct = minPct;
+
+  var dpAmt = price * dpPct / 100;
+  var loanAmt = price - dpAmt;
+  var monthlySave = dpAmt / months;
+
+  // PMI
+  var needsPMI = (loanType === 'conventional' && dpPct < 20) || (loanType === 'fha');
+  var pmiMonthly = needsPMI ? loanAmt * 0.01 / 12 : 0;
+
+  document.getElementById('rDP').textContent = fmt(dpAmt);
+  document.getElementById('rLoan').textContent = fmt(loanAmt);
+  document.getElementById('rSave').textContent = fmt(monthlySave)+'/mo';
+  document.getElementById('rPMI').textContent = needsPMI ? 'Yes' : 'No';
+
+  var pmiBanner = document.getElementById('pmiBanner');
+  if(needsPMI && loanType !== 'fha'){
+    pmiBanner.classList.add('show');
+    document.getElementById('pmiCost').textContent = Math.round(pmiMonthly).toLocaleString();
+  } else {
+    pmiBanner.classList.remove('show');
+  }
+
+  // Savings bar (assume user has 0 saved, show 0 → target)
+  document.getElementById('barPct').textContent = '0% saved';
+  document.getElementById('barFill').style.width = '0%';
+
+  // Comparison table
+  var rows = '';
+  var pcts = loanType==='va' ? [0,3,5,10,20] : loanType==='fha' ? [3.5,5,10,15,20] : [3,5,10,15,20];
+  pcts.forEach(function(p){
+    var dp = price*p/100;
+    var ln = price - dp;
+    var pmi = (loanType==='conventional'&&p<20)||loanType==='fha' ? '⚠️ Yes' : '✅ No';
+    var active = Math.abs(p-dpPct)<0.01 ? ' class="active-row"' : '';
+    rows += '<tr'+active+'><td>'+p+'%</td><td>'+fmt(dp)+'</td><td>'+fmt(ln)+'</td><td>'+pmi+'</td></tr>';
+  });
+  document.getElementById('compBody').innerHTML = rows;
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){
+  el.addEventListener('focus',function(){this.select();});
+});
+document.getElementById('price').addEventListener('input', function(){syncPct(); calc();});
+</script>
+</body>
+</html>

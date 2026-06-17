@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!--
+  Rent vs Buy Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rent vs Buy Calculator — Is It Better to Rent or Buy? (2026)</title>
+<meta name="description" content="Free rent vs buy calculator. Compare the true cost of renting vs buying a home over time. See break-even year and net worth impact to make the right decision.">
+<link rel="canonical" href="https://usecalcfi.com/rent-vs-buy-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Rent vs Buy Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is it better to rent or buy a home?","acceptedAnswer":{"@type":"Answer","text":"It depends on how long you plan to stay, local housing costs, and your financial situation. Buying typically beats renting after 5–7 years due to equity buildup, but renting can be better short-term since you avoid down payment opportunity cost and transaction costs. Use a rent vs buy calculator to find your specific break-even point."}},
+{"@type":"Question","name":"What is the 5% rule for renting vs buying?","acceptedAnswer":{"@type":"Answer","text":"The 5% rule says renting is financially equivalent to buying if your annual rent is less than 5% of the home's purchase price. The 5% covers property taxes (~1%), maintenance (~1%), and cost of capital (~3%). If your annual rent is less than that amount, renting may be the better financial choice."}},
+{"@type":"Question","name":"What costs do people forget when buying a home?","acceptedAnswer":{"@type":"Answer","text":"Hidden buying costs include closing costs (2–5%), property taxes (~1.1%/year), homeowner's insurance, PMI if down payment is under 20%, HOA fees, maintenance (1–2%/year), and transaction costs when selling (5–6% realtor fees). These can significantly impact the true cost of homeownership."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#0891b2;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.cols2{grid-template-columns:1fr}}
+.section-head{font-size:13px;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--bd)}
+.field{margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+/* Verdict */
+.verdict{border-radius:14px;padding:20px;margin-top:18px;text-align:center}
+.verdict.buy{background:#ecfdf5;border:2px solid #6ee7b7}
+.verdict.rent{background:#eff6ff;border:2px solid #93c5fd}
+.verdict .v-title{font-size:22px;font-weight:800;margin-bottom:4px}
+.verdict .v-sub{font-size:14px;color:var(--mut)}
+/* KPI grid */
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr}}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:22px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.buy{background:#ecfdf5}.kpi.buy .v{color:#059669}
+.kpi.rent-k{background:#eff6ff}.kpi.rent-k .v{color:#2563eb}
+/* Year table */
+.yr-wrap{overflow-x:auto;margin-top:12px}
+table.yr{width:100%;border-collapse:collapse;font-size:13px;min-width:480px}
+table.yr th{text-align:right;padding:8px 10px;background:var(--bg);font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--bd)}
+table.yr th:first-child{text-align:left}
+table.yr td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:right}
+table.yr td:first-child{text-align:left;font-weight:600}
+table.yr tr.breakeven td{background:#fef9c3;font-weight:700}
+.cta{display:block;background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#cffafe;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/home-affordability-calculator">Affordability</a><a href="/down-payment-calculator">Down Payment</a><a href="/refinance-calculator">Refinance</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Rent vs Buy Calculator</h1>
+  <p class="lead">Compare the true long-term cost of renting vs buying. See your break-even year and which option builds more wealth over your time horizon.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="cols2">
+          <!-- Buying inputs -->
+          <div>
+            <div class="section-head">🏠 Buying</div>
+            <div class="field"><label>Home price ($)</label><input id="bPrice" type="number" value="450000"></div>
+            <div class="field"><label>Down payment (%)</label><input id="bDown" type="number" step="0.5" value="20"></div>
+            <div class="field"><label>Mortgage rate (%)</label><input id="bRate" type="number" step="0.1" value="6.8"></div>
+            <div class="field"><label>Loan term (years)</label>
+              <select id="bTerm"><option value="30" selected>30 years</option><option value="15">15 years</option></select>
+            </div>
+            <div class="field"><label>Property tax rate (%/yr)</label><input id="bTax" type="number" step="0.1" value="1.1"></div>
+            <div class="field"><label>Home insurance ($/yr)</label><input id="bIns" type="number" value="1800"></div>
+            <div class="field"><label>Maintenance (% of value/yr)</label><input id="bMaint" type="number" step="0.1" value="1"></div>
+            <div class="field"><label>Home appreciation (%/yr)</label><input id="bAppreciation" type="number" step="0.1" value="3"></div>
+          </div>
+          <!-- Renting inputs -->
+          <div>
+            <div class="section-head">🏢 Renting</div>
+            <div class="field"><label>Monthly rent ($)</label><input id="rRent" type="number" value="2200"></div>
+            <div class="field"><label>Renters insurance ($/yr)</label><input id="rIns" type="number" value="200"></div>
+            <div class="field"><label>Rent increase (%/yr)</label><input id="rIncrease" type="number" step="0.1" value="3"></div>
+            <div class="field"><label>Investment return (%/yr)</label><input id="rReturn" type="number" step="0.1" value="7" title="Down payment invested instead"></div>
+          </div>
+        </div>
+        <div class="field" style="margin-top:4px"><label>Time horizon (years)</label><input id="horizon" type="number" value="10" min="1" max="30"></div>
+        <button class="btn" onclick="calc()">Compare</button>
+
+        <div id="verdictBox" class="verdict buy" style="display:none">
+          <div class="v-title" id="verdictTitle">—</div>
+          <div class="v-sub" id="verdictSub">—</div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi buy"><div class="v" id="rBuyCost">—</div><div class="l">Total cost to buy (yr <span id="yr1"></span>)</div></div>
+          <div class="kpi rent-k"><div class="v" id="rRentCost">—</div><div class="l">Total cost to rent (yr <span id="yr2"></span>)</div></div>
+          <div class="kpi"><div class="v" id="rHomeVal">—</div><div class="l">Home value at year <span id="yr3"></span></div></div>
+          <div class="kpi"><div class="v" id="rBreakeven">—</div><div class="l">Break-even year</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Year-by-year comparison</h3>
+        <div class="yr-wrap">
+          <table class="yr">
+            <thead><tr><th>Year</th><th>Buy cost</th><th>Rent cost</th><th>Buy equity</th><th>Rent savings</th><th>Winner</th></tr></thead>
+            <tbody id="yrBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>Renting vs buying: the real comparison</h2>
+        <p>The rent-vs-buy decision isn't just about monthly payments. Buying builds equity but comes with large upfront costs (down payment, closing costs), ongoing costs (taxes, insurance, maintenance), and transaction costs when selling. Renting keeps capital liquid for investing.</p>
+        <h3>When buying wins</h3>
+        <ul>
+          <li>You plan to stay 5+ years (enough time to recoup closing costs)</li>
+          <li>Local home prices are appreciating faster than rent increases</li>
+          <li>Your down payment invested conservatively earns less than home appreciation + equity buildup</li>
+        </ul>
+        <h3>When renting wins</h3>
+        <ul>
+          <li>You may move within 2–3 years (transaction costs eat the gains)</li>
+          <li>Rent-to-price ratio is very favorable in your area</li>
+          <li>You can invest the down payment at higher returns than home appreciation</li>
+        </ul>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>What is the 5% rule for renting vs buying?</h3>
+        <p>The 5% rule: if annual rent &lt; 5% of home price, renting may be smarter financially. The 5% covers property taxes (~1%), maintenance (~1%), and cost of capital (~3%). Compare: $450k home → $22,500/yr → $1,875/mo threshold.</p>
+        <h3>What costs do people forget when buying?</h3>
+        <p>Closing costs (2–5%), property taxes, HOA fees, maintenance (1–2%/yr), and selling costs (5–6% realtor fees). These significantly impact the true cost of ownership.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        Compare Mortgage Rates
+        <small>LendingTree — Free, no commitment</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Get Pre-Approved
+        <small>Credible — Compare multiple lenders</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/home-affordability-calculator">Home Affordability</a>
+          <a href="/down-payment-calculator">Down Payment</a>
+          <a href="/amortization-calculator">Amortization Schedule</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Educational estimates only — not financial advice. Verify figures with a licensed financial advisor.</p>
+</div></footer>
+
+<script>
+function fmt(n){return '$'+Math.round(Math.abs(n)).toLocaleString()}
+function pmt(r,n,P){return r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)}
+
+function calc(){
+  var homePrice = +document.getElementById('bPrice').value||0;
+  var downPct = +document.getElementById('bDown').value||0;
+  var rate = +document.getElementById('bRate').value/100/12;
+  var term = +document.getElementById('bTerm').value*12;
+  var propTax = +document.getElementById('bTax').value/100;
+  var homeIns = +document.getElementById('bIns').value;
+  var maint = +document.getElementById('bMaint').value/100;
+  var appreciation = +document.getElementById('bAppreciation').value/100;
+  var rent = +document.getElementById('rRent').value||0;
+  var rentIns = +document.getElementById('rIns').value||0;
+  var rentIncrease = +document.getElementById('rIncrease').value/100;
+  var investReturn = +document.getElementById('rReturn').value/100;
+  var horizon = Math.min(+document.getElementById('horizon').value||10, 30);
+
+  var downAmt = homePrice * downPct / 100;
+  var loanAmt = homePrice - downAmt;
+  var closingCosts = homePrice * 0.03; // ~3%
+  var monthlyPmt = pmt(rate, term, loanAmt);
+
+  var rows = '';
+  var breakeven = null;
+  var cumBuyCost = downAmt + closingCosts;
+  var cumRentCost = 0;
+  var curRent = rent;
+  var curHomeVal = homePrice;
+  var loanBalance = loanAmt;
+  var investedAmt = downAmt + closingCosts; // opportunity cost
+
+  for(var yr = 1; yr <= horizon; yr++){
+    var buyYearCost = 0;
+    var rentYearCost = 0;
+
+    for(var mo = 0; mo < 12; mo++){
+      // Buy costs this month
+      var intPart = loanBalance * rate;
+      var prinPart = Math.min(monthlyPmt - intPart, loanBalance);
+      loanBalance -= prinPart;
+      buyYearCost += monthlyPmt + (curHomeVal * propTax / 12) + (homeIns / 12) + (curHomeVal * maint / 12);
+
+      // Rent costs this month
+      rentYearCost += curRent + (rentIns / 12);
+    }
+
+    // Home appreciates annually
+    curHomeVal *= (1 + appreciation);
+    // Rent increases annually
+    curRent *= (1 + rentIncrease);
+    // Down payment grows if invested
+    investedAmt *= (1 + investReturn);
+
+    cumBuyCost += buyYearCost;
+    cumRentCost += rentYearCost;
+
+    var buyEquity = curHomeVal - loanBalance;
+    var rentNetworth = investedAmt - cumRentCost;
+
+    // Net cost = total paid - equity gained
+    var buyNet = cumBuyCost - buyEquity;
+    var rentNet = cumRentCost - (investedAmt - (downAmt + closingCosts));
+
+    var winner = buyNet < rentNet ? '🏠 Buy' : '🏢 Rent';
+    var isBreak = breakeven === null && buyNet <= rentNet;
+    if(isBreak) breakeven = yr;
+    var rowClass = isBreak ? ' class="breakeven"' : '';
+
+    if(yr <= 30){
+      rows += '<tr'+rowClass+'><td>'+yr+'</td><td>'+fmt(cumBuyCost)+'</td><td>'+fmt(cumRentCost)+'</td><td>'+fmt(buyEquity)+'</td><td>'+fmt(investedAmt - (downAmt+closingCosts))+'</td><td>'+winner+'</td></tr>';
+    }
+  }
+
+  // Final year values
+  document.getElementById('yrBody').innerHTML = rows;
+  document.getElementById('yr1').textContent = horizon;
+  document.getElementById('yr2').textContent = horizon;
+  document.getElementById('yr3').textContent = horizon;
+  document.getElementById('rBuyCost').textContent = fmt(cumBuyCost);
+  document.getElementById('rRentCost').textContent = fmt(cumRentCost);
+  document.getElementById('rHomeVal').textContent = fmt(curHomeVal);
+  document.getElementById('rBreakeven').textContent = breakeven ? 'Year '+breakeven : 'Beyond '+horizon+' yrs';
+
+  // Final verdict
+  var buyNet2 = cumBuyCost - (curHomeVal - loanBalance);
+  var rentNet2 = cumRentCost;
+  var verdictBox = document.getElementById('verdictBox');
+  verdictBox.style.display = 'block';
+  if(buyNet2 < rentNet2){
+    verdictBox.className = 'verdict buy';
+    document.getElementById('verdictTitle').textContent = '🏠 Buying wins over '+horizon+' years';
+    document.getElementById('verdictSub').textContent = 'After accounting for equity, buying saves '+fmt(rentNet2-buyNet2)+' vs renting';
+  } else {
+    verdictBox.className = 'verdict rent';
+    document.getElementById('verdictTitle').textContent = '🏢 Renting wins over '+horizon+' years';
+    document.getElementById('verdictSub').textContent = 'Renting + investing the down payment saves '+fmt(buyNet2-rentNet2)+' vs buying';
+  }
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){
+  el.addEventListener('focus',function(){this.select();});
+});
+</script>
+</body>
+</html>

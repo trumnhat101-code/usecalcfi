@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--
+  Self-Employment Tax Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Employment Tax Calculator — SE Tax + Deductions (2025)</title>
+<meta name="description" content="Free self-employment tax calculator. Calculate your SE tax, quarterly estimated payments, and how much to set aside. Based on 2025 IRS rates for freelancers and contractors.">
+<link rel="canonical" href="https://usecalcfi.com/self-employment-tax-calculator">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Self-Employment Tax Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is self-employment tax?","acceptedAnswer":{"@type":"Answer","text":"Self-employment (SE) tax is the Social Security and Medicare tax for people who work for themselves. Employees split these taxes 50/50 with their employer; self-employed individuals pay both halves — 15.3% total (12.4% Social Security on income up to $176,100 + 2.9% Medicare on all income). However, you can deduct half of your SE tax from your gross income when calculating your income tax."}},
+{"@type":"Question","name":"How much should I set aside for self-employment taxes?","acceptedAnswer":{"@type":"Answer","text":"A common rule of thumb is to set aside 25–30% of every payment you receive. This covers self-employment tax (15.3%) plus federal income tax (typically 10–22% depending on your bracket) minus the SE tax deduction. The exact amount depends on your total income, filing status, and deductions."}},
+{"@type":"Question","name":"When are quarterly estimated taxes due?","acceptedAnswer":{"@type":"Answer","text":"Quarterly estimated taxes are due four times a year: April 15 (Q1), June 16 (Q2), September 15 (Q3), and January 15 of the following year (Q4). If you expect to owe $1,000 or more in taxes when you file, you generally must pay estimated taxes. Underpaying can result in an IRS penalty."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:480px){.result{grid-template-columns:1fr}}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#f3e8ff}.kpi.main .v{color:var(--ac)}
+.kpi.ok .v{color:var(--ok)}
+.kpi.warn .v{color:#d97706}
+/* Breakdown table */
+table.breakdown{width:100%;border-collapse:collapse;font-size:13px;margin-top:14px}
+table.breakdown td{padding:9px 10px;border-bottom:1px solid var(--bd)}
+table.breakdown td:last-child{text-align:right;font-weight:600}
+table.breakdown tr:last-child td{border-bottom:none;font-weight:700;font-size:14px}
+/* Quarterly box */
+.quarterly{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+@media(max-width:480px){.quarterly{grid-template-columns:1fr}}
+.q-box{background:var(--bg);border-radius:10px;padding:14px;border-left:4px solid var(--ac)}
+.q-box .q-date{font-size:11px;color:var(--mut);font-weight:700;text-transform:uppercase;margin-bottom:2px}
+.q-box .q-amt{font-size:20px;font-weight:800;color:var(--ac)}
+.q-box .q-period{font-size:11px;color:var(--mut)}
+/* Setaside banner */
+.setaside{background:#f3e8ff;border:1px solid #c4b5fd;border-radius:10px;padding:14px;margin-top:14px;font-size:14px}
+.setaside strong{color:var(--ac)}
+.cta{display:block;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#f3e8ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/paycheck-calculator">Paycheck</a><a href="/income-tax-calculator">Income Tax</a><a href="/tax-refund-calculator">Tax Refund</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Self-Employment Tax Calculator</h1>
+  <p class="lead">Calculate your SE tax, quarterly estimated payments, and exactly how much to set aside from each paycheck. Based on 2025 IRS rates.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Net self-employment income ($)</label><input id="income" type="number" value="80000"></div>
+          <div><label>Filing status</label>
+            <select id="status">
+              <option value="single">Single</option>
+              <option value="mfj" selected>Married filing jointly</option>
+              <option value="hoh">Head of household</option>
+            </select>
+          </div>
+          <div><label>Business expenses ($)</label><input id="expenses" type="number" value="10000"></div>
+          <div><label>Other W-2 income ($)</label><input id="w2" type="number" value="0"></div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rSE">$0</div><div class="l">Self-employment tax</div></div>
+          <div class="kpi"><div class="v" id="rIncome">$0</div><div class="l">Federal income tax</div></div>
+          <div class="kpi warn"><div class="v" id="rTotal">$0</div><div class="l">Total tax owed</div></div>
+          <div class="kpi ok"><div class="v" id="rSetAside">$0</div><div class="l">Quarterly payment</div></div>
+        </div>
+
+        <div class="setaside">
+          Set aside <strong id="pctSetAside">0%</strong> of every payment you receive — that's <strong id="perDollar">$0</strong> per $1,000 earned.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Tax breakdown</h3>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Gross SE income</td><td id="tGross">—</td></tr>
+            <tr><td>Business expenses</td><td id="tExp">—</td></tr>
+            <tr><td>Net SE income</td><td id="tNet">—</td></tr>
+            <tr><td>× 92.35% (SE income base)</td><td id="tBase">—</td></tr>
+            <tr><td>Social Security tax (12.4%, up to $176,100)</td><td id="tSS">—</td></tr>
+            <tr><td>Medicare tax (2.9%)</td><td id="tMed">—</td></tr>
+            <tr><td style="color:var(--ok)">SE tax deduction (½ of SE tax)</td><td id="tDeduct" style="color:var(--ok)">—</td></tr>
+            <tr><td>Adjusted gross income</td><td id="tAGI">—</td></tr>
+            <tr><td>Standard deduction</td><td id="tStd">—</td></tr>
+            <tr><td>Taxable income</td><td id="tTaxable">—</td></tr>
+            <tr><td><strong>Total federal tax</strong></td><td id="tFed">—</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2025 Quarterly estimated payment dates</h3>
+        <div class="quarterly">
+          <div class="q-box"><div class="q-date">Q1 — Due Apr 15</div><div class="q-amt" id="q1">$0</div><div class="q-period">Jan 1 – Mar 31</div></div>
+          <div class="q-box"><div class="q-date">Q2 — Due Jun 16</div><div class="q-amt" id="q2">$0</div><div class="q-period">Apr 1 – May 31</div></div>
+          <div class="q-box"><div class="q-date">Q3 — Due Sep 15</div><div class="q-amt" id="q3">$0</div><div class="q-period">Jun 1 – Aug 31</div></div>
+          <div class="q-box"><div class="q-date">Q4 — Due Jan 15</div><div class="q-amt" id="q4">$0</div><div class="q-period">Sep 1 – Dec 31</div></div>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>How self-employment tax works</h2>
+        <p>When you're self-employed, you pay both the employee and employer halves of Social Security and Medicare taxes. That's 15.3% total — but you can deduct half (7.65%) from your taxable income, which saves you money at your marginal income tax rate.</p>
+        <h3>The SE tax calculation steps</h3>
+        <ul>
+          <li>Net SE income × 92.35% = SE income base (accounts for employer deduction)</li>
+          <li>SE base × 12.4% = Social Security (capped at $176,100 for 2025)</li>
+          <li>SE base × 2.9% = Medicare (no cap; +0.9% surtax over $200k single/$250k MFJ)</li>
+          <li>Deduct ½ of SE tax from gross income before calculating income tax</li>
+        </ul>
+        <h3>Key deductions for the self-employed</h3>
+        <p>Beyond the SE tax deduction, self-employed individuals can deduct health insurance premiums, home office, business mileage, retirement contributions (SEP-IRA up to 25% of net earnings), and business expenses. These can significantly lower your tax burden.</p>
+        <div class="ad">AdSense — in-article</div>
+        <h2>Frequently asked questions</h2>
+        <h3>When are quarterly estimated taxes due?</h3>
+        <p>Q1: April 15 | Q2: June 16 | Q3: September 15 | Q4: January 15. Missing deadlines can result in an underpayment penalty (typically around 8% annualized on the amount owed).</p>
+        <h3>What if I have both W-2 and self-employment income?</h3>
+        <p>Your W-2 withholding counts toward your estimated tax requirement. Enter your W-2 income above — it affects your income tax bracket but not your SE tax (which applies only to self-employment income).</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a class="cta" href="#AFFILIATE">
+        File Taxes Online — TurboTax
+        <small>Self-employed edition handles SE tax</small>
+      </a>
+      <a class="cta" href="#AFFILIATE" style="background:linear-gradient(135deg,#16a34a,#15803d)">
+        H&amp;R Block Self-Employed
+        <small>Expert help for freelancers</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax</a>
+          <a href="/tax-refund-calculator">Tax Refund</a>
+          <a href="/retirement-calculator">Retirement</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <p>© 2026 UseCalcFi. Based on 2025 IRS rates. Estimates only — consult a tax professional for your specific situation.</p>
+</div></footer>
+
+<script>
+// 2025 federal brackets (standard deduction: single $15,000 / MFJ $30,000 / HOH $22,500)
+var BRACKETS = {
+  single:[{r:.10,max:11925},{r:.12,max:48475},{r:.22,max:103350},{r:.24,max:197300},{r:.32,max:250525},{r:.35,max:626350},{r:.37,max:Infinity}],
+  mfj:[{r:.10,max:23850},{r:.12,max:96950},{r:.22,max:206700},{r:.24,max:394600},{r:.32,max:501050},{r:.35,max:751600},{r:.37,max:Infinity}],
+  hoh:[{r:.10,max:17000},{r:.12,max:64850},{r:.22,max:103350},{r:.24,max:197300},{r:.32,max:250500},{r:.35,max:626350},{r:.37,max:Infinity}]
+};
+var STD = {single:15000,mfj:30000,hoh:22500};
+var SS_CAP = 176100;
+
+function fmt(n){return '$'+Math.round(n).toLocaleString()}
+
+function calcTax(taxable, status){
+  var brackets = BRACKETS[status];
+  var tax = 0, prev = 0;
+  for(var i=0;i<brackets.length;i++){
+    var b = brackets[i];
+    if(taxable <= 0) break;
+    var chunk = Math.min(taxable, b.max - prev);
+    if(chunk < 0) chunk = 0;
+    tax += chunk * b.r;
+    prev = b.max;
+    taxable -= chunk;
+  }
+  return tax;
+}
+
+function calc(){
+  var grossIncome = +document.getElementById('income').value||0;
+  var expenses = +document.getElementById('expenses').value||0;
+  var w2 = +document.getElementById('w2').value||0;
+  var status = document.getElementById('status').value;
+
+  var netSE = Math.max(0, grossIncome - expenses);
+  var seBase = netSE * 0.9235;
+  var ssTax = Math.min(seBase, SS_CAP) * 0.124;
+  var medTax = seBase * 0.029;
+  var seTax = ssTax + medTax;
+  var seDeduct = seTax / 2;
+
+  var agi = netSE + w2 - seDeduct;
+  var stdDed = STD[status];
+  var taxable = Math.max(0, agi - stdDed);
+  var incomeTax = calcTax(taxable, status);
+  var totalTax = seTax + incomeTax;
+  var quarterly = totalTax / 4;
+  var pct = grossIncome > 0 ? (totalTax / grossIncome * 100) : 0;
+
+  // Update KPIs
+  document.getElementById('rSE').textContent = fmt(seTax);
+  document.getElementById('rIncome').textContent = fmt(incomeTax);
+  document.getElementById('rTotal').textContent = fmt(totalTax);
+  document.getElementById('rSetAside').textContent = fmt(quarterly);
+  document.getElementById('pctSetAside').textContent = pct.toFixed(0)+'%';
+  document.getElementById('perDollar').textContent = fmt(totalTax/grossIncome*1000||0);
+
+  // Breakdown table
+  document.getElementById('tGross').textContent = fmt(grossIncome);
+  document.getElementById('tExp').textContent = '− '+fmt(expenses);
+  document.getElementById('tNet').textContent = fmt(netSE);
+  document.getElementById('tBase').textContent = fmt(seBase);
+  document.getElementById('tSS').textContent = fmt(ssTax);
+  document.getElementById('tMed').textContent = fmt(medTax);
+  document.getElementById('tDeduct').textContent = '− '+fmt(seDeduct);
+  document.getElementById('tAGI').textContent = fmt(agi);
+  document.getElementById('tStd').textContent = '− '+fmt(stdDed);
+  document.getElementById('tTaxable').textContent = fmt(taxable);
+  document.getElementById('tFed').textContent = fmt(totalTax);
+
+  // Quarterly
+  ['q1','q2','q3','q4'].forEach(function(id){
+    document.getElementById(id).textContent = fmt(quarterly);
+  });
+}
+
+calc();
+document.querySelectorAll('input[type="number"]').forEach(function(el){
+  el.addEventListener('focus',function(){this.select();});
+});
+</script>
+</body>
+</html>
