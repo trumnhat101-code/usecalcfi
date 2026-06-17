@@ -10,6 +10,17 @@
 <title>Debt Snowball Calculator — Pay Off All Debts Faster (2026)</title>
 <meta name="description" content="Free debt snowball calculator. Enter up to 6 debts, see your payoff order, total interest, and payoff date. Compare snowball vs avalanche method.">
 <link rel="canonical" href="https://usecalcfi.com/debt-snowball-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/debt-snowball-calculator">
+<meta property="og:title" content="Debt Snowball Calculator — Pay Off All Debts Faster (2026)">
+<meta property="og:description" content="Free debt snowball calculator. Enter up to 6 debts, see your payoff order, total interest, and payoff date. Compare snowball vs avalanche method.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Debt Snowball Calculator — Pay Off All Debts Faster (2026)">
+<meta name="twitter:description" content="Free debt snowball calculator. Enter up to 6 debts, see your payoff order, total interest, and payoff date. Compare snowball vs avalanche method.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Debt Snowball Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -377,28 +388,4 @@ function calc(){
   });
 
   // Comparison
-  $('cSnowMo').textContent=snowResult.months+' months';
-  $('cSnowInt').textContent=usd(snowResult.totalInt);
-  $('cAvalMo').textContent=avalResult.months+' months';
-  $('cAvalInt').textContent=usd(avalResult.totalInt);
-  $('cmpSnow').className='cmp'+(method==='snowball'?' active':'');
-  $('cmpAval').className='cmp'+(method==='avalanche'?' active':'');
-
-  const intDiff=snowResult.totalInt-avalResult.totalInt;
-  const moDiff=snowResult.months-avalResult.months;
-  const saveBox=$('methodSaveBox');
-  if(Math.abs(intDiff)<5){
-    saveBox.innerHTML='Both methods yield nearly identical results for your debts.';
-  } else if(intDiff>0){
-    saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
-  } else {
-    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific debts.`;
-  }
-}
-
-// Init with default debts
-DEFAULT_DEBTS.forEach(d=>addRow(d));
-</script>
-
-</body>
-</html>
+  $('cSnowMo').textContent=snowResult.months+' m
