@@ -60,6 +60,7 @@ input:focus{border-color:var(--ac)}
 .extra-row>div{flex:1}
 /* Results */
 .result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:480px){.result{grid-template-columns:1fr}}
 .kpi{background:var(--bg);border-radius:10px;padding:14px}
 .kpi .v{font-size:24px;font-weight:800}
 .kpi .l{font-size:12px;color:var(--mut)}
@@ -75,6 +76,7 @@ input:focus{border-color:var(--ac)}
 .payoff-date{font-size:13px;font-weight:600;color:var(--ac);white-space:nowrap}
 /* Comparison */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:480px){.compare{grid-template-columns:1fr}}
 .cmp{border-radius:10px;padding:14px;border:2px solid var(--bd)}
 .cmp.active{border-color:var(--ac);background:#f5f3ff}
 .cmp-title{font-size:12px;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
@@ -388,13 +390,4 @@ function calc(){
   } else if(intDiff>0){
     saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} vs. snowball.`;
   } else {
-    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(-intDiff)}</span> in interest vs. avalanche for this debt set.`;
-  }
-}
-
-// Init with default debts
-DEFAULT_DEBTS.forEach(d=>addRow(d));
-</script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
-</body>
-</html>
+    saveBox.innerHTML=`❄️ Snowball save
