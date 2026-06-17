@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
   FinCalc — Home Page
-  TODO: thay usecalcfi.com, ca-pub-XXXXXXXX
+  TODO: ca-pub-XXXXXXXX
 -->
 <html lang="en">
 <head>
@@ -27,42 +27,43 @@ header,footer{background:#fff;border-bottom:1px solid var(--bd)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
 .logo{font-weight:800;color:var(--ac);font-size:20px;text-decoration:none}
 nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+nav a:hover{color:var(--ac)}
 
 /* Hero */
-.hero{padding:56px 16px 40px;text-align:center;background:linear-gradient(135deg,#eef2ff 0%,#f7f8fc 100%)}
-.hero h1{font-size:clamp(26px,5vw,42px);font-weight:800;color:var(--tx);margin-bottom:14px}
+.hero{padding:64px 16px 52px;text-align:center;background:linear-gradient(135deg,#eef2ff 0%,#f7f8fc 100%)}
+.hero h1{font-size:clamp(26px,5vw,44px);font-weight:800;color:var(--tx);margin-bottom:14px;line-height:1.2}
 .hero h1 span{color:var(--ac)}
-.hero p{font-size:18px;color:var(--mut);max-width:600px;margin:0 auto 28px}
+.hero p{font-size:18px;color:var(--mut);max-width:560px;margin:0 auto 28px}
+.hero-cta{display:inline-block;background:var(--ac);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:16px;font-weight:700;margin-bottom:32px;transition:opacity .15s}
+.hero-cta:hover{opacity:.88}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .hero-tags span{background:#eef0ff;color:var(--ac);padding:5px 12px;border-radius:20px;font-size:13px;font-weight:500}
 
-/* Category section */
-.section{padding:40px 0}
-.section-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
-
-/* Tool grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.tool-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;text-decoration:none;color:inherit;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s,border-color .15s}
-.tool-card:hover{box-shadow:0 4px 18px rgba(79,70,229,.12);border-color:#c7d2fe}
-.tool-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.tool-body{}
-.tool-name{font-weight:700;font-size:15px;margin-bottom:3px}
-.tool-desc{font-size:13px;color:var(--mut);line-height:1.45}
-.tool-badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 7px;border-radius:20px;margin-top:6px}
-.badge-aff{background:#fef3c7;color:#92400e}
-.badge-tax{background:#fee2e2;color:#991b1b}
-
 /* Stats strip */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:32px 0}
-.stat{background:#fff;padding:20px;text-align:center}
-.stat .n{font-size:28px;font-weight:800;color:var(--ac)}
-.stat .l{font-size:13px;color:var(--mut);margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin:36px 0 40px}
+.stat{background:#fff;padding:22px;text-align:center}
+.stat .n{font-size:30px;font-weight:800;color:var(--ac)}
+.stat .l{font-size:13px;color:var(--mut);margin-top:3px}
+
+/* Unified tool grid */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
+.grid-header{grid-column:1/-1;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding-top:8px;margin-bottom:-4px}
+.tool-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;text-decoration:none;color:inherit;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s,border-color .15s;position:relative}
+.tool-card:hover{box-shadow:0 4px 18px rgba(79,70,229,.12);border-color:#c7d2fe}
+.tool-card:hover .tool-arrow{opacity:1}
+.tool-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.tool-body{flex:1;min-width:0}
+.tool-name{font-weight:700;font-size:15px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tool-arrow{font-size:14px;color:var(--ac);opacity:0;transition:opacity .15s;flex-shrink:0}
+.tool-desc{font-size:13px;color:var(--mut);line-height:1.45}
 
 /* Why section */
-.why{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:16px}
-.why-item{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:18px}
-.why-icon{font-size:24px;margin-bottom:8px}
-.why-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.why-section{padding-bottom:56px}
+.why-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+.why{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.why-item{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:20px}
+.why-icon{font-size:26px;margin-bottom:10px}
+.why-item-title{font-weight:700;font-size:14px;margin-bottom:4px}
 .why-desc{font-size:13px;color:var(--mut)}
 
 footer .wrap{padding:24px 16px;color:var(--mut);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -72,6 +73,7 @@ footer a:hover{color:var(--ac)}
 @media(max-width:600px){
   .stats{grid-template-columns:1fr}
   footer .wrap{flex-direction:column}
+  .hero-cta{width:100%;text-align:center}
 }
 </style>
 </head>
@@ -91,6 +93,7 @@ footer a:hover{color:var(--ac)}
 <div class="hero">
   <h1>Free <span>Financial Calculators</span><br>for Every Money Decision</h1>
   <p>Fast, accurate, no sign-up. Get instant answers on mortgages, loans, taxes, and retirement in seconds.</p>
+  <a class="hero-cta" href="/mortgage-calculator">Try Mortgage Calculator →</a>
   <div class="hero-tags">
     <span>🏠 Mortgage</span>
     <span>🚗 Auto Loan</span>
@@ -110,158 +113,128 @@ footer a:hover{color:var(--ac)}
     <div class="stat"><div class="n">0</div><div class="l">Sign-ups required</div></div>
   </div>
 
-  <!-- Home & Mortgage -->
-  <div class="section">
-    <div class="section-title">🏠 Home &amp; Mortgage</div>
-    <div class="grid">
+  <!-- All tools — unified 3-col grid -->
+  <div class="tools-grid">
 
-      <a class="tool-card" href="/mortgage-calculator">
-        <div class="tool-icon" style="background:#eef0ff">🏠</div>
-        <div class="tool-body">
-          <div class="tool-name">Mortgage Calculator</div>
-          <div class="tool-desc">Estimate your monthly payment (PITI), total interest, and amortization schedule for any home loan.</div>
-          <span class="tool-badge badge-aff">Affiliate: LendingTree, Credible</span>
-        </div>
-      </a>
+    <!-- Home & Mortgage -->
+    <div class="grid-header">🏠 Home &amp; Mortgage</div>
 
-      <a class="tool-card" href="/home-affordability-calculator">
-        <div class="tool-icon" style="background:#f5f3ff">🔍</div>
-        <div class="tool-body">
-          <div class="tool-name">Home Affordability Calculator</div>
-          <div class="tool-desc">Find your maximum home price based on income, debts, and down payment using the 28/36 DTI rule.</div>
-          <span class="tool-badge badge-aff">Affiliate: Mortgage lenders</span>
-        </div>
-      </a>
+    <a class="tool-card" href="/mortgage-calculator">
+      <div class="tool-icon" style="background:#eef0ff">🏠</div>
+      <div class="tool-body">
+        <div class="tool-name">Mortgage Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Estimate your monthly payment (PITI), total interest, and amortization schedule for any home loan.</div>
+      </div>
+    </a>
 
-    </div>
-  </div>
+    <a class="tool-card" href="/home-affordability-calculator">
+      <div class="tool-icon" style="background:#f5f3ff">🔍</div>
+      <div class="tool-body">
+        <div class="tool-name">Home Affordability <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Find your maximum home price based on income, debts, and down payment using the 28/36 DTI rule.</div>
+      </div>
+    </a>
 
-  <!-- Loans -->
-  <div class="section" style="padding-top:0">
-    <div class="section-title">🚗 Loans</div>
-    <div class="grid">
+    <!-- Loans -->
+    <div class="grid-header">🚗 Loans</div>
 
-      <a class="tool-card" href="/auto-loan-calculator">
-        <div class="tool-icon" style="background:#ecfdf5">🚗</div>
-        <div class="tool-body">
-          <div class="tool-name">Auto Loan Calculator</div>
-          <div class="tool-desc">Calculate your monthly car payment including trade-in value and sales tax for any loan term.</div>
-          <span class="tool-badge badge-aff">Affiliate: MyAutoLoan, Carvana</span>
-        </div>
-      </a>
+    <a class="tool-card" href="/auto-loan-calculator">
+      <div class="tool-icon" style="background:#ecfdf5">🚗</div>
+      <div class="tool-body">
+        <div class="tool-name">Auto Loan Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Calculate your monthly car payment including trade-in value and sales tax for any loan term.</div>
+      </div>
+    </a>
 
-      <a class="tool-card" href="/personal-loan-calculator">
-        <div class="tool-icon" style="background:#eff6ff">💳</div>
-        <div class="tool-body">
-          <div class="tool-name">Personal Loan Calculator</div>
-          <div class="tool-desc">Find your monthly payment and true APR (including origination fees) for any personal loan.</div>
-          <span class="tool-badge badge-aff">Affiliate: SoFi, LendingClub</span>
-        </div>
-      </a>
+    <a class="tool-card" href="/personal-loan-calculator">
+      <div class="tool-icon" style="background:#eff6ff">💳</div>
+      <div class="tool-body">
+        <div class="tool-name">Personal Loan Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Find your monthly payment and true APR (including origination fees) for any personal loan.</div>
+      </div>
+    </a>
 
-    </div>
-  </div>
+    <!-- Taxes & Paycheck -->
+    <div class="grid-header">🧾 Taxes &amp; Paycheck</div>
 
-  <!-- Taxes & Paycheck -->
-  <div class="section" style="padding-top:0">
-    <div class="section-title">🧾 Taxes &amp; Paycheck</div>
-    <div class="grid">
+    <a class="tool-card" href="/paycheck-calculator">
+      <div class="tool-icon" style="background:#fffbeb">💵</div>
+      <div class="tool-body">
+        <div class="tool-name">Paycheck Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Estimate your net take-home pay after federal tax, Social Security, Medicare, and state tax.</div>
+      </div>
+    </a>
 
-      <a class="tool-card" href="/paycheck-calculator">
-        <div class="tool-icon" style="background:#fffbeb">💵</div>
-        <div class="tool-body">
-          <div class="tool-name">Paycheck Calculator</div>
-          <div class="tool-desc">Estimate your net take-home pay after federal tax, Social Security, Medicare, and state tax.</div>
-          <span class="tool-badge badge-tax">Affiliate: TurboTax, Gusto</span>
-        </div>
-      </a>
+    <a class="tool-card" href="/income-tax-calculator">
+      <div class="tool-icon" style="background:#ecfeff">🧾</div>
+      <div class="tool-body">
+        <div class="tool-name">Income Tax Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">See your 2025 federal income tax, effective rate, marginal rate, and a full bracket-by-bracket breakdown.</div>
+      </div>
+    </a>
 
-      <a class="tool-card" href="/income-tax-calculator">
-        <div class="tool-icon" style="background:#ecfeff">🧾</div>
-        <div class="tool-body">
-          <div class="tool-name">Income Tax Calculator</div>
-          <div class="tool-desc">See your 2025 federal income tax, effective rate, marginal rate, and a full bracket-by-bracket breakdown.</div>
-          <span class="tool-badge badge-tax">Affiliate: TurboTax, H&amp;R Block</span>
-        </div>
-      </a>
+    <!-- Retirement & Investing -->
+    <div class="grid-header">📈 Retirement &amp; Investing</div>
 
-    </div>
-  </div>
+    <a class="tool-card" href="/retirement-calculator">
+      <div class="tool-icon" style="background:#f5f3ff">📈</div>
+      <div class="tool-body">
+        <div class="tool-name">Retirement Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Project your retirement balance, monthly income (4% rule), and see if you're on track with your goal.</div>
+      </div>
+    </a>
 
-  <!-- Retirement & Investing -->
-  <div class="section" style="padding-top:0">
-    <div class="section-title">📈 Retirement &amp; Investing</div>
-    <div class="grid">
+    <a class="tool-card" href="/compound-interest-calculator">
+      <div class="tool-icon" style="background:#f0fdf4">🌱</div>
+      <div class="tool-body">
+        <div class="tool-name">Compound Interest <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Watch your money grow with compounding. Add monthly contributions and see year-by-year growth.</div>
+      </div>
+    </a>
 
-      <a class="tool-card" href="/retirement-calculator">
-        <div class="tool-icon" style="background:#f5f3ff">📈</div>
-        <div class="tool-body">
-          <div class="tool-name">Retirement Calculator</div>
-          <div class="tool-desc">Project your retirement balance, monthly income (4% rule), and see if you're on track with your goal.</div>
-          <span class="tool-badge badge-aff">Affiliate: Betterment, Empower</span>
-        </div>
-      </a>
+    <!-- Debt Payoff -->
+    <div class="grid-header">💪 Debt Payoff</div>
 
-      <a class="tool-card" href="/compound-interest-calculator">
-        <div class="tool-icon" style="background:#f0fdf4">🌱</div>
-        <div class="tool-body">
-          <div class="tool-name">Compound Interest Calculator</div>
-          <div class="tool-desc">Watch your money grow with compounding. Add monthly contributions and see year-by-year growth.</div>
-          <span class="tool-badge badge-aff">Affiliate: Acorns, M1 Finance</span>
-        </div>
-      </a>
+    <a class="tool-card" href="/credit-card-payoff-calculator">
+      <div class="tool-icon" style="background:#fef2f2">💳</div>
+      <div class="tool-body">
+        <div class="tool-name">Credit Card Payoff <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">See how long to pay off your balance and how much interest you save by paying more than the minimum.</div>
+      </div>
+    </a>
 
-    </div>
-  </div>
+    <a class="tool-card" href="/debt-snowball-calculator">
+      <div class="tool-icon" style="background:#f5f3ff">❄️</div>
+      <div class="tool-body">
+        <div class="tool-name">Debt Snowball Calculator <span class="tool-arrow">→</span></div>
+        <div class="tool-desc">Enter up to 6 debts and get a payoff plan. Compare snowball vs. avalanche and see your debt-free date.</div>
+      </div>
+    </a>
 
-  <!-- Debt Payoff -->
-  <div class="section" style="padding-top:0">
-    <div class="section-title">💪 Debt Payoff</div>
-    <div class="grid">
-
-      <a class="tool-card" href="/credit-card-payoff-calculator">
-        <div class="tool-icon" style="background:#fef2f2">💳</div>
-        <div class="tool-body">
-          <div class="tool-name">Credit Card Payoff Calculator</div>
-          <div class="tool-desc">See how long to pay off your balance and how much interest you save by paying more than the minimum.</div>
-          <span class="tool-badge badge-aff">Affiliate: Balance transfer cards</span>
-        </div>
-      </a>
-
-      <a class="tool-card" href="/debt-snowball-calculator">
-        <div class="tool-icon" style="background:#f5f3ff">❄️</div>
-        <div class="tool-body">
-          <div class="tool-name">Debt Snowball Calculator</div>
-          <div class="tool-desc">Enter up to 6 debts and get a payoff plan. Compare snowball vs. avalanche and see your debt-free date.</div>
-          <span class="tool-badge badge-aff">Affiliate: SoFi, Achieve</span>
-        </div>
-      </a>
-
-    </div>
   </div>
 
   <!-- Why FinCalc -->
-  <div class="section" style="padding-top:0;padding-bottom:48px">
-    <div class="section-title">Why FinCalc</div>
+  <div class="why-section">
+    <div class="why-title">✨ Why FinCalc</div>
     <div class="why">
       <div class="why-item">
         <div class="why-icon">⚡</div>
-        <div class="why-title">Instant results</div>
+        <div class="why-item-title">Instant results</div>
         <div class="why-desc">All calculations run in your browser — results appear as you type, no waiting.</div>
       </div>
       <div class="why-item">
         <div class="why-icon">🔒</div>
-        <div class="why-title">Private by design</div>
+        <div class="why-item-title">Private by design</div>
         <div class="why-desc">Zero data sent to any server. Your numbers stay on your device.</div>
       </div>
       <div class="why-item">
         <div class="why-icon">📱</div>
-        <div class="why-title">Works on any device</div>
+        <div class="why-item-title">Works on any device</div>
         <div class="why-desc">Fully responsive — same experience on phone, tablet, or desktop.</div>
       </div>
       <div class="why-item">
         <div class="why-icon">✅</div>
-        <div class="why-title">Verified formulas</div>
+        <div class="why-item-title">Verified formulas</div>
         <div class="why-desc">Standard financial math (amortization, IRS brackets, FICA) — not estimates.</div>
       </div>
     </div>
