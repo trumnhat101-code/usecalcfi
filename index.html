@@ -45,17 +45,27 @@ nav a:hover{color:var(--ac)}
 .stat .n{font-size:30px;font-weight:800;color:var(--ac)}
 .stat .l{font-size:13px;color:var(--mut);margin-top:3px}
 
-/* Unified tool grid */
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:40px}
-.grid-header{grid-column:1/-1;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding-top:8px;margin-bottom:-4px}
-.tool-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;text-decoration:none;color:inherit;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s,border-color .15s;position:relative}
+/* Category-row layout: [label | card | card] */
+.tools-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
+.cat-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:12px;align-items:stretch}
+.cat-label{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:6px}
+.cat-label .cat-icon{font-size:22px}
+.cat-label .cat-name{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);line-height:1.3}
+.tool-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px;text-decoration:none;color:inherit;display:flex;gap:12px;align-items:flex-start;transition:box-shadow .15s,border-color .15s}
 .tool-card:hover{box-shadow:0 4px 18px rgba(79,70,229,.12);border-color:#c7d2fe}
 .tool-card:hover .tool-arrow{opacity:1}
-.tool-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.tool-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .tool-body{flex:1;min-width:0}
-.tool-name{font-weight:700;font-size:15px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.tool-arrow{font-size:14px;color:var(--ac);opacity:0;transition:opacity .15s;flex-shrink:0}
+.tool-name{font-weight:700;font-size:14px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+.tool-arrow{font-size:13px;color:var(--ac);opacity:0;transition:opacity .15s;flex-shrink:0}
 .tool-desc{font-size:13px;color:var(--mut);line-height:1.45}
+@media(max-width:760px){
+  .cat-row{grid-template-columns:1fr 1fr}
+  .cat-label{grid-column:1/-1;flex-direction:row;align-items:center;padding:12px 16px}
+}
+@media(max-width:480px){
+  .cat-row{grid-template-columns:1fr}
+}
 
 /* Why section */
 .why-section{padding-bottom:56px}
@@ -113,103 +123,118 @@ footer a:hover{color:var(--ac)}
     <div class="stat"><div class="n">0</div><div class="l">Sign-ups required</div></div>
   </div>
 
-  <!-- All tools — unified 3-col grid -->
-  <div class="tools-grid">
+  <!-- All tools — category-row layout -->
+  <div class="tools-wrap">
 
     <!-- Home & Mortgage -->
-    <div class="grid-header">🏠 Home &amp; Mortgage</div>
-
-    <a class="tool-card" href="/mortgage-calculator">
-      <div class="tool-icon" style="background:#eef0ff">🏠</div>
-      <div class="tool-body">
-        <div class="tool-name">Mortgage Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Estimate your monthly payment (PITI), total interest, and amortization schedule for any home loan.</div>
+    <div class="cat-row">
+      <div class="cat-label">
+        <span class="cat-icon">🏠</span>
+        <span class="cat-name">Home &amp;<br>Mortgage</span>
       </div>
-    </a>
-
-    <a class="tool-card" href="/home-affordability-calculator">
-      <div class="tool-icon" style="background:#f5f3ff">🔍</div>
-      <div class="tool-body">
-        <div class="tool-name">Home Affordability <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Find your maximum home price based on income, debts, and down payment using the 28/36 DTI rule.</div>
-      </div>
-    </a>
+      <a class="tool-card" href="/mortgage-calculator">
+        <div class="tool-icon" style="background:#eef0ff">🏠</div>
+        <div class="tool-body">
+          <div class="tool-name">Mortgage Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Estimate your monthly payment (PITI), total interest, and amortization schedule for any home loan.</div>
+        </div>
+      </a>
+      <a class="tool-card" href="/home-affordability-calculator">
+        <div class="tool-icon" style="background:#f5f3ff">🔍</div>
+        <div class="tool-body">
+          <div class="tool-name">Home Affordability <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Find your maximum home price based on income, debts, and down payment using the 28/36 DTI rule.</div>
+        </div>
+      </a>
+    </div>
 
     <!-- Loans -->
-    <div class="grid-header">🚗 Loans</div>
-
-    <a class="tool-card" href="/auto-loan-calculator">
-      <div class="tool-icon" style="background:#ecfdf5">🚗</div>
-      <div class="tool-body">
-        <div class="tool-name">Auto Loan Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Calculate your monthly car payment including trade-in value and sales tax for any loan term.</div>
+    <div class="cat-row">
+      <div class="cat-label">
+        <span class="cat-icon">🚗</span>
+        <span class="cat-name">Loans</span>
       </div>
-    </a>
-
-    <a class="tool-card" href="/personal-loan-calculator">
-      <div class="tool-icon" style="background:#eff6ff">💳</div>
-      <div class="tool-body">
-        <div class="tool-name">Personal Loan Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Find your monthly payment and true APR (including origination fees) for any personal loan.</div>
-      </div>
-    </a>
+      <a class="tool-card" href="/auto-loan-calculator">
+        <div class="tool-icon" style="background:#ecfdf5">🚗</div>
+        <div class="tool-body">
+          <div class="tool-name">Auto Loan Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Calculate your monthly car payment including trade-in value and sales tax for any loan term.</div>
+        </div>
+      </a>
+      <a class="tool-card" href="/personal-loan-calculator">
+        <div class="tool-icon" style="background:#eff6ff">💳</div>
+        <div class="tool-body">
+          <div class="tool-name">Personal Loan Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Find your monthly payment and true APR (including origination fees) for any personal loan.</div>
+        </div>
+      </a>
+    </div>
 
     <!-- Taxes & Paycheck -->
-    <div class="grid-header">🧾 Taxes &amp; Paycheck</div>
-
-    <a class="tool-card" href="/paycheck-calculator">
-      <div class="tool-icon" style="background:#fffbeb">💵</div>
-      <div class="tool-body">
-        <div class="tool-name">Paycheck Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Estimate your net take-home pay after federal tax, Social Security, Medicare, and state tax.</div>
+    <div class="cat-row">
+      <div class="cat-label">
+        <span class="cat-icon">🧾</span>
+        <span class="cat-name">Taxes &amp;<br>Paycheck</span>
       </div>
-    </a>
-
-    <a class="tool-card" href="/income-tax-calculator">
-      <div class="tool-icon" style="background:#ecfeff">🧾</div>
-      <div class="tool-body">
-        <div class="tool-name">Income Tax Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">See your 2025 federal income tax, effective rate, marginal rate, and a full bracket-by-bracket breakdown.</div>
-      </div>
-    </a>
+      <a class="tool-card" href="/paycheck-calculator">
+        <div class="tool-icon" style="background:#fffbeb">💵</div>
+        <div class="tool-body">
+          <div class="tool-name">Paycheck Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Estimate your net take-home pay after federal tax, Social Security, Medicare, and state tax.</div>
+        </div>
+      </a>
+      <a class="tool-card" href="/income-tax-calculator">
+        <div class="tool-icon" style="background:#ecfeff">🧾</div>
+        <div class="tool-body">
+          <div class="tool-name">Income Tax Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">See your 2025 federal income tax, effective rate, marginal rate, and a full bracket-by-bracket breakdown.</div>
+        </div>
+      </a>
+    </div>
 
     <!-- Retirement & Investing -->
-    <div class="grid-header">📈 Retirement &amp; Investing</div>
-
-    <a class="tool-card" href="/retirement-calculator">
-      <div class="tool-icon" style="background:#f5f3ff">📈</div>
-      <div class="tool-body">
-        <div class="tool-name">Retirement Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Project your retirement balance, monthly income (4% rule), and see if you're on track with your goal.</div>
+    <div class="cat-row">
+      <div class="cat-label">
+        <span class="cat-icon">📈</span>
+        <span class="cat-name">Retirement &amp;<br>Investing</span>
       </div>
-    </a>
-
-    <a class="tool-card" href="/compound-interest-calculator">
-      <div class="tool-icon" style="background:#f0fdf4">🌱</div>
-      <div class="tool-body">
-        <div class="tool-name">Compound Interest <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Watch your money grow with compounding. Add monthly contributions and see year-by-year growth.</div>
-      </div>
-    </a>
+      <a class="tool-card" href="/retirement-calculator">
+        <div class="tool-icon" style="background:#f5f3ff">📈</div>
+        <div class="tool-body">
+          <div class="tool-name">Retirement Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Project your retirement balance, monthly income (4% rule), and see if you're on track with your goal.</div>
+        </div>
+      </a>
+      <a class="tool-card" href="/compound-interest-calculator">
+        <div class="tool-icon" style="background:#f0fdf4">🌱</div>
+        <div class="tool-body">
+          <div class="tool-name">Compound Interest <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Watch your money grow with compounding. Add monthly contributions and see year-by-year growth.</div>
+        </div>
+      </a>
+    </div>
 
     <!-- Debt Payoff -->
-    <div class="grid-header">💪 Debt Payoff</div>
-
-    <a class="tool-card" href="/credit-card-payoff-calculator">
-      <div class="tool-icon" style="background:#fef2f2">💳</div>
-      <div class="tool-body">
-        <div class="tool-name">Credit Card Payoff <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">See how long to pay off your balance and how much interest you save by paying more than the minimum.</div>
+    <div class="cat-row">
+      <div class="cat-label">
+        <span class="cat-icon">💪</span>
+        <span class="cat-name">Debt<br>Payoff</span>
       </div>
-    </a>
-
-    <a class="tool-card" href="/debt-snowball-calculator">
-      <div class="tool-icon" style="background:#f5f3ff">❄️</div>
-      <div class="tool-body">
-        <div class="tool-name">Debt Snowball Calculator <span class="tool-arrow">→</span></div>
-        <div class="tool-desc">Enter up to 6 debts and get a payoff plan. Compare snowball vs. avalanche and see your debt-free date.</div>
-      </div>
-    </a>
+      <a class="tool-card" href="/credit-card-payoff-calculator">
+        <div class="tool-icon" style="background:#fef2f2">💳</div>
+        <div class="tool-body">
+          <div class="tool-name">Credit Card Payoff <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">See how long to pay off your balance and how much interest you save by paying more than the minimum.</div>
+        </div>
+      </a>
+      <a class="tool-card" href="/debt-snowball-calculator">
+        <div class="tool-icon" style="background:#f5f3ff">❄️</div>
+        <div class="tool-body">
+          <div class="tool-name">Debt Snowball Calculator <span class="tool-arrow">→</span></div>
+          <div class="tool-desc">Enter up to 6 debts and get a payoff plan. Compare snowball vs. avalanche and see your debt-free date.</div>
+        </div>
+      </a>
+    </div>
 
   </div>
 
