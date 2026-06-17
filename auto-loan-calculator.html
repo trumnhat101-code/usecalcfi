@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+  Auto Loan Calculator — Tool Site
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Loan Calculator — Monthly Car Payment & Total Cost (2026)</title>
+<meta name="description" content="Free auto loan calculator. Estimate your monthly car payment, total interest, and true cost of your vehicle loan. Includes trade-in and sales tax.">
+<link rel="canonical" href="https://usecalcfi.com/auto-loan-calculator"><!-- TODO domain -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Auto Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is my monthly car payment calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly payment uses the standard amortization formula: M = P·r·(1+r)^n / ((1+r)^n − 1), where P is the loan amount (vehicle price minus down payment and trade-in, plus sales tax), r is the monthly interest rate, and n is the number of monthly payments."}},
+{"@type":"Question","name":"What is a good interest rate for a car loan?","acceptedAnswer":{"@type":"Answer","text":"As of 2026, average new-car loan rates range from about 5–8% APR for borrowers with good credit (670+). Used-car rates are typically 1–3% higher. Rates vary by credit score, lender, and loan term."}},
+{"@type":"Question","name":"Should I choose a longer or shorter loan term?","acceptedAnswer":{"@type":"Answer","text":"A longer term (72–84 months) lowers your monthly payment but increases total interest paid and risks negative equity. A shorter term (36–48 months) costs less overall. Most financial experts recommend keeping auto loans at 60 months or less."}}
+]}
+</script>
+
+<!-- TODO: AdSense loader -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root{--ac:#059669;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#ecfdf5}.kpi.main .v{color:var(--ac)}
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cta{display:block;background:linear-gradient(135deg,#059669,#0284c7);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#ecfdf5;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#ecfdf5;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Auto Loan Calculator</h1>
+  <p class="lead">Calculate your monthly car payment, total interest, and true cost of ownership — including trade-in value and sales tax.</p>
+
+  <div class="layout">
+    <div>
+      <!-- ====== TOOL ====== -->
+      <div class="card">
+        <div class="grid2">
+          <div><label>Vehicle price ($)</label><input id="price" type="number" value="35000"></div>
+          <div><label>Down payment ($)</label><input id="down" type="number" value="5000"></div>
+          <div><label>Trade-in value ($)</label><input id="tradein" type="number" value="0"></div>
+          <div><label>Sales tax (%)</label><input id="taxrate" type="number" step="0.1" value="7"></div>
+          <div><label>Loan term</label>
+            <select id="term">
+              <option value="84">84 months (7 yr)</option>
+              <option value="72">72 months (6 yr)</option>
+              <option value="60" selected>60 months (5 yr)</option>
+              <option value="48">48 months (4 yr)</option>
+              <option value="36">36 months (3 yr)</option>
+            </select>
+          </div>
+          <div><label>Interest rate (% APR)</label><input id="rate" type="number" step="0.01" value="6.5"></div>
+          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Payment</button></div>
+        </div>
+
+        <div class="result" style="margin-top:18px">
+          <div class="kpi main"><div class="v" id="rMonthly">$0</div><div class="l">Monthly payment</div></div>
+          <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount (after tax &amp; trade-in)</div></div>
+          <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest paid</div></div>
+          <div class="kpi"><div class="v" id="rTotal">$0</div><div class="l">Total cost of loan</div></div>
+        </div>
+
+        <div class="bar" id="bar"><i style="background:#059669;width:60%"></i><i style="background:#c7cae0;width:40%"></i></div>
+        <div class="legend">
+          <span><span class="dot" style="background:#059669"></span>Principal <b id="lPrin">$0</b></span>
+          <span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lInt">$0</b></span>
+        </div>
+      </div>
+
+      <!-- ====== AFFILIATE CTA ====== -->
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Compare auto loan rates →
+        <small>Get pre-qualified in minutes — no impact to your credit score (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive<!-- TODO: <ins class="adsbygoogle" ... data-ad-slot="XXXX"></ins> --></div>
+
+      <!-- ====== SEO CONTENT ====== -->
+      <div class="content">
+        <h2>How to use this auto loan calculator</h2>
+        <p>Enter the vehicle price, your down payment, and any trade-in value. Add your state's sales tax rate, choose a loan term, and enter the APR offered by your lender. Click Calculate to see your monthly payment and total interest.</p>
+        <p><strong>Tip:</strong> Sales tax is usually applied to the vehicle price before subtracting your trade-in value, though this varies by state. The calculator applies tax to the price first.</p>
+
+        <h2>How monthly car payments are calculated</h2>
+        <p>The loan amount is: <code>(Vehicle Price × (1 + Tax%)) − Down Payment − Trade-in</code></p>
+        <p>Then monthly payment uses the standard amortization formula:</p>
+        <p><code>M = P · r · (1 + r)^n / ((1 + r)^n − 1)</code></p>
+        <ul>
+          <li><b>P</b> = net loan amount</li>
+          <li><b>r</b> = monthly interest rate (APR ÷ 12)</li>
+          <li><b>n</b> = loan term in months</li>
+        </ul>
+
+        <h3>Example</h3>
+        <p>A $30,000 car with $3,000 down, 7% sales tax, 60-month term at 6.5% APR: loan amount ≈ <b>$29,100</b>, monthly payment ≈ <b>$569</b>, total interest ≈ <b>$5,140</b>.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Tips to lower your car payment</h2>
+        <ul>
+          <li><b>Improve your credit score</b> — Even a 50-point increase can drop your rate by 1–2%, saving hundreds over the loan.</li>
+          <li><b>Make a larger down payment</b> — Putting 20%+ down reduces your loan amount and eliminates negative equity risk.</li>
+          <li><b>Choose a shorter term</b> — 48 vs. 72 months can cut your total interest cost in half.</li>
+          <li><b>Shop multiple lenders</b> — Credit unions typically offer rates 1–2% lower than dealership financing.</li>
+          <li><b>Negotiate the vehicle price first</b> — Dealers may roll extra cost into the interest rate if you negotiate payment first.</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What credit score do I need for a good auto loan rate?</h3>
+        <p>Borrowers with scores of 720+ typically qualify for the best rates (under 5% for new vehicles). Scores of 670–719 get near-prime rates. Below 580 is considered subprime, with rates often exceeding 12%.</p>
+        <h3>Should I finance through the dealer or my bank?</h3>
+        <p>Always get a pre-approval from your bank or credit union before visiting the dealer. This gives you a benchmark rate and negotiating leverage. Dealer financing can be competitive, especially with manufacturer incentives, but compare carefully.</p>
+        <h3>What is negative equity on a car loan?</h3>
+        <p>Negative equity (being "underwater") means you owe more on the loan than the car is worth. This happens quickly with long loan terms and small down payments. Avoid it by putting at least 10–20% down and keeping terms at 60 months or less.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/personal-loan-calculator">Personal Loan Calculator</a>
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/debt-snowball-calculator">Debt Snowball</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SIDEBAR ====== -->
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">Get pre-qualified<small>Check your rate — no credit hit (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 FinCalc. Educational estimates only — not financial advice. Verify rates with your lender.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+function calc(){
+  const price=+$('price').value||0;
+  const down=+$('down').value||0;
+  const tradein=+$('tradein').value||0;
+  const taxrate=+$('taxrate').value||0;
+  const n=+$('term').value||60;
+  const apr=+$('rate').value||0;
+
+  // Loan amount: price + sales tax - down - trade-in
+  const taxedPrice=price*(1+taxrate/100);
+  const loan=Math.max(taxedPrice-down-tradein,0);
+  const r=apr/100/12;
+
+  let mp;
+  if(r===0) mp=n?loan/n:0;
+  else mp=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+
+  const totalPaid=mp*n;
+  const totalInt=Math.max(totalPaid-loan,0);
+
+  $('rMonthly').textContent=usd(mp);
+  $('rLoan').textContent=usd(loan);
+  $('rInt').textContent=usd(totalInt);
+  $('rTotal').textContent=usd(totalPaid);
+
+  const tot=loan+totalInt||1;
+  $('bar').children[0].style.width=(loan/tot*100)+'%';
+  $('bar').children[1].style.width=(totalInt/tot*100)+'%';
+  $('lPrin').textContent=usd(loan);
+  $('lInt').textContent=usd(totalInt);
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE TOOL PAGE — Mortgage Calculator (US)
+  ─ Cách dùng: copy file này cho mỗi tool, đổi tiêu đề/từ khóa/logic.
+  ─ CẦN THAY (tìm "TODO"):
+      • ca-pub-XXXXXXXX + slot AdSense
+      • link affiliate (#AFFILIATE)
+      • domain canonical
+  ─ Triết lý: tool ở trên (above the fold) + nội dung hữu ích phía dưới (SEO + chỗ đặt ads).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage Calculator — Monthly Payment & Amortization (2026)</title>
+<meta name="description" content="Free mortgage calculator. Estimate your monthly mortgage payment (PITI), total interest, and payoff. Includes taxes, insurance & HOA.">
+<link rel="canonical" href="https://usecalcfi.com/mortgage-calculator"><!-- TODO domain -->
+
+<!-- SEO: WebApplication + FAQ schema -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is my monthly mortgage payment calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly principal and interest use the formula M = P·r·(1+r)^n / ((1+r)^n − 1), where P is the loan amount, r the monthly rate, and n the number of payments. Taxes, insurance and HOA are added on top (PITI)."}},
+{"@type":"Question","name":"What is PITI?","acceptedAnswer":{"@type":"Answer","text":"PITI stands for Principal, Interest, Taxes and Insurance — the four parts of a typical monthly mortgage payment."}},
+{"@type":"Question","name":"How much down payment do I need?","acceptedAnswer":{"@type":"Answer","text":"Conventional loans often target 20% to avoid PMI, but many programs allow 3–5%. A larger down payment lowers your monthly payment and total interest."}}
+]}
+</script>
+
+<!-- TODO: AdSense loader (đặt 1 lần ở <head>) -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root{--ac:#4f46e5;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:var(--ac);font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#eef0ff}.kpi.main .v{color:var(--ac)}
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cta{display:block;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#eef0ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#eef0ff;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Mortgage Calculator</h1>
+  <p class="lead">Estimate your monthly mortgage payment, total interest and payoff — including taxes, insurance and HOA (PITI).</p>
+
+  <div class="layout">
+    <div>
+      <!-- ====== TOOL (above the fold) ====== -->
+      <div class="card">
+        <div class="grid2">
+          <div><label>Home price ($)</label><input id="price" type="number" value="400000"></div>
+          <div><label>Down payment ($)</label><input id="down" type="number" value="80000"></div>
+          <div><label>Loan term</label>
+            <select id="term"><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option><option value="10">10 years</option></select>
+          </div>
+          <div><label>Interest rate (% APR)</label><input id="rate" type="number" step="0.01" value="6.5"></div>
+          <div><label>Property tax (annual $)</label><input id="tax" type="number" value="3600"></div>
+          <div><label>Home insurance (annual $)</label><input id="ins" type="number" value="1500"></div>
+          <div><label>HOA (monthly $)</label><input id="hoa" type="number" value="0"></div>
+          <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result" style="margin-top:18px">
+          <div class="kpi main"><div class="v" id="rMonthly">$0</div><div class="l">Monthly payment (PITI + HOA)</div></div>
+          <div class="kpi"><div class="v" id="rPI">$0</div><div class="l">Principal &amp; interest</div></div>
+          <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount</div></div>
+          <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest</div></div>
+        </div>
+
+        <div class="bar" id="bar"><i style="background:#4f46e5;width:50%"></i><i style="background:#c7cae0;width:50%"></i></div>
+        <div class="legend"><span><span class="dot" style="background:#4f46e5"></span>Principal <b id="lPrin">$0</b></span><span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lInt">$0</b></span></div>
+      </div>
+
+      <!-- ====== AFFILIATE CTA (ngay sau kết quả — chuyển đổi cao nhất) ====== -->
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Compare today's mortgage rates →
+        <small>See personalized offers from top lenders (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <!-- ====== AD: in-content (sau khi người dùng đã thấy giá trị) ====== -->
+      <div class="ad">AdSense — in-content responsive<!-- TODO: <ins class="adsbygoogle" ... data-ad-slot="XXXX"></ins> --></div>
+
+      <!-- ====== NỘI DUNG SEO (helpful content + chỗ đặt ads + từ khóa) ====== -->
+      <div class="content">
+        <h2>How to use this mortgage calculator</h2>
+        <p>Enter your home price and down payment, choose a loan term, and add your interest rate. Optionally include property tax, home insurance and HOA dues to see your full monthly payment (PITI).</p>
+
+        <h2>How is a monthly mortgage payment calculated?</h2>
+        <p>Principal &amp; interest are computed with the standard amortization formula:</p>
+        <p><code>M = P · r · (1 + r)^n / ((1 + r)^n − 1)</code></p>
+        <ul>
+          <li><b>P</b> = loan amount (home price − down payment)</li>
+          <li><b>r</b> = monthly interest rate (annual rate ÷ 12)</li>
+          <li><b>n</b> = number of payments (years × 12)</li>
+        </ul>
+        <p>Taxes, insurance and HOA are added on top to get your total monthly payment.</p>
+
+        <h3>Example</h3>
+        <p>A $320,000 loan at 6.5% for 30 years ≈ <b>$2,022</b>/month in principal &amp; interest, with about <b>$408,000</b> paid in interest over the life of the loan.</p>
+
+        <!-- AD: giữa nội dung dài -->
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What is PITI?</h3>
+        <p>Principal, Interest, Taxes and Insurance — the four parts of a typical monthly payment.</p>
+        <h3>How can I lower my monthly payment?</h3>
+        <p>Increase your down payment, choose a longer term, improve your credit score for a lower rate, or shop multiple lenders.</p>
+        <h3>Do I need 20% down?</h3>
+        <p>Not always — many loans allow 3–5% down, though under 20% usually adds PMI. A bigger down payment reduces interest paid.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/refinance-calculator">Refinance Calculator</a>
+          <a href="/how-much-house-can-i-afford">Home Affordability</a>
+          <a href="/amortization-calculator">Amortization Schedule</a>
+          <a href="/rent-vs-buy-calculator">Rent vs Buy</a>
+          <a href="/down-payment-calculator">Down Payment</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SIDEBAR (ad + affiliate, desktop) ====== -->
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">Get pre-approved<small>Check rates in 3 minutes (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 FinCalc. Educational estimates only — not financial advice. Verify figures with a licensed lender.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+function calc(){
+  const price=+$('price').value||0, down=+$('down').value||0;
+  const years=+$('term').value||30, rate=+$('rate').value||0;
+  const tax=+$('tax').value||0, ins=+$('ins').value||0, hoa=+$('hoa').value||0;
+  const loan=Math.max(price-down,0), r=rate/100/12, n=years*12;
+  let pi;
+  if(r===0) pi=n?loan/n:0;
+  else pi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const totalPaid=pi*n, totalInt=Math.max(totalPaid-loan,0);
+  const monthly=pi+tax/12+ins/12+hoa;
+  $('rMonthly').textContent=usd(monthly);
+  $('rPI').textContent=usd(pi);
+  $('rLoan').textContent=usd(loan);
+  $('rInt').textContent=usd(totalInt);
+  const tot=loan+totalInt||1, pPct=loan/tot*100;
+  $('bar').children[0].style.width=pPct+'%';
+  $('bar').children[1].style.width=(100-pPct)+'%';
+  $('lPrin').textContent=usd(loan);
+  $('lInt').textContent=usd(totalInt);
+}
+calc(); // tính sẵn khi tải trang
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

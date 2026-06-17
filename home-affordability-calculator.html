@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--
+  Home Affordability Calculator — Tool Site
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Affordability Calculator — How Much House Can I Afford? (2026)</title>
+<meta name="description" content="Free home affordability calculator. Find out how much house you can afford based on your income, debts, down payment, and current mortgage rates.">
+<link rel="canonical" href="https://usecalcfi.com/home-affordability-calculator">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Home Affordability Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much house can I afford?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is that your total monthly housing costs (principal, interest, taxes, insurance) should not exceed 28% of your gross monthly income. Your total debt payments (housing plus car loans, student loans, credit cards) should stay below 36–43% of gross income. This is called the 28/36 rule."}},
+{"@type":"Question","name":"What is DTI ratio for a mortgage?","acceptedAnswer":{"@type":"Answer","text":"DTI (Debt-to-Income) ratio is your total monthly debt payments divided by your gross monthly income. Most conventional loans require a maximum DTI of 43–45%. FHA loans may allow up to 57% with compensating factors. A lower DTI (under 36%) gives you better rates and more loan options."}},
+{"@type":"Question","name":"How much down payment do I need?","acceptedAnswer":{"@type":"Answer","text":"Conventional loans require as little as 3–5% down, but putting less than 20% triggers PMI (Private Mortgage Insurance), adding $50–200/month. FHA loans require 3.5% down with a 580+ credit score. VA and USDA loans offer 0% down for eligible borrowers. A larger down payment lowers your monthly payment and total interest."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a;--warn:#d97706;--danger:#dc2626}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+.sublabel{font-size:11px;color:var(--mut);font-weight:400;margin-top:2px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#f5f3ff}.kpi.main .v{color:var(--ac)}
+/* DTI gauge */
+.gauge-wrap{margin-top:18px}
+.gauge-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.gauge-bg{height:18px;border-radius:9px;background:#e5e7eb;overflow:hidden;position:relative}
+.gauge-fill{height:100%;border-radius:9px;transition:width .4s,background .4s}
+.gauge-mark{position:absolute;top:0;height:100%;width:2px;background:#fff}
+.gauge-mark-label{position:absolute;top:20px;font-size:10px;color:var(--mut);transform:translateX(-50%)}
+/* DTI legend */
+.dti-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;margin-top:8px}
+.dti-legend span{display:flex;align-items:center;gap:4px}
+.dti-legend .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.summary-box{border-radius:10px;padding:14px;margin-top:16px;border:2px solid}
+.cta{display:block;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#f5f3ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#f5f3ff;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Home Affordability Calculator</h1>
+  <p class="lead">Find out how much house you can afford based on your income, monthly debts, down payment, and current mortgage rates — using the lender's 28/36 DTI rule.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Annual gross income ($)</label>
+            <div class="sublabel">Before taxes — all household earners</div>
+            <input id="income" type="number" value="90000">
+          </div>
+          <div>
+            <label>Monthly debt payments ($)</label>
+            <div class="sublabel">Car loans, student loans, credit cards (min payments)</div>
+            <input id="debts" type="number" value="400">
+          </div>
+          <div>
+            <label>Down payment ($)</label>
+            <input id="down" type="number" value="50000">
+          </div>
+          <div>
+            <label>Interest rate (% APR)</label>
+            <input id="rate" type="number" step="0.01" value="6.5">
+          </div>
+          <div>
+            <label>Loan term</label>
+            <select id="term">
+              <option value="30" selected>30 years</option>
+              <option value="15">15 years</option>
+            </select>
+          </div>
+          <div>
+            <label>Property tax (annual %)</label>
+            <div class="sublabel">US avg ≈ 1.1%</div>
+            <input id="taxrate" type="number" step="0.01" value="1.1">
+          </div>
+          <div>
+            <label>Home insurance (annual $)</label>
+            <input id="ins" type="number" value="1800">
+          </div>
+          <div><label>HOA (monthly $)</label><input id="hoa" type="number" value="0"></div>
+          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Affordability</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rAffordable">$0</div><div class="l">Maximum home price</div></div>
+          <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Max loan amount</div></div>
+          <div class="kpi"><div class="v" id="rMonthly">$0</div><div class="l">Max monthly payment (PITI)</div></div>
+          <div class="kpi"><div class="v" id="rDTI">0%</div><div class="l">Total DTI ratio</div></div>
+        </div>
+
+        <!-- DTI gauge -->
+        <div class="gauge-wrap">
+          <div class="gauge-label"><span>Debt-to-Income (DTI) ratio</span><span id="gaugeLabel">0%</span></div>
+          <div class="gauge-bg">
+            <div class="gauge-fill" id="gaugeFill" style="width:0%"></div>
+            <div class="gauge-mark" style="left:28%" title="28% front-end limit"></div>
+            <div class="gauge-mark" style="left:36%"></div>
+            <div class="gauge-mark" style="left:43%"></div>
+          </div>
+          <div class="dti-legend">
+            <span><span class="dot" style="background:#16a34a"></span>Excellent (&lt;28%)</span>
+            <span><span class="dot" style="background:#d97706"></span>OK (28–36%)</span>
+            <span><span class="dot" style="background:#dc2626"></span>High (&gt;43%)</span>
+          </div>
+        </div>
+
+        <div class="summary-box" id="summaryBox" style="border-color:var(--bd)">
+          <div id="summaryText" style="font-size:14px"></div>
+        </div>
+      </div>
+
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Get pre-approved for a mortgage in minutes →
+        <small>Compare rates from top lenders — no impact to your credit (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <div class="content">
+        <h2>How the home affordability calculator works</h2>
+        <p>Lenders evaluate two DTI ratios when approving a mortgage. This calculator finds the maximum home price that keeps both ratios within guideline limits:</p>
+        <ul>
+          <li><b>Front-end DTI (Housing ratio):</b> Total monthly housing costs ÷ gross monthly income. Most lenders want this ≤ 28%.</li>
+          <li><b>Back-end DTI (Total DTI):</b> (Housing costs + all other monthly debts) ÷ gross monthly income. Most conventional loans allow up to 36–43%.</li>
+        </ul>
+        <p>The calculator uses the more restrictive of the two limits to determine your maximum affordable home price.</p>
+
+        <h2>The 28/36 rule explained</h2>
+        <p>The <b>28/36 rule</b> is a widely used guideline: spend no more than 28% of your gross monthly income on housing and no more than 36% on all debt combined. For example, if you earn $7,500/month:</p>
+        <ul>
+          <li>Max housing payment: $7,500 × 28% = <b>$2,100/month</b></li>
+          <li>Max total debt: $7,500 × 36% = <b>$2,700/month</b></li>
+        </ul>
+        <p>If you already have $400/month in debt payments, your max housing budget drops to $2,300 (36% − $400), but is still capped by the 28% front-end limit at $2,100.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>How to increase your home buying budget</h2>
+        <ul>
+          <li><b>Pay down existing debts</b> — Eliminating a $300/month car payment can add $50,000+ to your home budget</li>
+          <li><b>Increase your down payment</b> — More down = smaller loan = lower monthly payment</li>
+          <li><b>Improve your credit score</b> — Even 0.5% rate improvement meaningfully increases buying power</li>
+          <li><b>Add a co-borrower</b> — A spouse or partner's income can significantly expand what you qualify for</li>
+          <li><b>Choose a 30-year over 15-year loan</b> — Lower monthly payments increase the maximum home price (though total interest is higher)</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <h3>Does this include PMI?</h3>
+        <p>This calculator does not include PMI (Private Mortgage Insurance). If your down payment is less than 20%, add approximately 0.5–1.5% of the loan amount annually (roughly $50–150/month per $100k borrowed) to your housing cost estimate. PMI can be removed once you reach 20% equity.</p>
+        <h3>What income counts for mortgage qualification?</h3>
+        <p>Lenders count most stable, documented income: salary/wages, self-employment income (2-year average), rental income (usually 75% of gross), Social Security, pension, and consistent bonuses/overtime (2-year history required). Irregular income from gig work or new jobs (under 2 years) may not count or may be averaged.</p>
+        <h3>Should I buy the maximum I can afford?</h3>
+        <p>Probably not. Lender qualification limits are the ceiling, not a recommendation. Budget for maintenance (1–2% of home value annually), unexpected repairs, furniture, and reserves. Many financial advisors recommend spending 20–25% of gross income on housing to maintain financial flexibility.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/refinance-calculator">Refinance Calculator</a>
+          <a href="/down-payment-calculator">Down Payment</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">Compare mortgage rates<small>Free quote in 3 minutes (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">© 2026 FinCalc. Estimates only — actual approval depends on lender underwriting. Not financial advice.</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+// Solve for max loan given max monthly PI payment
+function loanFromPayment(pmt,apr,years){
+  const r=apr/100/12,n=years*12;
+  if(r===0) return pmt*n;
+  return pmt*(1-Math.pow(1+r,-n))/r;
+}
+
+function calc(){
+  const annualIncome=+$('income').value||0;
+  const monthlyIncome=annualIncome/12;
+  const debts=+$('debts').value||0;
+  const down=+$('down').value||0;
+  const apr=+$('rate').value||6.5;
+  const years=+$('term').value||30;
+  const taxRatePct=+$('taxrate').value||1.1;
+  const annualIns=+$('ins').value||1800;
+  const hoa=+$('hoa').value||0;
+
+  // Max monthly housing per front-end (28%) and back-end (36%)
+  const maxFront=monthlyIncome*0.28;
+  const maxBack=Math.max(monthlyIncome*0.36-debts,0);
+  const maxPITI=Math.min(maxFront,maxBack);
+
+  // Fixed monthly costs per $1 of home price: tax/12 + ins/price
+  // We iterate: assume home price H
+  // monthly tax = H * taxRatePct/100/12
+  // monthly ins = annualIns/12 (fixed)
+  // monthly hoa = hoa (fixed)
+  // PI = maxPITI - tax - ins - hoa
+  // Iterate to find H
+  let H=300000;
+  for(let i=0;i<50;i++){
+    const monthlyTax=H*taxRatePct/100/12;
+    const monthlyIns=annualIns/12;
+    const piAvailable=Math.max(maxPITI-monthlyTax-monthlyIns-hoa,0);
+    const loan=loanFromPayment(piAvailable,apr,years);
+    const Hnew=loan+down;
+    if(Math.abs(Hnew-H)<1) break;
+    H=Hnew;
+  }
+  H=Math.max(H,0);
+  const loan=Math.max(H-down,0);
+  const r=apr/100/12,n=years*12;
+  let pi;
+  if(r===0) pi=n?loan/n:0;
+  else pi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  const monthlyTax=H*taxRatePct/100/12;
+  const monthlyIns=annualIns/12;
+  const totalMonthly=pi+monthlyTax+monthlyIns+hoa;
+  const totalDTI=(totalMonthly+debts)/monthlyIncome*100;
+
+  $('rAffordable').textContent=usd(H);
+  $('rLoan').textContent=usd(loan);
+  $('rMonthly').textContent=usd(totalMonthly);
+  $('rDTI').textContent=totalDTI.toFixed(1)+'%';
+
+  // Gauge
+  const pct=Math.min(totalDTI/60*100,100);
+  const fill=$('gaugeFill');
+  fill.style.width=pct+'%';
+  let color='#16a34a';
+  if(totalDTI>36) color='#d97706';
+  if(totalDTI>43) color='#dc2626';
+  fill.style.background=color;
+  $('gaugeLabel').textContent=totalDTI.toFixed(1)+'%';
+
+  // Summary
+  const box=$('summaryBox');
+  const txt=$('summaryText');
+  if(totalDTI<=28){
+    box.style.borderColor='#86efac';box.style.background='#f0fdf4';
+    txt.innerHTML=`✅ <b>Excellent!</b> Your DTI of ${totalDTI.toFixed(1)}% is well within guidelines. You should have strong mortgage approval odds and may qualify for the best rates.`;
+  } else if(totalDTI<=36){
+    box.style.borderColor='#fcd34d';box.style.background='#fffbeb';
+    txt.innerHTML=`⚠️ <b>Good.</b> Your DTI of ${totalDTI.toFixed(1)}% is within conventional loan guidelines. You may qualify for most loan programs but improving your DTI could secure a better rate.`;
+  } else if(totalDTI<=43){
+    box.style.borderColor='#fca5a5';box.style.background='#fef2f2';
+    txt.innerHTML=`⚠️ <b>Manageable.</b> Your DTI of ${totalDTI.toFixed(1)}% is at the upper limit for many conventional lenders. FHA loans may still qualify. Consider paying down debts or increasing your down payment.`;
+  } else {
+    box.style.borderColor='#dc2626';box.style.background='#fef2f2';
+    txt.innerHTML=`❌ <b>High DTI.</b> At ${totalDTI.toFixed(1)}%, most lenders will require you to reduce debts or increase income before qualifying. Consider paying off existing debts first.`;
+  }
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

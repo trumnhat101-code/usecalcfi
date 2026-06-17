@@ -1,0 +1,7 @@
+# robots.txt — FinCalc
+# TODO: thay usecalcfi.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://usecalcfi.com/sitemap.xml

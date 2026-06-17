@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--
+  Compound Interest Calculator — Tool Site
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compound Interest Calculator — Watch Your Money Grow (2026)</title>
+<meta name="description" content="Free compound interest calculator. See how your savings or investment grows over time with compounding. Add monthly contributions and choose compounding frequency.">
+<link rel="canonical" href="https://usecalcfi.com/compound-interest-calculator">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Compound Interest Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is compound interest?","acceptedAnswer":{"@type":"Answer","text":"Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods. Unlike simple interest (calculated only on the principal), compound interest grows exponentially — meaning the longer you invest, the faster your money grows."}},
+{"@type":"Question","name":"How often should interest compound for maximum growth?","acceptedAnswer":{"@type":"Answer","text":"More frequent compounding slightly increases returns. Daily compounding yields marginally more than monthly, which yields more than annually. The difference is small at typical savings rates but more meaningful for higher-return investments. Most high-yield savings accounts compound daily."}},
+{"@type":"Question","name":"What is the Rule of 72?","acceptedAnswer":{"@type":"Answer","text":"The Rule of 72 is a quick way to estimate how long it takes for an investment to double: divide 72 by the annual interest rate. At 6%, your money doubles in about 12 years (72 ÷ 6 = 12). At 8%, it doubles in 9 years. This rule works best for rates between 6–10%."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#16a34a;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#f0fdf4}.kpi.main .v{color:var(--ac)}
+/* Stacked bar */
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+/* Growth chart */
+.chart{display:flex;align-items:flex-end;gap:3px;height:120px;margin:18px 0 4px}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:0}
+.chart-seg{width:100%;border-radius:2px 2px 0 0}
+.chart-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-bottom:6px}
+/* Rule of 72 badge */
+.r72{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:12px 14px;font-size:13px;margin-top:14px}
+.cta{display:block;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#f0fdf4;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#f0fdf4;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Compound Interest Calculator</h1>
+  <p class="lead">See how your money grows over time with the power of compound interest. Add regular contributions to watch compounding accelerate your wealth.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Initial deposit ($)</label><input id="principal" type="number" value="10000"></div>
+          <div><label>Annual interest rate (%)</label><input id="rate" type="number" step="0.01" value="7"></div>
+          <div><label>Time period (years)</label><input id="years" type="number" value="20"></div>
+          <div><label>Compound frequency</label>
+            <select id="freq">
+              <option value="365">Daily</option>
+              <option value="12" selected>Monthly</option>
+              <option value="4">Quarterly</option>
+              <option value="1">Annually</option>
+            </select>
+          </div>
+          <div><label>Monthly contribution ($)</label><input id="monthly" type="number" value="200"></div>
+          <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rFV">$0</div><div class="l">Future value</div></div>
+          <div class="kpi"><div class="v" id="rInterest">$0</div><div class="l">Total interest earned</div></div>
+          <div class="kpi"><div class="v" id="rContrib">$0</div><div class="l">Total contributions</div></div>
+          <div class="kpi"><div class="v" id="rPrincipal">$0</div><div class="l">Starting principal</div></div>
+        </div>
+
+        <div class="bar" id="bar">
+          <i style="background:#4f46e5"></i><i style="background:#16a34a"></i><i style="background:#c7cae0"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:#4f46e5"></span>Principal <b id="lP">$0</b></span>
+          <span><span class="dot" style="background:#16a34a"></span>Contributions <b id="lC">$0</b></span>
+          <span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lI">$0</b></span>
+        </div>
+
+        <!-- Growth chart -->
+        <div class="chart" id="chartBars"></div>
+        <div class="chart-labels" id="chartLabels"></div>
+
+        <div class="r72" id="r72box">
+          ⚡ <b>Rule of 72:</b> At <span id="r72rate">7</span>% return, your money doubles every <b><span id="r72yrs">10.3</span> years</b>.
+        </div>
+      </div>
+
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Start investing with Acorns — spare change, big returns →
+        <small>Automated micro-investing from $5 (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <div class="content">
+        <h2>How compound interest works</h2>
+        <p>With <b>simple interest</b>, you earn interest only on your original principal. With <b>compound interest</b>, you earn interest on your principal <em>plus</em> all previously earned interest. This creates exponential growth — the longer the time horizon, the more dramatic the effect.</p>
+        <p>The compound interest formula is: <code>A = P(1 + r/n)^(nt) + PMT × ((1 + r/n)^(nt) − 1) / (r/n)</code></p>
+        <ul>
+          <li><b>A</b> = final amount</li>
+          <li><b>P</b> = principal (initial deposit)</li>
+          <li><b>r</b> = annual interest rate (decimal)</li>
+          <li><b>n</b> = compounding periods per year</li>
+          <li><b>t</b> = time in years</li>
+          <li><b>PMT</b> = regular contribution per period</li>
+        </ul>
+
+        <h2>The power of starting early</h2>
+        <p>Time is the most powerful variable in compound interest. Consider two investors at 7% annual return:</p>
+        <ul>
+          <li><b>Investor A</b> starts at 25, invests $200/month until 65 = $525,000</li>
+          <li><b>Investor B</b> starts at 35, invests $200/month until 65 = $243,000</li>
+        </ul>
+        <p>Starting 10 years earlier more than <b>doubles</b> the result, even though Investor A only contributed $24,000 more.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Compounding frequency: does it matter?</h2>
+        <p>More frequent compounding earns slightly more interest. On $10,000 at 7% for 10 years: annual compounding yields $19,672; monthly compounding yields $20,097; daily compounding yields $20,136. The difference is marginal at typical savings rates but significant for higher rates or longer periods.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What is the Rule of 72?</h3>
+        <p>Divide 72 by your annual return rate to estimate the number of years to double your money. At 6%: 72 ÷ 6 = 12 years. At 9%: 72 ÷ 9 = 8 years. It's a quick mental math shortcut accurate within 1–2% for rates between 4–15%.</p>
+        <h3>Where can I earn compound interest?</h3>
+        <p>High-yield savings accounts (HYSA), CDs, money market accounts, I-bonds, and investment accounts (index funds, ETFs) all benefit from compounding. Investment returns compound through price appreciation and reinvested dividends. HYSAs currently offer 4–5% APY (rates change — always compare current offers).</p>
+        <h3>What's the difference between APR and APY?</h3>
+        <p><b>APR</b> (Annual Percentage Rate) is the simple annual rate without compounding. <b>APY</b> (Annual Percentage Yield) includes the effect of compounding and is always slightly higher than APR. When comparing savings accounts, use APY for apples-to-apples comparison.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/retirement-calculator">Retirement Calculator</a>
+          <a href="/401k-calculator">401(k) Calculator</a>
+          <a href="/savings-calculator">Savings Goal Calculator</a>
+          <a href="/credit-card-payoff-calculator">Credit Card Payoff</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">Open a high-yield savings<small>Earn 4–5% APY today (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">© 2026 FinCalc. Investment returns shown are hypothetical. Past performance does not guarantee future results.</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+function calc(){
+  const P=+$('principal').value||0;
+  const annualR=+$('rate').value||0;
+  const years=+$('years').value||1;
+  const n=+$('freq').value||12;
+  const pmt=+$('monthly').value||0;
+  const r=annualR/100/n; // rate per period
+  const periods=years*n;
+
+  // FV of lump sum
+  const fvLump=P*Math.pow(1+r,periods);
+  // FV of contributions (monthly converted to per-period)
+  const pmtPerPeriod=pmt*(12/n); // scale monthly to compounding period
+  let fvContrib=0;
+  if(r===0) fvContrib=pmtPerPeriod*periods;
+  else fvContrib=pmtPerPeriod*(Math.pow(1+r,periods)-1)/r;
+
+  const fv=fvLump+fvContrib;
+  const totalContrib=pmt*12*years;
+  const interest=fv-P-totalContrib;
+
+  $('rFV').textContent=usd(fv);
+  $('rInterest').textContent=usd(interest);
+  $('rContrib').textContent=usd(totalContrib);
+  $('rPrincipal').textContent=usd(P);
+
+  $('lP').textContent=usd(P);
+  $('lC').textContent=usd(totalContrib);
+  $('lI').textContent=usd(interest);
+
+  const tot=P+totalContrib+interest||1;
+  $('bar').children[0].style.width=(P/tot*100)+'%';
+  $('bar').children[1].style.width=(totalContrib/tot*100)+'%';
+  $('bar').children[2].style.width=(interest/tot*100)+'%';
+
+  // Rule of 72
+  const r72=annualR>0?(72/annualR).toFixed(1):'∞';
+  $('r72rate').textContent=annualR;
+  $('r72yrs').textContent=r72;
+
+  // Chart
+  const chartBars=$('chartBars');
+  const chartLabels=$('chartLabels');
+  chartBars.innerHTML='';chartLabels.innerHTML='';
+
+  const steps=Math.min(years,10);
+  const interval=Math.max(Math.floor(years/steps),1);
+  const checkpoints=[];
+  for(let y=0;y<=years;y+=interval) checkpoints.push(y);
+  if(checkpoints[checkpoints.length-1]!==years) checkpoints.push(years);
+
+  const vals=checkpoints.map(y=>{
+    const pp=y*n;
+    const fl=P*Math.pow(1+r,pp);
+    let fc=r===0?pmtPerPeriod*pp:pmtPerPeriod*(Math.pow(1+r,pp)-1)/r;
+    const fvY=fl+fc;
+    const contribY=pmt*12*y;
+    return {total:fvY,contrib:Math.min(contribY,fvY),principal:Math.min(P,fvY)};
+  });
+
+  const maxV=Math.max(...vals.map(v=>v.total),1);
+  vals.forEach((v,i)=>{
+    const wrap=document.createElement('div');
+    wrap.className='chart-bar-wrap';
+    wrap.style.height='100%';
+    wrap.style.display='flex';
+    wrap.style.flexDirection='column';
+    wrap.style.justifyContent='flex-end';
+
+    const pctH=v.total/maxV*100;
+    const pPct=v.principal/v.total*100;
+    const cPct=Math.max(v.contrib-v.principal,0)/v.total*100;
+    const iPct=100-pPct-cPct;
+
+    const seg=document.createElement('div');
+    seg.style.height=pctH+'%';
+    seg.style.width='100%';
+    seg.style.borderRadius='4px 4px 0 0';
+    seg.style.overflow='hidden';
+    seg.style.display='flex';
+    seg.style.flexDirection='column';
+    seg.title=`Year ${checkpoints[i]}: ${usd(v.total)}`;
+
+    seg.innerHTML=`<div style="background:#c7cae0;flex:${iPct}"></div><div style="background:#16a34a;flex:${cPct}"></div><div style="background:#4f46e5;flex:${pPct}"></div>`;
+    wrap.appendChild(seg);
+    chartBars.appendChild(wrap);
+
+    const lbl=document.createElement('span');
+    lbl.textContent='Yr '+checkpoints[i];
+    chartLabels.appendChild(lbl);
+  });
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

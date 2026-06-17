@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--
+  Income Tax Calculator — Tool Site
+  2025 Federal tax brackets (IRS Rev. Proc. 2024-40). State = flat estimate.
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Income Tax Calculator 2025–2026 — Federal Tax Estimate</title>
+<meta name="description" content="Free income tax calculator for 2025–2026. Estimate your federal income tax, effective tax rate, and after-tax income by filing status. Includes all 7 brackets.">
+<link rel="canonical" href="https://usecalcfi.com/income-tax-calculator">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Income Tax Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What are the 2025 federal income tax brackets?","acceptedAnswer":{"@type":"Answer","text":"For 2025, the seven federal income tax rates are 10%, 12%, 22%, 24%, 32%, 35%, and 37%. The bracket thresholds depend on your filing status. For single filers: 10% up to $11,925; 12% up to $48,475; 22% up to $103,350; 24% up to $197,300; 32% up to $250,525; 35% up to $626,350; 37% above that."}},
+{"@type":"Question","name":"What is the standard deduction for 2025?","acceptedAnswer":{"@type":"Answer","text":"For tax year 2025, the standard deduction is $15,000 for single filers, $30,000 for married filing jointly, and $22,500 for head of household."}},
+{"@type":"Question","name":"What is the difference between marginal and effective tax rate?","acceptedAnswer":{"@type":"Answer","text":"Your marginal rate is the rate applied to your last dollar of income (the bracket you fall into). Your effective tax rate is the average rate on all your income — always lower than your marginal rate. For example, a single filer with $80,000 income has a 22% marginal rate but an effective rate of about 13%."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#0891b2;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#ecfeff}.kpi.main .v{color:var(--ac)}
+/* Bracket breakdown */
+.bracket-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:18px}
+.bracket-table th{background:var(--bg);text-align:left;padding:8px 10px;font-size:12px;color:var(--mut);border-bottom:2px solid var(--bd)}
+.bracket-table td{padding:7px 10px;border-bottom:1px solid #f3f4f6}
+.bracket-table tr.active{background:#ecfeff;font-weight:600}
+.bracket-table tr.active td:first-child{border-left:3px solid var(--ac)}
+/* Donut-style bar */
+.bar{height:14px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0 4px}
+.bar i{display:block;height:100%}
+.legend{font-size:12px;color:var(--mut);display:flex;gap:16px;flex-wrap:wrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+.cta{display:block;background:linear-gradient(135deg,#0891b2,#0284c7);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#ecfeff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#ecfeff;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Income Tax Calculator 2025–2026</h1>
+  <p class="lead">Estimate your federal income tax, effective tax rate, and after-tax income. See exactly how much tax you owe in each bracket.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Annual gross income ($)</label><input id="income" type="number" value="85000"></div>
+          <div><label>Filing status</label>
+            <select id="filing">
+              <option value="single">Single</option>
+              <option value="married">Married filing jointly</option>
+              <option value="hoh">Head of household</option>
+              <option value="mfs">Married filing separately</option>
+            </select>
+          </div>
+          <div><label>Pre-tax deductions ($)</label><input id="pretax" type="number" value="0" placeholder="401k, HSA, etc."></div>
+          <div><label>State income tax rate (%)</label><input id="statetax" type="number" step="0.1" value="5" placeholder="0 for no state tax"></div>
+          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Tax</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rFedTax">$0</div><div class="l">Federal income tax</div></div>
+          <div class="kpi"><div class="v" id="rEffRate">0%</div><div class="l">Effective federal rate</div></div>
+          <div class="kpi"><div class="v" id="rMargRate">0%</div><div class="l">Marginal tax rate</div></div>
+          <div class="kpi"><div class="v" id="rAfterTax">$0</div><div class="l">After-tax income (federal only)</div></div>
+        </div>
+
+        <div class="bar" id="bar" style="margin-top:18px">
+          <i style="background:#0891b2"></i><i style="background:#e5e7eb"></i>
+        </div>
+        <div class="legend">
+          <span><span class="dot" style="background:#0891b2"></span>Federal tax <b id="lTax">$0</b></span>
+          <span><span class="dot" style="background:#e5e7eb"></span>After-tax <b id="lKeep">$0</b></span>
+        </div>
+
+        <!-- Bracket breakdown -->
+        <h3 style="margin-top:20px">Tax bracket breakdown</h3>
+        <table class="bracket-table" id="bracketTable">
+          <thead><tr><th>Bracket</th><th>Taxable income</th><th>Rate</th><th>Tax</th></tr></thead>
+          <tbody id="bracketBody"></tbody>
+        </table>
+      </div>
+
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        File your taxes with TurboTax — get the biggest refund →
+        <small>100% accurate, guaranteed (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <div class="content">
+        <h2>2025 Federal income tax brackets</h2>
+        <p>The US uses a progressive tax system — each bracket rate applies only to income within that range, not your entire income. Here are the 2025 brackets for single filers:</p>
+        <ul>
+          <li><b>10%</b> — on income from $0 to $11,925</li>
+          <li><b>12%</b> — on income from $11,926 to $48,475</li>
+          <li><b>22%</b> — on income from $48,476 to $103,350</li>
+          <li><b>24%</b> — on income from $103,351 to $197,300</li>
+          <li><b>32%</b> — on income from $197,301 to $250,525</li>
+          <li><b>35%</b> — on income from $250,526 to $626,350</li>
+          <li><b>37%</b> — on income over $626,350</li>
+        </ul>
+        <p>Married filing jointly thresholds are exactly double the single thresholds for most brackets.</p>
+
+        <h2>Standard deduction 2025</h2>
+        <p>Before applying tax brackets, your taxable income is reduced by the standard deduction: <b>$15,000</b> for single filers, <b>$30,000</b> for married filing jointly, and <b>$22,500</b> for head of household. Pre-tax deductions (401k, HSA) further reduce your taxable income.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Ways to legally reduce your tax bill</h2>
+        <ul>
+          <li><b>Maximize 401(k) contributions</b> — Up to $23,500 in 2025 (pre-tax reduces taxable income)</li>
+          <li><b>Contribute to an HSA</b> — $4,300 (self) / $8,550 (family) in 2025, triple tax advantage</li>
+          <li><b>Itemize deductions</b> if they exceed the standard deduction (mortgage interest, charity, state taxes)</li>
+          <li><b>Tax-loss harvesting</b> — Offset capital gains with investment losses</li>
+          <li><b>Contribute to a Traditional IRA</b> — Up to $7,000 ($8,000 if 50+) may be deductible</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <h3>Does this include FICA (Social Security and Medicare)?</h3>
+        <p>No — this calculator covers federal income tax only. Social Security (6.2% up to $176,100) and Medicare (1.45%) are separate taxes. Use the <a href="/paycheck-calculator">Paycheck Calculator</a> for a full take-home pay estimate including FICA.</p>
+        <h3>What is the SALT deduction cap?</h3>
+        <p>The Tax Cuts and Jobs Act (2017) caps the deduction for state and local taxes (SALT) at $10,000 per year for itemizers. This mostly affects high-income residents of high-tax states like California, New York, and New Jersey.</p>
+        <h3>When do I need to file?</h3>
+        <p>The federal tax deadline is April 15 each year (or the next business day if it falls on a weekend or holiday). You can request an automatic 6-month extension by filing Form 4868, but any taxes owed are still due by the original deadline.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/tax-refund-calculator">Tax Refund Estimator</a>
+          <a href="/self-employment-tax-calculator">Self-Employment Tax</a>
+          <a href="/retirement-calculator">Retirement Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">File with H&amp;R Block<small>In-person or online options (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">© 2026 FinCalc. Based on 2025 IRS tax brackets. Estimates only — consult a tax professional.</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+const pct=n=>isFinite(n)?(n*100).toFixed(1)+'%':'0%';
+
+const BRACKETS={
+  single:[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[626350,.35],[Infinity,.37]],
+  married:[[23850,.10],[96950,.12],[206700,.22],[394600,.24],[501050,.32],[751600,.35],[Infinity,.37]],
+  hoh:[[17000,.10],[64850,.12],[103350,.22],[197300,.24],[250500,.32],[626350,.35],[Infinity,.37]],
+  mfs:[[11925,.10],[48475,.12],[103350,.22],[197300,.24],[250525,.32],[375800,.35],[Infinity,.37]]
+};
+const STD={single:15000,married:30000,hoh:22500,mfs:7500};
+
+function calc(){
+  const gross=+$('income').value||0;
+  const filing=$('filing').value;
+  const pretax=+$('pretax').value||0;
+  const stateRate=+$('statetax').value||0;
+
+  const taxable=Math.max(gross-pretax-STD[filing],0);
+  const brackets=BRACKETS[filing];
+
+  let tax=0,prev=0,marginal=.10;
+  const rows=[];
+  for(const [top,rate] of brackets){
+    if(taxable<=prev) break;
+    const chunk=Math.min(taxable,top)-prev;
+    const t=chunk*rate;
+    tax+=t;
+    marginal=rate;
+    rows.push({from:prev,to:Math.min(taxable,top),rate,chunk,t,active:taxable>prev&&taxable<=top||(top===Infinity&&taxable>prev)});
+    prev=top;
+    if(taxable<=top) break;
+  }
+
+  const afterTax=gross-tax-(gross*stateRate/100);
+  const effRate=gross>0?tax/gross:0;
+
+  $('rFedTax').textContent=usd(tax);
+  $('rEffRate').textContent=pct(effRate);
+  $('rMargRate').textContent=(marginal*100)+'%';
+  $('rAfterTax').textContent=usd(gross-tax);
+  $('lTax').textContent=usd(tax);
+  $('lKeep').textContent=usd(gross-tax);
+
+  const pctTax=gross>0?tax/gross:0;
+  $('bar').children[0].style.width=(pctTax*100)+'%';
+  $('bar').children[1].style.width=((1-pctTax)*100)+'%';
+
+  // Build bracket table
+  const tbody=$('bracketBody');
+  tbody.innerHTML='';
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    if(r.active) tr.className='active';
+    tr.innerHTML=`<td>${(r.rate*100).toFixed(0)}%</td><td>${usd(r.from)} – ${r.to===Infinity?'∞':usd(r.to)}</td><td>${(r.rate*100).toFixed(0)}%</td><td>${usd(r.t)}</td>`;
+    tbody.appendChild(tr);
+  });
+  // Total row
+  const ttr=document.createElement('tr');
+  ttr.style.fontWeight='700';
+  ttr.innerHTML=`<td colspan="3">Total federal income tax</td><td>${usd(tax)}</td>`;
+  tbody.appendChild(ttr);
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

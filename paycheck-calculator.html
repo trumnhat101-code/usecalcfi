@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!--
+  Paycheck Calculator — Tool Site
+  Tax brackets: 2025 federal (IRS Rev. Proc. 2024-40). State tax = flat estimate.
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paycheck Calculator — Estimate Your Take-Home Pay (2025–2026)</title>
+<meta name="description" content="Free paycheck calculator. Estimate your net take-home pay after federal income tax, Social Security, Medicare, and state tax. Works for hourly and salary.">
+<link rel="canonical" href="https://usecalcfi.com/paycheck-calculator"><!-- TODO domain -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Paycheck Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is federal income tax withheld from my paycheck?","acceptedAnswer":{"@type":"Answer","text":"Federal income tax is calculated using progressive tax brackets on your annualized gross pay (minus the standard deduction). The result is divided by your number of pay periods. For 2025, the standard deduction is $15,000 (single) or $30,000 (married filing jointly)."}},
+{"@type":"Question","name":"What is FICA tax?","acceptedAnswer":{"@type":"Answer","text":"FICA stands for the Federal Insurance Contributions Act. It consists of Social Security tax (6.2% of wages up to $176,100 in 2025) and Medicare tax (1.45% of all wages, plus an additional 0.9% over $200,000 for single filers)."}},
+{"@type":"Question","name":"Why does my actual paycheck differ from the calculator?","acceptedAnswer":{"@type":"Answer","text":"This calculator provides estimates. Your actual paycheck may differ due to pre-tax deductions (401k, health insurance, HSA, FSA), additional withholding elected on Form W-4, local/city taxes, or other employer-specific deductions."}}
+]}
+</script>
+
+<!-- TODO: AdSense loader -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root{--ac:#d97706;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#fffbeb}.kpi.main .v{color:var(--ac)}
+.kpi.neg .v{color:#dc2626}
+.breakdown{margin-top:18px;border-top:1px solid var(--bd);padding-top:14px}
+.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:14px}
+.brow:last-child{border-bottom:none;font-weight:700}
+.brow .neg{color:#dc2626}
+.cta{display:block;background:linear-gradient(135deg,#d97706,#dc2626);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#fffbeb;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#fffbeb;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+.note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:13px;margin:12px 0}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Paycheck Calculator</h1>
+  <p class="lead">Estimate your take-home pay after federal taxes, Social Security, Medicare, and state income tax. Enter your salary or hourly rate to see your net paycheck.</p>
+
+  <div class="layout">
+    <div>
+      <!-- ====== TOOL ====== -->
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Pay type</label>
+            <select id="paytype" onchange="togglePayType()">
+              <option value="salary">Annual salary</option>
+              <option value="hourly">Hourly wage</option>
+            </select>
+          </div>
+          <div id="salaryGroup"><label>Annual salary ($)</label><input id="salary" type="number" value="75000"></div>
+          <div id="hourlyGroup" style="display:none">
+            <label>Hourly rate ($)</label><input id="hourly" type="number" step="0.01" value="25">
+          </div>
+          <div id="hoursGroup" style="display:none">
+            <label>Hours per week</label><input id="hours" type="number" value="40">
+          </div>
+          <div>
+            <label>Pay frequency</label>
+            <select id="freq">
+              <option value="26">Biweekly (every 2 weeks)</option>
+              <option value="52">Weekly</option>
+              <option value="24">Semimonthly (twice/month)</option>
+              <option value="12">Monthly</option>
+            </select>
+          </div>
+          <div>
+            <label>Filing status</label>
+            <select id="filing">
+              <option value="single">Single</option>
+              <option value="married">Married filing jointly</option>
+              <option value="hoh">Head of household</option>
+            </select>
+          </div>
+          <div><label>Pre-tax deductions (per period $)</label><input id="pretax" type="number" value="0" placeholder="401k, health ins…"></div>
+          <div><label>State income tax rate (%)</label><input id="statetax" type="number" step="0.1" value="5" placeholder="0 = no state tax"></div>
+          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Paycheck</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rNet">$0</div><div class="l">Take-home pay (per period)</div></div>
+          <div class="kpi"><div class="v" id="rGross">$0</div><div class="l">Gross pay (per period)</div></div>
+          <div class="kpi"><div class="v" id="rAnnualNet">$0</div><div class="l">Estimated annual take-home</div></div>
+          <div class="kpi"><div class="v" id="rEffRate">0%</div><div class="l">Effective total tax rate</div></div>
+        </div>
+
+        <div class="breakdown" id="breakdownSection">
+          <div class="brow"><span>Gross pay</span><span id="bGross">$0</span></div>
+          <div class="brow"><span>Pre-tax deductions</span><span class="neg" id="bPretax">−$0</span></div>
+          <div class="brow"><span>Federal income tax</span><span class="neg" id="bFed">−$0</span></div>
+          <div class="brow"><span>Social Security (6.2%)</span><span class="neg" id="bSS">−$0</span></div>
+          <div class="brow"><span>Medicare (1.45%)</span><span class="neg" id="bMed">−$0</span></div>
+          <div class="brow"><span>State income tax</span><span class="neg" id="bState">−$0</span></div>
+          <div class="brow"><span><b>Net take-home pay</b></span><span><b id="bNet">$0</b></span></div>
+        </div>
+
+        <div class="note">⚠️ <b>Estimate only.</b> Actual withholding depends on your W-4 elections, pre-tax benefits, local taxes, and employer payroll practices. Consult a payroll professional for exact figures.</div>
+      </div>
+
+      <!-- ====== AFFILIATE CTA ====== -->
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        File your taxes in minutes with TurboTax →
+        <small>Get the biggest refund guaranteed (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <!-- ====== SEO CONTENT ====== -->
+      <div class="content">
+        <h2>How to use this paycheck calculator</h2>
+        <p>Select your pay type (salary or hourly), enter your pay frequency, and choose your filing status. Add any pre-tax deductions like 401(k) contributions or health insurance premiums. Enter your state's income tax rate (or 0 for states with no income tax). Click Calculate to see your estimated take-home pay and a full tax breakdown.</p>
+
+        <h2>How federal income tax is calculated</h2>
+        <p>Federal income tax uses <b>progressive brackets</b> — you pay a different rate on each portion of your income. For 2025:</p>
+        <ul>
+          <li>10% on income up to $11,925 (single) / $23,850 (married)</li>
+          <li>12% on $11,925–$48,475 (single) / $23,850–$96,950 (married)</li>
+          <li>22% on $48,475–$103,350 (single) / $96,950–$206,700 (married)</li>
+          <li>24% on $103,350–$197,300 (single) / $206,700–$394,600 (married)</li>
+          <li>32% on $197,300–$250,525 (single) / $394,600–$501,050 (married)</li>
+          <li>35% on $250,525–$626,350 (single) / $501,050–$751,600 (married)</li>
+          <li>37% on income above those thresholds</li>
+        </ul>
+        <p>The standard deduction ($15,000 single / $30,000 MFJ in 2025) is subtracted before applying brackets. Your pre-tax deductions (401k, HSA, etc.) further reduce your taxable income.</p>
+
+        <h2>What is FICA tax?</h2>
+        <p>FICA (Federal Insurance Contributions Act) funds Social Security and Medicare:</p>
+        <ul>
+          <li><b>Social Security:</b> 6.2% on wages up to $176,100 (2025 wage base)</li>
+          <li><b>Medicare:</b> 1.45% on all wages (+ 0.9% Additional Medicare Tax over $200,000 for single filers)</li>
+        </ul>
+        <p>Your employer matches these contributions — so the full FICA cost is actually 15.3% of your wages, split equally between you and your employer.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>States with no income tax</h2>
+        <p>If you live in Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, or Wyoming, enter <b>0%</b> for state tax. Note that some of these states have other taxes (sales, property) that may be higher to compensate.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What are pre-tax deductions?</h3>
+        <p>Pre-tax deductions are contributions taken from your gross pay before taxes are calculated — reducing your taxable income. Common examples include 401(k) or 403(b) contributions, employer-sponsored health/dental/vision insurance premiums, HSA contributions, and FSA contributions.</p>
+        <h3>What is the difference between tax bracket and effective tax rate?</h3>
+        <p>Your <b>marginal rate</b> is the bracket your highest dollar of income falls into. Your <b>effective rate</b> is the average across all brackets — always lower than your marginal rate. This calculator shows your effective total tax rate.</p>
+        <h3>How can I increase my take-home pay?</h3>
+        <p>Maximize pre-tax contributions (401k, HSA, FSA) to reduce federal and state taxable income. Review your W-4 to ensure you're not over-withholding. If you consistently get a large refund, adjusting your W-4 allowances gives you that money in each paycheck instead.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/income-tax-calculator">Income Tax Calculator</a>
+          <a href="/tax-refund-calculator">Tax Refund Estimator</a>
+          <a href="/self-employment-tax-calculator">Self-Employment Tax</a>
+          <a href="/retirement-calculator">Retirement Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SIDEBAR ====== -->
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">File with TurboTax<small>Maximum refund guaranteed (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 FinCalc. Estimates based on 2025 IRS tax brackets. Not tax advice — consult a tax professional.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+const pct=n=>isFinite(n)?(n*100).toFixed(1)+'%':'0%';
+
+// 2025 federal tax brackets (IRS Rev. Proc. 2024-40)
+const BRACKETS={
+  single:[
+    [11925,0.10],[48475,0.12],[103350,0.22],[197300,0.24],
+    [250525,0.32],[626350,0.35],[Infinity,0.37]
+  ],
+  married:[
+    [23850,0.10],[96950,0.12],[206700,0.22],[394600,0.24],
+    [501050,0.32],[751600,0.35],[Infinity,0.37]
+  ],
+  hoh:[
+    [17000,0.10],[64850,0.12],[103350,0.22],[197300,0.24],
+    [250500,0.32],[626350,0.35],[Infinity,0.37]
+  ]
+};
+const STD_DED={single:15000,married:30000,hoh:22500};
+const SS_LIMIT=176100, SS_RATE=0.062, MED_RATE=0.0145;
+
+function federalTax(taxableIncome,filing){
+  const brackets=BRACKETS[filing];
+  let tax=0, prev=0;
+  for(const [top,rate] of brackets){
+    if(taxableIncome<=prev) break;
+    tax+=(Math.min(taxableIncome,top)-prev)*rate;
+    prev=top;
+  }
+  return Math.max(tax,0);
+}
+
+function togglePayType(){
+  const isHourly=$('paytype').value==='hourly';
+  $('salaryGroup').style.display=isHourly?'none':'block';
+  $('hourlyGroup').style.display=isHourly?'block':'none';
+  $('hoursGroup').style.display=isHourly?'block':'none';
+}
+
+function calc(){
+  const paytype=$('paytype').value;
+  const freq=+$('freq').value||26;
+  const filing=$('filing').value;
+  const pretaxPerPeriod=+$('pretax').value||0;
+  const statePct=+$('statetax').value||0;
+
+  let annualGross;
+  if(paytype==='hourly'){
+    const hrRate=+$('hourly').value||0;
+    const hpw=+$('hours').value||40;
+    annualGross=hrRate*hpw*52;
+  } else {
+    annualGross=+$('salary').value||0;
+  }
+
+  const annualPretax=pretaxPerPeriod*freq;
+  const annualTaxable=Math.max(annualGross-annualPretax-STD_DED[filing],0);
+
+  // Federal income tax (annual)
+  const annualFed=federalTax(annualTaxable,filing);
+
+  // FICA (on gross wages, not reduced by std deduction or pretax)
+  // Note: 401k reduces SS/Medicare wages; simplified here as applied to gross
+  const annualSS=Math.min(annualGross,SS_LIMIT)*SS_RATE;
+  const annualMed=annualGross*MED_RATE;
+
+  // State tax (flat estimate on taxable income)
+  const annualState=annualTaxable*(statePct/100);
+
+  const annualTotalTax=annualFed+annualSS+annualMed+annualState+annualPretax;
+  const annualNet=annualGross-annualFed-annualSS-annualMed-annualState-annualPretax;
+
+  const grossPP=annualGross/freq;
+  const fedPP=annualFed/freq;
+  const ssPP=annualSS/freq;
+  const medPP=annualMed/freq;
+  const statePP=annualState/freq;
+  const netPP=annualNet/freq;
+  const effRate=annualGross>0?(annualFed+annualSS+annualMed+annualState)/annualGross:0;
+
+  $('rNet').textContent=usd(netPP);
+  $('rGross').textContent=usd(grossPP);
+  $('rAnnualNet').textContent=usd(annualNet);
+  $('rEffRate').textContent=pct(effRate);
+
+  $('bGross').textContent=usd(grossPP);
+  $('bPretax').textContent='−'+usd(pretaxPerPeriod);
+  $('bFed').textContent='−'+usd(fedPP);
+  $('bSS').textContent='−'+usd(ssPP);
+  $('bMed').textContent='−'+usd(medPP);
+  $('bState').textContent='−'+usd(statePP);
+  $('bNet').textContent=usd(netPP);
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

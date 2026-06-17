@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!--
+  Retirement Calculator — Tool Site
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retirement Calculator — How Much Do You Need to Retire? (2026)</title>
+<meta name="description" content="Free retirement calculator. Estimate how much you'll have saved at retirement, your projected monthly income, and whether you're on track with the 4% rule.">
+<link rel="canonical" href="https://usecalcfi.com/retirement-calculator"><!-- TODO domain -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How much do I need to retire?","acceptedAnswer":{"@type":"Answer","text":"A common rule of thumb is to save 25× your annual expenses (the '4% rule') — meaning you can withdraw 4% of your portfolio per year in retirement. For example, if you need $60,000/year, you'd target $1.5 million in savings. Your actual number depends on your lifestyle, other income sources (Social Security, pension), health costs, and retirement length."}},
+{"@type":"Question","name":"What is the 4% rule?","acceptedAnswer":{"@type":"Answer","text":"The 4% rule (from the Bengen study) suggests withdrawing 4% of your portfolio in the first year of retirement, then adjusting for inflation each year. Historically, this rate has sustained a portfolio for 30+ years in most market scenarios. Some planners now recommend 3–3.5% for longer retirements."}},
+{"@type":"Question","name":"What annual return should I use in a retirement calculator?","acceptedAnswer":{"@type":"Answer","text":"Historically, a diversified stock portfolio has averaged about 7–10% annually before inflation (roughly 5–7% after inflation). A balanced 60/40 portfolio averages around 6–8%. Use 6–7% for conservative planning, 8% for moderate. This calculator lets you adjust the rate."}}
+]}
+</script>
+
+<!-- TODO: AdSense loader -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+.sublabel{font-size:11px;color:var(--mut);margin-top:2px;font-weight:400}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#f5f3ff}.kpi.main .v{color:var(--ac)}
+.kpi.good .v{color:var(--ok)}
+.kpi.warn .v{color:#d97706}
+/* Progress bar */
+.prog-wrap{margin:18px 0 6px}
+.prog-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.prog-bg{height:18px;border-radius:9px;background:#e5e7eb;overflow:hidden}
+.prog-fill{height:100%;border-radius:9px;background:linear-gradient(90deg,#7c3aed,#2563eb);transition:width .4s}
+/* Growth chart (simple CSS bars) */
+.chart{display:flex;align-items:flex-end;gap:4px;height:100px;margin:18px 0 6px;padding:0 4px}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#7c3aed,#a78bfa);min-width:8px;cursor:default;transition:opacity .2s}
+.chart-bar:hover{opacity:.75}
+.chart-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--mut)}
+.cta{display:block;background:linear-gradient(135deg,#7c3aed,#4f46e5);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#f5f3ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#f5f3ff;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+.gap-note{background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:13px;margin:12px 0;display:none}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Retirement Calculator</h1>
+  <p class="lead">See how much you'll have at retirement, your projected monthly income, and whether you're on track to reach your goal. Adjust contributions to close any gap.</p>
+
+  <div class="layout">
+    <div>
+      <!-- ====== TOOL ====== -->
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Current age</label>
+            <input id="curAge" type="number" value="35" min="18" max="80">
+          </div>
+          <div>
+            <label>Retirement age</label>
+            <input id="retAge" type="number" value="65" min="40" max="90">
+          </div>
+          <div>
+            <label>Current savings ($)</label>
+            <div class="sublabel">Total in 401k, IRA, brokerage…</div>
+            <input id="savings" type="number" value="50000">
+          </div>
+          <div>
+            <label>Monthly contribution ($)</label>
+            <div class="sublabel">Your contributions (pre + post tax)</div>
+            <input id="monthly" type="number" value="500">
+          </div>
+          <div>
+            <label>Expected annual return (%)</label>
+            <div class="sublabel">Historical avg: 7% (diversified)</div>
+            <input id="retrate" type="number" step="0.1" value="7">
+          </div>
+          <div>
+            <label>Inflation rate (%)</label>
+            <div class="sublabel">For real-value estimate</div>
+            <input id="inflation" type="number" step="0.1" value="3">
+          </div>
+          <div>
+            <label>Retirement income goal (monthly $)</label>
+            <div class="sublabel">How much you want to spend/month</div>
+            <input id="goal" type="number" value="5000">
+          </div>
+          <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rBalance">$0</div><div class="l">Projected balance at retirement</div></div>
+          <div class="kpi"><div class="v" id="rMonthly">$0</div><div class="l">Est. monthly income (4% rule)</div></div>
+          <div class="kpi" id="kpiReal"><div class="v" id="rReal">$0</div><div class="l">Balance in today's dollars</div></div>
+          <div class="kpi" id="kpiGap"><div class="v" id="rTarget">$0</div><div class="l">Target balance needed</div></div>
+        </div>
+
+        <!-- Progress toward goal -->
+        <div class="prog-wrap">
+          <div class="prog-label"><span>Progress toward retirement goal</span><span id="progPct">0%</span></div>
+          <div class="prog-bg"><div class="prog-fill" id="progBar" style="width:0%"></div></div>
+        </div>
+
+        <div class="gap-note" id="gapNote"></div>
+
+        <!-- Savings growth chart -->
+        <div id="chartWrap" style="margin-top:18px">
+          <div class="chart" id="chartBars"></div>
+          <div class="chart-labels" id="chartLabels"></div>
+        </div>
+      </div>
+
+      <!-- ====== AFFILIATE CTA ====== -->
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Open a retirement account with Betterment →
+        <small>Automated investing, low fees, tax-smart portfolios (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <!-- ====== SEO CONTENT ====== -->
+      <div class="content">
+        <h2>How to use this retirement calculator</h2>
+        <p>Enter your current age and the age at which you plan to retire. Add your current total savings across all retirement accounts (401k, IRA, Roth IRA, brokerage), your monthly contribution, and the annual return you expect. Set an inflation rate (3% is a common long-term assumption) and your target monthly spending in retirement. Click Calculate to see your projected balance, monthly income, and how close you are to your goal.</p>
+
+        <h2>How your retirement balance is calculated</h2>
+        <p>Two formulas combine to project your balance:</p>
+        <p><b>Future value of current savings:</b> <code>FV = PV × (1 + r)^n</code></p>
+        <p><b>Future value of monthly contributions:</b> <code>FV = PMT × ((1 + r)^n − 1) / r</code></p>
+        <ul>
+          <li><b>PV</b> = current savings</li>
+          <li><b>PMT</b> = monthly contribution</li>
+          <li><b>r</b> = monthly return rate (annual % ÷ 12)</li>
+          <li><b>n</b> = months until retirement</li>
+        </ul>
+        <p>The total projected balance = FV of savings + FV of contributions.</p>
+
+        <h2>The 4% rule — estimating monthly income</h2>
+        <p>The 4% rule (also called the "safe withdrawal rate") says you can withdraw 4% of your portfolio in year one of retirement and adjust for inflation annually, with a high probability of not running out of money over a 30-year retirement. The monthly income estimate = <code>Portfolio × 4% ÷ 12</code>.</p>
+        <p>Some financial planners suggest a more conservative 3–3.5% withdrawal rate for retirements lasting 35+ years or in low-return environments.</p>
+
+        <h3>Example</h3>
+        <p>A 35-year-old with $50,000 saved, contributing $500/month for 30 years at 7% return: projected balance ≈ <b>$952,000</b>, monthly income (4% rule) ≈ <b>$3,173/month</b>. To cover $5,000/month, the target portfolio = $1.5M.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Tips to maximize your retirement savings</h2>
+        <ul>
+          <li><b>Maximize your 401(k)</b> — The 2025 employee contribution limit is $23,500 ($31,000 if 50+). At minimum, contribute enough to get your full employer match — that's a 50–100% instant return.</li>
+          <li><b>Open a Roth IRA</b> — Contributions grow tax-free. 2025 limit: $7,000 ($8,000 if 50+). Income limits apply.</li>
+          <li><b>Start early — time is your biggest asset</b> — $200/month invested from age 25 to 65 at 7% grows to ~$525,000. Starting at 35 gives only ~$243,000.</li>
+          <li><b>Increase contributions automatically</b> — Set your 401(k) to increase by 1% each year. You likely won't notice the difference in your paycheck.</li>
+          <li><b>Keep fees low</b> — A 1% annual fee can reduce your final balance by 25% over 30 years. Use low-cost index funds.</li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <h3>Does this calculator include Social Security?</h3>
+        <p>No — this calculator projects only personal savings. Social Security can significantly supplement your retirement income. Use the <a href="https://www.ssa.gov/myaccount/" target="_blank" rel="noopener">SSA's my Social Security tool</a> to estimate your benefit, then subtract it from your monthly income goal before using this calculator.</p>
+        <h3>What if I retire early?</h3>
+        <p>Early retirement (before 59½) means you can't access traditional 401k/IRA funds without a 10% penalty (with some exceptions). You'll need taxable brokerage savings, a Roth conversion ladder, or other strategies. The required portfolio also grows larger the longer your retirement lasts.</p>
+        <h3>Should I use real or nominal returns?</h3>
+        <p>This calculator shows both: the projected nominal balance (raw dollars) and the balance in today's purchasing power (real value after inflation). Planning in real terms gives a more accurate picture of what your money will actually buy.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/401k-calculator">401(k) Calculator</a>
+          <a href="/compound-interest-calculator">Compound Interest</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SIDEBAR ====== -->
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">Invest with Empower<small>Free retirement planning tools (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 FinCalc. Projections are estimates for educational purposes only. Not financial advice — consult a financial advisor.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+function calc(){
+  const curAge=+$('curAge').value||35;
+  const retAge=+$('retAge').value||65;
+  const pv=+$('savings').value||0;
+  const pmt=+$('monthly').value||0;
+  const annualR=+$('retrate').value||7;
+  const inflR=+$('inflation').value||3;
+  const goalMonthly=+$('goal').value||5000;
+
+  const years=Math.max(retAge-curAge,1);
+  const n=years*12;
+  const r=annualR/100/12;
+  const ri=inflR/100/12;
+
+  // Future value of current savings
+  const fvSavings=pv*Math.pow(1+r,n);
+
+  // Future value of monthly contributions
+  let fvContrib=0;
+  if(r===0) fvContrib=pmt*n;
+  else fvContrib=pmt*(Math.pow(1+r,n)-1)/r;
+
+  const totalBalance=fvSavings+fvContrib;
+
+  // Monthly income via 4% rule
+  const monthlyIncome=totalBalance*0.04/12;
+
+  // Real value (today's dollars)
+  const realBalance=totalBalance/Math.pow(1+ri,n);
+
+  // Target balance for goal
+  const targetBalance=goalMonthly*12/0.04;
+
+  // Progress
+  const progress=targetBalance>0?Math.min(totalBalance/targetBalance,1):1;
+
+  $('rBalance').textContent=usd(totalBalance);
+  $('rMonthly').textContent=usd(monthlyIncome);
+  $('rReal').textContent=usd(realBalance);
+  $('rTarget').textContent=usd(targetBalance);
+
+  // KPI color for monthly income vs goal
+  const kpiG=$('kpiGap');
+  kpiG.className='kpi'+(totalBalance>=targetBalance?' good':' warn');
+
+  const pctVal=Math.round(progress*100);
+  $('progPct').textContent=pctVal+'%';
+  $('progBar').style.width=pctVal+'%';
+  $('progBar').style.background=pctVal>=100
+    ?'linear-gradient(90deg,#16a34a,#15803d)'
+    :'linear-gradient(90deg,#7c3aed,#2563eb)';
+
+  // Gap note
+  const gapNote=$('gapNote');
+  if(totalBalance<targetBalance){
+    const gap=targetBalance-totalBalance;
+    // How much more per month is needed?
+    let extraPMT;
+    if(r===0) extraPMT=gap/n;
+    else extraPMT=gap*r/(Math.pow(1+r,n)-1);
+    gapNote.style.display='block';
+    gapNote.innerHTML=`💡 You're projected to fall <b>${usd(gap)}</b> short of your goal. To close the gap, contribute an additional <b>${usd(extraPMT)}/month</b>.`;
+  } else {
+    gapNote.style.display='none';
+  }
+
+  // Build chart (10-year intervals)
+  const chartBars=$('chartBars');
+  const chartLabels=$('chartLabels');
+  chartBars.innerHTML='';
+  chartLabels.innerHTML='';
+
+  const checkpoints=[];
+  for(let y=0;y<=years;y+=Math.max(Math.floor(years/8),1)){
+    checkpoints.push(y);
+  }
+  if(checkpoints[checkpoints.length-1]!==years) checkpoints.push(years);
+
+  const vals=checkpoints.map(y=>{
+    const ny=y*12;
+    const fvs=pv*Math.pow(1+r,ny);
+    let fvc=0;
+    if(r===0) fvc=pmt*ny;
+    else fvc=pmt*(Math.pow(1+r,ny)-1)/r;
+    return fvs+fvc;
+  });
+
+  const maxVal=Math.max(...vals,1);
+  vals.forEach((v,i)=>{
+    const bar=document.createElement('div');
+    bar.className='chart-bar';
+    bar.style.height=(v/maxVal*100)+'%';
+    bar.title=`Age ${curAge+checkpoints[i]}: ${usd(v)}`;
+    chartBars.appendChild(bar);
+
+    const lbl=document.createElement('span');
+    lbl.textContent=curAge+checkpoints[i];
+    chartLabels.appendChild(lbl);
+  });
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>

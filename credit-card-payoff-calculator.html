@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+  Credit Card Payoff Calculator — Tool Site
+  TODO: thay ca-pub-XXXXXXXX, data-ad-slot, #AFFILIATE links, usecalcfi.com
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Credit Card Payoff Calculator — Pay Off Debt Faster (2026)</title>
+<meta name="description" content="Free credit card payoff calculator. See how long to pay off your balance, total interest paid, and how much you save by paying more than the minimum.">
+<link rel="canonical" href="https://usecalcfi.com/credit-card-payoff-calculator">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Credit Card Payoff Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How long does it take to pay off credit card debt?","acceptedAnswer":{"@type":"Answer","text":"It depends on your balance, APR, and monthly payment. Paying only the minimum (typically 1–2% of balance) on a $5,000 balance at 22% APR can take over 20 years and cost $8,000+ in interest. Paying $200/month pays it off in about 3 years with roughly $1,500 in interest."}},
+{"@type":"Question","name":"What is the minimum payment on a credit card?","acceptedAnswer":{"@type":"Answer","text":"Most credit card issuers charge the greater of: (1) a flat minimum ($25–$35) or (2) a percentage of the balance (1–3%). Some calculate it as a percentage of the balance plus the monthly interest charge. Paying only the minimum dramatically extends your payoff timeline."}},
+{"@type":"Question","name":"Should I transfer my balance to a 0% APR card?","acceptedAnswer":{"@type":"Answer","text":"A 0% intro APR balance transfer can save significant interest if you pay off the balance before the promotional period ends (typically 12–21 months). Watch for balance transfer fees (3–5%) and make sure you can pay off the full amount before the rate resets."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#dc2626;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--bd);border-radius:9px;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--ac)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.kpi{background:var(--bg);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#fef2f2}.kpi.main .v{color:var(--ac)}
+.kpi.good .v{color:var(--ok)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.cmp{border-radius:10px;padding:14px;border:2px solid var(--bd)}
+.cmp.bad{border-color:#fca5a5;background:#fef2f2}
+.cmp.good{border-color:#86efac;background:#f0fdf4}
+.cmp-title{font-size:12px;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.cmp-row{display:flex;justify-content:space-between;font-size:13px;padding:3px 0}
+.save-box{background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:14px;margin-top:12px;text-align:center}
+.save-box .sv{font-size:22px;font-weight:800;color:var(--ok)}
+.cta{display:block;background:linear-gradient(135deg,#dc2626,#d97706);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{background:#fafafe;border:1px dashed #c7cae0;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#9aa0c0;font-size:12px;margin:18px 0}
+.ad.box{min-height:250px}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#fef2f2;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+code{background:#fef2f2;padding:2px 6px;border-radius:5px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="/">💰 FinCalc</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Credit Card Payoff Calculator</h1>
+  <p class="lead">See exactly how long it takes to pay off your credit card and how much interest you'll pay — then see how much you save by paying more each month.</p>
+
+  <div class="layout">
+    <div>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Current balance ($)</label><input id="balance" type="number" value="5000"></div>
+          <div><label>Interest rate (% APR)</label><input id="rate" type="number" step="0.01" value="22"></div>
+          <div><label>Monthly payment ($)</label><input id="payment" type="number" value="150"></div>
+          <div><label>Extra monthly payment ($)</label><input id="extra" type="number" value="100" placeholder="Optional — see savings"></div>
+          <div style="display:flex;align-items:flex-end;grid-column:span 2"><button class="btn" onclick="calc()">Calculate Payoff</button></div>
+        </div>
+
+        <div class="result">
+          <div class="kpi main"><div class="v" id="rMonths">0 mo</div><div class="l">Months to pay off</div></div>
+          <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest paid</div></div>
+          <div class="kpi"><div class="v" id="rTotal">$0</div><div class="l">Total amount paid</div></div>
+          <div class="kpi"><div class="v" id="rMinPmt">$0</div><div class="l">Minimum payment (est.)</div></div>
+        </div>
+
+        <!-- Side-by-side comparison -->
+        <div class="compare" id="compareSection">
+          <div class="cmp bad">
+            <div class="cmp-title" style="color:var(--ac)">Your payment</div>
+            <div class="cmp-row"><span>Payoff time</span><span id="cNorm">–</span></div>
+            <div class="cmp-row"><span>Total interest</span><span id="cNormInt">–</span></div>
+            <div class="cmp-row"><span>Total paid</span><span id="cNormTotal">–</span></div>
+          </div>
+          <div class="cmp good">
+            <div class="cmp-title" style="color:var(--ok)">With extra $<span id="extraLbl">0</span>/mo</div>
+            <div class="cmp-row"><span>Payoff time</span><span id="cExtra">–</span></div>
+            <div class="cmp-row"><span>Total interest</span><span id="cExtraInt">–</span></div>
+            <div class="cmp-row"><span>Total paid</span><span id="cExtraTotal">–</span></div>
+          </div>
+        </div>
+        <div class="save-box" id="saveBox" style="display:none">
+          💰 Adding extra payment saves you <span class="sv" id="savingsAmt">$0</span> in interest and <span id="saveMonths">0</span> months!
+        </div>
+      </div>
+
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">
+        Transfer balance to a 0% APR card — stop paying interest →
+        <small>Compare top balance transfer offers (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <div class="ad">AdSense — in-content responsive</div>
+
+      <div class="content">
+        <h2>How to use this credit card payoff calculator</h2>
+        <p>Enter your current credit card balance, your interest rate (APR), and how much you plan to pay each month. Optionally add an extra monthly amount to see exactly how much interest and time you save. The comparison shows the impact of that extra payment side by side.</p>
+
+        <h2>The real cost of minimum payments</h2>
+        <p>Credit card minimum payments are designed to keep you paying interest as long as possible. On a $5,000 balance at 22% APR, paying only the minimum (~$100/month) can take <b>over 8 years</b> and cost <b>$4,400+ in interest</b> — nearly doubling what you originally borrowed.</p>
+        <p>Increasing your payment to $200/month cuts that to about <b>29 months</b> and roughly <b>$1,700 in interest</b>.</p>
+
+        <h2>Strategies to pay off credit card debt faster</h2>
+        <ul>
+          <li><b>Avalanche method:</b> Pay minimums on all cards, put extra money toward the highest-rate card first. Saves the most interest overall.</li>
+          <li><b>Snowball method:</b> Pay minimums on all cards, put extra toward the smallest balance first. Builds momentum and motivation.</li>
+          <li><b>Balance transfer:</b> Move high-rate debt to a 0% intro APR card. Effective if you can pay off the full balance before the promo ends (usually 12–21 months).</li>
+          <li><b>Personal loan consolidation:</b> Replace 20%+ APR credit card debt with a personal loan at 8–15% APR. Fixed monthly payments make budgeting easier.</li>
+        </ul>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What counts as the minimum payment?</h3>
+        <p>Most issuers charge the greater of a flat fee ($25–$35) or 1–2% of your outstanding balance. This calculator estimates your minimum as 2% of the current balance (minimum $25). Your actual minimum varies by issuer — check your statement.</p>
+        <h3>Does paying more than the minimum help my credit score?</h3>
+        <p>Yes — paying down balances reduces your <b>credit utilization ratio</b> (balance ÷ credit limit), which is the second most important factor in your FICO score after payment history. Keeping utilization below 30% (ideally below 10%) improves your score.</p>
+        <h3>Should I pay off credit cards or invest?</h3>
+        <p>If your credit card APR is 15%+, paying it off is almost always the better "investment" since it's a guaranteed return at that rate. Once high-interest debt is cleared, redirect that money to an emergency fund and retirement accounts.</p>
+
+        <h2>Related calculators</h2>
+        <div class="rel">
+          <a href="/debt-snowball-calculator">Debt Snowball</a>
+          <a href="/personal-loan-calculator">Personal Loan</a>
+          <a href="/compound-interest-calculator">Compound Interest</a>
+        </div>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="ad box">AdSense — sidebar 300×250</div>
+      <a class="cta" href="#AFFILIATE" rel="sponsored nofollow" target="_blank">0% Balance Transfer Cards<small>Compare top offers today (sponsored)</small></a>
+      <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap">© 2026 FinCalc. Educational estimates only — not financial advice.</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+function payoffStats(balance,apr,payment){
+  const r=apr/100/12;
+  const minPmt=Math.max(balance*0.02,25);
+  if(payment<=balance*r) return {months:Infinity,interest:Infinity,total:Infinity,minPmt};
+  let bal=balance,totalInt=0,months=0;
+  while(bal>0.005&&months<1200){
+    const intCharge=bal*r;
+    totalInt+=intCharge;
+    bal=bal+intCharge-payment;
+    months++;
+    if(bal<0){totalInt+=bal;bal=0;} // overpaid last month
+  }
+  return {months,interest:totalInt,total:totalInt+balance,minPmt};
+}
+function fmtMo(n){if(!isFinite(n)||n>=1200)return '100+ years';const y=Math.floor(n/12),m=n%12;return y>0?(m>0?`${y}y ${m}mo`:`${y} yr`):`${m} mo`;}
+function calc(){
+  const balance=+$('balance').value||0;
+  const apr=+$('rate').value||0;
+  const payment=+$('payment').value||0;
+  const extra=+$('extra').value||0;
+
+  const norm=payoffStats(balance,apr,payment);
+  const extraStats=extra>0?payoffStats(balance,apr,payment+extra):null;
+
+  $('rMonths').textContent=fmtMo(norm.months);
+  $('rInt').textContent=usd(norm.interest);
+  $('rTotal').textContent=usd(norm.total);
+  $('rMinPmt').textContent=usd(norm.minPmt);
+
+  $('cNorm').textContent=fmtMo(norm.months);
+  $('cNormInt').textContent=usd(norm.interest);
+  $('cNormTotal').textContent=usd(norm.total);
+
+  $('extraLbl').textContent=extra||0;
+  if(extraStats){
+    $('cExtra').textContent=fmtMo(extraStats.months);
+    $('cExtraInt').textContent=usd(extraStats.interest);
+    $('cExtraTotal').textContent=usd(extraStats.total);
+    const saved=norm.interest-extraStats.interest;
+    const moSaved=norm.months-extraStats.months;
+    $('saveBox').style.display='block';
+    $('savingsAmt').textContent=usd(saved);
+    $('saveMonths').textContent=moSaved+' month'+(moSaved!==1?'s':'');
+  } else {
+    $('cExtra').textContent='–';$('cExtraInt').textContent='–';$('cExtraTotal').textContent='–';
+    $('saveBox').style.display='none';
+  }
+}
+calc();
+</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
+</body>
+</html>
