@@ -83,6 +83,13 @@ select{appearance:none;-webkit-appearance:none;background-image:url("data:image/
 @media(max-width:880px){.grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
 @media(max-width:600px){.fields{grid-template-columns:1fr}.result{grid-template-columns:1fr 1fr}.side{grid-template-columns:1fr}}
 @media(max-width:760px){select{appearance:auto;-webkit-appearance:auto;background-image:none;padding-right:12px}}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
 footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size:12px;color:var(--mut);background:#fff}
 </style>
 </head>
@@ -109,15 +116,15 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
         <div class="fields">
           <div>
             <label>Loan balance ($)</label>
-            <input id="balance" type="number" value="30000" min="0" oninput="calc()">
+            <input id="balance" type="number" value="30000" min="0">
           </div>
           <div>
             <label>Interest rate (% APR)</label>
-            <input id="rate" type="number" value="6.53" step="0.01" min="0" max="30" oninput="calc()">
+            <input id="rate" type="number" value="6.53" step="0.01" min="0" max="30">
           </div>
           <div>
             <label>Repayment term (years)</label>
-            <select id="years" onchange="calc()">
+            <select id="years">
               <option value="5">5 years</option>
               <option value="10" selected>10 years (standard)</option>
               <option value="15">15 years</option>
@@ -127,7 +134,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           </div>
           <div>
             <label>Extra payment / month ($)</label>
-            <input id="extra" type="number" value="0" min="0" oninput="calc()">
+            <input id="extra" type="number" value="0" min="0">
           </div>
           <button class="btn" onclick="calc()">Calculate</button>
         </div>
