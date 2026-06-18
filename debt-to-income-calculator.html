@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!--
+  Debt-to-Income Ratio Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debt-to-Income Calculator — DTI Ratio for Mortgage (2026)</title>
+<meta name="description" content="Free debt-to-income ratio calculator. Find your front-end and back-end DTI for mortgage approval. See if you qualify for conventional, FHA, or VA loans.">
+<link rel="canonical" href="https://usecalcfi.com/debt-to-income-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/debt-to-income-calculator">
+<meta property="og:title" content="Debt-to-Income Calculator — DTI Ratio for Mortgage (2026)">
+<meta property="og:description" content="Free debt-to-income ratio calculator. Find your front-end and back-end DTI for mortgage approval. See if you qualify for conventional, FHA, or VA loans.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Debt-to-Income Calculator — DTI Ratio for Mortgage (2026)">
+<meta name="twitter:description" content="Free debt-to-income ratio calculator. Find your front-end and back-end DTI for mortgage approval. See if you qualify for conventional, FHA, or VA loans.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Debt-to-Income Calculator","url":"https://usecalcfi.com/debt-to-income-calculator","description":"Calculate your front-end and back-end DTI ratio to see if you qualify for a mortgage.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Front-end DTI","Back-end DTI","Loan qualification table","Conventional/FHA/VA thresholds"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Debt-to-Income Calculator","item":"https://usecalcfi.com/debt-to-income-calculator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good debt-to-income ratio for a mortgage?","acceptedAnswer":{"@type":"Answer","text":"Most lenders want a back-end DTI below 43%. Below 36% is considered excellent. Conventional loans typically allow up to 45–50% with strong credit and assets. FHA loans can go up to 57% in some cases."}},{"@type":"Question","name":"What is the difference between front-end and back-end DTI?","acceptedAnswer":{"@type":"Answer","text":"Front-end DTI (housing ratio) is just your housing payment divided by gross income. Back-end DTI includes all monthly debt payments (housing, car, student loans, credit cards) divided by gross income. Lenders focus most on back-end DTI."}},{"@type":"Question","name":"How can I lower my DTI ratio?","acceptedAnswer":{"@type":"Answer","text":"Pay off or pay down existing debts — especially credit cards and auto loans. Increase your gross income. Avoid taking on new debt before applying for a mortgage. A co-borrower with income can also lower your combined DTI."}}]}</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#dc2626;--bg:#0f172a;--card:#1e293b;--bd:#334155;--tx:#f1f5f9;--mut:#94a3b8;--ok:#16a34a;--warn:#f59e0b;--danger:#dc2626}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6}
+a{color:var(--ac);text-decoration:none}
+header{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 0}
+header .wrap{display:flex;align-items:center;gap:24px}
+.logo{font-weight:700;font-size:18px;color:var(--tx)}
+nav{display:flex;gap:16px;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--mut);font-size:13px}
+nav a:hover{color:var(--tx)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+main{padding:28px 0 48px}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:20px}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:6px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+input{width:100%;background:#0f172a;border:1px solid var(--bd);border-radius:8px;padding:10px 12px;color:var(--tx);font-size:16px}
+input:focus{outline:none;border-color:var(--ac)}
+.section-label{grid-column:1/-1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ac);padding-top:8px;border-top:1px solid var(--bd);margin-top:4px}
+.btn{grid-column:1/-1;background:var(--ac);color:#fff;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.btn:hover{opacity:.9}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.kpi{background:#0f172a;border-radius:10px;padding:14px;text-align:center}
+.kpi .v{font-size:26px;font-weight:800}
+.kpi .l{font-size:11px;color:var(--mut);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.kpi.good .v{color:var(--ok)}
+.kpi.warn .v{color:var(--warn)}
+.kpi.bad .v{color:var(--danger)}
+.verdict{border-radius:10px;padding:14px 16px;font-weight:600;font-size:14px;margin-top:12px;border:1px solid var(--bd)}
+.verdict.good{background:rgba(22,163,74,.12);border-color:rgba(22,163,74,.3);color:#4ade80}
+.verdict.warn{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);color:#fbbf24}
+.verdict.bad{background:rgba(220,38,38,.12);border-color:rgba(220,38,38,.3);color:#f87171}
+.dti-wrap{margin-top:14px}
+.dti-label{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:6px}
+.dti-track{background:#0f172a;border-radius:99px;height:10px;overflow:hidden;position:relative}
+.dti-bar{height:100%;border-radius:99px;transition:width .4s,background .4s;width:0%}
+.dti-marks{display:flex;justify-content:space-between;font-size:10px;color:var(--mut);margin-top:4px;padding:0 2px}
+.qual-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px}
+.qual-table th{background:#0f172a;padding:8px 10px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut)}
+.qual-table td{padding:8px 10px;border-bottom:1px solid var(--bd)}
+.qual-table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700}
+.badge.ok{background:rgba(22,163,74,.2);color:#4ade80}
+.badge.maybe{background:rgba(245,158,11,.2);color:#fbbf24}
+.badge.no{background:rgba(220,38,38,.2);color:#f87171}
+.ad{display:none;margin:0}.ad.box{display:none}
+.content{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:20px}
+.content h2{font-size:18px;font-weight:700;margin:20px 0 8px}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:15px;font-weight:600;margin:14px 0 6px;color:var(--ac)}
+.content p{color:#cbd5e1;font-size:14px;margin-bottom:10px}
+.content ul{color:#cbd5e1;font-size:14px;padding-left:20px;margin-bottom:10px}
+.content li{margin-bottom:4px}
+.cta{display:block;background:linear-gradient(135deg,var(--ac),#b91c1c);color:#fff;border-radius:10px;padding:14px 16px;font-weight:700;font-size:14px;margin-bottom:12px;line-height:1.3}
+.cta small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:2px}
+.cta:hover{opacity:.9;color:#fff}
+.side .card h3{font-size:14px;margin-bottom:10px}
+.rel{display:flex;flex-direction:column;gap:6px}
+.rel a{font-size:13px;color:var(--mut);padding:6px 8px;background:#0f172a;border-radius:6px}
+.rel a:hover{color:var(--tx)}
+.full{grid-column:1/-1}
+@media(max-width:880px){.grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+@media(max-width:600px){.fields{grid-template-columns:1fr}.result{grid-template-columns:1fr 1fr}.side{grid-template-columns:1fr}}
+@media(max-width:760px){select{appearance:auto;-webkit-appearance:auto;background-image:none;padding-right:12px}}
+footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">💰 UseCalcFi</a>
+    <nav>
+      <a href="/mortgage-calculator">Mortgage</a>
+      <a href="/auto-loan-calculator">Auto Loan</a>
+      <a href="/paycheck-calculator">Paycheck</a>
+      <a href="/retirement-calculator">Retirement</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+    <div class="main">
+      <h1>Debt-to-Income Calculator</h1>
+      <p class="sub">Calculate your DTI ratio and see if you qualify for a mortgage.</p>
+
+      <div class="card">
+        <div class="fields">
+          <div class="section-label">Monthly Gross Income</div>
+          <div>
+            <label>Gross monthly income ($)</label>
+            <input id="income" type="number" value="7500" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Co-borrower income ($)</label>
+            <input id="income2" type="number" value="0" min="0" oninput="calc()">
+          </div>
+
+          <div class="section-label">Monthly Housing Payment (Front-End)</div>
+          <div>
+            <label>Mortgage / rent payment ($)</label>
+            <input id="housing" type="number" value="1800" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Property tax + insurance ($)</label>
+            <input id="pitia" type="number" value="300" min="0" oninput="calc()">
+          </div>
+
+          <div class="section-label">Other Monthly Debt Payments (Back-End)</div>
+          <div>
+            <label>Car loan payment ($)</label>
+            <input id="car" type="number" value="450" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Student loan payment ($)</label>
+            <input id="student" type="number" value="200" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Credit card minimums ($)</label>
+            <input id="cc" type="number" value="150" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Other debt payments ($)</label>
+            <input id="other" type="number" value="0" min="0" oninput="calc()">
+          </div>
+        </div>
+
+        <div class="result">
+          <div class="kpi" id="kpiFront">
+            <div class="v" id="rFront">0%</div>
+            <div class="l">Front-end DTI</div>
+          </div>
+          <div class="kpi" id="kpiBack">
+            <div class="v" id="rBack">0%</div>
+            <div class="l">Back-end DTI</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rIncome">$0</div>
+            <div class="l">Gross income / mo</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rDebt">$0</div>
+            <div class="l">Total debt / mo</div>
+          </div>
+        </div>
+
+        <div id="verdictBox" class="verdict good">Calculating...</div>
+
+        <div class="dti-wrap">
+          <div class="dti-label">
+            <span>Back-end DTI</span>
+            <span id="dtiPct">0%</span>
+          </div>
+          <div class="dti-track">
+            <div class="dti-bar" id="dtiBar"></div>
+          </div>
+          <div class="dti-marks">
+            <span>0%</span><span>28%</span><span>36%</span><span>43%</span><span>50%+</span>
+          </div>
+        </div>
+
+        <table class="qual-table">
+          <thead><tr><th>Loan Type</th><th>Max DTI</th><th>Your Status</th></tr></thead>
+          <tbody id="qualBody"></tbody>
+        </table>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>What Is Debt-to-Income Ratio and Why It Matters</h2>
+        <p>Your debt-to-income (DTI) ratio is the percentage of your gross monthly income that goes toward debt payments. Lenders use it as one of the primary criteria to evaluate your ability to repay a loan. A lower DTI signals that you have enough income headroom to comfortably handle new debt payments.</p>
+        <h3>Front-end vs. back-end DTI</h3>
+        <p><strong>Front-end DTI</strong> (also called the "housing ratio") includes only your proposed housing payment — principal, interest, property taxes, homeowner's insurance, and HOA fees — divided by gross income. Most lenders want this below 28%.</p>
+        <p><strong>Back-end DTI</strong> includes all monthly debt obligations: housing payment plus car loans, student loans, credit card minimums, personal loans, and any other recurring debt. This is the number lenders focus on most, typically requiring it below 43%.</p>
+        <h3>DTI thresholds by loan type</h3>
+        <ul>
+          <li><strong>Conventional loans:</strong> Max back-end DTI typically 45–50% with excellent credit and reserves</li>
+          <li><strong>FHA loans:</strong> Up to 43% standard, up to 57% with compensating factors (large down payment, good credit)</li>
+          <li><strong>VA loans:</strong> No hard cap but 41% preferred; residual income requirement also applies</li>
+          <li><strong>USDA loans:</strong> Max 41% back-end DTI</li>
+          <li><strong>Jumbo loans:</strong> Stricter — typically 43% or lower required</li>
+        </ul>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>How to Lower Your DTI Before Applying for a Mortgage</h2>
+        <p>If your DTI is too high, you have two levers: reduce debt payments or increase income. The fastest wins come from paying off revolving debt (credit cards) since eliminating a minimum payment immediately drops your DTI. Paying off a $3,000 credit card with a $90/month minimum reduces your back-end DTI by over 1% on a $7,500/month income.</p>
+        <p>Avoid taking on new debt — car loans, personal loans, or opening new credit cards — in the months before applying. Every new obligation raises your DTI and can delay your mortgage approval.</p>
+
+        <h2>DTI vs. Credit Score: Which Matters More?</h2>
+        <p>Both matter, but they measure different risks. Your credit score reflects your history of repaying debt (reliability). Your DTI measures current capacity to take on new payments (affordability). A high credit score can sometimes compensate for a slightly elevated DTI — lenders call these "compensating factors." But a DTI over 50% will disqualify you from most conventional loans regardless of your credit score.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What is a good debt-to-income ratio for a mortgage?</h3>
+        <p>Below 36% back-end DTI is considered excellent and will qualify you for the best rates. Up to 43% is acceptable for most loans. Above 43% requires compensating factors or FHA/VA loans.</p>
+        <h3>What is the difference between front-end and back-end DTI?</h3>
+        <p>Front-end DTI is only your housing payment ÷ income. Back-end DTI includes all debt payments ÷ income. Lenders focus primarily on back-end DTI.</p>
+        <h3>How can I lower my DTI ratio?</h3>
+        <p>Pay off credit card balances, eliminate small loans, or add a co-borrower's income. Avoid new debt in the 3–6 months before applying for a mortgage.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a href="https://www.lendingtree.com/home/mortgage/" class="cta" rel="nofollow noopener sponsored" target="_blank">
+        Compare Mortgage Rates
+        <small>LendingTree — Free, no commitment</small>
+      </a>
+      <a href="https://www.credible.com/mortgage" class="cta" rel="nofollow noopener sponsored" target="_blank" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Get Pre-Approved Today
+        <small>Credible — Compare multiple lenders</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/home-affordability-calculator">Home Affordability</a>
+          <a href="/mortgage-payoff-calculator">Mortgage Payoff</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 UseCalcFi. Educational estimates only — not financial advice. Verify with a licensed lender.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+const pct=n=>isFinite(n)?n.toFixed(1)+'%':'0%';
+
+function qualify(backDTI){
+  return [
+    {loan:'Conventional',max:45,note:'up to 50% with strong credit'},
+    {loan:'FHA Loan',max:57,note:'43% standard; 57% with compensating factors'},
+    {loan:'VA Loan',max:41,note:'no hard cap; 41% preferred'},
+    {loan:'USDA Loan',max:41,note:'rural/suburban areas only'},
+    {loan:'Jumbo Loan',max:43,note:'stricter underwriting'}
+  ].map(r=>{
+    const ok=backDTI<=r.max;
+    const cls=ok?'ok':'no';
+    const label=ok?'✓ Likely qualify':'✗ May not qualify';
+    return `<tr><td><strong>${r.loan}</strong><br><small style="color:var(--mut)">${r.note}</small></td><td style="color:var(--mut)">&lt;${r.max}%</td><td><span class="badge ${cls}">${label}</span></td></tr>`;
+  }).join('');
+}
+
+function calc(){
+  const income=(+$('income').value||0)+(+$('income2').value||0);
+  const housing=(+$('housing').value||0)+(+$('pitia').value||0);
+  const car=+$('car').value||0;
+  const student=+$('student').value||0;
+  const cc=+$('cc').value||0;
+  const other=+$('other').value||0;
+  const totalDebt=housing+car+student+cc+other;
+  const frontDTI=income>0?(housing/income*100):0;
+  const backDTI=income>0?(totalDebt/income*100):0;
+
+  $('rFront').textContent=pct(frontDTI);
+  $('rBack').textContent=pct(backDTI);
+  $('rIncome').textContent=usd(income);
+  $('rDebt').textContent=usd(totalDebt);
+  $('dtiPct').textContent=pct(backDTI);
+
+  let cls,msg;
+  if(backDTI<28){cls='good';msg='🟢 Excellent DTI — you should qualify for the best rates available.';}
+  else if(backDTI<36){cls='good';msg='✅ Good DTI — strong approval chances across most loan types.';}
+  else if(backDTI<43){cls='warn';msg='⚠️ Acceptable — conventional loan approval likely with good credit.';}
+  else if(backDTI<50){cls='warn';msg='🔴 High DTI — FHA or VA loans may work; pay down debt before applying.';}
+  else{cls='bad';msg='❌ Very high DTI — difficult to qualify. Focus on reducing monthly debt first.';}
+
+  $('verdictBox').textContent=msg;
+  $('verdictBox').className='verdict '+cls;
+
+  const kpiCls=backDTI<36?'good':backDTI<43?'warn':'bad';
+  $('kpiFront').className='kpi '+(frontDTI<28?'good':frontDTI<36?'warn':'bad');
+  $('kpiBack').className='kpi '+kpiCls;
+
+  const barPct=Math.min(backDTI,65)/65*100;
+  const barColor=backDTI<36?'#16a34a':backDTI<43?'#f59e0b':'#dc2626';
+  $('dtiBar').style.width=barPct+'%';
+  $('dtiBar').style.background=barColor;
+
+  $('qualBody').innerHTML=qualify(backDTI);
+}
+calc();
+</script>
+</body>
+</html>

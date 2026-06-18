@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--
+  Mortgage Payoff Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage Payoff Calculator — Pay Off Early & Save (2026)</title>
+<meta name="description" content="Free mortgage payoff calculator. See how extra payments reduce your payoff date and total interest. Find out exactly how much you save by paying off your mortgage early.">
+<link rel="canonical" href="https://usecalcfi.com/mortgage-payoff-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/mortgage-payoff-calculator">
+<meta property="og:title" content="Mortgage Payoff Calculator — Pay Off Early & Save (2026)">
+<meta property="og:description" content="Free mortgage payoff calculator. See how extra payments reduce your payoff date and total interest. Find out exactly how much you save by paying off your mortgage early.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mortgage Payoff Calculator — Pay Off Early & Save (2026)">
+<meta name="twitter:description" content="Free mortgage payoff calculator. See how extra payments reduce your payoff date and total interest. Find out exactly how much you save by paying off your mortgage early.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Payoff Calculator","url":"https://usecalcfi.com/mortgage-payoff-calculator","description":"Calculate how extra mortgage payments shorten your payoff timeline and reduce total interest paid.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Extra payment impact","Months saved","Interest saved","Early payoff date"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Mortgage Payoff Calculator","item":"https://usecalcfi.com/mortgage-payoff-calculator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do extra mortgage payments really save?","acceptedAnswer":{"@type":"Answer","text":"On a $300,000 mortgage at 7% with 30 years remaining, paying an extra $200/month saves over $62,000 in interest and pays off the loan 6 years early. Even $100/month extra saves $35,000 and cuts 4 years off."}},{"@type":"Question","name":"Is it better to pay extra on a mortgage or invest?","acceptedAnswer":{"@type":"Answer","text":"It depends on your mortgage rate vs. expected investment returns. If your mortgage rate is 7% and you expect the stock market to return 8–10%, investing may generate more wealth long-term. But paying down mortgage provides a guaranteed, risk-free return equal to your interest rate, plus the psychological benefit of being debt-free."}},{"@type":"Question","name":"Should I pay off my mortgage early or invest?","acceptedAnswer":{"@type":"Answer","text":"Consider both: first max out tax-advantaged accounts (401k match, IRA, HSA), then use any remaining extra cash to pay down the mortgage. The mortgage rate is your guaranteed 'return' — compare that to your investment alternatives when deciding."}}]}</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#059669;--bg:#0f172a;--card:#1e293b;--bd:#334155;--tx:#f1f5f9;--mut:#94a3b8;--ok:#16a34a;--warn:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6}
+a{color:var(--ac);text-decoration:none}
+header{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 0}
+header .wrap{display:flex;align-items:center;gap:24px}
+.logo{font-weight:700;font-size:18px;color:var(--tx)}
+nav{display:flex;gap:16px;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--mut);font-size:13px}
+nav a:hover{color:var(--tx)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+main{padding:28px 0 48px}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:20px}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:6px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+input{width:100%;background:#0f172a;border:1px solid var(--bd);border-radius:8px;padding:10px 12px;color:var(--tx);font-size:16px}
+input:focus{outline:none;border-color:var(--ac)}
+.btn{grid-column:1/-1;background:var(--ac);color:#fff;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.btn:hover{opacity:.9}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.kpi{background:#0f172a;border-radius:10px;padding:14px;text-align:center}
+.kpi .v{font-size:20px;font-weight:800;color:var(--ac)}
+.kpi .l{font-size:11px;color:var(--mut);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.kpi.neutral .v{color:var(--tx)}
+.save-hero{background:linear-gradient(135deg,rgba(5,150,105,.15),rgba(16,185,129,.1));border:1px solid rgba(5,150,105,.3);border-radius:12px;padding:20px;margin-top:14px;text-align:center}
+.save-hero .big{font-size:36px;font-weight:900;color:#34d399}
+.save-hero .lbl{font-size:13px;color:var(--mut);margin-top:2px}
+.save-hero .sub2{font-size:14px;color:#cbd5e1;margin-top:8px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.compare-box{background:#0f172a;border-radius:10px;padding:14px}
+.compare-box .head{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin-bottom:8px}
+.compare-box .row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--bd)}
+.compare-box .row:last-child{border-bottom:none;font-weight:700}
+.compare-box.new .row:last-child span:last-child{color:var(--ok)}
+.scenario-wrap{margin-top:16px}
+.scenario-wrap h4{font-size:13px;color:var(--mut);margin-bottom:10px;text-transform:uppercase;letter-spacing:.4px}
+.scenario-table{width:100%;border-collapse:collapse;font-size:13px}
+.scenario-table th{background:#0f172a;padding:8px 10px;text-align:left;font-size:11px;text-transform:uppercase;color:var(--mut)}
+.scenario-table td{padding:8px 10px;border-bottom:1px solid var(--bd)}
+.scenario-table tr:last-child td{border-bottom:none}
+.sv{color:#34d399;font-weight:700}
+.ad{display:none;margin:0}.ad.box{display:none}
+.content{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:20px}
+.content h2{font-size:18px;font-weight:700;margin:20px 0 8px}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:15px;font-weight:600;margin:14px 0 6px;color:var(--ac)}
+.content p{color:#cbd5e1;font-size:14px;margin-bottom:10px}
+.content ul{color:#cbd5e1;font-size:14px;padding-left:20px;margin-bottom:10px}
+.content li{margin-bottom:4px}
+.cta{display:block;background:linear-gradient(135deg,var(--ac),#047857);color:#fff;border-radius:10px;padding:14px 16px;font-weight:700;font-size:14px;margin-bottom:12px;line-height:1.3}
+.cta small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:2px}
+.cta:hover{opacity:.9;color:#fff}
+.side .card h3{font-size:14px;margin-bottom:10px}
+.rel{display:flex;flex-direction:column;gap:6px}
+.rel a{font-size:13px;color:var(--mut);padding:6px 8px;background:#0f172a;border-radius:6px}
+.rel a:hover{color:var(--tx)}
+@media(max-width:880px){.grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+@media(max-width:600px){.fields{grid-template-columns:1fr}.kpi-grid{grid-template-columns:1fr 1fr}.compare{grid-template-columns:1fr}.side{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">💰 UseCalcFi</a>
+    <nav>
+      <a href="/mortgage-calculator">Mortgage</a>
+      <a href="/auto-loan-calculator">Auto Loan</a>
+      <a href="/paycheck-calculator">Paycheck</a>
+      <a href="/retirement-calculator">Retirement</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+    <div class="main">
+      <h1>Mortgage Payoff Calculator</h1>
+      <p class="sub">See how extra payments shorten your loan and cut thousands in interest.</p>
+
+      <div class="card">
+        <div class="fields">
+          <div>
+            <label>Current loan balance ($)</label>
+            <input id="balance" type="number" value="280000" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Interest rate (% APR)</label>
+            <input id="rate" type="number" value="7.0" step="0.05" min="0" max="20" oninput="calc()">
+          </div>
+          <div>
+            <label>Remaining term (years)</label>
+            <input id="years" type="number" value="28" min="1" max="30" oninput="calc()">
+          </div>
+          <div>
+            <label>Extra payment / month ($)</label>
+            <input id="extra" type="number" value="200" min="0" oninput="calc()">
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi neutral">
+            <div class="v" id="rPayment">$0</div>
+            <div class="l">Base payment</div>
+          </div>
+          <div class="kpi neutral">
+            <div class="v" id="rOrigPayoff">—</div>
+            <div class="l">Original payoff</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rNewPayoff">—</div>
+            <div class="l">New payoff</div>
+          </div>
+        </div>
+
+        <div class="save-hero" id="saveHero">
+          <div class="big" id="rSavedInt">$0</div>
+          <div class="lbl">Total interest saved</div>
+          <div class="sub2" id="rSavedSummary">Enter an extra payment to see your savings</div>
+        </div>
+
+        <div class="compare">
+          <div class="compare-box">
+            <div class="head">Without extra payment</div>
+            <div class="row"><span>Monthly payment</span><span id="c1Pay">—</span></div>
+            <div class="row"><span>Payoff timeline</span><span id="c1Time">—</span></div>
+            <div class="row"><span>Total interest</span><span id="c1Int">—</span></div>
+            <div class="row"><span>Total paid</span><span id="c1Total">—</span></div>
+          </div>
+          <div class="compare-box new">
+            <div class="head" style="color:var(--ok)">With extra payment ✓</div>
+            <div class="row"><span>Monthly payment</span><span id="c2Pay">—</span></div>
+            <div class="row"><span>Payoff timeline</span><span id="c2Time">—</span></div>
+            <div class="row"><span>Total interest</span><span id="c2Int">—</span></div>
+            <div class="row"><span>Total paid</span><span id="c2Total">—</span></div>
+          </div>
+        </div>
+
+        <div class="scenario-wrap">
+          <h4>Extra payment scenarios</h4>
+          <table class="scenario-table">
+            <thead><tr><th>Extra / mo</th><th>Months saved</th><th>Interest saved</th><th>New payoff</th></tr></thead>
+            <tbody id="scenarioBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>The Math Behind Extra Mortgage Payments</h2>
+        <p>Mortgage interest is calculated monthly on your outstanding principal balance. Every dollar of extra principal payment immediately reduces the balance, which reduces next month's interest charge. That freed-up interest capacity goes toward more principal in every subsequent payment — creating a compounding acceleration effect.</p>
+        <p>This is why the biggest savings come from extra payments made early in the loan when the balance (and thus monthly interest) is highest. An extra $200 in month 1 of a 30-year loan saves far more than the same $200 in year 25.</p>
+        <h3>The one extra payment per year strategy</h3>
+        <p>Making 13 monthly payments per year (one extra payment annually) is a popular payoff strategy. On a $300,000 loan at 7%, this single extra payment per year cuts your 30-year mortgage to approximately 24.5 years and saves over $60,000 in interest. You can achieve this by dividing your monthly payment by 12 and adding that amount to each payment.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>Should You Pay Off Your Mortgage Early or Invest?</h2>
+        <p>This is the most common question homeowners face. The math-optimal answer depends on your mortgage rate vs. expected investment returns. With a 7% mortgage, paying it down is a guaranteed 7% return. The S&P 500 has historically returned ~10% annually before inflation — suggesting investing may win long-term. But market returns aren't guaranteed, while your mortgage interest rate savings are.</p>
+        <p>The balanced approach most financial advisors recommend: first max out tax-advantaged accounts (401k employer match, Roth IRA, HSA), then split additional savings between investing and extra mortgage payments. You get market upside while steadily reducing debt exposure.</p>
+
+        <h2>Biweekly Payments vs. Monthly Extra Payments</h2>
+        <p>Paying half your monthly payment every two weeks results in 26 half-payments (13 full payments) per year — automatically making one extra payment annually without thinking about it. Many lenders offer this option. Be sure your lender applies biweekly payments directly to principal and not just holds them until month-end, which would negate the benefit.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>How much do extra mortgage payments really save?</h3>
+        <p>On a $300,000 mortgage at 7% with 30 years remaining, paying $200 extra per month saves over $62,000 in interest and pays off the loan 6 years early. Even $100/month extra saves $35,000 and cuts 4 years off.</p>
+        <h3>Is it better to pay extra on a mortgage or invest?</h3>
+        <p>If your mortgage rate is below expected market returns (~10%), investing may generate more wealth long-term. But paying down mortgage offers a guaranteed, risk-free return equal to your rate. Many advisors recommend maxing tax-advantaged accounts first, then split remaining savings between both.</p>
+        <h3>Should I pay off my mortgage early or invest?</h3>
+        <p>Max tax-advantaged accounts first (401k match, IRA, HSA), then use remaining extra cash toward the mortgage. Your mortgage rate is your guaranteed return — compare it to investment alternatives when deciding how to split.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a href="https://www.lendingtree.com/home/refinance/" class="cta" rel="nofollow noopener sponsored" target="_blank">
+        Lower Your Rate — Refinance
+        <small>LendingTree — Compare rates free</small>
+      </a>
+      <a href="https://www.credible.com/refinance-mortgage" class="cta" rel="nofollow noopener sponsored" target="_blank" style="background:linear-gradient(135deg,#0891b2,#0e7490)">
+        Get a Refinance Quote
+        <small>Credible — No impact to credit score</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/mortgage-calculator">Mortgage Calculator</a>
+          <a href="/refinance-calculator">Refinance Calculator</a>
+          <a href="/amortization-calculator">Amortization Schedule</a>
+          <a href="/heloc-calculator">HELOC Calculator</a>
+          <a href="/debt-to-income-calculator">Debt-to-Income DTI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 UseCalcFi. Educational estimates only — not financial advice. Verify with your lender.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+function pmt(P,r,n){
+  if(r===0) return n>0?P/n:0;
+  return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+}
+
+function amortize(P,r,monthly){
+  let bal=P,totalInt=0,months=0;
+  while(bal>0.01&&months<5000){
+    const intM=bal*r;
+    const prin=monthly-intM;
+    if(prin<=0) break;
+    totalInt+=intM;
+    bal=Math.max(bal-prin,0);
+    months++;
+  }
+  return{months,totalInt,totalPaid:P+totalInt};
+}
+
+function moStr(m){
+  const y=Math.floor(m/12),mo=m%12;
+  return [y?y+' yr':'',mo?mo+' mo':''].filter(Boolean).join(' ')||'<1 mo';
+}
+
+function scenarioRow(P,r,base,extraAmt,mo0,int0){
+  if(extraAmt===0){
+    return`<tr><td style="color:var(--mut)">$0 (base)</td><td>—</td><td>—</td><td>${moStr(mo0)}</td></tr>`;
+  }
+  const{months,totalInt}=amortize(P,r,base+extraAmt);
+  const savedMo=mo0-months;
+  const savedInt=int0-totalInt;
+  return`<tr><td>+${usd(extraAmt)}</td><td class="sv">${moStr(savedMo)}</td><td class="sv">${usd(savedInt)}</td><td>${moStr(months)}</td></tr>`;
+}
+
+function calc(){
+  const P=+$('balance').value||0;
+  const annRate=+$('rate').value||0;
+  const years=+$('years').value||28;
+  const extra=+$('extra').value||0;
+  const r=annRate/100/12;
+  const n=years*12;
+  const base=pmt(P,r,n);
+
+  const{months:mo0,totalInt:int0,totalPaid:paid0}=amortize(P,r,base);
+  const{months:mo1,totalInt:int1,totalPaid:paid1}=amortize(P,r,base+extra);
+
+  const savedInt=int0-int1;
+  const savedMo=mo0-mo1;
+
+  $('rPayment').textContent=usd(base);
+  $('rOrigPayoff').textContent=moStr(mo0);
+  $('rNewPayoff').textContent=extra>0?moStr(mo1):moStr(mo0);
+  $('rSavedInt').textContent=usd(extra>0?savedInt:0);
+  $('rSavedSummary').textContent=extra>0
+    ?`Paying ${usd(extra)}/mo extra cuts ${moStr(savedMo)} off your loan`
+    :'Enter an extra payment amount above to see your savings';
+
+  $('c1Pay').textContent=usd(base);
+  $('c1Time').textContent=moStr(mo0);
+  $('c1Int').textContent=usd(int0);
+  $('c1Total').textContent=usd(paid0);
+
+  $('c2Pay').textContent=usd(base+(extra||0));
+  $('c2Time').textContent=moStr(extra>0?mo1:mo0);
+  $('c2Int').textContent=usd(extra>0?int1:int0);
+  $('c2Total').textContent=usd(extra>0?paid1:paid0);
+
+  const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,int0)).join('');
+  $('scenarioBody').innerHTML=rows;
+}
+calc();
+</script>
+</body>
+</html>

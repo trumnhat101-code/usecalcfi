@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--
+  Student Loan Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Loan Calculator — Monthly Payment & Total Interest (2026)</title>
+<meta name="description" content="Free student loan calculator. Estimate your monthly payment, total interest, and payoff date. See how extra payments save thousands. Works for federal and private loans.">
+<link rel="canonical" href="https://usecalcfi.com/student-loan-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/student-loan-calculator">
+<meta property="og:title" content="Student Loan Calculator — Monthly Payment & Total Interest (2026)">
+<meta property="og:description" content="Free student loan calculator. Estimate your monthly payment, total interest, and payoff date. See how extra payments save thousands. Works for federal and private loans.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Student Loan Calculator — Monthly Payment & Total Interest (2026)">
+<meta name="twitter:description" content="Free student loan calculator. Estimate your monthly payment, total interest, and payoff date. See how extra payments save thousands. Works for federal and private loans.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Student Loan Calculator","url":"https://usecalcfi.com/student-loan-calculator","description":"Calculate monthly student loan payments, total interest, and payoff timeline for federal and private loans.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Monthly payment","Total interest","Extra payment savings","Federal vs private rates"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Student Loan Calculator","item":"https://usecalcfi.com/student-loan-calculator"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the average student loan interest rate?","acceptedAnswer":{"@type":"Answer","text":"For 2024–2025, federal Direct Subsidized and Unsubsidized loans for undergraduates are 6.53% APR. Graduate Unsubsidized loans are 8.08%. PLUS loans are 9.08%. Private loan rates vary widely from 4% to 16%+ depending on credit."}},{"@type":"Question","name":"How long does it take to pay off student loans?","acceptedAnswer":{"@type":"Answer","text":"The standard federal repayment plan is 10 years. Income-driven repayment plans (IDR) extend this to 20–25 years with lower monthly payments. Making extra payments above the minimum is the fastest way to pay off loans early."}},{"@type":"Question","name":"Is it worth paying extra on student loans?","acceptedAnswer":{"@type":"Answer","text":"Yes — extra payments reduce principal faster, lowering the interest that accrues each month. On a $30,000 loan at 6.5% over 10 years, paying just $100 extra per month saves over $1,800 in interest and cuts 14 months off the repayment."}}]}</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+<style>
+:root{--ac:#4f46e5;--bg:#0f172a;--card:#1e293b;--bd:#334155;--tx:#f1f5f9;--mut:#94a3b8;--ok:#16a34a;--warn:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.6}
+a{color:var(--ac);text-decoration:none}
+header{background:var(--card);border-bottom:1px solid var(--bd);padding:12px 0}
+header .wrap{display:flex;align-items:center;gap:24px}
+.logo{font-weight:700;font-size:18px;color:var(--tx)}
+nav{display:flex;gap:16px;overflow-x:auto;white-space:nowrap}
+nav a{color:var(--mut);font-size:13px}
+nav a:hover{color:var(--tx)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+main{padding:28px 0 48px}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:20px;margin-bottom:20px}
+h1{font-size:clamp(22px,4vw,30px);font-weight:800;margin-bottom:6px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+input,select{width:100%;background:#0f172a;border:1px solid var(--bd);border-radius:8px;padding:10px 12px;color:var(--tx);font-size:16px}
+input:focus,select:focus{outline:none;border-color:var(--ac)}
+.btn{grid-column:1/-1;background:var(--ac);color:#fff;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+.btn:hover{opacity:.9}
+.result{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.kpi{background:#0f172a;border-radius:10px;padding:14px;text-align:center}
+.kpi .v{font-size:22px;font-weight:800;color:var(--ac)}
+.kpi .l{font-size:11px;color:var(--mut);margin-top:2px;text-transform:uppercase;letter-spacing:.4px}
+.kpi.good .v{color:var(--ok)}
+.save-box{background:rgba(79,70,229,.12);border:1px solid rgba(79,70,229,.3);border-radius:10px;padding:16px;margin-top:14px}
+.save-box .sv{color:#818cf8;font-weight:700}
+.bar-wrap{margin-top:16px}
+.bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--mut);margin-bottom:5px}
+.bar-track{background:#0f172a;border-radius:99px;height:12px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--ac),#818cf8);transition:width .4s}
+.legend{display:flex;gap:16px;margin-top:8px;font-size:12px;color:var(--mut)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+.rate-ref{background:#0f172a;border-radius:10px;padding:14px;margin-top:14px}
+.rate-ref h4{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin-bottom:10px}
+.rate-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid var(--bd)}
+.rate-row:last-child{border-bottom:none}
+.ad{display:none;margin:0}.ad.box{display:none}
+.content{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:20px}
+.content h2{font-size:18px;font-weight:700;margin:20px 0 8px}
+.content h2:first-child{margin-top:0}
+.content h3{font-size:15px;font-weight:600;margin:14px 0 6px;color:var(--ac)}
+.content p{color:#cbd5e1;font-size:14px;margin-bottom:10px}
+.content ul{color:#cbd5e1;font-size:14px;padding-left:20px;margin-bottom:10px}
+.content li{margin-bottom:4px}
+.cta{display:block;background:linear-gradient(135deg,var(--ac),#4338ca);color:#fff;border-radius:10px;padding:14px 16px;font-weight:700;font-size:14px;margin-bottom:12px;line-height:1.3}
+.cta small{display:block;font-weight:400;font-size:12px;opacity:.85;margin-top:2px}
+.cta:hover{opacity:.9;color:#fff}
+.side .card h3{font-size:14px;margin-bottom:10px}
+.rel{display:flex;flex-direction:column;gap:6px}
+.rel a{font-size:13px;color:var(--mut);padding:6px 8px;background:#0f172a;border-radius:6px}
+.rel a:hover{color:var(--tx)}
+@media(max-width:880px){.grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+@media(max-width:600px){.fields{grid-template-columns:1fr}.result{grid-template-columns:1fr 1fr}.side{grid-template-columns:1fr}}
+@media(max-width:760px){select{appearance:auto;-webkit-appearance:auto;background-image:none;padding-right:12px}}
+footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size:12px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">💰 UseCalcFi</a>
+    <nav>
+      <a href="/mortgage-calculator">Mortgage</a>
+      <a href="/auto-loan-calculator">Auto Loan</a>
+      <a href="/paycheck-calculator">Paycheck</a>
+      <a href="/retirement-calculator">Retirement</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap grid">
+    <div class="main">
+      <h1>Student Loan Calculator</h1>
+      <p class="sub">Estimate your monthly payment, total interest, and payoff date for federal or private student loans.</p>
+
+      <div class="card">
+        <div class="fields">
+          <div>
+            <label>Loan balance ($)</label>
+            <input id="balance" type="number" value="30000" min="0" oninput="calc()">
+          </div>
+          <div>
+            <label>Interest rate (% APR)</label>
+            <input id="rate" type="number" value="6.53" step="0.01" min="0" max="30" oninput="calc()">
+          </div>
+          <div>
+            <label>Repayment term (years)</label>
+            <select id="years" onchange="calc()">
+              <option value="5">5 years</option>
+              <option value="10" selected>10 years (standard)</option>
+              <option value="15">15 years</option>
+              <option value="20">20 years (IDR)</option>
+              <option value="25">25 years (IDR extended)</option>
+            </select>
+          </div>
+          <div>
+            <label>Extra payment / month ($)</label>
+            <input id="extra" type="number" value="0" min="0" oninput="calc()">
+          </div>
+        </div>
+
+        <div class="result">
+          <div class="kpi">
+            <div class="v" id="rPayment">$0</div>
+            <div class="l">Monthly payment</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rTotalInt">$0</div>
+            <div class="l">Total interest</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rTotalPaid">$0</div>
+            <div class="l">Total paid</div>
+          </div>
+        </div>
+
+        <div class="bar-wrap">
+          <div class="bar-label">
+            <span>Principal vs. Interest</span>
+            <span id="intPct">0% interest</span>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" id="intBar" style="width:0%"></div>
+          </div>
+          <div class="legend">
+            <span><span class="dot" style="background:var(--ac)"></span>Interest</span>
+            <span><span class="dot" style="background:#334155"></span>Principal</span>
+          </div>
+        </div>
+
+        <div class="save-box" id="saveBox" style="display:none">
+          <strong>💡 Extra payment impact:</strong><br>
+          Paying <span class="sv" id="rExtraAmt">$0</span>/mo extra saves <span class="sv" id="rSavedInt">$0</span> in interest
+          and pays off <span class="sv" id="rSavedMo">0 months</span> sooner.
+          New payoff: <span class="sv" id="rNewPayoff">—</span>.
+        </div>
+
+        <div class="rate-ref">
+          <h4>2024–2025 Federal loan rates (for reference)</h4>
+          <div class="rate-row"><span>Undergrad Subsidized/Unsubsidized</span><span style="color:var(--ac)">6.53%</span></div>
+          <div class="rate-row"><span>Graduate Unsubsidized</span><span style="color:var(--ac)">8.08%</span></div>
+          <div class="rate-row"><span>PLUS Loans (Grad & Parent)</span><span style="color:var(--ac)">9.08%</span></div>
+          <div class="rate-row"><span>Private loans (varies)</span><span style="color:var(--mut)">4–16%+</span></div>
+        </div>
+      </div>
+
+      <div class="ad">AdSense — leaderboard</div>
+
+      <div class="content">
+        <h2>Federal vs. Private Student Loans: Key Differences</h2>
+        <p>Federal loans offer protections private loans don't: income-driven repayment (IDR), Public Service Loan Forgiveness (PSLF), deferment and forbearance options, and fixed interest rates set by Congress each year. Private loans may have lower rates for borrowers with excellent credit, but they lack federal safety nets.</p>
+        <h3>Income-driven repayment plans</h3>
+        <p>Federal IDR plans cap payments at 5–10% of discretionary income and forgive remaining balances after 20–25 years. The SAVE plan (formerly REPAYE) is the most generous for most borrowers. However, forgiven amounts may be taxable as income — a factor to consider when choosing between standard repayment and IDR.</p>
+        <h3>Public Service Loan Forgiveness (PSLF)</h3>
+        <p>If you work for a qualifying government or nonprofit employer, PSLF forgives your remaining federal loan balance after 120 qualifying payments (10 years) on an IDR plan — tax-free. This is the most valuable loan forgiveness program available.</p>
+
+        <div class="ad">AdSense — in-article</div>
+
+        <h2>How Extra Payments Accelerate Payoff</h2>
+        <p>Student loan interest accrues daily on your outstanding balance. Every extra dollar you pay reduces principal, which reduces the balance that interest is calculated on each day. On a $30,000 loan at 6.53% over 10 years, your base payment is $338/month. Paying $100 extra ($438 total) saves over $1,800 in interest and cuts 14 months off repayment. Paying $200 extra saves $3,200 and cuts 26 months.</p>
+        <p>Apply extra payments to your highest-rate loan first if you have multiple loans — this is the debt avalanche method and minimizes total interest paid.</p>
+
+        <h2>Refinancing Student Loans: When It Makes Sense</h2>
+        <p>Refinancing replaces one or more loans with a new private loan, ideally at a lower rate. It can significantly reduce your monthly payment and total interest. However, refinancing federal loans into a private loan permanently loses all federal protections — IDR plans, PSLF eligibility, and federal deferment options. Only refinance federal loans if you have stable income, don't need federal safety nets, and can get a rate significantly lower than your current rate.</p>
+
+        <h2>Frequently asked questions</h2>
+        <h3>What is the average student loan interest rate?</h3>
+        <p>For 2024–2025, federal undergraduate loans are 6.53%. Graduate unsubsidized loans are 8.08%. PLUS loans are 9.08%. Private loan rates range from 4% to 16%+ depending on credit score and lender.</p>
+        <h3>How long does it take to pay off student loans?</h3>
+        <p>The standard federal plan is 10 years. IDR plans extend to 20–25 years. Making extra payments is the fastest path to payoff under any plan.</p>
+        <h3>Is it worth paying extra on student loans?</h3>
+        <p>Yes — even $50–100/month extra meaningfully reduces total interest and shortens your repayment timeline. If you have high-rate private loans, extra payments are especially valuable since refinancing options may be limited.</p>
+      </div>
+    </div>
+
+    <div class="side">
+      <a href="https://www.sofi.com/student-loan-refinancing/" class="cta" rel="nofollow noopener sponsored" target="_blank">
+        Refinance Student Loans — SoFi
+        <small>Check your rate in 2 minutes, no hard pull</small>
+      </a>
+      <a href="https://www.earnest.com/student-loan-refinancing" class="cta" rel="nofollow noopener sponsored" target="_blank" style="background:linear-gradient(135deg,#059669,#16a34a)">
+        Compare Refinance Rates — Earnest
+        <small>No fees, flexible repayment terms</small>
+      </a>
+      <div class="ad box">AdSense — sidebar</div>
+      <div class="card">
+        <h3 style="margin-top:0">Related calculators</h3>
+        <div class="rel">
+          <a href="/debt-snowball-calculator">Debt Snowball</a>
+          <a href="/personal-loan-calculator">Personal Loan</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/debt-to-income-calculator">Debt-to-Income DTI</a>
+          <a href="/income-tax-calculator">Income Tax</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  © 2026 UseCalcFi. Educational estimates only — not financial advice. Verify with your loan servicer.
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+function pmt(P,r,n){
+  if(r===0) return n>0?P/n:0;
+  return P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+}
+
+function amortize(P,r,monthlyPmt){
+  let bal=P,totalInt=0,months=0;
+  while(bal>0.005&&months<1200){
+    const intMonth=bal*r;
+    const prin=Math.min(monthlyPmt-intMonth,bal);
+    if(prin<=0) break;
+    totalInt+=intMonth;
+    bal-=prin;
+    months++;
+  }
+  return{months,totalInt};
+}
+
+function moToStr(m){
+  const y=Math.floor(m/12),mo=m%12;
+  return (y?y+' yr ':[])+(mo?mo+' mo':'').trim()||'<1 mo';
+}
+
+function calc(){
+  const P=+$('balance').value||0;
+  const annRate=+$('rate').value||0;
+  const years=+$('years').value||10;
+  const extra=+$('extra').value||0;
+  const r=annRate/100/12;
+  const n=years*12;
+
+  const base=pmt(P,r,n);
+  const {months:mo0,totalInt:int0}=amortize(P,r,base);
+
+  $('rPayment').textContent=usd(base);
+  $('rTotalInt').textContent=usd(int0);
+  $('rTotalPaid').textContent=usd(P+int0);
+
+  const intPctVal=P>0?(int0/(P+int0)*100):0;
+  $('intBar').style.width=Math.min(intPctVal,100)+'%';
+  $('intPct').textContent=intPctVal.toFixed(0)+'% interest';
+
+  if(extra>0){
+    const{months:mo1,totalInt:int1}=amortize(P,r,base+extra);
+    const saved=int0-int1;
+    const savedMo=mo0-mo1;
+    $('rExtraAmt').textContent=usd(extra);
+    $('rSavedInt').textContent=usd(saved);
+    $('rSavedMo').textContent=moToStr(savedMo);
+    $('rNewPayoff').textContent=moToStr(mo1);
+    $('saveBox').style.display='block';
+  } else {
+    $('saveBox').style.display='none';
+  }
+}
+calc();
+</script>
+</body>
+</html>
