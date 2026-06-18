@@ -156,6 +156,32 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Guides -->
+  <url>
+    <loc>https://usecalcfi.com/guides</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/when-to-take-social-security</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/good-dti-ratio</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/pay-off-mortgage-early</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Debt & Student Loans -->
   <url>
     <loc>https://usecalcfi.com/debt-to-income-calculator</loc>
