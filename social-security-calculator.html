@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!--
+  Social Security Calculator — UseCalcFi
+  TODO: ca-pub-XXXXXXXX, data-ad-slot
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Security Calculator — Estimate Benefits by Age (2026)</title>
+<meta name="description" content="Free Social Security calculator. Estimate your monthly benefit at 62, 67, or 70. Compare all claiming ages and find your break-even point to maximize lifetime benefits.">
+<link rel="canonical" href="https://usecalcfi.com/social-security-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/social-security-calculator">
+<meta property="og:title" content="Social Security Calculator — Estimate Benefits by Age (2026)">
+<meta property="og:description" content="Free Social Security calculator. Estimate your monthly benefit at 62, 67, or 70. Compare all claiming ages and find your break-even point to maximize lifetime benefits.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Social Security Calculator — Estimate Benefits by Age (2026)">
+<meta name="twitter:description" content="Free Social Security calculator. Estimate your monthly benefit at 62, 67, or 70. Compare all claiming ages and find your break-even point to maximize lifetime benefits.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Social Security Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Social Security Calculator","item":"https://usecalcfi.com/social-security-calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the best age to claim Social Security?","acceptedAnswer":{"@type":"Answer","text":"There is no single best age — it depends on your health, other income, and break-even analysis. Claiming at 62 gives you more checks but each is smaller (up to 30% less). Waiting until 70 maximizes your monthly amount by 24–32% above your Full Retirement Age benefit. If you live past your break-even age (typically your early 80s), waiting pays off more in lifetime total."}},
+{"@type":"Question","name":"How much does Social Security reduce if I claim at 62?","acceptedAnswer":{"@type":"Answer","text":"If your Full Retirement Age is 67 (born 1960 or later), claiming at 62 permanently reduces your benefit by 30%. The reduction is 5/9 of 1% per month for the first 36 months early, and 5/12 of 1% per month for each additional month. For an FRA of 66, the reduction at 62 is 25%."}},
+{"@type":"Question","name":"What is Full Retirement Age for Social Security?","acceptedAnswer":{"@type":"Answer","text":"Full Retirement Age (FRA) depends on your birth year. For those born 1960 or later, FRA is 67. For those born 1943–1954, FRA is 66. For birth years 1955–1959, FRA is between 66 and 67 (two months added per year). FRA is the age at which you receive 100% of your calculated benefit."}}
+]}
+</script>
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script> -->
+
+<style>
+:root{--ac:#1d4ed8;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+h1{font-size:28px;margin:22px 0 6px}
+.lead{color:var(--mut);margin-bottom:18px;max-width:720px}
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+@media(max-width:880px){.layout{grid-template-columns:1fr}.side{order:3}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;color:var(--mut);margin-bottom:5px;font-weight:600}
+input,select{width:100%;max-width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--bd);border-radius:10px;font-size:16px;outline:none;transition:border-color .18s,box-shadow .18s;background:var(--card)}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpolyline points='1,1 7,7 13,1' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:38px;cursor:pointer}
+@media(max-width:760px){select{appearance:auto;-webkit-appearance:auto;background-image:none;padding-right:12px}}
+input:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(29,78,216,.13)}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer;width:100%;margin-top:6px}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+@media(max-width:480px){.result{grid-template-columns:1fr}}
+.kpi{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.kpi .v{font-size:24px;font-weight:800}
+.kpi .l{font-size:12px;color:var(--mut)}
+.kpi.main{background:#eff6ff;border-color:#bfdbfe}.kpi.main .v{color:var(--ac)}
+.hint{font-size:12px;color:var(--mut);margin-top:6px;line-height:1.5}
+.comp-wrap{margin-top:18px}
+.comp-wrap h3{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--tx)}
+.comp-table{width:100%;border-collapse:collapse;font-size:13px}
+.comp-table th{background:var(--bg);padding:8px 10px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:var(--mut);border-bottom:2px solid var(--bd)}
+.comp-table td{padding:8px 10px;border-bottom:1px solid var(--bd)}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr.active{background:rgba(29,78,216,.05);font-weight:700}
+.fra-tag{display:inline-block;background:#eff6ff;color:var(--ac);border-radius:99px;font-size:10px;padding:1px 7px;margin-left:6px;font-weight:700;vertical-align:middle}
+.max-tag{display:inline-block;background:#f0fdf4;color:#15803d;border-radius:99px;font-size:10px;padding:1px 7px;margin-left:6px;font-weight:700;vertical-align:middle}
+.cta{display:block;background:linear-gradient(135deg,#1d4ed8,#4338ca);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
+.ad{display:none;margin:0}.ad.box{display:none}
+h2{font-size:20px;margin:26px 0 10px}
+h3{font-size:16px;margin:16px 0 6px}
+p,li{margin-bottom:8px}.content ul{padding-left:20px}
+.fra-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.fra-table th{background:var(--bg);padding:7px 10px;text-align:left;font-size:12px;font-weight:700;border-bottom:2px solid var(--bd)}
+.fra-table td{padding:7px 10px;border-bottom:1px solid var(--bd)}
+.fra-table tr:last-child td{border-bottom:none}
+.rel{display:flex;flex-wrap:wrap;gap:8px}
+.rel a{background:#eff6ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+.disc{font-size:12px;color:var(--mut);margin-top:6px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+footer{border-top:1px solid var(--bd)}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a></nav>
+</div></header>
+
+<main class="wrap">
+  <h1>Social Security Calculator</h1>
+  <p class="lead">Estimate your monthly Social Security benefit at any claiming age from 62 to 70. Compare strategies and find your break-even point.</p>
+
+  <div class="layout">
+    <div>
+      <!-- ====== TOOL ====== -->
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Birth year</label>
+            <input id="birthYear" type="number" value="1960" min="1937" max="1980">
+          </div>
+          <div>
+            <label>Claiming age</label>
+            <select id="claimAge">
+              <option value="62">62 (earliest)</option>
+              <option value="63">63</option>
+              <option value="64">64</option>
+              <option value="65">65</option>
+              <option value="66">66</option>
+              <option value="67" selected>67</option>
+              <option value="68">68</option>
+              <option value="69">69</option>
+              <option value="70">70 (maximum)</option>
+            </select>
+          </div>
+          <div class="full">
+            <label>Your monthly benefit at Full Retirement Age ($)</label>
+            <input id="fraAmt" type="number" value="2000" min="0">
+            <p class="hint">Find this on your Social Security statement at <a href="https://www.ssa.gov/myaccount/" rel="noopener" target="_blank">ssa.gov/myaccount</a> — look for "retirement benefit at full retirement age."</p>
+          </div>
+          <div class="full" style="display:flex;align-items:flex-end">
+            <button class="btn" onclick="calc()">Calculate Benefits</button>
+          </div>
+        </div>
+
+        <div class="result" style="margin-top:18px">
+          <div class="kpi main">
+            <div class="v" id="rMonthly">$0</div>
+            <div class="l">Monthly benefit at chosen age</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rAnnual">$0</div>
+            <div class="l">Annual benefit</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rFRAamt">$0</div>
+            <div class="l">Your FRA benefit (100%)</div>
+          </div>
+          <div class="kpi">
+            <div class="v" id="rDiff">—</div>
+            <div class="l">vs. FRA amount</div>
+          </div>
+        </div>
+
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;margin-top:14px;font-size:13px">
+          Your Full Retirement Age: <strong id="rFRAtext">—</strong>&nbsp;·&nbsp;
+          Break-even vs. age 62: <strong id="rBreakeven">—</strong>
+        </div>
+
+        <!-- Comparison table -->
+        <div class="comp-wrap">
+          <h3>Benefit Comparison — All Claiming Ages</h3>
+          <table class="comp-table">
+            <thead><tr>
+              <th>Claim Age</th>
+              <th>Monthly Benefit</th>
+              <th>vs. FRA</th>
+              <th>Break-even vs. 62</th>
+            </tr></thead>
+            <tbody id="compBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Affiliate CTA -->
+      <a class="cta" href="https://www.empower.com/retirement-planning" rel="nofollow noopener sponsored" target="_blank">
+        Free retirement planning tools from Empower →
+        <small>Track your full retirement picture, including Social Security (sponsored)</small>
+      </a>
+      <p class="disc">Advertiser disclosure: we may earn a commission from partner links, at no cost to you.</p>
+
+      <!-- ====== CONTENT (SEO) ====== -->
+      <div style="margin-top:32px">
+        <h2>How Social Security Benefits Are Calculated</h2>
+        <p>The Social Security Administration (SSA) calculates your benefit based on your 35 highest-earning years, adjusted for inflation. This produces your Primary Insurance Amount (PIA) — the monthly benefit you receive if you claim exactly at your Full Retirement Age (FRA).</p>
+        <p>Your actual monthly benefit depends on <em>when</em> you claim relative to your FRA. Claiming early permanently reduces your benefit; claiming late permanently increases it. This calculator uses your estimated FRA benefit and lets you see the impact of any claiming age from 62 to 70.</p>
+
+        <h2>Full Retirement Age (FRA) by Birth Year</h2>
+        <p>FRA is the age at which you receive 100% of your calculated benefit. It ranges from 65 to 67 depending on when you were born:</p>
+        <table class="fra-table">
+          <thead><tr><th>Birth Year</th><th>Full Retirement Age</th></tr></thead>
+          <tbody>
+            <tr><td>1937 or earlier</td><td>65</td></tr>
+            <tr><td>1938</td><td>65 yrs 2 mo</td></tr>
+            <tr><td>1939</td><td>65 yrs 4 mo</td></tr>
+            <tr><td>1940</td><td>65 yrs 6 mo</td></tr>
+            <tr><td>1941</td><td>65 yrs 8 mo</td></tr>
+            <tr><td>1942</td><td>65 yrs 10 mo</td></tr>
+            <tr><td>1943–1954</td><td>66</td></tr>
+            <tr><td>1955</td><td>66 yrs 2 mo</td></tr>
+            <tr><td>1956</td><td>66 yrs 4 mo</td></tr>
+            <tr><td>1957</td><td>66 yrs 6 mo</td></tr>
+            <tr><td>1958</td><td>66 yrs 8 mo</td></tr>
+            <tr><td>1959</td><td>66 yrs 10 mo</td></tr>
+            <tr><td>1960 or later</td><td>67</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Early Claiming Reduction Rules</h2>
+        <p>If you claim before your FRA, your benefit is permanently reduced:</p>
+        <ul>
+          <li><strong>First 36 months before FRA:</strong> reduced by 5/9 of 1% per month (~6.67%/year)</li>
+          <li><strong>Each additional month before FRA:</strong> reduced by 5/12 of 1% per month (~5%/year)</li>
+        </ul>
+        <p>For those with FRA of 67 claiming at 62 (60 months early): the reduction is 36 × 5/9% + 24 × 5/12% = 20% + 10% = <strong>30% permanent reduction</strong>.</p>
+
+        <h2>Delayed Retirement Credits (Age 70 Maximum)</h2>
+        <p>For each month you delay past your FRA (up to age 70), your benefit increases by 2/3 of 1% per month — equal to <strong>8% per year</strong>. Waiting from FRA 67 to age 70 adds 24% to your monthly benefit permanently. There is no additional credit for waiting beyond age 70.</p>
+
+        <h2>The Break-Even Analysis: When Does Waiting Pay Off?</h2>
+        <p>Waiting to claim means giving up months of smaller checks to receive larger ones later. The "break-even age" is when your cumulative lifetime benefits become equal regardless of when you claimed.</p>
+        <p>For most people claiming at FRA vs. 62, the break-even falls around age <strong>80–83</strong>. If you expect to live longer than that, waiting usually produces more lifetime income. If you have serious health concerns or need the income now, claiming earlier may be the right choice.</p>
+        <p>Note: break-even calculations are most useful when comparing two specific ages — not as an absolute rule. Tax implications, spousal benefits, and continued earnings can all shift the optimal strategy.</p>
+
+        <h2>2026 Social Security Key Facts</h2>
+        <ul>
+          <li><strong>COLA 2026:</strong> Cost-of-living adjustment keeps benefits roughly in line with inflation (check ssa.gov for the latest rate)</li>
+          <li><strong>Maximum benefit at 70 (2026):</strong> ~$5,108/month for high earners</li>
+          <li><strong>Average benefit (2026):</strong> ~$1,976/month</li>
+          <li><strong>Full retirement age for born 1960+:</strong> 67</li>
+          <li><strong>Taxation threshold:</strong> Benefits may be taxable if combined income exceeds $25,000 (single) or $32,000 (married)</li>
+          <li><strong>Medicare Part B 2026 premium:</strong> Deducted from SS benefit if enrolled; check CMS for current amount</li>
+        </ul>
+
+        <h2>Strategies to Maximize Your Social Security</h2>
+        <ul>
+          <li><strong>Delay if healthy:</strong> Every year past FRA adds 8% permanently — the best guaranteed "investment return" available</li>
+          <li><strong>Coordinate with a spouse:</strong> The lower earner often claims early; the higher earner delays to maximize the survivor benefit</li>
+          <li><strong>Bridge with savings:</strong> Use retirement accounts or other income to delay SS rather than claiming early out of necessity</li>
+          <li><strong>Check your earnings record:</strong> Errors in your SSA record can lower your benefit — review annually at ssa.gov/myaccount</li>
+          <li><strong>Consider taxes:</strong> Strategic Roth conversions and income management in your early 60s can reduce how much of your SS is taxable</li>
+        </ul>
+
+        <h2>Related Calculators</h2>
+        <div class="rel">
+          <a href="/retirement-calculator">Retirement Calculator</a>
+          <a href="/401k-calculator">401(k) Calculator</a>
+          <a href="/net-worth-calculator">Net Worth Calculator</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax Calculator</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== SIDEBAR ====== -->
+    <div class="side">
+      <div class="card">
+        <h3 style="margin-top:0;font-size:15px">Retirement Planning</h3>
+        <a class="cta" href="https://www.empower.com/retirement-planning" rel="nofollow noopener sponsored" target="_blank" style="margin-bottom:0">
+          Empower — Free Retirement Dashboard
+          <small>Track SS + investments in one place</small>
+        </a>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;font-size:15px">Invest Your SS Savings</h3>
+        <a class="cta" href="https://www.betterment.com/retirement" rel="nofollow noopener sponsored" target="_blank" style="background:linear-gradient(135deg,#0f766e,#0e7490);margin-bottom:0">
+          Betterment IRA — Automated Investing
+          <small>Build the retirement bridge (sponsored)</small>
+        </a>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;font-size:15px">Related tools</h3>
+        <div class="rel" style="flex-direction:column">
+          <a href="/retirement-calculator">Retirement Calculator</a>
+          <a href="/401k-calculator">401(k) Calculator</a>
+          <a href="/net-worth-calculator">Net Worth Calculator</a>
+          <a href="/paycheck-calculator">Paycheck Calculator</a>
+          <a href="/income-tax-calculator">Income Tax Calculator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">© 2026 UseCalcFi · Free financial calculators for Americans · <a href="/">All Calculators</a> · Not financial advice.</div></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const usd = n => '$' + Math.round(n).toLocaleString('en-US');
+const pct = n => (n >= 0 ? '+' : '') + n.toFixed(1) + '%';
+
+function getFRA(by) {
+  if (by <= 1937) return 65;
+  if (by <= 1942) return 65 + (by - 1937) * 2 / 12;
+  if (by <= 1954) return 66;
+  if (by <= 1959) return 66 + (by - 1954) * 2 / 12;
+  return 67;
+}
+
+function fraText(by) {
+  const f = getFRA(by);
+  const y = Math.floor(f);
+  const m = Math.round((f - y) * 12);
+  return m ? y + ' yrs ' + m + ' mo' : y + '';
+}
+
+function benefit(fraAmt, by, claimAge) {
+  const f = getFRA(by);
+  const moEarly = Math.round(Math.max(0, (f - claimAge) * 12));
+  const moLate = Math.round(Math.max(0, (claimAge - f) * 12));
+  if (moEarly > 0) {
+    const r = Math.min(moEarly, 36) * 5 / 900 + Math.max(0, moEarly - 36) * 5 / 1200;
+    return fraAmt * (1 - r);
+  }
+  if (moLate > 0) return fraAmt * (1 + moLate * 8 / 1200);
+  return fraAmt;
+}
+
+function breakEvenAge(fraAmt, by, laterAge) {
+  const b62 = benefit(fraAmt, by, 62);
+  const bLate = benefit(fraAmt, by, laterAge);
+  const extra = bLate - b62;
+  if (extra <= 0) return null;
+  const foregone = (laterAge - 62) * 12 * b62;
+  const beMonths = foregone / extra;
+  return laterAge + beMonths / 12;
+}
+
+function calc() {
+  const by = parseInt($('birthYear').value) || 1960;
+  const fraAmt = parseFloat($('fraAmt').value) || 0;
+  const claimAge = parseInt($('claimAge').value);
+
+  const chosen = benefit(fraAmt, by, claimAge);
+  const diffPct = fraAmt > 0 ? (chosen - fraAmt) / fraAmt * 100 : 0;
+  const fraLabel = fraText(by);
+  const fraVal = getFRA(by);
+
+  $('rMonthly').textContent = usd(chosen);
+  $('rAnnual').textContent = usd(chosen * 12);
+  $('rFRAamt').textContent = usd(fraAmt);
+  $('rDiff').textContent = fraAmt > 0 ? pct(diffPct) : '—';
+  $('rDiff').style.color = diffPct >= 0 ? '#16a34a' : '#dc2626';
+  $('rFRAtext').textContent = fraLabel;
+
+  const be = claimAge > 62 ? breakEvenAge(fraAmt, by, claimAge) : null;
+  $('rBreakeven').textContent = be ? (be <= 95 ? 'age ' + be.toFixed(0) : 'age >95') : (claimAge === 62 ? 'N/A (baseline)' : '—');
+
+  // Comparison table
+  const ages = [62, 63, 64, 65, 66, 67, 68, 69, 70];
+  const b62 = benefit(fraAmt, by, 62);
+  let rows = '';
+  ages.forEach(age => {
+    const b = benefit(fraAmt, by, age);
+    const dp = fraAmt > 0 ? (b - fraAmt) / fraAmt * 100 : 0;
+    let beText = '—';
+    if (age > 62 && fraAmt > 0) {
+      const extra = b - b62;
+      if (extra > 0) {
+        const foregone = (age - 62) * 12 * b62;
+        const beM = foregone / extra;
+        const beA = age + beM / 12;
+        beText = beA <= 95 ? 'age ' + beA.toFixed(0) : 'age >95';
+      }
+    } else if (age === 62) {
+      beText = 'Baseline';
+    }
+
+    const isFRA = Math.abs(age - fraVal) < 0.1;
+    const isMax = age === 70;
+    const isSelected = age === claimAge;
+    const rowClass = isSelected ? ' class="active"' : '';
+    const ageLabel = age + (isFRA ? '<span class="fra-tag">FRA</span>' : '') + (isMax ? '<span class="max-tag">MAX</span>' : '');
+    const dpColor = dp >= 0 ? '#16a34a' : '#dc2626';
+
+    rows += `<tr${rowClass}><td>${ageLabel}</td><td>${usd(b)}/mo</td><td style="color:${dpColor}">${pct(dp)}</td><td>${beText}</td></tr>`;
+  });
+  $('compBody').innerHTML = rows;
+}
+
+calc();
+</script>
+</body>
+</html>
