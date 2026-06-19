@@ -242,6 +242,14 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Data Studies -->
+  <url>
+    <loc>https://usecalcfi.com/guides/average-credit-card-debt-by-state</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Guides 26-30 -->
   <url>
     <loc>https://usecalcfi.com/guides/how-to-invest-as-a-beginner</loc>
