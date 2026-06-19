@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budget Calculator — 50/30/20 Rule | UseCalcFi</title>
+<meta name="description" content="Free budget calculator using the 50/30/20 rule. Enter your monthly income and see exactly how much to spend on needs, wants, and savings. Updated for 2026.">
+<link rel="canonical" href="https://usecalcfi.com/budget-calculator">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://usecalcfi.com/budget-calculator">
+<meta property="og:title" content="Budget Calculator — 50/30/20 Rule | UseCalcFi">
+<meta property="og:description" content="Free budget calculator using the 50/30/20 rule. Enter your monthly income and see exactly how much to spend on needs, wants, and savings.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Budget Calculator — 50/30/20 Rule","url":"https://usecalcfi.com/budget-calculator","description":"Free budget calculator using the 50/30/20 rule to allocate monthly income across needs, wants, and savings.","applicationCategory":"FinanceApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"UseCalcFi","url":"https://usecalcfi.com"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Budget Calculator","item":"https://usecalcfi.com/budget-calculator"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the 50/30/20 budget rule?","acceptedAnswer":{"@type":"Answer","text":"The 50/30/20 rule is a budgeting framework popularized by Senator Elizabeth Warren. It allocates 50% of after-tax income to needs (rent, utilities, groceries), 30% to wants (dining, entertainment, subscriptions), and 20% to savings and debt repayment."}},{"@type":"Question","name":"What counts as a 'need' in the 50/30/20 budget?","acceptedAnswer":{"@type":"Answer","text":"Needs are expenses required to live and work: housing (rent or mortgage), utilities, groceries, transportation to work, health insurance, minimum debt payments, and childcare. Dining out, streaming services, and gym memberships are wants, not needs."}},{"@type":"Question","name":"What if 50% isn't enough for my needs?","acceptedAnswer":{"@type":"Answer","text":"High-cost-of-living areas often push housing costs above 50% of income alone. If your needs exceed 50%, look to reduce wants below 30% first. If still over budget, consider roommates, relocating, or increasing income. Some experts modify the rule to 60/20/20 for high-cost areas."}},{"@type":"Question","name":"How much should I have in an emergency fund?","acceptedAnswer":{"@type":"Answer","text":"The CFPB and most financial experts recommend 3–6 months of essential expenses in an emergency fund. Start with a $1,000 starter fund, then build to 3 months. Once reached, redirect extra savings toward retirement accounts like a 401(k) or Roth IRA."}}]}
+</script>
+
+<style>
+:root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
+footer{border-top:1px solid var(--bd)}
+
+.hero{padding:32px 0 20px}
+.hero h1{font-size:28px;font-weight:800;margin-bottom:8px}
+.sub{color:var(--mut);font-size:15px;margin-bottom:0}
+
+.layout{display:grid;grid-template-columns:1fr 300px;gap:24px;padding:24px 0 40px;align-items:start}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:24px;margin-bottom:20px}
+.card h2{font-size:16px;font-weight:700;margin-bottom:16px;color:var(--tx)}
+
+label{display:block;font-size:13px;font-weight:600;color:var(--mut);margin-bottom:5px}
+input[type=number]{width:100%;padding:9px 12px;border:1.5px solid var(--bd);border-radius:8px;font-size:15px;outline:none;transition:border-color .15s}
+input[type=number]:focus{border-color:var(--ac)}
+.input-wrap{position:relative;margin-bottom:16px}
+.prefix{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:15px;pointer-events:none}
+.input-wrap input{padding-left:26px}
+
+.btn{background:var(--ac);color:#fff;border:none;padding:11px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;width:100%;margin-top:4px}
+.btn:hover{opacity:.9}
+
+/* Results */
+.result-hidden{display:none}
+.result-bar{height:12px;border-radius:99px;margin:6px 0 16px;overflow:hidden;background:var(--bd)}
+.result-bar-fill{height:100%;border-radius:99px;transition:width .4s}
+.needs-fill{background:#7c3aed}
+.wants-fill{background:#f59e0b}
+.savings-fill{background:#10b981}
+
+.bucket{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.bkt{background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.bkt-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
+.bkt-pct{font-size:11px;color:var(--mut);margin-bottom:6px}
+.bkt-amt{font-size:22px;font-weight:800}
+.needs-color{color:#7c3aed}
+.wants-color{color:#f59e0b}
+.savings-color{color:#10b981}
+
+.breakdown{border-top:1px solid var(--bd);padding-top:16px;margin-top:4px}
+.breakdown h3{font-size:13px;font-weight:700;margin-bottom:10px}
+.brow{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;border-bottom:1px solid #f3f4f6}
+.brow:last-child{border-bottom:none}
+.brow .cat{color:var(--mut);font-size:12px}
+
+/* Info boxes */
+.info-box{background:#f5f3ff;border:1px solid #ddd6fe;border-radius:10px;padding:16px;font-size:14px;margin-bottom:16px}
+.info-box strong{color:#5b21b6}
+
+.rule-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.rule-card{border-radius:10px;padding:12px;text-align:center}
+.rule-needs{background:#f5f3ff;border:1px solid #ddd6fe}
+.rule-wants{background:#fffbeb;border:1px solid #fde68a}
+.rule-savings{background:#ecfdf5;border:1px solid #a7f3d0}
+.rule-num{font-size:22px;font-weight:800}
+.rule-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-top:2px}
+.rule-desc{font-size:11px;color:var(--mut);margin-top:4px}
+
+/* Sidebar */
+.sidebar-card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:20px;margin-bottom:16px}
+.sidebar-card h3{font-size:14px;font-weight:700;margin-bottom:12px}
+.cta-btn{display:block;text-align:center;background:var(--ac);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:700;margin-bottom:8px}
+.cta-btn:hover{opacity:.9}
+.sidebar-link{display:block;color:var(--ac);text-decoration:none;font-size:13px;padding:5px 0;border-bottom:1px solid #f3f4f6}
+.sidebar-link:last-child{border-bottom:none}
+.badge{display:inline-block;font-size:10px;background:#ddd6fe;color:#5b21b6;padding:2px 7px;border-radius:99px;font-weight:700;margin-left:6px}
+
+/* FAQ */
+.faq{padding:0 0 32px}
+.faq h2{font-size:20px;font-weight:800;margin-bottom:16px}
+details{border:1px solid var(--bd);border-radius:10px;padding:14px 18px;margin-bottom:8px;background:var(--card)}
+summary{font-weight:600;cursor:pointer;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--ac);font-size:18px;transition:transform .2s}
+details[open] summary::after{content:"－"}
+details p{margin-top:10px;font-size:14px;color:#374151;line-height:1.7}
+
+@media(max-width:880px){.layout{grid-template-columns:1fr}.bucket{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:580px){.bucket{grid-template-columns:1fr}.rule-row{grid-template-columns:1fr}}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a><a href="/guides">Guides</a></nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Budget Calculator — 50/30/20 Rule</h1>
+    <p style="font-size:12px;color:var(--mut);margin:-4px 0 14px">🗓️ Last reviewed: June 2026 · Source: CFPB, Elizabeth Warren's "All Your Worth"</p>
+    <p class="sub">Enter your monthly take-home pay to see exactly how to allocate it across needs, wants, and savings using the proven 50/30/20 framework.</p>
+  </div>
+
+  <div class="layout">
+    <div>
+      <!-- Calculator -->
+      <div class="card">
+        <h2>Your Monthly Budget</h2>
+
+        <label for="income">Monthly Take-Home Pay (after taxes)</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input type="number" id="income" placeholder="5000" min="0" step="100">
+        </div>
+
+        <div class="info-box">
+          <strong>Tip:</strong> Use your net (after-tax) income — the amount that actually hits your bank account each month. If paid biweekly, multiply one paycheck by 2.17.
+        </div>
+
+        <button class="btn" onclick="calc()">Calculate My Budget →</button>
+      </div>
+
+      <!-- Results -->
+      <div class="card result-hidden" id="result">
+        <h2>Your 50/30/20 Budget Breakdown</h2>
+
+        <div class="bucket">
+          <div class="bkt">
+            <div class="bkt-label needs-color">Needs</div>
+            <div class="bkt-pct">50%</div>
+            <div class="bkt-amt needs-color" id="needs-amt">$0</div>
+          </div>
+          <div class="bkt">
+            <div class="bkt-label wants-color">Wants</div>
+            <div class="bkt-pct">30%</div>
+            <div class="bkt-amt wants-color" id="wants-amt">$0</div>
+          </div>
+          <div class="bkt">
+            <div class="bkt-label savings-color">Savings</div>
+            <div class="bkt-pct">20%</div>
+            <div class="bkt-amt savings-color" id="savings-amt">$0</div>
+          </div>
+        </div>
+
+        <div class="result-bar">
+          <div style="display:flex;height:100%">
+            <div class="needs-fill" id="bar-needs" style="width:50%"></div>
+            <div class="wants-fill" id="bar-wants" style="width:30%"></div>
+            <div class="savings-fill" id="bar-savings" style="width:20%"></div>
+          </div>
+        </div>
+
+        <div class="breakdown">
+          <h3>What goes where</h3>
+          <div class="brow"><span>🏠 Housing (rent/mortgage)</span><span class="cat">Needs</span><span id="b-housing">$0</span></div>
+          <div class="brow"><span>🚗 Transportation</span><span class="cat">Needs</span><span id="b-transport">$0</span></div>
+          <div class="brow"><span>🛒 Groceries &amp; utilities</span><span class="cat">Needs</span><span id="b-grocery">$0</span></div>
+          <div class="brow"><span>🍽️ Dining &amp; entertainment</span><span class="cat">Wants</span><span id="b-dining">$0</span></div>
+          <div class="brow"><span>📱 Subscriptions &amp; hobbies</span><span class="cat">Wants</span><span id="b-subs">$0</span></div>
+          <div class="brow"><span>🏦 Emergency fund</span><span class="cat">Savings</span><span id="b-emerg">$0</span></div>
+          <div class="brow"><span>📈 Retirement (401k/IRA)</span><span class="cat">Savings</span><span id="b-retire">$0</span></div>
+          <div class="brow"><span>💳 Extra debt payments</span><span class="cat">Savings</span><span id="b-debt">$0</span></div>
+        </div>
+
+        <div style="margin-top:16px;padding:12px 16px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;font-size:13px">
+          <strong style="color:#065f46">Annual savings at this rate:</strong>
+          <span id="annual-savings" style="font-size:16px;font-weight:800;color:#065f46;margin-left:8px">$0</span>
+        </div>
+      </div>
+
+      <!-- Explainer -->
+      <div class="card">
+        <h2>How the 50/30/20 Rule Works</h2>
+        <div class="rule-row">
+          <div class="rule-card rule-needs">
+            <div class="rule-num needs-color">50%</div>
+            <div class="rule-name needs-color">Needs</div>
+            <div class="rule-desc">Rent, utilities, groceries, insurance, minimum payments</div>
+          </div>
+          <div class="rule-card rule-wants">
+            <div class="rule-num wants-color">30%</div>
+            <div class="rule-name wants-color">Wants</div>
+            <div class="rule-desc">Dining, streaming, travel, gym, entertainment</div>
+          </div>
+          <div class="rule-card rule-savings">
+            <div class="rule-num savings-color">20%</div>
+            <div class="rule-name savings-color">Savings</div>
+            <div class="rule-desc">Emergency fund, 401(k), Roth IRA, extra debt payments</div>
+          </div>
+        </div>
+        <p style="font-size:14px;margin-top:12px;color:#374151">The 50/30/20 rule was popularized by U.S. Senator Elizabeth Warren in her book <em>All Your Worth</em>. It's designed to be simple: after covering your needs, you have full flexibility on wants, and a clear savings target. The CFPB recommends this framework as a starting point for household budgeting.</p>
+        <p style="font-size:14px;margin-top:10px;color:#374151">The 20% savings bucket follows a priority order: first build a 3–6 month emergency fund, then maximize any employer 401(k) match, then fund a Roth IRA, then pay down high-interest debt, then invest further.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <details>
+          <summary>What is the 50/30/20 budget rule?</summary>
+          <p>The 50/30/20 rule allocates 50% of after-tax income to needs (rent, utilities, groceries), 30% to wants (dining, entertainment, subscriptions), and 20% to savings and debt repayment. It's a simple framework recommended by the CFPB and widely used by financial planners as a starting baseline.</p>
+        </details>
+        <details>
+          <summary>What counts as a "need" vs. a "want"?</summary>
+          <p>Needs are expenses required to live and work: housing, utilities, groceries, transportation to work, health insurance, minimum loan payments, and childcare. Wants are lifestyle upgrades you choose: dining out, streaming services, gym memberships, travel, and shopping. If you can live without it, it's likely a want.</p>
+        </details>
+        <details>
+          <summary>What if my needs already exceed 50% of my income?</summary>
+          <p>This is common in high-cost-of-living cities where housing alone can hit 35–40% of income. If needs exceed 50%, try reducing wants below 30% first. If still over budget, consider a roommate, relocating, or increasing income. Some experts use a modified 60/20/20 or 70/20/10 rule for expensive areas.</p>
+        </details>
+        <details>
+          <summary>How much should I save in an emergency fund?</summary>
+          <p>The CFPB recommends 3–6 months of essential expenses. Start with a $1,000 starter emergency fund to cover small shocks, then build to 3 months. Once you have 3–6 months saved, redirect that portion of savings toward retirement contributions (401(k), Roth IRA) and then toward extra debt payoff.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-card">
+        <h3>Related Calculators</h3>
+        <a class="sidebar-link" href="/savings-calculator">💰 Savings Calculator</a>
+        <a class="sidebar-link" href="/retirement-calculator">📈 Retirement Calculator</a>
+        <a class="sidebar-link" href="/paycheck-calculator">💵 Paycheck Calculator</a>
+        <a class="sidebar-link" href="/debt-snowball-calculator">❄️ Debt Snowball Calculator</a>
+        <a class="sidebar-link" href="/net-worth-calculator">📊 Net Worth Calculator</a>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Guides</h3>
+        <a class="sidebar-link" href="/guides/pay-off-mortgage-early">Pay Off Mortgage Early <span class="badge">Guide</span></a>
+        <a class="sidebar-link" href="/guides/good-dti-ratio">What Is a Good DTI Ratio? <span class="badge">Guide</span></a>
+        <a class="sidebar-link" href="/guides/when-to-take-social-security">When to Take Social Security <span class="badge">Guide</span></a>
+      </div>
+
+      <div class="sidebar-card" style="background:#f5f3ff;border-color:#ddd6fe">
+        <h3 style="color:#5b21b6">Budget Rule Cheat Sheet</h3>
+        <p style="font-size:13px;color:#374151;margin-bottom:10px">Quick targets for a $5,000/month take-home:</p>
+        <div style="font-size:13px">
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #ede9fe"><span>Needs (50%)</span><strong>$2,500</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #ede9fe"><span>Wants (30%)</span><strong>$1,500</strong></div>
+          <div style="display:flex;justify-content:space-between;padding:4px 0"><span>Savings (20%)</span><strong>$1,000</strong></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center">
+  <span>© 2026 UseCalcFi · Free financial calculators for Americans</span>
+  <a href="/" style="color:var(--mut);text-decoration:none">All Calculators</a>
+  <a href="/guides" style="color:var(--mut);text-decoration:none">Guides</a>
+  <a href="/about" style="color:var(--mut);text-decoration:none">About</a>
+  <a href="/privacy-policy" style="color:var(--mut);text-decoration:none">Privacy Policy</a>
+  <a href="/disclaimer" style="color:var(--mut);text-decoration:none">Disclaimer</a>
+  <span>Not financial advice</span>
+</div></footer>
+
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString('en-US')}
+
+function calc(){
+  const inc = parseFloat(document.getElementById('income').value);
+  if(!inc||inc<=0){alert('Please enter a valid monthly income.');return;}
+
+  const needs = inc*0.5;
+  const wants = inc*0.3;
+  const savings = inc*0.2;
+
+  document.getElementById('needs-amt').textContent = fmt(needs);
+  document.getElementById('wants-amt').textContent = fmt(wants);
+  document.getElementById('savings-amt').textContent = fmt(savings);
+
+  // Breakdown estimates
+  document.getElementById('b-housing').textContent = fmt(needs*0.6);      // ~30% income
+  document.getElementById('b-transport').textContent = fmt(needs*0.22);   // ~11% income
+  document.getElementById('b-grocery').textContent = fmt(needs*0.18);     // ~9% income
+  document.getElementById('b-dining').textContent = fmt(wants*0.45);      // ~13.5% income
+  document.getElementById('b-subs').textContent = fmt(wants*0.55);        // ~16.5% income
+  document.getElementById('b-emerg').textContent = fmt(savings*0.4);      // ~8% income
+  document.getElementById('b-retire').textContent = fmt(savings*0.4);     // ~8% income
+  document.getElementById('b-debt').textContent = fmt(savings*0.2);       // ~4% income
+
+  document.getElementById('annual-savings').textContent = fmt(savings*12);
+
+  document.getElementById('result').classList.remove('result-hidden');
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
