@@ -201,6 +201,13 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://usecalcfi.com/contact</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- About & Legal -->
   <url>
     <loc>https://usecalcfi.com/about</loc>
