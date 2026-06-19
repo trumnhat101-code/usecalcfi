@@ -21,6 +21,7 @@
 <meta name="twitter:description" content="Free Social Security calculator. Estimate your monthly benefit at 62, 67, or 70. Compare all claiming ages and find your break-even point to maximize lifetime benefits.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Social Security Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -397,10 +398,4 @@ function calc() {
     const ageLabel = age + (isFRA ? '<span class="fra-tag">FRA</span>' : '') + (isMax ? '<span class="max-tag">MAX</span>' : '');
     const dpColor = dp >= 0 ? '#16a34a' : '#dc2626';
 
-    rows += `<tr${rowClass}><td>${ageLabel}</td><td>${usd(b)}/mo</td><td style="color:${dpColor}">${pct(dp)}</td><td>${beText}</td></tr>`;
-  });
-  $('compBody').innerHTML = rows;
-}
-</script>
-</body>
-</html>
+    rows += `<tr${rowClass}><td>${ageLabel}</td><td>${usd(b)}/mo</td><td style="color:${dpColor}">${pct(dp)}</td><td>${beText}</

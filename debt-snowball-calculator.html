@@ -21,6 +21,7 @@
 <meta name="twitter:description" content="Free debt snowball calculator. Enter up to 6 debts, see your payoff order, total interest, and payoff date. Compare snowball vs avalanche method.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Debt Snowball Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
@@ -412,11 +413,4 @@ function calc(){
   if(intDiff>0.5){
     saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
   } else {
-    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific debts.`;
-  }
-}
-
-DEFAULT_DEBTS.forEach(d=>addRow(d));
-</script>
-</body>
-</html>
+    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific

@@ -14,6 +14,7 @@
 <meta property="og:site_name" content="UseCalcFi">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Roth IRA Calculator","url":"https://usecalcfi.com/roth-ira-calculator","description":"Project your Roth IRA balance at retirement with 2026 contribution limits. Shows tax-free growth, total contributions, and year-by-year breakdown.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"provider":{"@type":"Organization","name":"UseCalcFi","url":"https://usecalcfi.com"}}
@@ -335,71 +336,4 @@ function calc(){
   for(let y = 1; y <= years; y++){
     bal = bal * (1 + rate) + contrib;
     totalContrib += contrib;
-    const age = curAge + y;
-    const contributed = curBal + totalContrib;
-    const growth = bal - contributed;
-    labels.push(age);
-    dataContrib.push(Math.round(contributed));
-    dataGrowth.push(Math.round(Math.max(0, growth)));
-    if(y === 1 || y % 5 === 0 || y === years){
-      rows.push({age, contributed: Math.round(contributed), growth: Math.round(Math.max(0,growth)), bal: Math.round(bal)});
-    }
-  }
-
-  const totalGrowth = Math.max(0, bal - curBal - totalContrib);
-
-  $('rBalance').textContent  = fmt(bal);
-  $('rYears').textContent    = years + ' years';
-  $('rContribs').textContent = fmt(curBal + totalContrib);
-  $('rGrowth').textContent   = fmt(totalGrowth);
-
-  if(chartInst) chartInst.destroy();
-  chartInst = new Chart($('chart'), {
-    type: 'bar',
-    data: {
-      labels,
-      datasets: [
-        {label:'Contributions', data: dataContrib, backgroundColor:'#a78bfa', stack:'a'},
-        {label:'Tax-Free Growth', data: dataGrowth, backgroundColor:'#7c3aed', stack:'a'}
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {position:'bottom'},
-        tooltip: {callbacks:{label: ctx => ctx.dataset.label+': '+fmt(ctx.raw)}}
-      },
-      scales: {
-        x: {stacked:true, ticks:{maxTicksLimit:12}},
-        y: {stacked:true, ticks:{callback: v => '$'+Math.round(v/1000)+'k'}}
-      }
-    }
-  });
-
-  $('tBody').innerHTML = rows.map(r=>`<tr>
-    <td>${r.age}</td>
-    <td>${fmt(r.contributed)}</td>
-    <td>${fmt(r.growth)}</td>
-    <td>${fmt(r.bal)}</td>
-  </tr>`).join('');
-
-  $('results-section').style.display = 'block';
-  $('results-section').scrollIntoView({behavior:'smooth', block:'nearest'});
-}
-
-function reset(){
-  $('currentAge').value  = 30;
-  $('retireAge').value   = 65;
-  $('currentBal').value  = 0;
-  $('annualContrib').value = 7000;
-  $('returnRate').value  = 7;
-  $('results-section').style.display = 'none';
-  if(chartInst){ chartInst.destroy(); chartInst = null; }
-}
-
-function toggleFaq(el){
-  el.closest('.faq-item').classList.toggle('open');
-}
-</script>
-</body>
-</html>
+    const age = curAge

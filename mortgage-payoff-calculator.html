@@ -21,6 +21,7 @@
 <meta name="twitter:description" content="Free mortgage payoff calculator. See how extra payments reduce your payoff date and total interest. Find out exactly how much you save by paying off your mortgage early.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Payoff Calculator","url":"https://usecalcfi.com/mortgage-payoff-calculator","description":"Calculate how extra mortgage payments shorten your payoff timeline and reduce total interest paid.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Extra payment impact","Months saved","Interest saved","Early payoff date"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Mortgage Payoff Calculator","item":"https://usecalcfi.com/mortgage-payoff-calculator"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much do extra mortgage payments really save?","acceptedAnswer":{"@type":"Answer","text":"On a $300,000 mortgage at 7% with 30 years remaining, paying an extra $200/month saves over $62,000 in interest and pays off the loan 6 years early. Even $100/month extra saves $35,000 and cuts 4 years off."}},{"@type":"Question","name":"Is it better to pay extra on a mortgage or invest?","acceptedAnswer":{"@type":"Answer","text":"It depends on your mortgage rate vs. expected investment returns. If your mortgage rate is 7% and you expect the stock market to return 8–10%, investing may generate more wealth long-term. But paying down mortgage provides a guaranteed, risk-free return equal to your interest rate, plus the psychological benefit of being debt-free."}},{"@type":"Question","name":"Should I pay off my mortgage early or invest?","acceptedAnswer":{"@type":"Answer","text":"Consider both: first max out tax-advantaged accounts (401k match, IRA, HSA), then use any remaining extra cash to pay down the mortgage. The mortgage rate is your guaranteed 'return' — compare that to your investment alternatives when deciding."}}]}</script>
@@ -321,9 +322,4 @@ function calc(){
   $('c2Int').textContent=usd(extra>0?int1:int0);
   $('c2Total').textContent=usd(extra>0?paid1:paid0);
 
-  const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,int0)).join('');
-  $('scenarioBody').innerHTML=rows;
-}
-</script>
-</body>
-</html>
+  const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,in

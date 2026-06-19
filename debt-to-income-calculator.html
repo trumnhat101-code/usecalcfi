@@ -21,6 +21,7 @@
 <meta name="twitter:description" content="Free debt-to-income ratio calculator. Find your front-end and back-end DTI for mortgage approval. See if you qualify for conventional, FHA, or VA loans.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Debt-to-Income Calculator","url":"https://usecalcfi.com/debt-to-income-calculator","description":"Calculate your front-end and back-end DTI ratio to see if you qualify for a mortgage.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Front-end DTI","Back-end DTI","Loan qualification table","Conventional/FHA/VA thresholds"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Debt-to-Income Calculator","item":"https://usecalcfi.com/debt-to-income-calculator"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good debt-to-income ratio for a mortgage?","acceptedAnswer":{"@type":"Answer","text":"Most lenders want a back-end DTI below 43%. Below 36% is considered excellent. Conventional loans typically allow up to 45–50% with strong credit and assets. FHA loans can go up to 57% in some cases."}},{"@type":"Question","name":"What is the difference between front-end and back-end DTI?","acceptedAnswer":{"@type":"Answer","text":"Front-end DTI (housing ratio) is just your housing payment divided by gross income. Back-end DTI includes all monthly debt payments (housing, car, student loans, credit cards) divided by gross income. Lenders focus most on back-end DTI."}},{"@type":"Question","name":"How can I lower my DTI ratio?","acceptedAnswer":{"@type":"Answer","text":"Pay off or pay down existing debts — especially credit cards and auto loans. Increase your gross income. Avoid taking on new debt before applying for a mortgage. A co-borrower with income can also lower your combined DTI."}}]}</script>
@@ -332,10 +333,4 @@ function calc(){
   const barPct=Math.min(backDTI,65)/65*100;
   const barColor=backDTI<36?'#16a34a':backDTI<43?'#f59e0b':'#dc2626';
   $('dtiBar').style.width=barPct+'%';
-  $('dtiBar').style.background=barColor;
-
-  $('qualBody').innerHTML=qualify(backDTI);
-}
-</script>
-</body>
-</html>
+  $('dtiBar').style.background=barC

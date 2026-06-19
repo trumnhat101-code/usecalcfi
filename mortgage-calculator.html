@@ -25,7 +25,8 @@
 <meta name="twitter:title" content="Mortgage Calculator — Monthly Payment & Amortization (2026)">
 <meta name="twitter:description" content="Free mortgage calculator. Estimate your monthly mortgage payment (PITI), total interest, and payoff. Includes taxes, insurance & HOA.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- TODO domain -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script><!-- TODO domain -->
 
 <!-- SEO: WebApplication + FAQ schema -->
 <script type="application/ld+json">
@@ -217,24 +218,4 @@ function calc(){
   const price=+$('price').value||0, down=+$('down').value||0;
   const years=+$('term').value||30, rate=+$('rate').value||0;
   const tax=+$('tax').value||0, ins=+$('ins').value||0, hoa=+$('hoa').value||0;
-  const loan=Math.max(price-down,0), r=rate/100/12, n=years*12;
-  let pi;
-  if(r===0) pi=n?loan/n:0;
-  else pi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
-  const totalPaid=pi*n, totalInt=Math.max(totalPaid-loan,0);
-  const monthly=pi+tax/12+ins/12+hoa;
-  document.getElementById('results-section').style.display='block';
-  $('rMonthly').textContent=usd(monthly);
-  $('rPI').textContent=usd(pi);
-  $('rLoan').textContent=usd(loan);
-  $('rInt').textContent=usd(totalInt);
-  const tot=loan+totalInt||1, pPct=loan/tot*100;
-  $('bar').children[0].style.width=pPct+'%';
-  $('bar').children[1].style.width=(100-pPct)+'%';
-  $('lPrin').textContent=usd(loan);
-  $('lInt').textContent=usd(totalInt);
-}
-</script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
-</body>
-</html>
+  const loan=Math.max(price-down,0), r=rate/100/12, n=
