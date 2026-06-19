@@ -268,6 +268,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Guides 11-15 -->
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-pmi</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/hsa-vs-fsa</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-compound-interest</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/first-time-homebuyer-guide</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/how-to-lower-dti-ratio</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Debt & Student Loans -->
   <url>
     <loc>https://usecalcfi.com/debt-to-income-calculator</loc>
