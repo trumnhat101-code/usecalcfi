@@ -268,6 +268,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Guides 16-20 -->
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-a-401k</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/how-to-save-for-a-down-payment</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/w4-withholding-guide</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/net-worth-by-age</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/how-to-build-credit-from-scratch</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Guides 11-15 -->
   <url>
     <loc>https://usecalcfi.com/guides/what-is-pmi</loc>
