@@ -298,4 +298,139 @@ p{font-size:14px;color:var(--mut);margin-bottom:10px;line-height:1.6}
 
     <div class="card" style="margin-top:18px">
       <h2>How to Use This Budget Calculator</h2>
-      <p><strong>Step 1:</strong> Find your monthly take-home pay on a recent pay stub or b
+      <p><strong>Step 1:</strong> Find your monthly take-home pay on a recent pay stub or bank deposit statement. Use the net amount — after federal and state taxes, health insurance premiums, and any pre-tax 401k deductions are removed.</p>
+      <p><strong>Step 2:</strong> Enter that amount in the "Monthly take-home pay" field. If you're paid biweekly, multiply one paycheck by 26 and divide by 12 to convert to a monthly figure.</p>
+      <p><strong>Step 3:</strong> Review the default percentages (50% needs / 30% wants). If you live in a high-cost city where rent exceeds 30% of take-home, increase Needs % — the calculator automatically adjusts savings to fill the remainder.</p>
+      <p><strong>Step 4:</strong> Click "Calculate My Budget" to see your dollar targets for each category, a color-coded budget bar, and a full annual breakdown.</p>
+      <p><strong>Step 5:</strong> Use the "Track Your Actual Spending" section to enter last month's real spending. Green means you came in under target; red means you overspent that category.</p>
+      <p><strong>Step 6:</strong> Check the Paycheck Breakdown for per-paycheck savings amounts. Set up an automatic transfer on payday to move savings to a separate account — this is the single most effective habit for hitting your savings target consistently.</p>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h2>Related Calculators</h2>
+      <div class="rel-links">
+        <a href="/savings-calculator">Savings Calculator — See how your savings grow over time</a>
+        <a href="/paycheck-calculator">Paycheck Calculator — Estimate your after-tax take-home pay</a>
+        <a href="/debt-snowball-calculator">Debt Snowball Calculator — Pay off debt faster</a>
+        <a href="/net-worth-calculator">Net Worth Calculator — Track your assets and liabilities</a>
+        <a href="/retirement-calculator">Retirement Calculator — Are you saving enough for retirement?</a>
+      </div>
+    </div>
+
+  </div><!-- end main-col -->
+
+  <div class="side">
+    <div class="card">
+      <h3>50/30/20 Budget Rule</h3>
+      <p>Learn how the 50/30/20 framework works and how to adapt it to your income and cost of living.</p>
+      <a class="cta" href="/guides/50-30-20-budget-rule">Read the Full Guide →<small>Free, no sign-up required</small></a>
+    </div>
+    <div class="card">
+      <h3>Related Guides</h3>
+      <div class="rel-links">
+        <a href="/guides/how-much-emergency-fund">How Much Emergency Fund Do You Need?</a>
+        <a href="/guides/how-to-lower-dti-ratio">How to Lower Your DTI Ratio</a>
+        <a href="/guides/what-is-compound-interest">What Is Compound Interest?</a>
+        <a href="/guides/how-much-to-save-for-retirement-by-age">How Much to Save for Retirement by Age</a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>More Calculators</h3>
+      <div class="rel-links">
+        <a href="/paycheck-calculator">Paycheck Calculator</a>
+        <a href="/savings-calculator">Savings Calculator</a>
+        <a href="/retirement-calculator">Retirement Calculator</a>
+        <a href="/net-worth-calculator">Net Worth Calculator</a>
+        <a href="/debt-snowball-calculator">Debt Snowball Calculator</a>
+      </div>
+    </div>
+  </div><!-- end side -->
+
+</div><!-- end layout -->
+</main>
+
+<div style="background:#f7f8fc;border-top:2px solid #e5e7eb;padding:28px 16px 40px">
+  <div style="max-width:1100px;margin:0 auto">
+    <h2 style="font-size:13px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin:0 0 14px">📚 Related Guides</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="/guides/50-30-20-budget-rule" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">50/30/20 Budget Rule →</a>
+      <a href="/guides/how-much-emergency-fund" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">How Much Emergency Fund →</a>
+      <a href="/guides/how-to-lower-dti-ratio" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">Lower Your DTI Ratio →</a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+  <span>© 2026 UseCalcFi. Free financial calculators for everyone.</span>
+  <nav style="display:flex;gap:16px"><a href="/about" style="color:var(--mut);text-decoration:none;font-size:13px">About</a><a href="/contact" style="color:var(--mut);text-decoration:none;font-size:13px">Contact</a><a href="/privacy-policy" style="color:var(--mut);text-decoration:none;font-size:13px">Privacy Policy</a><a href="/disclaimer" style="color:var(--mut);text-decoration:none;font-size:13px">Disclaimer</a></nav>
+</div></footer>
+
+<script>
+function fmt(n){return n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});}
+function calc(){
+  const inc=parseFloat(document.getElementById('income').value)||0;
+  const np=parseFloat(document.getElementById('needsPct').value)||50;
+  const wp=parseFloat(document.getElementById('wantsPct').value)||30;
+  const sp=Math.max(0,100-np-wp);
+  if(inc<=0){alert('Please enter your monthly take-home pay.');return;}
+  const needs=inc*np/100,wants=inc*wp/100,saves=inc*sp/100;
+  document.getElementById('rNeeds').textContent=fmt(needs);
+  document.getElementById('rWants').textContent=fmt(wants);
+  document.getElementById('rSaves').textContent=fmt(saves);
+  document.getElementById('rNeedsPct').textContent=np+'%';
+  document.getElementById('rWantsPct').textContent=wp+'%';
+  document.getElementById('rSavesPct').textContent=sp+'%';
+  document.getElementById('barNeed').style.width=np+'%';
+  document.getElementById('barWant').style.width=wp+'%';
+  document.getElementById('barSave').style.width=sp+'%';
+  document.getElementById('bNeedPct').textContent=np+'%';
+  document.getElementById('bWantPct').textContent=wp+'%';
+  document.getElementById('bSavePct').textContent=sp+'%';
+  document.getElementById('bNeeds').textContent=fmt(needs);
+  document.getElementById('bWants').textContent=fmt(wants);
+  document.getElementById('bSaves').textContent=fmt(saves);
+  document.getElementById('bNeedsYr').textContent=fmt(needs*12);
+  document.getElementById('bWantsYr').textContent=fmt(wants*12);
+  document.getElementById('bSavesYr').textContent=fmt(saves*12);
+  document.getElementById('pcNeeds').textContent=fmt(needs*12/26);
+  document.getElementById('pcWants').textContent=fmt(wants*12/26);
+  document.getElementById('pcSaves').textContent=fmt(saves*12/26);
+  document.getElementById('pwNeeds').textContent=fmt(needs*12/52);
+  document.getElementById('pwWants').textContent=fmt(wants*12/52);
+  document.getElementById('pwSaves').textContent=fmt(saves*12/52);
+  document.getElementById('results-section').style.display='block';
+  updateDiff();
+}
+function reset(){
+  document.getElementById('income').value='';
+  document.getElementById('needsPct').value=50;
+  document.getElementById('wantsPct').value=30;
+  document.getElementById('actNeeds').value='';
+  document.getElementById('actWants').value='';
+  document.getElementById('actSaves').value='';
+  document.getElementById('results-section').style.display='none';
+  ['diffNeeds','diffWants','diffSaves'].forEach(function(id){
+    document.getElementById(id).textContent='';
+    document.getElementById(id).className='diff';
+  });
+}
+function updateDiff(){
+  const inc=parseFloat(document.getElementById('income').value)||0;
+  const np=parseFloat(document.getElementById('needsPct').value)||50;
+  const wp=parseFloat(document.getElementById('wantsPct').value)||30;
+  const sp=Math.max(0,100-np-wp);
+  const targets=[inc*np/100,inc*wp/100,inc*sp/100];
+  const ids=['Needs','Wants','Saves'];
+  ids.forEach(function(id,i){
+    const actual=parseFloat(document.getElementById('act'+id).value);
+    const el=document.getElementById('diff'+id);
+    if(isNaN(actual)||actual===0){el.textContent='';el.className='diff';return;}
+    const diff=actual-targets[i];
+    if(diff<=0){el.textContent='Under by '+fmt(Math.abs(diff));el.className='diff ok';}
+    else{el.textContent='Over by '+fmt(diff);el.className='diff over';}
+  });
+}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+</script>
+</body>
+</html>
