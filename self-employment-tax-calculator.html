@@ -127,6 +127,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rSE">$0</div><div class="l">Self-employment tax</div></div>
           <div class="kpi"><div class="v" id="rIncome">$0</div><div class="l">Federal income tax</div></div>
@@ -137,9 +138,10 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="setaside">
           Set aside <strong id="pctSetAside">0%</strong> of every payment you receive — that's <strong id="perDollar">$0</strong> per $1,000 earned.
         </div>
+        </div><!-- /results-section -->
       </div>
 
-      <div class="card">
+      <div class="card" id="breakdown-section" style="display:none">
         <h3 style="margin-top:0">Tax breakdown</h3>
         <table class="breakdown">
           <tbody>
@@ -280,6 +282,8 @@ function calc(){
   var pct = grossIncome > 0 ? (totalTax / grossIncome * 100) : 0;
 
   // Update KPIs
+  document.getElementById('results-section').style.display='block';
+  document.getElementById('breakdown-section').style.display='block';
   document.getElementById('rSE').textContent = fmt(seTax);
   document.getElementById('rIncome').textContent = fmt(incomeTax);
   document.getElementById('rTotal').textContent = fmt(totalTax);
@@ -305,8 +309,6 @@ function calc(){
     document.getElementById(id).textContent = fmt(quarterly);
   });
 }
-
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){
   el.addEventListener('focus',function(){this.select();});
 });

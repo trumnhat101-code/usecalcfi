@@ -130,31 +130,31 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
       <label>Home Value ($)
         <div class="sublabel">Current estimated market value</div>
       </label>
-      <input type="number" id="homeValue" value="400000" min="0" oninput="calc()">
+      <input type="number" id="homeValue" value="400000" min="0">
     </div>
     <div>
       <label>Current Mortgage Balance ($)</label>
-      <input type="number" id="mortgageBalance" value="250000" min="0" oninput="calc()">
+      <input type="number" id="mortgageBalance" value="250000" min="0">
     </div>
     <div>
       <label>Max CLTV Ratio (%)
         <div class="sublabel">Combined Loan-to-Value — most lenders: 80–90%</div>
       </label>
-      <input type="number" id="cltv" value="85" min="50" max="100" step="1" oninput="calc()">
+      <input type="number" id="cltv" value="85" min="50" max="100" step="1">
     </div>
     <div>
       <label>HELOC Amount to Borrow ($)
         <div class="sublabel">Up to your available credit line</div>
       </label>
-      <input type="number" id="helocAmount" value="60000" min="0" oninput="calc()">
+      <input type="number" id="helocAmount" value="60000" min="0">
     </div>
     <div>
       <label>Interest Rate (% APR)</label>
-      <input type="number" id="rate" value="8.5" min="0" max="30" step="0.1" oninput="calc()">
+      <input type="number" id="rate" value="8.5" min="0" max="30" step="0.1">
     </div>
     <div>
       <label>Draw Period (years)</label>
-      <select id="drawYears" onchange="calc()">
+      <select id="drawYears">
         <option value="5">5 years</option>
         <option value="10" selected>10 years</option>
         <option value="15">15 years</option>
@@ -162,7 +162,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
     </div>
     <div>
       <label>Repayment Period (years)</label>
-      <select id="repayYears" onchange="calc()">
+      <select id="repayYears">
         <option value="10">10 years</option>
         <option value="15">15 years</option>
         <option value="20" selected>20 years</option>
@@ -170,18 +170,21 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
     </div>
     <div>
       <label>Rate Change Scenario</label>
-      <select id="rateScenario" onchange="calc()">
+      <select id="rateScenario">
         <option value="0">Current rate (no change)</option>
         <option value="1">+1% increase</option>
         <option value="2">+2% increase</option>
         <option value="-1">−1% decrease</option>
       </select>
     </div>
+    <div class="full">
+      <button class="btn" onclick="calc()">Calculate HELOC →</button>
+    </div>
   </div>
 </div>
 
 <!-- Equity Breakdown -->
-<div class="card">
+<div class="card" id="results-card" style="display:none">
   <h3>Your Home Equity Breakdown</h3>
   <div class="equity-bar">
     <div class="equity-fill" id="equityBar">
@@ -318,6 +321,7 @@ function calc(){
   const repayPmt=monthlyPmt(borrowAmt,rate,repayYrs*12);
   const totalInterest=drawPmt*drawYrs*12+repayPmt*repayYrs*12-borrowAmt;
 
+  document.getElementById('results-card').style.display='block';
   document.getElementById('rCreditLine').textContent=usd(creditLine);
   document.getElementById('rEquity').textContent=usd(equity);
   document.getElementById('rCLTV').textContent=currentLTV.toFixed(1)+'%';
@@ -349,7 +353,6 @@ function calc(){
     document.getElementById('eqFree').style.width=pct(Math.max(0,equity-borrowAmt),total)+'%';
   }
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type='number'],input[type='text']").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

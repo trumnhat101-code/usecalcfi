@@ -126,7 +126,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Payment</button></div>
         </div>
 
-        <div class="result" style="margin-top:18px">
+        <div class="result" id="results-section" style="display:none;margin-top:18px">
           <div class="kpi main"><div class="v" id="rMonthly">$0</div><div class="l">Monthly payment</div></div>
           <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount (after tax &amp; trade-in)</div></div>
           <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest paid</div></div>
@@ -239,6 +239,7 @@ function calc(){
   const totalPaid=mp*n;
   const totalInt=Math.max(totalPaid-loan,0);
 
+  document.getElementById('results-section').style.display='grid';
   $('rMonthly').textContent=usd(mp);
   $('rLoan').textContent=usd(loan);
   $('rInt').textContent=usd(totalInt);
@@ -250,7 +251,6 @@ function calc(){
   $('lPrin').textContent=usd(loan);
   $('lInt').textContent=usd(totalInt);
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

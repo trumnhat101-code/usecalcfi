@@ -126,6 +126,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rFV">$0</div><div class="l">Future value</div></div>
           <div class="kpi"><div class="v" id="rInterest">$0</div><div class="l">Total interest earned</div></div>
@@ -149,6 +150,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="r72" id="r72box">
           ⚡ <b>Rule of 72:</b> At <span id="r72rate">7</span>% return, your money doubles every <b><span id="r72yrs">10.3</span> years</b>.
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <a class="cta" href="https://www.acorns.com/" rel="nofollow noopener sponsored" target="_blank">
@@ -246,6 +248,7 @@ function calc(){
   const totalContrib=pmt*12*years;
   const interest=fv-P-totalContrib;
 
+  document.getElementById('results-section').style.display='block';
   $('rFV').textContent=usd(fv);
   $('rInterest').textContent=usd(interest);
   $('rContrib').textContent=usd(totalContrib);
@@ -317,7 +320,6 @@ function calc(){
     chartLabels.appendChild(lbl);
   });
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

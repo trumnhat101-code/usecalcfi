@@ -164,6 +164,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           <button class="btn" onclick="calc()">Calculate DTI</button>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi" id="kpiFront">
             <div class="v" id="rFront">0%</div>
@@ -202,6 +203,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           <thead><tr><th>Loan Type</th><th>Max DTI</th><th>Your Status</th></tr></thead>
           <tbody id="qualBody"></tbody>
         </table>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -305,6 +307,7 @@ function calc(){
   const frontDTI=income>0?(housing/income*100):0;
   const backDTI=income>0?(totalDebt/income*100):0;
 
+  document.getElementById('results-section').style.display='block';
   $('rFront').textContent=pct(frontDTI);
   $('rBack').textContent=pct(backDTI);
   $('rIncome').textContent=usd(income);
@@ -332,7 +335,6 @@ function calc(){
 
   $('qualBody').innerHTML=qualify(backDTI);
 }
-calc();
 </script>
 </body>
 </html>

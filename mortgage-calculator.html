@@ -126,7 +126,8 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
-        <div class="result" style="margin-top:18px">
+        <div id="results-section" style="display:none;margin-top:18px">
+        <div class="result">
           <div class="kpi main"><div class="v" id="rMonthly">$0</div><div class="l">Monthly payment (PITI + HOA)</div></div>
           <div class="kpi"><div class="v" id="rPI">$0</div><div class="l">Principal &amp; interest</div></div>
           <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount</div></div>
@@ -135,6 +136,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 
         <div class="bar" id="bar"><i style="background:#4f46e5;width:50%"></i><i style="background:#c7cae0;width:50%"></i></div>
         <div class="legend"><span><span class="dot" style="background:#4f46e5"></span>Principal <b id="lPrin">$0</b></span><span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lInt">$0</b></span></div>
+        </div><!-- /results-section -->
       </div>
 
       <!-- ====== AFFILIATE CTA (ngay sau kết quả — chuyển đổi cao nhất) ====== -->
@@ -220,6 +222,7 @@ function calc(){
   else pi=loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
   const totalPaid=pi*n, totalInt=Math.max(totalPaid-loan,0);
   const monthly=pi+tax/12+ins/12+hoa;
+  document.getElementById('results-section').style.display='block';
   $('rMonthly').textContent=usd(monthly);
   $('rPI').textContent=usd(pi);
   $('rLoan').textContent=usd(loan);
@@ -230,7 +233,6 @@ function calc(){
   $('lPrin').textContent=usd(loan);
   $('lInt').textContent=usd(totalInt);
 }
-calc(); // tính sẵn khi tải trang
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

@@ -126,7 +126,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Tax</button></div>
         </div>
 
-        <div class="result">
+        <div class="result" id="results-section" style="display:none">
           <div class="kpi main"><div class="v" id="rFedTax">$0</div><div class="l">Federal income tax</div></div>
           <div class="kpi"><div class="v" id="rEffRate">0%</div><div class="l">Effective federal rate</div></div>
           <div class="kpi"><div class="v" id="rMargRate">0%</div><div class="l">Marginal tax rate</div></div>
@@ -259,6 +259,7 @@ function calc(){
   const afterTax=gross-tax-(gross*stateRate/100);
   const effRate=gross>0?tax/gross:0;
 
+  document.getElementById('results-section').style.display='grid';
   $('rFedTax').textContent=usd(tax);
   $('rEffRate').textContent=pct(effRate);
   $('rMargRate').textContent=(marginal*100)+'%';
@@ -285,7 +286,6 @@ function calc(){
   ttr.innerHTML=`<td colspan="3">Total federal income tax</td><td>${usd(tax)}</td>`;
   tbody.appendChild(ttr);
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

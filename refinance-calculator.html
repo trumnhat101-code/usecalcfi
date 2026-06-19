@@ -133,6 +133,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <table class="cmp-table">
           <thead><tr><th></th><th>Current loan</th><th>New loan</th></tr></thead>
           <tbody>
@@ -148,6 +149,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="be-bg"><div class="be-fill" id="beBar" style="width:0%"></div></div>
         </div>
         <div class="verdict" id="verdict"></div>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -245,6 +247,7 @@ function calc(){
   var intSaved=curTotalInt-newTotalInt;
   var breakeven=savings>0?Math.ceil(cc/savings):9999;
 
+  document.getElementById('results-section').style.display='block';
   document.getElementById('rCurPmt').textContent=fmt(curPmt)+'/mo';
   document.getElementById('rNewPmt').textContent=fmt(newPmt)+'/mo';
   document.getElementById('rSavings').textContent=savings>0?fmt(savings)+'/mo saved':'↑ '+fmt(-savings)+'/mo higher';
@@ -271,7 +274,6 @@ function calc(){
     v.textContent='⚠️ Breakeven takes '+breakeven+' months. High closing costs relative to savings.';
   }
 }
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
 </script>
 </body>

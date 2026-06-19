@@ -131,6 +131,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rFV">$0</div><div class="l">Final balance</div></div>
           <div class="kpi good"><div class="v" id="rInterest">$0</div><div class="l">Interest earned</div></div>
@@ -157,6 +158,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <thead><tr><th>Account type</th><th>APY</th><th>Final balance</th><th>Interest earned</th></tr></thead>
           <tbody id="rateBody"></tbody>
         </table>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -245,6 +247,7 @@ function calc(){
   var lastBal=fv(P,monthly,rate,years-1/12);
   var monthlyInt=lastBal*r;
 
+  document.getElementById('results-section').style.display='block';
   document.getElementById('rFV').textContent=fmt(finalBal);
   document.getElementById('rInterest').textContent=fmt(interest);
   document.getElementById('rDeposits').textContent=fmt(totalDeposits);
@@ -280,8 +283,6 @@ function calc(){
   });
   document.getElementById('rateBody').innerHTML=rows;
 }
-
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
 </script>
 </body>

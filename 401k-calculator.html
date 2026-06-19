@@ -136,6 +136,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rBalance">$0</div><div class="l">Projected 401k balance</div></div>
           <div class="kpi good"><div class="v" id="rIncome">$0</div><div class="l">Est. monthly income (4% rule)</div></div>
@@ -162,6 +163,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <!-- Growth chart -->
         <div class="chart-labels" id="chartLabels" style="margin-top:16px"></div>
         <div class="chart" id="chart"></div>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -258,6 +260,7 @@ function calc(){
   var matchTotal=matchAnnual*years;
   var growth=total-yourTotal-matchTotal-bal;
 
+  document.getElementById('results-section').style.display='block';
   document.getElementById('rBalance').textContent=fmt(total);
   document.getElementById('rIncome').textContent=fmt(total*0.04/12);
   document.getElementById('rYourTotal').textContent=fmt(yourTotal);
@@ -295,7 +298,6 @@ function calc(){
   document.getElementById('chartLabels').innerHTML=labHTML;
 }
 
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
 </script>
 </body>

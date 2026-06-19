@@ -116,6 +116,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Payoff</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rMonths">0 mo</div><div class="l">Months to pay off</div></div>
           <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest paid</div></div>
@@ -141,6 +142,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="save-box" id="saveBox" style="display:none">
           💰 Adding extra payment saves you <span class="sv" id="savingsAmt">$0</span> in interest and <span id="saveMonths">0</span> months!
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <a class="cta" href="https://www.nerdwallet.com/best/credit-cards/balance-transfer" rel="nofollow noopener sponsored" target="_blank">
@@ -231,6 +233,7 @@ function calc(){
   const norm=payoffStats(balance,apr,payment);
   const extraStats=extra>0?payoffStats(balance,apr,payment+extra):null;
 
+  document.getElementById('results-section').style.display='block';
   $('rMonths').textContent=fmtMo(norm.months);
   $('rInt').textContent=usd(norm.interest);
   $('rTotal').textContent=usd(norm.total);
@@ -255,7 +258,6 @@ function calc(){
     $('saveBox').style.display='none';
   }
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

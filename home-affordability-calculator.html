@@ -151,6 +151,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Affordability</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rAffordable">$0</div><div class="l">Maximum home price</div></div>
           <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Max loan amount</div></div>
@@ -177,6 +178,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="summary-box" id="summaryBox" style="border-color:var(--bd)">
           <div id="summaryText" style="font-size:14px"></div>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <a class="cta" href="https://www.lendingtree.com/home/mortgage/" rel="nofollow noopener sponsored" target="_blank">
@@ -307,6 +309,7 @@ function calc(){
   const totalMonthly=pi+monthlyTax+monthlyIns+hoa;
   const totalDTI=(totalMonthly+debts)/monthlyIncome*100;
 
+  document.getElementById('results-section').style.display='block';
   $('rAffordable').textContent=usd(H);
   $('rLoan').textContent=usd(loan);
   $('rMonthly').textContent=usd(totalMonthly);
@@ -339,7 +342,6 @@ function calc(){
     txt.innerHTML=`❌ <b>High DTI.</b> At ${totalDTI.toFixed(1)}%, most lenders will require you to reduce debts or increase income before qualifying. Consider paying off existing debts first.`;
   }
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

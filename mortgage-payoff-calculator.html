@@ -138,6 +138,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           <button class="btn" onclick="calc()">Calculate</button>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="kpi-grid">
           <div class="kpi neutral">
             <div class="v" id="rPayment">$0</div>
@@ -183,6 +184,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
             <tbody id="scenarioBody"></tbody>
           </table>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -299,6 +301,7 @@ function calc(){
   const savedInt=int0-int1;
   const savedMo=mo0-mo1;
 
+  document.getElementById('results-section').style.display='block';
   $('rPayment').textContent=usd(base);
   $('rOrigPayoff').textContent=moStr(mo0);
   $('rNewPayoff').textContent=extra>0?moStr(mo1):moStr(mo0);
@@ -320,7 +323,6 @@ function calc(){
   const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,int0)).join('');
   $('scenarioBody').innerHTML=rows;
 }
-calc();
 </script>
 </body>
 </html>

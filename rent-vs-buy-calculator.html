@@ -146,15 +146,17 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="v-sub" id="verdictSub">—</div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="kpi-grid">
           <div class="kpi buy"><div class="v" id="rBuyCost">—</div><div class="l">Total cost to buy (yr <span id="yr1"></span>)</div></div>
           <div class="kpi rent-k"><div class="v" id="rRentCost">—</div><div class="l">Total cost to rent (yr <span id="yr2"></span>)</div></div>
           <div class="kpi"><div class="v" id="rHomeVal">—</div><div class="l">Home value at year <span id="yr3"></span></div></div>
           <div class="kpi"><div class="v" id="rBreakeven">—</div><div class="l">Break-even year</div></div>
         </div>
+        </div><!-- /results-section -->
       </div>
 
-      <div class="card">
+      <div class="card" id="year-section" style="display:none">
         <h3 style="margin-top:0">Year-by-year comparison</h3>
         <div class="yr-wrap">
           <table class="yr">
@@ -309,6 +311,8 @@ function calc(){
 
   // Final year values
   document.getElementById('yrBody').innerHTML = rows;
+  document.getElementById('results-section').style.display='block';
+  document.getElementById('year-section').style.display='block';
   document.getElementById('yr1').textContent = horizon;
   document.getElementById('yr2').textContent = horizon;
   document.getElementById('yr3').textContent = horizon;
@@ -333,7 +337,6 @@ function calc(){
   }
 }
 
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){
   el.addEventListener('focus',function(){this.select();});
 });

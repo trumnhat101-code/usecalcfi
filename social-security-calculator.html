@@ -145,6 +145,7 @@ footer{border-top:1px solid var(--bd)}
           </div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result" style="margin-top:18px">
           <div class="kpi main">
             <div class="v" id="rMonthly">$0</div>
@@ -182,6 +183,7 @@ footer{border-top:1px solid var(--bd)}
             <tbody id="compBody"></tbody>
           </table>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <!-- Affiliate CTA -->
@@ -356,6 +358,7 @@ function calc() {
   const fraLabel = fraText(by);
   const fraVal = getFRA(by);
 
+  document.getElementById('results-section').style.display='block';
   $('rMonthly').textContent = usd(chosen);
   $('rAnnual').textContent = usd(chosen * 12);
   $('rFRAamt').textContent = usd(fraAmt);
@@ -397,8 +400,6 @@ function calc() {
   });
   $('compBody').innerHTML = rows;
 }
-
-calc();
 </script>
 </body>
 </html>

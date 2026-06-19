@@ -129,6 +129,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rPmt">$0</div><div class="l">Monthly payment</div></div>
           <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest</div></div>
@@ -155,6 +156,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <tbody id="tBody"></tbody>
           </table>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -254,6 +256,7 @@ function calc(){
   }
 
   var totalPaid=P+totalInt;
+  document.getElementById('results-section').style.display='block';
   document.getElementById('rPmt').textContent=fmt(pmt+(extra||0));
   document.getElementById('rInt').textContent=fmt(totalInt);
   document.getElementById('rTotal').textContent=fmt(totalPaid);
@@ -294,8 +297,6 @@ function renderTable(){
   }
   document.getElementById('tBody').innerHTML=rows.join('');
 }
-
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
 </script>
 </body>

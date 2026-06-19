@@ -124,6 +124,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Payment</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rMonthly">$0</div><div class="l">Monthly payment</div></div>
           <div class="kpi"><div class="v" id="rInt">$0</div><div class="l">Total interest</div></div>
@@ -136,6 +137,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <span><span class="dot" style="background:#2563eb"></span>Principal <b id="lPrin">$0</b></span>
           <span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lInt">$0</b></span>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <a class="cta" href="https://www.lendingtree.com/personal-loans/" rel="nofollow noopener sponsored" target="_blank">
@@ -231,6 +233,7 @@ function calc(){
   const totalInt=mp*n-P;
   const trueAPR=fee>0?calcAPR(P,fee,mp,n):apr;
 
+  document.getElementById('results-section').style.display='block';
   $('rMonthly').textContent=usd(mp);
   $('rInt').textContent=usd(totalInt);
   $('rTotal').textContent=usd(mp*n);
@@ -242,7 +245,6 @@ function calc(){
   $('lPrin').textContent=usd(P);
   $('lInt').textContent=usd(totalInt);
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

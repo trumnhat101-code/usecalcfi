@@ -110,7 +110,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="grid2">
           <div>
             <label>Filing status</label>
-            <select id="status" onchange="calc()">
+            <select id="status">
               <option value="single">Single</option>
               <option value="mfj" selected>Married Filing Jointly</option>
               <option value="hoh">Head of Household</option>
@@ -142,9 +142,10 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <div class="sublabel">Education, EV, energy credits, etc.</div>
             <input id="credits" type="number" value="0">
           </div>
-          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
+          <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate Tax Refund →</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div id="refundBox" class="refund-box good">
           <div class="rv" id="rRefund">$0</div>
           <div class="rl" id="rRefundLabel">Estimated refund</div>
@@ -162,6 +163,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <thead><tr><th>Rate</th><th>Taxable income range</th><th>Tax in bracket</th></tr></thead>
           <tbody id="bracketBody"></tbody>
         </table>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -270,6 +272,7 @@ function calc(){
   var refund=withheld-taxOwed;
   var effRate=income>0?(taxOwed/income)*100:0;
 
+  document.getElementById('results-section').style.display='block';
   document.getElementById('rAGI').textContent=fmt(agi);
   document.getElementById('rTaxable').textContent=fmt(taxable);
   document.getElementById('rTaxOwed').textContent=fmt(taxOwed);
@@ -306,7 +309,6 @@ function calc(){
   document.getElementById('bracketBody').innerHTML=rows;
 }
 
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('focus',function(){this.select();});});
 </script>
 </body>

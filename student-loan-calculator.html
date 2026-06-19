@@ -141,6 +141,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           <button class="btn" onclick="calc()">Calculate</button>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi">
             <div class="v" id="rPayment">$0</div>
@@ -184,6 +185,7 @@ footer{border-top:1px solid var(--bd);padding:20px 0;text-align:center;font-size
           <div class="rate-row"><span>PLUS Loans (Grad & Parent)</span><span style="color:var(--ac)">9.08%</span></div>
           <div class="rate-row"><span>Private loans (varies)</span><span style="color:var(--mut)">4–16%+</span></div>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <div class="ad">AdSense — leaderboard</div>
@@ -287,6 +289,7 @@ function calc(){
   const base=pmt(P,r,n);
   const {months:mo0,totalInt:int0}=amortize(P,r,base);
 
+  document.getElementById('results-section').style.display='block';
   $('rPayment').textContent=usd(base);
   $('rTotalInt').textContent=usd(int0);
   $('rTotalPaid').textContent=usd(P+int0);
@@ -308,7 +311,6 @@ function calc(){
     $('saveBox').style.display='none';
   }
 }
-calc();
 </script>
 </body>
 </html>

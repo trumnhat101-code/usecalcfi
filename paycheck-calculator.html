@@ -148,6 +148,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Paycheck</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rNet">$0</div><div class="l">Take-home pay (per period)</div></div>
           <div class="kpi"><div class="v" id="rGross">$0</div><div class="l">Gross pay (per period)</div></div>
@@ -166,6 +167,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         </div>
 
         <div class="note">⚠️ <b>Estimate only.</b> Actual withholding depends on your W-4 elections, pre-tax benefits, local taxes, and employer payroll practices. Consult a payroll professional for exact figures.</div>
+        </div><!-- /results-section -->
       </div>
 
       <!-- ====== AFFILIATE CTA ====== -->
@@ -328,6 +330,7 @@ function calc(){
   const netPP=annualNet/freq;
   const effRate=annualGross>0?(annualFed+annualSS+annualMed+annualState)/annualGross:0;
 
+  document.getElementById('results-section').style.display='block';
   $('rNet').textContent=usd(netPP);
   $('rGross').textContent=usd(grossPP);
   $('rAnnualNet').textContent=usd(annualNet);
@@ -341,7 +344,6 @@ function calc(){
   $('bState').textContent='−'+usd(statePP);
   $('bNet').textContent=usd(netPP);
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

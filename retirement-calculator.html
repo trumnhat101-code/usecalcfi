@@ -154,6 +154,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rBalance">$0</div><div class="l">Projected balance at retirement</div></div>
           <div class="kpi"><div class="v" id="rMonthly">$0</div><div class="l">Est. monthly income (4% rule)</div></div>
@@ -174,6 +175,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="chart" id="chartBars"></div>
           <div class="chart-labels" id="chartLabels"></div>
         </div>
+        </div><!-- /results-section -->
       </div>
 
       <!-- ====== AFFILIATE CTA ====== -->
@@ -299,6 +301,7 @@ function calc(){
   // Progress
   const progress=targetBalance>0?Math.min(totalBalance/targetBalance,1):1;
 
+  document.getElementById('results-section').style.display='block';
   $('rBalance').textContent=usd(totalBalance);
   $('rMonthly').textContent=usd(monthlyIncome);
   $('rReal').textContent=usd(realBalance);
@@ -363,7 +366,6 @@ function calc(){
     chartLabels.appendChild(lbl);
   });
 }
-calc();
 </script>
 <script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener("focus",function(){this.select();});});</script>
 </body>

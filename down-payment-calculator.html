@@ -127,6 +127,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div style="grid-column:1/-1"><button class="btn" onclick="calc()">Calculate</button></div>
         </div>
 
+        <div id="results-section" style="display:none">
         <div class="result">
           <div class="kpi main"><div class="v" id="rDP">$0</div><div class="l">Down payment needed</div></div>
           <div class="kpi"><div class="v" id="rLoan">$0</div><div class="l">Loan amount</div></div>
@@ -142,9 +143,10 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="bar-label"><span>Savings progress</span><span id="barPct">0%</span></div>
           <div class="bar-track"><div class="bar-fill" id="barFill" style="width:0%"></div></div>
         </div>
+        </div><!-- /results-section -->
       </div>
 
-      <div class="card">
+      <div class="card" id="comp-section" style="display:none">
         <h3 style="margin-top:0">Down payment comparison</h3>
         <div style="overflow-x:auto">
           <table class="comp">
@@ -257,6 +259,8 @@ function calc(){
   var needsPMI = (loanType === 'conventional' && dpPct < 20) || (loanType === 'fha');
   var pmiMonthly = needsPMI ? loanAmt * 0.01 / 12 : 0;
 
+  document.getElementById('results-section').style.display='block';
+  document.getElementById('comp-section').style.display='block';
   document.getElementById('rDP').textContent = fmt(dpAmt);
   document.getElementById('rLoan').textContent = fmt(loanAmt);
   document.getElementById('rSave').textContent = fmt(monthlySave)+'/mo';
@@ -287,11 +291,10 @@ function calc(){
   document.getElementById('compBody').innerHTML = rows;
 }
 
-calc();
 document.querySelectorAll('input[type="number"]').forEach(function(el){
   el.addEventListener('focus',function(){this.select();});
 });
-document.getElementById('price').addEventListener('input', function(){syncPct(); calc();});
+document.getElementById('price').addEventListener('input', function(){syncPct();});
 </script>
 </body>
 </html>
