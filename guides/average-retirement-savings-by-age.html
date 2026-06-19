@@ -99,6 +99,13 @@ footer a{color:var(--mut);text-decoration:none;margin-left:16px}
 footer a:hover{color:var(--tx)}
 @media(max-width:880px){.layout{grid-template-columns:1fr}.side{display:none}.fw-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.fw-grid{grid-template-columns:1fr}.benchmark-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .logo{font-size:17px}
+}
 </style>
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://usecalcfi.com/guides/average-retirement-savings-by-age">
