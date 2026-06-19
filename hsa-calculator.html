@@ -144,7 +144,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
       <label>Annual Contribution ($)
         <div class="sublabel" id="limitHint">2026 limit: $4,400 (self)</div>
       </label>
-      <input type="number" id="contribution" value="4400" min="0" oninput="calc()">
+      <input type="number" id="contribution" value="4400" min="0">
       <div class="limit-bar-wrap">
         <div class="limit-bar-track"><div class="limit-bar-fill" id="limitBar" style="width:100%"></div></div>
         <div class="limit-labels"><span id="pctUsed">100% of limit</span><span id="limitMax">Limit: $4,400</span></div>
@@ -152,7 +152,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
     </div>
     <div>
       <label>Federal Tax Bracket (%)</label>
-      <select id="fedBracket" onchange="calc()">
+      <select id="fedBracket">
         <option value="10">10%</option>
         <option value="12">12%</option>
         <option value="22" selected>22%</option>
@@ -164,29 +164,32 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
     </div>
     <div>
       <label>State Tax Rate (%)</label>
-      <input type="number" id="stateTax" value="5" min="0" max="15" oninput="calc()">
+      <input type="number" id="stateTax" value="5" min="0" max="15">
     </div>
     <div>
       <label>FICA (Social Security + Medicare %)</label>
-      <input type="number" id="ficaTax" value="7.65" min="0" max="15" step="0.01" oninput="calc()">
+      <input type="number" id="ficaTax" value="7.65" min="0" max="15" step="0.01">
     </div>
     <div>
       <label>Current HSA Balance ($)</label>
-      <input type="number" id="balance" value="5000" min="0" oninput="calc()">
+      <input type="number" id="balance" value="5000" min="0">
     </div>
     <div>
       <label>Investment Return Rate (% / yr)</label>
-      <input type="number" id="returnRate" value="7" min="0" max="20" step="0.1" oninput="calc()">
+      <input type="number" id="returnRate" value="7" min="0" max="20" step="0.1">
     </div>
     <div class="full">
       <label>Years Until Retirement</label>
-      <input type="number" id="years" value="25" min="1" max="50" oninput="calc()">
+      <input type="number" id="years" value="25" min="1" max="50">
+    </div>
+    <div class="full">
+      <button onclick="calc()" style="width:100%;padding:12px;background:#0d9488;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px">Calculate HSA Benefits →</button>
     </div>
   </div>
 </div>
 
 <!-- Results -->
-<div class="card">
+<div class="card" id="results-card" style="display:none">
   <h3>Your HSA Benefits</h3>
   <div class="result">
     <div class="kpi main"><div class="v" id="rTaxSaving">—</div><div class="l">Annual Tax Savings</div></div>
@@ -287,7 +290,6 @@ function updateLimit(){
   if(oldLimits.includes(contrib)){
     document.getElementById('contribution').value=limit;
   }
-  calc();
 }
 
 function calc(){
@@ -317,6 +319,7 @@ function calc(){
     if(y%step===0||y===years) chartVals.push({yr:y,val:fv});
   }
 
+  document.getElementById('results-card').style.display='block';
   document.getElementById('rTaxSaving').textContent=usd(totalSave);
   document.getElementById('rFutureVal').textContent=usd(fv);
   document.getElementById('rFedSave').textContent=usd(fedSave);
