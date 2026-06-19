@@ -242,6 +242,32 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- New Guides -->
+  <url>
+    <loc>https://usecalcfi.com/guides/traditional-ira-vs-roth-ira</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-a-good-credit-score</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/how-much-emergency-fund</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/debt-avalanche-vs-debt-snowball</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Debt & Student Loans -->
   <url>
     <loc>https://usecalcfi.com/debt-to-income-calculator</loc>
