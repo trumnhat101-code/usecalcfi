@@ -300,6 +300,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Guides 21-25 -->
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-apr-vs-apy</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/roth-ira-rules-and-limits</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/how-to-pay-off-student-loans-fast</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/what-is-a-heloc</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://usecalcfi.com/guides/self-employed-taxes-guide</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Guides 11-15 -->
   <url>
     <loc>https://usecalcfi.com/guides/what-is-pmi</loc>

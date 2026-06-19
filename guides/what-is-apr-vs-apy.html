@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APR vs APY: What's the Difference? | UseCalcFi</title>
+<meta name="description" content="APR vs APY explained simply. Learn which rate matters for your savings account, mortgage, and credit cards — and how to use each number to make smarter financial decisions.">
+<link rel="canonical" href="https://usecalcfi.com/guides/what-is-apr-vs-apy">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://usecalcfi.com/guides/what-is-apr-vs-apy">
+<meta property="og:title" content="APR vs APY: What's the Difference?">
+<meta property="og:description" content="APR vs APY explained simply. Learn which rate matters for savings accounts, mortgages, and credit cards.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C7MQVPYVTN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C7MQVPYVTN');</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"APR vs APY: What's the Difference?","description":"APR vs APY explained simply. Learn which rate matters for your savings account, mortgage, and credit cards.","url":"https://usecalcfi.com/guides/what-is-apr-vs-apy","datePublished":"2026-06-19","dateModified":"2026-06-19","author":{"@type":"Organization","name":"UseCalcFi","url":"https://usecalcfi.com"},"publisher":{"@type":"Organization","name":"UseCalcFi","url":"https://usecalcfi.com","logo":{"@type":"ImageObject","url":"https://usecalcfi.com/favicon.svg"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://usecalcfi.com/guides"},{"@type":"ListItem","position":3,"name":"APR vs APY","item":"https://usecalcfi.com/guides/what-is-apr-vs-apy"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is APR?","acceptedAnswer":{"@type":"Answer","text":"APR (Annual Percentage Rate) is the yearly cost of borrowing money, expressed as a percentage. It includes the interest rate plus most fees, making it a more complete picture of loan cost than the interest rate alone. APR is used for mortgages, credit cards, and personal loans."}},
+{"@type":"Question","name":"What is APY?","acceptedAnswer":{"@type":"Answer","text":"APY (Annual Percentage Yield) reflects the actual return on a savings account or investment after accounting for compound interest. Unlike APR, APY shows what you actually earn when interest compounds monthly, daily, or continuously."}},
+{"@type":"Question","name":"Which is higher — APR or APY?","acceptedAnswer":{"@type":"Answer","text":"For the same stated rate, APY is always higher than or equal to APR because APY accounts for compounding. The more frequently interest compounds, the bigger the gap between APR and APY."}},
+{"@type":"Question","name":"Why is my mortgage APR higher than the interest rate?","acceptedAnswer":{"@type":"Answer","text":"Mortgage APR includes the interest rate plus origination fees, discount points, mortgage broker fees, and certain closing costs spread over the loan term. This makes APR a better comparison tool across different lender offers."}},
+{"@type":"Question","name":"Should I compare savings accounts by APR or APY?","acceptedAnswer":{"@type":"Answer","text":"Always compare savings accounts by APY. APY accounts for compounding frequency and shows your actual annual earnings. A savings account advertised at 5.00% APY pays more than one at 5.00% APR compounding monthly."}},
+{"@type":"Question","name":"Does a higher APY always mean a better savings account?","acceptedAnswer":{"@type":"Answer","text":"APY is the primary metric for comparing savings accounts, but also check minimum balance requirements, withdrawal restrictions, FDIC/NCUA insurance status, and whether the APY is promotional or ongoing. A high promotional APY that drops after 3 months may not be better than a slightly lower ongoing rate."}},
+{"@type":"Question","name":"How do I convert APR to APY?","acceptedAnswer":{"@type":"Answer","text":"Use the formula: APY = (1 + APR/n)^n - 1, where n is the number of compounding periods per year. For example, a 5% APR compounding monthly: APY = (1 + 0.05/12)^12 - 1 = 5.116%."}}
+]}
+</script>
+<style>
+:root{--ac:#0891b2;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+footer{border-top:1px solid var(--bd);border-bottom:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:#4f46e5;font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+footer nav{display:flex;gap:16px}
+footer nav a{color:var(--mut);text-decoration:none;font-size:13px}
+
+.hero{background:linear-gradient(135deg,var(--ac),#0e7490);color:#fff;padding:44px 16px 40px}
+.hero .wrap{max-width:1100px;margin:0 auto}
+.hero-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.85;margin-bottom:10px}
+.hero h1{font-size:clamp(26px,4vw,40px);font-weight:900;line-height:1.15;margin-bottom:14px}
+.hero-sub{font-size:16px;opacity:.9;max-width:640px;margin-bottom:18px;line-height:1.55}
+.hero-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;opacity:.82}
+.hero-meta span{display:flex;align-items:center;gap:5px}
+
+.layout{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;padding:32px 0 48px}
+@media(max-width:880px){.layout{grid-template-columns:1fr}}
+
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:22px;margin-bottom:18px}
+h2{font-size:22px;font-weight:800;margin:28px 0 12px;color:var(--tx)}
+h2:first-child{margin-top:0}
+h3{font-size:16px;font-weight:700;margin:20px 0 8px;color:var(--tx)}
+p{font-size:15px;color:var(--mut);margin-bottom:12px;line-height:1.65}
+strong{color:var(--tx)}
+ul,ol{padding-left:20px;margin-bottom:12px}
+li{font-size:15px;color:var(--mut);margin-bottom:6px;line-height:1.6}
+
+.formula-box{background:linear-gradient(135deg,#ecfeff,#cffafe);border:2px solid #a5f3fc;border-radius:14px;padding:22px;margin:20px 0;text-align:center}
+.formula-box .formula{font-size:22px;font-weight:800;color:#0e7490;letter-spacing:-.3px;margin:8px 0}
+.formula-box .formula-label{font-size:13px;color:#0891b2;font-weight:600;margin-top:6px}
+
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.compare-card{border-radius:13px;padding:18px}
+.compare-card.apr{background:#fff7ed;border:2px solid #fed7aa}
+.compare-card.apy{background:#f0fdf4;border:2px solid #bbf7d0}
+.compare-card .cc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.compare-card.apr .cc-label{color:#c2410c}
+.compare-card.apy .cc-label{color:#16a34a}
+.compare-card .cc-title{font-size:20px;font-weight:800;margin-bottom:6px;color:var(--tx)}
+.compare-card .cc-desc{font-size:13px;color:var(--mut);line-height:1.55}
+.compare-card ul{margin:10px 0 0;padding-left:16px}
+.compare-card li{font-size:13px;margin-bottom:4px}
+
+table{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0}
+th{font-size:12px;font-weight:700;color:var(--mut);padding:9px 12px;text-align:left;border-bottom:2px solid var(--bd);background:#f9fafb}
+td{padding:10px 12px;border-bottom:1px solid var(--bd);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+.hi{font-weight:700;color:var(--ac)}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:12px;font-weight:700}
+.badge-loan{background:#fff7ed;color:#c2410c}
+.badge-save{background:#f0fdf4;color:#16a34a}
+
+.example-box{background:#f0fdfa;border-left:4px solid var(--ac);border-radius:0 12px 12px 0;padding:16px 18px;margin:18px 0}
+.example-box .ex-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ac);margin-bottom:8px}
+.example-box p{margin:0;color:#0f766e;font-size:14px}
+
+.type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.type-card{background:#f9fafb;border:1px solid var(--bd);border-radius:10px;padding:12px 14px}
+.type-card .tc-name{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.type-card .tc-rate{font-size:16px;font-weight:800;color:var(--ac)}
+.type-card .tc-note{font-size:12px;color:var(--mut);margin-top:3px}
+
+.faq-item{border-bottom:1px solid var(--bd);padding:14px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:15px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;user-select:none;color:var(--tx)}
+.faq-a{font-size:14px;color:var(--mut);margin-top:8px;display:none;line-height:1.65}
+.faq-item.open .faq-a{display:block}
+.faq-arrow{font-size:18px;transition:transform .2s;flex-shrink:0;color:var(--ac)}
+.faq-item.open .faq-arrow{transform:rotate(45deg)}
+
+.side .card h3{font-size:15px;margin:0 0 8px}
+.side .card p{font-size:13px;color:var(--mut);margin-bottom:10px}
+.cta{display:block;background:linear-gradient(135deg,#0891b2,#0e7490);color:#fff;text-decoration:none;border-radius:10px;padding:13px;text-align:center;font-weight:700;font-size:14px;margin-bottom:6px}
+.cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:2px}
+.rel-links a{display:block;color:var(--ac);text-decoration:none;font-size:13px;padding:5px 0;border-bottom:1px solid var(--bd)}
+.rel-links a:last-child{border-bottom:none}
+.rel-links a:hover{text-decoration:underline}
+
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .compare-grid{grid-template-columns:1fr}
+  .type-grid{grid-template-columns:1fr}
+  h2{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/paycheck-calculator">Paycheck</a><a href="/savings-calculator">Savings</a><a href="/debt-to-income-calculator">DTI</a><a href="/guides" style="color:#4f46e5;font-weight:700">Guides</a></nav>
+</div></header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-label">📊 Investing &amp; Savings</div>
+    <h1>APR vs APY: What's the Difference?</h1>
+    <div class="hero-sub">One rate costs you money. The other earns it. Here's exactly which number to look at — and when — for savings accounts, credit cards, and mortgages.</div>
+    <div class="hero-meta">
+      <span>📅 Updated June 2026</span>
+      <span>⏱ 6 min read</span>
+      <span>📋 Sources: CFPB, Federal Reserve, Investopedia</span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+<div class="layout">
+
+  <article>
+
+    <div class="card">
+      <p>Banks and lenders use APR and APY to describe interest — but they measure very different things. <strong>APR is what you pay when borrowing.</strong> <strong>APY is what you earn when saving.</strong> Mixing them up can lead to choosing the wrong credit card, the more expensive mortgage, or the lower-yielding savings account.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card apr">
+          <div class="cc-label">For Borrowing</div>
+          <div class="cc-title">APR</div>
+          <div class="cc-desc">Annual Percentage Rate — the yearly cost of a loan including interest and most fees.</div>
+          <ul>
+            <li>Mortgages</li>
+            <li>Credit cards</li>
+            <li>Auto &amp; personal loans</li>
+            <li>Lower APR = cheaper loan</li>
+          </ul>
+        </div>
+        <div class="compare-card apy">
+          <div class="cc-label">For Saving</div>
+          <div class="cc-title">APY</div>
+          <div class="cc-desc">Annual Percentage Yield — the actual return after compounding is factored in.</div>
+          <ul>
+            <li>Savings accounts</li>
+            <li>CDs &amp; money market</li>
+            <li>Treasury bills</li>
+            <li>Higher APY = more earned</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>The Core Difference: Compounding</h2>
+      <p>The key difference between APR and APY is <strong>compound interest</strong>. APR is a simple rate — it ignores how often interest compounds. APY bakes compounding in, so it shows your actual annual gain or cost.</p>
+
+      <div class="formula-box">
+        <div class="formula-label">APY FORMULA</div>
+        <div class="formula">APY = (1 + APR/n)<sup>n</sup> − 1</div>
+        <div class="formula-label">where n = compounding periods per year</div>
+      </div>
+
+      <div class="example-box">
+        <div class="ex-label">Example — 5% APR with monthly compounding</div>
+        <p>APY = (1 + 0.05/12)<sup>12</sup> − 1 = <strong>5.116%</strong><br>
+        On $10,000: APR earns $500/year → APY earns $511.60/year. The $11.60 difference is compounding.</p>
+      </div>
+
+      <table>
+        <thead><tr><th>Stated Rate (APR)</th><th>Compounding</th><th>Actual APY</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>5.00%</td><td>Annually</td><td class="hi">5.000%</td><td>$0</td></tr>
+          <tr><td>5.00%</td><td>Monthly</td><td class="hi">5.116%</td><td>+$11.60 on $10K</td></tr>
+          <tr><td>5.00%</td><td>Daily</td><td class="hi">5.127%</td><td>+$12.70 on $10K</td></tr>
+          <tr><td>5.00%</td><td>Continuously</td><td class="hi">5.127%</td><td>+$12.75 on $10K</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:13px">The more frequently interest compounds, the larger the gap between APR and APY.</p>
+    </div>
+
+    <div class="card">
+      <h2>When APR Matters: Loans and Credit Cards</h2>
+      <p>When you borrow, you pay APR. Use it to compare loan offers apples-to-apples. By law, lenders must disclose APR under the Truth in Lending Act (TILA).</p>
+
+      <h3>Mortgage APR vs Interest Rate</h3>
+      <p>Your mortgage rate is the base interest charge. APR is higher because it includes origination fees, discount points, and broker fees — spread over the loan term. Always compare mortgage offers by APR, not just rate.</p>
+
+      <div class="example-box">
+        <div class="ex-label">Mortgage Example — $400,000 loan, 30 years</div>
+        <p>Lender A: 6.75% rate / <strong>6.91% APR</strong> ($4,000 fees)<br>
+        Lender B: 6.90% rate / <strong>6.95% APR</strong> ($1,000 fees)<br>
+        Lender A costs less overall despite the higher-fee loan, because its APR is lower.</p>
+      </div>
+
+      <h3>Credit Card APR Types</h3>
+      <div class="type-grid">
+        <div class="type-card">
+          <div class="tc-name">Purchase APR</div>
+          <div class="tc-rate">20–29%</div>
+          <div class="tc-note">Applied to everyday purchases if you carry a balance</div>
+        </div>
+        <div class="type-card">
+          <div class="tc-name">Balance Transfer APR</div>
+          <div class="tc-rate">0–5% intro</div>
+          <div class="tc-note">Often 0% promotional, then jumps to regular rate</div>
+        </div>
+        <div class="type-card">
+          <div class="tc-name">Cash Advance APR</div>
+          <div class="tc-rate">25–30%</div>
+          <div class="tc-note">Starts accruing immediately — no grace period</div>
+        </div>
+        <div class="type-card">
+          <div class="tc-name">Penalty APR</div>
+          <div class="tc-rate">Up to 29.99%</div>
+          <div class="tc-note">Triggered by late payment — can be permanent</div>
+        </div>
+      </div>
+      <p>💡 Pay your credit card in full each month and the purchase APR is irrelevant — you pay zero interest.</p>
+    </div>
+
+    <div class="card">
+      <h2>When APY Matters: Savings and Investments</h2>
+      <p>When you save, you earn APY. Federal law (Truth in Savings Act) requires banks to advertise savings rates as APY, so comparison is straightforward — the higher APY wins.</p>
+
+      <table>
+        <thead><tr><th>Account Type</th><th>Typical APY (2026)</th><th>Compounding</th><th>Best For</th></tr></thead>
+        <tbody>
+          <tr><td>High-Yield Savings (HYSA)</td><td class="hi">4.50–5.25%</td><td>Daily/Monthly</td><td>Emergency fund, short-term goals</td></tr>
+          <tr><td>Money Market Account</td><td class="hi">4.25–5.00%</td><td>Daily/Monthly</td><td>Larger balances, check-writing</td></tr>
+          <tr><td>1-Year CD</td><td class="hi">4.75–5.30%</td><td>Monthly/Annual</td><td>Locked savings, known timeline</td></tr>
+          <tr><td>Traditional Savings</td><td class="hi">0.01–0.50%</td><td>Monthly</td><td>Convenience only — rate is very low</td></tr>
+          <tr><td>Treasury Bills (6-mo)</td><td class="hi">~4.80%</td><td>At maturity</td><td>Safe, no state tax on earnings</td></tr>
+        </tbody>
+      </table>
+
+      <div class="example-box">
+        <div class="ex-label">Why APY comparison matters on savings</div>
+        <p>$25,000 in a traditional savings at 0.50% APY earns <strong>$125/year</strong>.<br>
+        $25,000 in a HYSA at 5.00% APY earns <strong>$1,250/year</strong>.<br>
+        Same money. 10× the return. The only difference is where you keep it.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Quick Reference: APR vs APY</h2>
+      <table>
+        <thead><tr><th>Question</th><th>Use APR</th><th>Use APY</th></tr></thead>
+        <tbody>
+          <tr><td>Comparing mortgage offers?</td><td class="hi">✓ Yes</td><td></td></tr>
+          <tr><td>Comparing savings accounts?</td><td></td><td class="hi">✓ Yes</td></tr>
+          <tr><td>Shopping for credit cards?</td><td class="hi">✓ Yes (lower is better)</td><td></td></tr>
+          <tr><td>Comparing CDs?</td><td></td><td class="hi">✓ Yes</td></tr>
+          <tr><td>Evaluating an auto loan?</td><td class="hi">✓ Yes</td><td></td></tr>
+          <tr><td>Estimating interest earned?</td><td></td><td class="hi">✓ Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Frequently Asked Questions</h2>
+      <div id="faq">
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What is APR? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">APR (Annual Percentage Rate) is the yearly cost of borrowing money, expressed as a percentage. It includes the interest rate plus most fees, making it a more complete picture of loan cost than the interest rate alone. APR is used for mortgages, credit cards, and personal loans.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">What is APY? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">APY (Annual Percentage Yield) reflects the actual return on a savings account or investment after accounting for compound interest. Unlike APR, APY shows what you actually earn when interest compounds monthly, daily, or continuously.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Which is higher — APR or APY? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">For the same stated rate, APY is always higher than or equal to APR because APY accounts for compounding. The more frequently interest compounds, the bigger the gap between APR and APY.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Why is my mortgage APR higher than the interest rate? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">Mortgage APR includes the interest rate plus origination fees, discount points, mortgage broker fees, and certain closing costs spread over the loan term. This makes APR a better comparison tool across different lender offers.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Should I compare savings accounts by APR or APY? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">Always compare savings accounts by APY. APY accounts for compounding frequency and shows your actual annual earnings. A savings account advertised at 5.00% APY pays more than one at 5.00% APR compounding monthly.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">How do I convert APR to APY? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">Use the formula: APY = (1 + APR/n)^n − 1, where n is the number of compounding periods per year. For example, a 5% APR compounding monthly: APY = (1 + 0.05/12)^12 − 1 = 5.116%.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">Does a higher APY always mean a better savings account? <span class="faq-arrow">+</span></div>
+          <div class="faq-a">APY is the primary metric for comparing savings accounts, but also check minimum balance requirements, withdrawal restrictions, FDIC/NCUA insurance status, and whether the APY is promotional or ongoing. A high promotional APY that drops after 3 months may not be better than a slightly lower ongoing rate.</div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <aside class="side">
+    <div class="card">
+      <h3>Savings Calculator</h3>
+      <p>See how compounding APY grows your savings over time.</p>
+      <a class="cta" href="/savings-calculator">Calculate Growth →<small>Free, no sign-up</small></a>
+    </div>
+    <div class="card">
+      <h3>Compound Interest Calculator</h3>
+      <p>Plug in any rate and compounding frequency to see your actual earnings.</p>
+      <a class="cta" href="/compound-interest-calculator">Try Calculator →<small>Free, instant results</small></a>
+    </div>
+    <div class="card">
+      <h3>Related Guides</h3>
+      <div class="rel-links">
+        <a href="/guides/what-is-compound-interest">What Is Compound Interest?</a>
+        <a href="/guides/50-30-20-budget-rule">The 50/30/20 Budget Rule</a>
+        <a href="/guides/how-much-emergency-fund">How Much Emergency Fund?</a>
+        <a href="/guides/traditional-ira-vs-roth-ira">Traditional IRA vs Roth IRA</a>
+        <a href="/guides">All Finance Guides →</a>
+      </div>
+    </div>
+  </aside>
+
+</div>
+</main>
+
+<!-- guide-fullwidth-related-block -->
+<div style="background:#f7f8fc;border-top:2px solid #e5e7eb;padding:28px 16px 40px">
+  <div style="max-width:1100px;margin:0 auto">
+    <h2 style="font-size:13px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin:0 0 14px">📚 More Finance Guides</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="/guides/what-is-compound-interest" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">What Is Compound Interest? →</a>
+      <a href="/guides/50-30-20-budget-rule" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">The 50/30/20 Budget Rule →</a>
+      <a href="/guides/how-much-emergency-fund" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">How Much Emergency Fund? →</a>
+      <a href="/guides/traditional-ira-vs-roth-ira" style="display:inline-flex;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px;font-size:14px;font-weight:600;color:#4f46e5;text-decoration:none;">Traditional IRA vs Roth IRA →</a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <span>© 2026 UseCalcFi. Free financial calculators for everyone.</span>
+  <nav><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/disclaimer">Disclaimer</a></nav>
+</div></footer>
+
+<script>function toggleFaq(el){el.parentElement.classList.toggle('open');}</script>
+</body>
+</html>
