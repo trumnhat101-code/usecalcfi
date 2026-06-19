@@ -85,6 +85,23 @@ nav a:hover{color:var(--ac)}
   .cat-row{grid-template-columns:1fr}
 }
 
+/* Featured Guides */
+.guides-section{padding:8px 0 48px}
+.guides-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.guides-label{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.guides-all{font-size:14px;font-weight:700;color:var(--ac);text-decoration:none}
+.guides-all:hover{text-decoration:underline}
+.guides-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.guide-feat{background:#fff;border:1px solid var(--bd);border-radius:14px;padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,border-color .15s}
+.guide-feat:hover{box-shadow:0 4px 18px rgba(79,70,229,.1);border-color:#c7d2fe}
+.gf-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 9px;border-radius:99px;display:inline-block;width:fit-content}
+.guide-feat h3{font-size:15px;font-weight:700;line-height:1.4;color:var(--tx)}
+.guide-feat p{font-size:13px;color:var(--mut);line-height:1.5;flex:1}
+.gf-meta{font-size:12px;color:var(--mut);display:flex;align-items:center;justify-content:space-between}
+.gf-arrow{font-size:13px;font-weight:700;color:var(--ac)}
+@media(max-width:760px){.guides-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.guides-grid{grid-template-columns:1fr}}
+
 /* Why section */
 .why-section{padding-bottom:56px}
 .why-title{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
@@ -454,6 +471,59 @@ footer a:hover{color:var(--ac)}
     </div>
 
   </div><!-- /tools-wrap -->
+
+  <!-- Featured Guides -->
+  <div class="guides-section">
+    <div class="guides-header">
+      <span class="guides-label">📚 Finance Guides</span>
+      <a href="/guides" class="guides-all">View all 25 guides →</a>
+    </div>
+    <div class="guides-grid">
+
+      <a href="/guides/first-time-homebuyer-guide" class="guide-feat">
+        <span class="gf-cat" style="background:#dbeafe;color:#1d4ed8">🏠 Home Buying</span>
+        <h3>First-Time Homebuyer Guide</h3>
+        <p>Down payment minimums, loan programs, closing costs — everything you need before making an offer.</p>
+        <div class="gf-meta"><span>⏱ 12 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+      <a href="/guides/what-is-a-401k" class="guide-feat">
+        <span class="gf-cat" style="background:#f3e8ff;color:#7c3aed">🏦 Retirement</span>
+        <h3>What Is a 401(k)? Complete Guide</h3>
+        <p>Contribution limits, employer match, vesting schedules, and when to roll over to an IRA.</p>
+        <div class="gf-meta"><span>⏱ 10 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+      <a href="/guides/50-30-20-budget-rule" class="guide-feat">
+        <span class="gf-cat" style="background:#dcfce7;color:#15803d">💰 Budgeting</span>
+        <h3>The 50/30/20 Budget Rule</h3>
+        <p>Split take-home pay into needs, wants, and savings — the simplest framework for any income.</p>
+        <div class="gf-meta"><span>⏱ 8 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+      <a href="/guides/what-is-a-good-credit-score" class="guide-feat">
+        <span class="gf-cat" style="background:#fef9c3;color:#a16207">📊 Credit</span>
+        <h3>What Is a Good Credit Score?</h3>
+        <p>Score ranges, how lenders view each tier, and actionable steps to push past 750.</p>
+        <div class="gf-meta"><span>⏱ 9 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+      <a href="/guides/pay-off-credit-card-debt" class="guide-feat">
+        <span class="gf-cat" style="background:#fee2e2;color:#dc2626">💳 Debt</span>
+        <h3>How to Pay Off Credit Card Debt</h3>
+        <p>Avalanche vs snowball, balance transfers, and a step-by-step payoff plan that actually works.</p>
+        <div class="gf-meta"><span>⏱ 10 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+      <a href="/guides/w4-withholding-guide" class="guide-feat">
+        <span class="gf-cat" style="background:#ffedd5;color:#c2410c">🧾 Taxes</span>
+        <h3>W-4 Withholding Guide</h3>
+        <p>Fill out your W-4 correctly so you stop over-withholding and giving the IRS a free loan.</p>
+        <div class="gf-meta"><span>⏱ 8 min read</span><span class="gf-arrow">→</span></div>
+      </a>
+
+    </div>
+  </div>
 
   <!-- Why UseCalcFi -->
   <div class="why-section">
