@@ -84,6 +84,10 @@ code{background:#ecfdf5;padding:2px 6px;border-radius:5px;font-size:13px}
 footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 .disc{font-size:12px;color:var(--mut);margin-top:6px}
 .cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+/* Prevent grid child overflow */
+.layout>div:first-child{min-width:0}
+p,li{overflow-wrap:break-word;word-break:break-word}
+code{white-space:pre-wrap;word-break:break-all}
 @media(max-width:640px){
   header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
   nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -342,6 +346,5 @@ function calc(){
   $('lInt').textContent=usd(totalInt);
 }
 </script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});
-</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});</script>
 </body></html>
