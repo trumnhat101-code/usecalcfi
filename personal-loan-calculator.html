@@ -333,6 +333,17 @@ function calc(){
   $('rInt').textContent=usd(totalInt);
   $('rTotal').textContent=usd(totalPaid);
   $('rAPR').textContent=pct(trueAPR);
+
+  // Bar
+  const tot=P+totalInt;
+  if(tot>0){
+    const pp=Math.round(P/tot*100);
+    $('bar').innerHTML='<i style="background:#2563eb;width:'+pp+'%"></i><i style="background:#c7cae0;width:'+(100-pp)+'%"></i>';
+  }
+  $('lPrin').textContent=usd(P);
+  $('lInt').textContent=usd(totalInt);
+
+  $('results-section').style.display='block';
 }
 
 calc();
