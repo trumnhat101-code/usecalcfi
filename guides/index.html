@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personal Finance Guides — UseCalcFi</title>
-<meta name="description" content="30 free personal finance guides for Americans. Topics: investing, retirement, taxes, home buying, debt payoff, credit, budgeting, and salary negotiation. Updated for 2026.">
+<title>Personal Finance Guides & Data Studies — UseCalcFi</title>
+<meta name="description" content="34 free personal finance guides and data studies for Americans. Original state-by-state data on mortgage, credit card, and student loan debt. Plus guides on investing, retirement, taxes, and more.">
 <link rel="canonical" href="https://usecalcfi.com/guides">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://usecalcfi.com/guides">
@@ -49,6 +49,17 @@ footer{border-top:1px solid var(--bd)}
 .guide-arrow{color:var(--ac);font-weight:700}
 
 .sec-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--mut);margin:32px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--bd)}
+.ds-section{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 100%);border-radius:16px;padding:28px 28px 20px;margin-bottom:36px}
+.ds-section .ds-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#a5b4fc;margin-bottom:12px}
+.ds-section h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
+.ds-section .ds-sub{font-size:14px;color:#c7d2fe;margin-bottom:20px}
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.ds-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:16px;text-decoration:none;display:block;transition:background .15s}
+.ds-card:hover{background:rgba(255,255,255,.18)}
+.ds-card .ds-tag{font-size:11px;font-weight:700;text-transform:uppercase;color:#a5b4fc;margin-bottom:8px}
+.ds-card h3{font-size:14px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px}
+.ds-card .ds-meta{font-size:12px;color:#c7d2fe}
+.ds-card .ds-arrow{color:#818cf8;font-weight:700}
 
 @media(max-width:640px){
   header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
@@ -71,6 +82,34 @@ footer{border-top:1px solid var(--bd)}
   <div class="hero">
     <h1>Personal Finance Guides</h1>
     <p class="lead">In-depth, research-backed guides to help you make smarter money decisions. Updated for 2026.</p>
+  </div>
+
+  <div class="ds-section">
+    <div class="ds-label">📊 Original Research</div>
+    <h2>Data Studies</h2>
+    <p class="ds-sub">State-by-state financial data with sortable tables, charts, and repayment calculators — built for journalists, researchers, and anyone who wants the real numbers.</p>
+    <div class="ds-grid">
+      <a class="ds-card" href="/guides/average-mortgage-debt-by-state">
+        <div class="ds-tag">🏠 Housing</div>
+        <h3>Average Mortgage Debt by State 2026 <span class="ds-arrow">→</span></h3>
+        <div class="ds-meta">51 states · Monthly payments · 30-yr interest · Rate comparison</div>
+      </a>
+      <a class="ds-card" href="/guides/average-credit-card-debt-by-state">
+        <div class="ds-tag">💳 Debt</div>
+        <h3>Average Credit Card Debt by State 2026 <span class="ds-arrow">→</span></h3>
+        <div class="ds-meta">51 states · APR cost · Payoff timelines · $150–$500/mo plans</div>
+      </a>
+      <a class="ds-card" href="/guides/average-student-loan-debt-by-state">
+        <div class="ds-tag">🎓 Education</div>
+        <h3>Average Student Loan Debt by State 2026 <span class="ds-arrow">→</span></h3>
+        <div class="ds-meta">51 states · 6.53% rate · 10yr vs 20yr repayment · Deferment cost</div>
+      </a>
+      <a class="ds-card" href="/guides/average-retirement-savings-by-age">
+        <div class="ds-tag">📈 Retirement</div>
+        <h3>Average Retirement Savings by Age 2026 <span class="ds-arrow">→</span></h3>
+        <div class="ds-meta">Avg vs median · Fidelity benchmarks · $1M savings timeline</div>
+      </a>
+    </div>
   </div>
 
   <div class="sec-title">Taxes & Paycheck</div>
