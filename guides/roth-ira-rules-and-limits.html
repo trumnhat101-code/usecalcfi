@@ -36,7 +36,8 @@
 <style>
 :root{--ac:#7c3aed;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
+html{overflow-x:hidden}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6;overflow-x:hidden;max-width:100%}
 header,footer{background:#fff;border-bottom:1px solid var(--bd)}
 footer{border-top:1px solid var(--bd);border-bottom:none}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
@@ -55,6 +56,7 @@ footer nav a{color:var(--mut);text-decoration:none;font-size:13px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;opacity:.82}
 
 .layout{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;padding:32px 0 48px}
+.layout>*{min-width:0}
 @media(max-width:880px){.layout{grid-template-columns:1fr}}
 
 .card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:22px;margin-bottom:18px}
