@@ -83,6 +83,11 @@ p,li{margin-bottom:8px}.content ul{padding-left:20px}
 code{background:#eef0ff;padding:2px 6px;border-radius:5px;font-size:13px}
 footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 .disc{font-size:12px;color:var(--mut);margin-top:6px}
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0 16px}
+table{width:100%;border-collapse:collapse;min-width:360px}
+th{background:var(--bg);text-align:left;padding:8px 10px;font-size:12px;font-weight:700;color:var(--mut);border-bottom:2px solid var(--bd);white-space:nowrap}
+td{padding:7px 10px;border-bottom:1px solid #f3f4f6;font-size:13px;vertical-align:top}
+code{word-break:break-all;overflow-wrap:break-word}
 /* Amortization schedule */
 .amort-toggle{display:flex;gap:6px;margin-bottom:12px}
 .atog{padding:6px 14px;border:1px solid var(--bd);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:var(--mut)}
@@ -216,7 +221,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         
         <h2>2026 Mortgage Rate Benchmarks</h2>
         <p>Where you fall in these ranges depends on your credit score, loan type, and down payment. Rates update daily — always get quotes from at least 3 lenders.</p>
-        <table>
+        <div class="tbl-wrap"><table>
           <thead><tr><th>Loan Type</th><th>Avg Rate (Mid-2026)</th><th>Best For</th></tr></thead>
           <tbody>
             <tr><td>30-Year Fixed</td><td>6.75–7.25%</td><td>Lower monthly payments, long-term stability</td></tr>
@@ -225,11 +230,11 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <tr><td>FHA 30-Year</td><td>6.50–7.00%</td><td>Lower credit scores, 3.5% down minimum</td></tr>
             <tr><td>VA Loan</td><td>6.25–6.75%</td><td>Eligible veterans and service members, 0% down</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h2>How Your Credit Score Affects Your Mortgage Rate</h2>
         <p>Your credit score is the single biggest factor in the rate you're offered. On a $350,000 30-year loan, the difference between a 620 and 760 score can be over $300/month — more than $108,000 over the life of the loan.</p>
-        <table>
+        <div class="tbl-wrap"><table>
           <thead><tr><th>Credit Score</th><th>Rate (Approx.)</th><th>Monthly Payment ($350K loan)</th><th>Total Interest</th></tr></thead>
           <tbody>
             <tr><td>760–850</td><td>6.75%</td><td>$2,270</td><td>$467,000</td></tr>
@@ -238,7 +243,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <tr><td>660–679</td><td>7.50%</td><td>$2,447</td><td>$531,000</td></tr>
             <tr><td>620–659</td><td>8.00%+</td><td>$2,568+</td><td>$574,000+</td></tr>
           </tbody>
-        </table>
+        </table></div>
 
         <h2>Principal vs Interest: Where Your Payment Goes</h2>
         <p>In the early years of a 30-year mortgage, the vast majority of your payment goes to interest — not building equity. On a $320,000 loan at 7%, your first payment of ~$2,130 breaks down as: $1,867 interest, $264 principal. By year 15, it flips: about $1,200 interest, $930 principal.</p>
