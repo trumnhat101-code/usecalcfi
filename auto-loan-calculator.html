@@ -83,12 +83,14 @@ p,li{margin-bottom:8px}.content ul{padding-left:20px}
 code{background:#ecfdf5;padding:2px 6px;border-radius:5px;font-size:13px}
 footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 .disc{font-size:12px;color:var(--mut);margin-top:6px}
+.cmp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
 @media(max-width:640px){
   header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
   nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   nav::-webkit-scrollbar{display:none}
   nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
   .logo{font-size:17px}
+  .cmp-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -230,7 +232,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         </div>
 
         <h2>New vs Used vs Lease: Quick Comparison</h2>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0">
+        <div class="cmp-grid">
           <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff">
             <p style="font-weight:800;font-size:15px;margin:0 0 12px;color:#1f2937;border-bottom:2px solid #e5e7eb;padding-bottom:8px">🚘 Buy New</p>
             <div style="display:flex;flex-direction:column;gap:8px">
@@ -340,5 +342,6 @@ function calc(){
   $('lInt').textContent=usd(totalInt);
 }
 </script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});</script>
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});
+</script>
 </body></html>
