@@ -366,10 +366,9 @@ function calc(){
 document.querySelectorAll('input[type="number"]').forEach(function(el){
   el.addEventListener('focus',function(){this.select();});
 });
-document.getElementById('price').addEventListener('input',function(){syncPct();calc();});
-document.getElementById('dpPct').addEventListener('input',function(){syncAmt();calc();});
-document.getElementById('dpAmt').addEventListener('input',function(){syncPct();calc();});
-document.getElementById('months').addEventListener('input',calc);
+document.getElementById('price').addEventListener('input',syncPct);
+document.getElementById('dpPct').addEventListener('input',syncAmt);
+document.getElementById('dpAmt').addEventListener('input',syncPct);
 calc();
 </script>
 </body></html>

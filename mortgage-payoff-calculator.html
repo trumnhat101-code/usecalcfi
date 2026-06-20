@@ -338,7 +338,6 @@ function calc(){
   const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,int0));
   document.getElementById('scenarioBody').innerHTML=rows.join('');
 }
-document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
 calc();
 </script>
 </body></html>

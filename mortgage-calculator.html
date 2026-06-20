@@ -297,8 +297,6 @@ function calc(){
   const tot=loan+totalInterest;
   if(tot>0){const bar=document.getElementById('bar');bar.innerHTML='<i style="background:#4f46e5;width:'+Math.round(loan/tot*100)+'%"></i><i style="background:#c7cae0;width:'+Math.round(totalInterest/tot*100)+'%"></i>';}
 }
-document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
-document.querySelector('select').addEventListener('change',calc);
 calc();
 </script>
 </body></html>
