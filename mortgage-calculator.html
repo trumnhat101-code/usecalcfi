@@ -294,6 +294,72 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
     </div>
   </div>
 </div>
+<script>
+const $=id=>document.getElementById(id);
+const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
+
+var amortData={months:[],years:[]};
+
+function buildAmort(loan,r,n,pi){
+  var bal=loan,months=[],years=[],yPrin=0,yInt=0;
+  for(var i=1;i<=n;i++){
+    var interest=bal*r;
+    var principal=Math.min(pi-interest,bal);
+    if(principal<0)principal=0;
+    bal=Math.max(bal-principal,0);
+    yPrin+=principal;yInt+=interest;
+    months.push({mo:i,payment:principal+interest,principal:principal,interest:interest,balance:bal});
+    if(i%12===0||bal<0.005){
+      years.push({yr:Math.ceil(i/12),principal:yPrin,interest:yInt,balance:bal});
+      yPrin=0;yInt=0;
+    }
+    if(bal<0.005)break;
+  }
+  amortData={months:months,years:years};
+}
+
+function showAmort(view){
+  $('togYr').className='atog'+(view==='year'?' active':'');
+  $('togMo').className='atog'+(view==='month'?' active':'');
+  var head=$('amortHead'),body=$('amortBody'),rows='';
+  if(view==='year'){
+    head.innerHTML='<tr><th>Year</th><th>Principal</th><th>Interest</th><th>Ending Balance</th></tr>';
+    amortData.years.forEach(function(y){
+      rows+='<tr><td>Year '+y.yr+'</td><td>'+usd(y.principal)+'</td><td>'+usd(y.interest)+'</td><td>'+usd(y.balance)+'</td></tr>';
+    });
+  } else {
+    head.innerHTML='<tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr>';
+    amortData.months.forEach(function(m){
+      if((m.mo-1)%12===0)rows+='<tr class="sep"><td colspan="5">Year '+Math.ceil(m.mo/12)+'</td></tr>';
+      rows+='<tr><td>'+m.mo+'</td><td>'+usd(m.payment)+'</td><td>'+usd(m.principal)+'</td><td>'+usd(m.interest)+'</td><td>'+usd(m.balance)+'</td></tr>';
+    });
+  }
+  body.innerHTML=rows;
+}
+
+function calc(){
+  const price=+$('price').value||0, down=+$('down').value||0;
+  const years=+$('term').value||30, rate=+$('rate').value||0;
+  const tax=+$('tax').value||0, ins=+$('ins').value||0, hoa=+$('hoa').value||0;
+  const loan=Math.max(price-down,0), r=rate/100/12, n=years*12;
+  const pi=r>0?loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):loan/n;
+  const monthly=pi+tax/12+ins/12+hoa;
+  const totalInterest=pi*n-loan;
+  $('results-section').style.display='block';
+  $('rPI').textContent=usd(pi);
+  $('rMonthly').textContent=usd(monthly);
+  $('rLoan').textContent=usd(loan);
+  $('rInt').textContent=usd(totalInterest);
+  $('lPrin').textContent=usd(loan);
+  $('lInt').textContent=usd(totalInterest);
+  const tot=loan+totalInterest;
+  if(tot>0){const bar=$('bar');bar.innerHTML='<i style="background:#4f46e5;width:'+Math.round(loan/tot*100)+'%"></i><i style="background:#c7cae0;width:'+Math.round(totalInterest/tot*100)+'%"></i>';}
+  buildAmort(loan,r,n,pi);
+  $('amort-section').style.display='block';
+  showAmort('year');
+}
+calc();
+</script>
 <footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center">
   <span>© 2026 UseCalcFi · Free financial calculators for Americans</span>
   <a href="/" style="color:var(--mut);text-decoration:none">All Calculators</a>
