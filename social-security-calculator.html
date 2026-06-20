@@ -403,7 +403,7 @@ function calc() {
     const ageLabel = age + (isFRA ? '<span class="fra-tag">FRA</span>' : '') + (isMax ? '<span class="max-tag">MAX</span>' : '');
     const dpColor = dp >= 0 ? '#16a34a' : '#dc2626';
 
-    rows += `<tr${rowClass}><td>${ageLabel}</td><td>${usd(b)}/mo</td><td style="color:${dpColor}">${pct(dp)}</td><td>${beText}</td></tr>\`;
+    rows += `<tr${rowClass}><td>${ageLabel}</td><td>${usd(b)}/mo</td><td style="color:${dpColor}">${pct(dp)}</td><td>${beText}</td></tr>`;
   });
   document.getElementById('compBody').innerHTML = rows;
 }
