@@ -43,7 +43,6 @@
 <style>
 :root{--ac:#4f46e5;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
 *{box-sizing:border-box;margin:0;padding:0}
-html{overflow-x:hidden}
 body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6}
 header,footer{background:#fff;border-bottom:1px solid var(--bd)}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
@@ -93,17 +92,14 @@ code{word-break:break-all;overflow-wrap:break-word}
 .amort-toggle{display:flex;gap:6px;margin-bottom:12px}
 .atog{padding:6px 14px;border:1px solid var(--bd);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:var(--mut)}
 .atog.active{background:var(--ac);color:#fff;border-color:var(--ac)}
-.amort-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.amort-table{width:100%;border-collapse:collapse;font-size:13px;min-width:0}
+.amort-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+.amort-table{border-collapse:collapse;font-size:13px;min-width:460px}
 .amort-table th{background:var(--bg);text-align:right;padding:8px 10px;font-size:12px;color:var(--mut);border-bottom:2px solid var(--bd);white-space:nowrap}
 .amort-table th:first-child{text-align:left}
 .amort-table td{padding:7px 10px;border-bottom:1px solid #f3f4f6;text-align:right;white-space:nowrap}
 .amort-table td:first-child{text-align:left;font-weight:600}
 .amort-table tr:hover td{background:#fafafa}
 .amort-table .sep td{background:#eef0ff;color:var(--ac);font-weight:700;font-size:12px;text-align:left;padding:5px 10px}
-@media(max-width:520px){
-  .amort-table th,.amort-table td{padding:5px 6px;font-size:11px}
-}
 @media(max-width:640px){
   header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
   nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
