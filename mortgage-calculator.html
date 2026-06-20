@@ -383,7 +383,7 @@ function showAmort(view){
   $('togYr').className='atog'+(view==='year'?' active':'');
   $('togMo').className='atog'+(view==='month'?' active':'');
   var head=$('amortHead'),body=$('amortBody'),rows='';
-  if(view==='year'{
+  if(view==='year'){
     head.innerHTML='<tr><th>Year</th><th>Principal</th><th>Interest</th><th>Ending Balance</th></tr>';
     amortData.years.forEach(function(y){
       rows+='<tr><td>Year '+y.yr+'</td><td>'+usd(y.principal)+'</td><td>'+usd(y.interest)+'</td><td>'+usd(y.balance)+'</td></tr>';
