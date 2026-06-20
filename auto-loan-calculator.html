@@ -190,42 +190,78 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         
         <h2>2026 Auto Loan Rate Benchmarks</h2>
         <p>Auto loan rates vary significantly by credit score and whether you're buying new or used. Rates from credit unions are often 1–2% lower than traditional banks.</p>
-        <table>
-          <thead><tr><th>Credit Score</th><th>New Car Rate</th><th>Used Car Rate</th></tr></thead>
-          <tbody>
-            <tr><td>781–850 (Super Prime)</td><td>5.00–5.75%</td><td>6.50–7.25%</td></tr>
-            <tr><td>661–780 (Prime)</td><td>6.25–7.00%</td><td>8.00–9.50%</td></tr>
-            <tr><td>601–660 (Near Prime)</td><td>8.50–10.00%</td><td>11.00–13.00%</td></tr>
-            <tr><td>501–600 (Subprime)</td><td>12.00–16.00%</td><td>16.00–20.00%</td></tr>
-            <tr><td>300–500 (Deep Subprime)</td><td>18.00–25.00%+</td><td>20.00–28.00%+</td></tr>
-          </tbody>
-        </table>
+        <div style="display:grid;gap:8px;margin:14px 0">
+          <div style="border:1px solid #bbf7d0;border-radius:10px;padding:12px 14px;background:#f0fdf4;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">781–850 · Super Prime</p><p style="font-size:12px;color:#6b7280;margin:0">Excellent credit</p></div>
+            <div style="display:flex;gap:16px;flex-shrink:0"><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">New</p><p style="font-weight:800;font-size:15px;color:#16a34a;margin:0">5.00–5.75%</p></div><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">Used</p><p style="font-weight:800;font-size:15px;color:#16a34a;margin:0">6.50–7.25%</p></div></div>
+          </div>
+          <div style="border:1px solid #bfdbfe;border-radius:10px;padding:12px 14px;background:#eff6ff;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">661–780 · Prime</p><p style="font-size:12px;color:#6b7280;margin:0">Good credit</p></div>
+            <div style="display:flex;gap:16px;flex-shrink:0"><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">New</p><p style="font-weight:800;font-size:15px;color:#2563eb;margin:0">6.25–7.00%</p></div><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">Used</p><p style="font-weight:800;font-size:15px;color:#2563eb;margin:0">8.00–9.50%</p></div></div>
+          </div>
+          <div style="border:1px solid #fde68a;border-radius:10px;padding:12px 14px;background:#fffbeb;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">601–660 · Near Prime</p><p style="font-size:12px;color:#6b7280;margin:0">Fair credit</p></div>
+            <div style="display:flex;gap:16px;flex-shrink:0"><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">New</p><p style="font-weight:800;font-size:15px;color:#d97706;margin:0">8.50–10.00%</p></div><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">Used</p><p style="font-weight:800;font-size:15px;color:#d97706;margin:0">11.00–13.00%</p></div></div>
+          </div>
+          <div style="border:1px solid #fed7aa;border-radius:10px;padding:12px 14px;background:#fff7ed;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">501–600 · Subprime</p><p style="font-size:12px;color:#6b7280;margin:0">Poor credit</p></div>
+            <div style="display:flex;gap:16px;flex-shrink:0"><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">New</p><p style="font-weight:800;font-size:15px;color:#ea580c;margin:0">12.00–16.00%</p></div><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">Used</p><p style="font-weight:800;font-size:15px;color:#ea580c;margin:0">16.00–20.00%</p></div></div>
+          </div>
+          <div style="border:1px solid #fecaca;border-radius:10px;padding:12px 14px;background:#fef2f2;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">300–500 · Deep Subprime</p><p style="font-size:12px;color:#6b7280;margin:0">Bad credit — consider rebuilding first</p></div>
+            <div style="display:flex;gap:16px;flex-shrink:0"><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">New</p><p style="font-weight:800;font-size:15px;color:#dc2626;margin:0">18–25%+</p></div><div style="text-align:right"><p style="font-size:11px;color:#6b7280;margin:0">Used</p><p style="font-weight:800;font-size:15px;color:#dc2626;margin:0">20–28%+</p></div></div>
+          </div>
+        </div>
 
         <h2>Total Cost of Car Ownership (Beyond the Loan)</h2>
         <p>The monthly loan payment is just one piece. Here's what a typical new car actually costs per year:</p>
-        <table>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0">
+        <table style="min-width:460px">
           <thead><tr><th>Cost Category</th><th>Annual Estimate</th><th>Notes</th></tr></thead>
           <tbody>
             <tr><td>Loan payment</td><td>~$7,800</td><td>$30K loan, 6%, 60 months = $580/mo</td></tr>
             <tr><td>Insurance</td><td>$1,800–$3,000</td><td>Varies by state, age, driving record</td></tr>
             <tr><td>Gas / charging</td><td>$1,500–$3,000</td><td>$0.15/mi average for gas vehicles</td></tr>
-            <tr><td>Maintenance & repairs</td><td>$800–$1,500</td><td>Higher for older/high-mileage vehicles</td></tr>
-            <tr><td>Registration & taxes</td><td>$200–$600</td><td>Varies significantly by state</td></tr>
+            <tr><td>Maintenance &amp; repairs</td><td>$800–$1,500</td><td>Higher for older/high-mileage vehicles</td></tr>
+            <tr><td>Registration &amp; taxes</td><td>$200–$600</td><td>Varies significantly by state</td></tr>
             <tr><td><strong>Total annual cost</strong></td><td><strong>$12,000–$16,000</strong></td><td>~$1,000–$1,333/month true cost</td></tr>
           </tbody>
         </table>
+        </div>
 
         <h2>New vs Used vs Lease: Quick Comparison</h2>
-        <table>
-          <thead><tr><th></th><th>Buy New</th><th>Buy Used</th><th>Lease</th></tr></thead>
-          <tbody>
-            <tr><td>Monthly payment</td><td>Highest</td><td>Lower</td><td>Lowest</td></tr>
-            <tr><td>Depreciation risk</td><td>High (20% year 1)</td><td>Lower (already depreciated)</td><td>Lender's problem</td></tr>
-            <tr><td>Long-term cost</td><td>Lowest (no payment after payoff)</td><td>Low</td><td>Highest (payments never stop)</td></tr>
-            <tr><td>Flexibility</td><td>High — own it</td><td>High</td><td>Limited (mileage caps, fees)</td></tr>
-            <tr><td>Best for</td><td>Keep 5–10+ years</td><td>Best value overall</td><td>Business use, love new cars</td></tr>
-          </tbody>
-        </table>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0">
+          <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff">
+            <p style="font-weight:800;font-size:15px;margin:0 0 12px;color:#1f2937;border-bottom:2px solid #e5e7eb;padding-bottom:8px">🚘 Buy New</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Monthly payment</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Highest</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Depreciation risk</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">High (~20% year 1)</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Long-term cost</p><p style="font-size:13px;color:#16a34a;margin:0;font-weight:600">Lowest after payoff</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Flexibility</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">High — own it</p></div>
+              <div style="background:#f0fdf4;border-radius:6px;padding:8px"><p style="font-size:12px;color:#16a34a;margin:0;font-weight:700">✅ Best if keeping 5–10+ years</p></div>
+            </div>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff">
+            <p style="font-weight:800;font-size:15px;margin:0 0 12px;color:#1f2937;border-bottom:2px solid #e5e7eb;padding-bottom:8px">🚗 Buy Used</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Monthly payment</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Lower</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Depreciation risk</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Lower (already depreciated)</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Long-term cost</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Low</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Flexibility</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">High — own it</p></div>
+              <div style="background:#eff6ff;border-radius:6px;padding:8px"><p style="font-size:12px;color:#2563eb;margin:0;font-weight:700">💰 Best overall value</p></div>
+            </div>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:#fff">
+            <p style="font-weight:800;font-size:15px;margin:0 0 12px;color:#1f2937;border-bottom:2px solid #e5e7eb;padding-bottom:8px">📋 Lease</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Monthly payment</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Lowest</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Depreciation risk</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Lender's problem</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Long-term cost</p><p style="font-size:13px;color:#dc2626;margin:0;font-weight:600">Highest — never stops</p></div>
+              <div><p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#9ca3af;margin:0">Flexibility</p><p style="font-size:13px;color:#1f2937;margin:0;font-weight:600">Limited (mileage caps)</p></div>
+              <div style="background:#fff7ed;border-radius:6px;padding:8px"><p style="font-size:12px;color:#d97706;margin:0;font-weight:700">⚠️ Best for business use</p></div>
+            </div>
+          </div>
+        </div>
 
         <h2>Related calculators</h2>
         <div class="rel">

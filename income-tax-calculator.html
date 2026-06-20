@@ -142,10 +142,12 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 
         <!-- Bracket breakdown -->
         <h3 style="margin-top:20px">Tax bracket breakdown</h3>
-        <table class="bracket-table" id="bracketTable">
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+        <table class="bracket-table" id="bracketTable" style="min-width:420px">
           <thead><tr><th>Bracket</th><th>Taxable income</th><th>Rate</th><th>Tax</th></tr></thead>
           <tbody id="bracketBody"></tbody>
         </table>
+        </div>
       </div>
 
       <a class="cta" href="https://turbotax.intuit.com/" rel="nofollow noopener sponsored" target="_blank">
@@ -194,37 +196,74 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 
         
         <h2>2026 Federal Tax Brackets — At a Glance</h2>
-        <table>
-          <thead><tr><th>Rate</th><th>Single Filers</th><th>Married Filing Jointly</th></tr></thead>
-          <tbody>
-            <tr><td>10%</td><td>$0 – $11,925</td><td>$0 – $23,850</td></tr>
-            <tr><td>12%</td><td>$11,926 – $48,475</td><td>$23,851 – $96,950</td></tr>
-            <tr><td>22%</td><td>$48,476 – $103,350</td><td>$96,951 – $206,700</td></tr>
-            <tr><td>24%</td><td>$103,351 – $197,300</td><td>$206,701 – $394,600</td></tr>
-            <tr><td>32%</td><td>$197,301 – $250,525</td><td>$394,601 – $501,050</td></tr>
-            <tr><td>35%</td><td>$250,526 – $626,350</td><td>$501,051 – $751,600</td></tr>
-            <tr><td>37%</td><td>Over $626,350</td><td>Over $751,600</td></tr>
-          </tbody>
-        </table>
+        <div style="display:grid;gap:6px;margin:14px 0">
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;background:#f0fdf4;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#16a34a">10%</span><span style="font-size:13px;color:#374151;margin-left:10px">$0 – $11,925</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $0 – $23,850</span>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;background:#eff6ff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#2563eb">12%</span><span style="font-size:13px;color:#374151;margin-left:10px">$11,926 – $48,475</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $23,851 – $96,950</span>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#0891b2">22%</span><span style="font-size:13px;color:#374151;margin-left:10px">$48,476 – $103,350</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $96,951 – $206,700</span>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#d97706">24%</span><span style="font-size:13px;color:#374151;margin-left:10px">$103,351 – $197,300</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $206,701 – $394,600</span>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#ea580c">32%</span><span style="font-size:13px;color:#374151;margin-left:10px">$197,301 – $250,525</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $394,601 – $501,050</span>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#dc2626">35%</span><span style="font-size:13px;color:#374151;margin-left:10px">$250,526 – $626,350</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: $501,051 – $751,600</span>
+          </div>
+          <div style="border:1px solid #fecaca;border-radius:8px;padding:10px 14px;background:#fef2f2;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+            <div><span style="font-weight:800;font-size:15px;color:#991b1b">37%</span><span style="font-size:13px;color:#374151;margin-left:10px">Over $626,350</span></div>
+            <span style="font-size:13px;color:#6b7280">MFJ: Over $751,600</span>
+          </div>
+        </div>
 
-        <h2>Key Tax Deductions & Credits for 2026</h2>
-        <table>
-          <thead><tr><th>Tax Benefit</th><th>2026 Amount</th><th>Type</th></tr></thead>
-          <tbody>
-            <tr><td>Standard Deduction (Single)</td><td>$15,000</td><td>Deduction (reduces taxable income)</td></tr>
-            <tr><td>Standard Deduction (MFJ)</td><td>$30,000</td><td>Deduction</td></tr>
-            <tr><td>401(k) contribution limit</td><td>$23,500</td><td>Pre-tax deduction</td></tr>
-            <tr><td>IRA contribution limit</td><td>$7,000</td><td>Deduction (Traditional IRA)</td></tr>
-            <tr><td>HSA limit (self-only)</td><td>$4,300</td><td>Pre-tax deduction</td></tr>
-            <tr><td>Child Tax Credit</td><td>Up to $2,000/child</td><td>Credit (dollar-for-dollar)</td></tr>
-            <tr><td>EITC (max, 3+ children)</td><td>$8,046</td><td>Refundable credit</td></tr>
-          </tbody>
-        </table>
+        <h2>Key Tax Deductions &amp; Credits for 2026</h2>
+        <div style="display:grid;gap:8px;margin:14px 0">
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;background:#f0fdf4;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">Standard Deduction — Single</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Deduction · reduces taxable income</p></div>
+            <p style="font-weight:800;font-size:16px;color:#16a34a;margin:0">$15,000</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;background:#f0fdf4;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">Standard Deduction — Married Filing Jointly</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Deduction</p></div>
+            <p style="font-weight:800;font-size:16px;color:#16a34a;margin:0">$30,000</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">401(k) Contribution Limit</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Pre-tax deduction</p></div>
+            <p style="font-weight:800;font-size:16px;color:#2563eb;margin:0">$23,500</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">IRA Contribution Limit</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Deduction (Traditional IRA)</p></div>
+            <p style="font-weight:800;font-size:16px;color:#2563eb;margin:0">$7,000</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">HSA Limit (self-only)</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Pre-tax deduction</p></div>
+            <p style="font-weight:800;font-size:16px;color:#2563eb;margin:0">$4,300</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">Child Tax Credit</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Credit — dollar-for-dollar reduction</p></div>
+            <p style="font-weight:800;font-size:16px;color:#7c3aed;margin:0">$2,000/child</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+            <div><p style="font-weight:700;font-size:14px;margin:0;color:#1f2937">EITC (max, 3+ children)</p><p style="font-size:12px;color:#6b7280;margin:2px 0 0">Refundable credit</p></div>
+            <p style="font-weight:800;font-size:16px;color:#7c3aed;margin:0">$8,046</p>
+          </div>
+        </div>
 
         <h2>Effective Tax Rate vs Marginal Rate: Real Examples</h2>
         <p>Your "tax bracket" is your marginal rate — applied only to income within that range. Your effective rate is always lower because lower brackets apply first.</p>
-        <table>
-          <thead><tr><th>Income (Single)</th><th>Marginal Rate</th><th>Effective Rate (Approx.)</th><th>Federal Tax Owed (Approx.)</th></tr></thead>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0">
+        <table style="min-width:480px">
+          <thead><tr><th>Income (Single)</th><th>Marginal Rate</th><th>Effective Rate</th><th>Federal Tax Owed</th></tr></thead>
           <tbody>
             <tr><td>$40,000</td><td>12%</td><td>~8%</td><td>~$3,200</td></tr>
             <tr><td>$75,000</td><td>22%</td><td>~13%</td><td>~$9,750</td></tr>
@@ -232,6 +271,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             <tr><td>$200,000</td><td>32%</td><td>~22%</td><td>~$44,000</td></tr>
           </tbody>
         </table>
+        </div>
 
         <h2>Related calculators</h2>
         <div class="rel">
@@ -245,7 +285,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 
     <aside class="side">
       <div class="ad box">AdSense — sidebar 300×250</div>
-      <a class="cta" href="https://www.hrblock.com/" rel="nofollow noopener sponsored" target="_blank">File with H&amp;R Block<small>In-person or online options (sponsored)</small></a>
+      <a class="cta" href="https://www.hrblock.com/" rel="nofollow noopener sponsored" target="_blank">File with H&R Block<small>In-person or online options (sponsored)</small></a>
       <div class="ad box" style="margin-top:18px">AdSense — sticky sidebar</div>
     </aside>
   </div>
@@ -322,7 +362,6 @@ function calc(){
   $('bar').children[0].style.width=(pctTax*100)+'%';
   $('bar').children[1].style.width=((1-pctTax)*100)+'%';
 
-  // Build bracket table
   const tbody=$('bracketBody');
   tbody.innerHTML='';
   rows.forEach(r=>{
@@ -331,12 +370,11 @@ function calc(){
     tr.innerHTML=`<td>${(r.rate*100).toFixed(0)}%</td><td>${usd(r.from)} – ${r.to===Infinity?'∞':usd(r.to)}</td><td>${(r.rate*100).toFixed(0)}%</td><td>${usd(r.t)}</td>`;
     tbody.appendChild(tr);
   });
-  // Total row
   const ttr=document.createElement('tr');
   ttr.style.fontWeight='700';
   ttr.innerHTML=`<td colspan="3">Total federal income tax</td><td>${usd(tax)}</td>`;
   tbody.appendChild(ttr);
 }
 </script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});</script>
+<script>document.querySelectorAll("input[type="number"],input[type="text"]").forEach(function(el){el.addEventListener('input',calc);});</script>
 </body></html>

@@ -173,7 +173,8 @@ footer{border-top:1px solid var(--bd)}
         <!-- Comparison table -->
         <div class="comp-wrap">
           <h3>Benefit Comparison — All Claiming Ages</h3>
-          <table class="comp-table">
+          <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+          <table class="comp-table" style="min-width:400px">
             <thead><tr>
               <th>Claim Age</th>
               <th>Monthly Benefit</th>
@@ -182,6 +183,7 @@ footer{border-top:1px solid var(--bd)}
             </tr></thead>
             <tbody id="compBody"></tbody>
           </table>
+          </div>
         </div>
         </div><!-- /results-section -->
       </div>
