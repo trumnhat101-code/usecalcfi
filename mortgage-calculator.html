@@ -83,6 +83,18 @@ p,li{margin-bottom:8px}.content ul{padding-left:20px}
 code{background:#eef0ff;padding:2px 6px;border-radius:5px;font-size:13px}
 footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 .disc{font-size:12px;color:var(--mut);margin-top:6px}
+/* Amortization schedule */
+.amort-toggle{display:flex;gap:6px;margin-bottom:12px}
+.atog{padding:6px 14px;border:1px solid var(--bd);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;background:#fff;color:var(--mut)}
+.atog.active{background:var(--ac);color:#fff;border-color:var(--ac)}
+.amort-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.amort-table{width:100%;border-collapse:collapse;font-size:13px;min-width:460px}
+.amort-table th{background:var(--bg);text-align:right;padding:8px 10px;font-size:12px;color:var(--mut);border-bottom:2px solid var(--bd);white-space:nowrap}
+.amort-table th:first-child{text-align:left}
+.amort-table td{padding:7px 10px;border-bottom:1px solid #f3f4f6;text-align:right;white-space:nowrap}
+.amort-table td:first-child{text-align:left;font-weight:600}
+.amort-table tr:hover td{background:#fafafa}
+.amort-table .sep td{background:#eef0ff;color:var(--ac);font-weight:700;font-size:12px;text-align:left;padding:5px 10px}
 @media(max-width:640px){
   header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
   nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -132,6 +144,23 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="bar" id="bar"><i style="background:#4f46e5;width:50%"></i><i style="background:#c7cae0;width:50%"></i></div>
         <div class="legend"><span><span class="dot" style="background:#4f46e5"></span>Principal <b id="lPrin">$0</b></span><span><span class="dot" style="background:#c7cae0"></span>Interest <b id="lInt">$0</b></span></div>
         </div><!-- /results-section -->
+
+        <!-- Amortization Schedule -->
+        <div id="amort-section" style="display:none;margin-top:22px;border-top:1px solid var(--bd);padding-top:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+            <h3 style="margin:0;font-size:15px;font-weight:700">Amortization Schedule</h3>
+            <div class="amort-toggle">
+              <button class="atog active" id="togYr" onclick="showAmort('year')">Annual</button>
+              <button class="atog" id="togMo" onclick="showAmort('month')">Monthly</button>
+            </div>
+          </div>
+          <div class="amort-wrap">
+            <table class="amort-table">
+              <thead id="amortHead"></thead>
+              <tbody id="amortBody"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       <!-- ====== AFFILIATE CTA (ngay sau kết quả — chuyển đổi cao nhất) ====== -->
@@ -275,28 +304,4 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
   <a href="/disclaimer" style="color:var(--mut);text-decoration:none">Disclaimer</a>
   <span>Not financial advice</span>
 </div></footer>
-
-<script>
-const $=id=>document.getElementById(id);
-const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
-function calc(){
-  const price=+$('price').value||0, down=+$('down').value||0;
-  const years=+$('term').value||30, rate=+$('rate').value||0;
-  const tax=+$('tax').value||0, ins=+$('ins').value||0, hoa=+$('hoa').value||0;
-  const loan=Math.max(price-down,0), r=rate/100/12, n=years*12;
-  const pi=r>0?loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):loan/n;
-  const monthly=pi+tax/12+ins/12+hoa;
-  const totalInterest=pi*n-loan;
-  document.getElementById('results-section').style.display='block';
-  document.getElementById('rPI').textContent=usd(pi);
-  document.getElementById('rMonthly').textContent=usd(monthly);
-  document.getElementById('rLoan').textContent=usd(loan);
-  document.getElementById('rInt').textContent=usd(totalInterest);
-  document.getElementById('lPrin').textContent=usd(loan);
-  document.getElementById('lInt').textContent=usd(totalInterest);
-  const tot=loan+totalInterest;
-  if(tot>0){const bar=document.getElementById('bar');bar.innerHTML='<i style="background:#4f46e5;width:'+Math.round(loan/tot*100)+'%"></i><i style="background:#c7cae0;width:'+Math.round(totalInterest/tot*100)+'%"></i>';}
-}
-calc();
-</script>
 </body></html>
