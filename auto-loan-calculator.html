@@ -304,4 +304,5 @@ function calc(){
   $('lInt').textContent=usd(totalInt);
 }
 </script>
-<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.add
+<script>document.querySelectorAll("input[type=\"number\"],input[type=\"text\"]").forEach(function(el){el.addEventListener('input',calc);});</script>
+</body></html>

@@ -331,4 +331,10 @@ function calc(){
   $('c2Int').textContent=usd(extra>0?int1:int0);
   $('c2Total').textContent=usd(extra>0?paid1:paid0);
 
-  const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,in
+  const rows=[0,100,200,500,1000].map(e=>scenarioRow(P,r,base,e,mo0,int0));
+  document.getElementById('scenarioBody').innerHTML=rows.join('');
+}
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+calc();
+</script>
+</body></html>

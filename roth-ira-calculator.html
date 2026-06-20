@@ -350,4 +350,22 @@ function calc(){
   for(let y = 1; y <= years; y++){
     bal = bal * (1 + rate) + contrib;
     totalContrib += contrib;
-    const age = curAge
+    const age = curAge + y;
+    labels.push(age);
+    dataContrib.push(Math.round(totalContrib));
+    dataGrowth.push(Math.round(bal - totalContrib));
+    rows.push(`<tr><td>${age}</td><td>${fmt(totalContrib)}</td><td>${fmt(bal-totalContrib)}</td><td>${fmt(bal)}</td></tr>`);
+  }
+
+  $('rBalance').textContent = fmt(bal);
+  $('rYears').textContent = years + ' years';
+  $('rContribs').textContent = fmt(totalContrib);
+  $('rGrowth').textContent = fmt(bal - totalContrib);
+  $('tBody').innerHTML = rows.join('');
+  document.getElementById('results-section').style.display = 'block';
+}
+
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+calc();
+</script>
+</body></html>

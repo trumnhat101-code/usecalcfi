@@ -423,4 +423,9 @@ function calc(){
   if(intDiff>0.5){
     saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
   } else {
-    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific
+    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific loan profile.\`;
+  }
+}
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+</script>
+</body></html>

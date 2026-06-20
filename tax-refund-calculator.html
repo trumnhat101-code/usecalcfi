@@ -320,4 +320,6 @@ function calc(){
   document.getElementById('bracketBody').innerHTML=rows;
 }
 
-document.querySelectorAll('input[type="number"]').forEach(function(el){el.addE
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+</script>
+</body></html>

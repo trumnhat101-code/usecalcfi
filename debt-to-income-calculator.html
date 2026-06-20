@@ -343,4 +343,8 @@ function calc(){
   const barPct=Math.min(backDTI,65)/65*100;
   const barColor=backDTI<36?'#16a34a':backDTI<43?'#f59e0b':'#dc2626';
   $('dtiBar').style.width=barPct+'%';
-  $('dtiBar').style.background=barC
+  $('dtiBar').style.background=barColor;
+}
+document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+</script>
+</body></html>
