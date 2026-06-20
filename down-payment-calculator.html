@@ -304,18 +304,18 @@ function setLoan(type, btn){
 
 function fmt(n){return '$'+Math.round(n).toLocaleString()}
 function syncPct(){
-  var price = +document.getElementById('price').value||0;.value||0;
+  var price = +document.getElementById('price').value||0;
   var pct = +document.getElementById('dpPct').value||0;
   document.getElementById('dpAmt').value = Math.round(price*pct/100);
 }
 function syncAmt(){
-  var price = +document.getElementById('price').value||0;.value||0;
+  var price = +document.getElementById('price').value||0;
   var amt = +document.getElementById('dpAmt').value||0;
   document.getElementById('dpPct').value = price>0?+(amt/price*100).toFixed(2):0;
 }
 
 function calc(){
-  var price = +document.getElementById('price').value||0;.value||0;
+  var price = +document.getElementById('price').value||0;
   var dpPct = +document.getElementById('dpPct').value||0;
   var months = +document.getElementById('months').value||1;
 
