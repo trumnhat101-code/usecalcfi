@@ -58,6 +58,7 @@ nav a:hover{color:var(--ac)}
 /* Category-row layout: [label | card | card] */
 .tools-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:40px}
 .cat-row{display:grid;grid-template-columns:160px 1fr 1fr;gap:12px;align-items:stretch}
+.cat-row-3{grid-template-columns:160px 1fr 1fr 1fr}
 .cat-label{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:6px}
 .cat-label .cat-icon{font-size:22px}
 .cat-label .cat-name{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);line-height:1.3}
@@ -184,7 +185,7 @@ footer a:hover{color:var(--ac)}
     </div>
 
     <!-- Loans -->
-    <div class="cat-row" style="grid-template-columns:160px 1fr 1fr 1fr">
+    <div class="cat-row cat-row-3">
       <div class="cat-label">
         <span class="cat-icon">🚗</span>
         <span class="cat-name">Loans</span>
