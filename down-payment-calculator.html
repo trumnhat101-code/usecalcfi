@@ -215,29 +215,43 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 <div style="background:#fff;border-top:1px solid #e5e7eb;padding:28px 16px 8px">
   <div style="max-width:1100px;margin:0 auto">
     <h2>Down Payment Requirements by Loan Type (2026)</h2>
-            <table>
-              <thead><tr><th>Loan Type</th><th>Min Down Payment</th><th>Credit Score Min</th><th>PMI Required?</th></tr></thead>
-              <tbody>
-                <tr><td>Conventional</td><td>3%</td><td>620</td><td>Yes, until 20% equity</td></tr>
-                <tr><td>FHA Loan</td><td>3.5% (10% if score 580–619)</td><td>580</td><td>Yes, often for life of loan</td></tr>
-                <tr><td>VA Loan</td><td>0%</td><td>~620 (lender set)</td><td>No</td></tr>
-                <tr><td>USDA Loan</td><td>0%</td><td>640</td><td>No (guarantee fee applies)</td></tr>
-                <tr><td>Jumbo Loan</td><td>10–20%</td><td>700+</td><td>Typically no</td></tr>
-              </tbody>
-            </table>
-    
-            <h2>PMI Math: Is a Bigger Down Payment Worth It?</h2>
-            <p>PMI costs roughly 0.5–1.5% of the loan per year. On a $380,000 loan at 0.9%, that is $285/month until you hit 20% equity. Putting more down eliminates this cost immediately.</p>
-            <table>
-              <thead><tr><th>Down Payment</th><th>Loan Amount</th><th>Est. PMI/month</th><th>Monthly P&amp;I (7%, 30yr)</th></tr></thead>
-              <tbody>
-                <tr><td>3% ($12,000)</td><td>$388,000</td><td>~$340/mo</td><td>$2,922</td></tr>
-                <tr><td>5% ($20,000)</td><td>$380,000</td><td>~$285/mo</td><td>$2,863</td></tr>
-                <tr><td>10% ($40,000)</td><td>$360,000</td><td>~$210/mo</td><td>$2,596</td></tr>
-                <tr><td>20% ($80,000)</td><td>$320,000</td><td>$0</td><td>$2,129</td></tr>
-              </tbody>
-            </table>
-            <p style="font-size:13px;color:#6b7280">Based on $400,000 home. PMI estimated at 0.9% annually.</p>
+<div style="display:grid;gap:10px;margin:16px 0">
+  <div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <p style="font-weight:700;font-size:15px;margin:0 0 6px;color:var(--tx)">🏠 Conventional Loan</p>
+    <p style="margin:0;font-size:13px;color:#374151">Min down: <strong>3%</strong> &nbsp;·&nbsp; Credit: <strong>620+</strong> &nbsp;·&nbsp; PMI: Yes until 20% equity</p>
+  </div>
+  <div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <p style="font-weight:700;font-size:15px;margin:0 0 6px;color:var(--tx)">🏛️ FHA Loan</p>
+    <p style="margin:0;font-size:13px;color:#374151">Min down: <strong>3.5%</strong> (10% if score 580–619) &nbsp;·&nbsp; Credit: <strong>580+</strong> &nbsp;·&nbsp; PMI: Often for life of loan</p>
+  </div>
+  <div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <p style="font-weight:700;font-size:15px;margin:0 0 6px;color:var(--tx)">🎖️ VA Loan <span style="font-size:12px;font-weight:600;background:#16a34a;color:#fff;padding:2px 7px;border-radius:20px;margin-left:4px">Veterans only</span></p>
+    <p style="margin:0;font-size:13px;color:#374151">Min down: <strong>0%</strong> &nbsp;·&nbsp; Credit: <strong>~620</strong> (lender set) &nbsp;·&nbsp; PMI: <strong>None ever</strong></p>
+  </div>
+  <div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;background:#f0fdf4">
+    <p style="font-weight:700;font-size:15px;margin:0 0 6px;color:var(--tx)">🌾 USDA Loan <span style="font-size:12px;font-weight:600;background:#16a34a;color:#fff;padding:2px 7px;border-radius:20px;margin-left:4px">Rural areas</span></p>
+    <p style="margin:0;font-size:13px;color:#374151">Min down: <strong>0%</strong> &nbsp;·&nbsp; Credit: <strong>640+</strong> &nbsp;·&nbsp; PMI: No (guarantee fee applies)</p>
+  </div>
+  <div style="border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px">
+    <p style="font-weight:700;font-size:15px;margin:0 0 6px;color:var(--tx)">💎 Jumbo Loan</p>
+    <p style="margin:0;font-size:13px;color:#374151">Min down: <strong>10–20%</strong> &nbsp;·&nbsp; Credit: <strong>700+</strong> &nbsp;·&nbsp; PMI: Typically no</p>
+  </div>
+</div>
+
+<h2>PMI Math: Is a Bigger Down Payment Worth It?</h2>
+<p>PMI costs roughly 0.5–1.5% of the loan per year. On a $380,000 loan at 0.9%, that is $285/month until you hit 20% equity. Putting more down eliminates this cost immediately.</p>
+<div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+<table>
+  <thead><tr><th>Down Payment</th><th>Loan Amount</th><th>Est. PMI/mo</th><th>Monthly P&amp;I (7%, 30yr)</th></tr></thead>
+  <tbody>
+    <tr><td>3% ($12,000)</td><td>$388,000</td><td>~$340</td><td>$2,922</td></tr>
+    <tr><td>5% ($20,000)</td><td>$380,000</td><td>~$285</td><td>$2,863</td></tr>
+    <tr><td>10% ($40,000)</td><td>$360,000</td><td>~$210</td><td>$2,596</td></tr>
+    <tr><td>20% ($80,000)</td><td>$320,000</td><td>$0</td><td>$2,129</td></tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:13px;color:#6b7280">Based on $400,000 home. PMI estimated at 0.9% annually.</p>
   </div>
 </div>
 <div style="max-width:1100px;margin:0 auto;padding:8px 16px 20px">
