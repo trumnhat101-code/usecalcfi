@@ -424,13 +424,15 @@ function calc(){
 
   const intDiff=snowResult.totalInt-avalResult.totalInt;
   const moDiff=snowResult.months-avalResult.months;
-  const saveBox=$('saveMsg');
+  const saveBox=$('methodSaveBox');
   if(intDiff>0.5){
     saveBox.innerHTML=`🔥 Avalanche saves <span class="sv">${usd(intDiff)}</span> in interest and ${Math.abs(moDiff)} month${Math.abs(moDiff)!==1?'s':''} faster than Snowball.`;
   } else {
-    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific loan profile.\`;
+    saveBox.innerHTML=`❄️ Snowball saves <span class="sv">${usd(Math.abs(intDiff))}</span> in interest for your specific loan profile.`;
   }
 }
-document.querySelectorAll('input[type="number"]').forEach(function(el){el.addEventListener('input',calc);});
+// Initialize with default debts on load
+DEFAULT_DEBTS.forEach(d=>addRow(d));
+calc();
 </script>
 </body></html>
