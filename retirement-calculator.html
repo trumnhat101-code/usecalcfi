@@ -171,9 +171,12 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <div class="gap-note" id="gapNote"></div>
 
         <!-- Savings growth chart -->
-        <div id="chartWrap" style="margin-top:18px">
-          <div class="chart" id="chartBars"></div>
-          <div class="chart-labels" id="chartLabels"></div>
+        <div style="margin-top:18px">
+          <canvas id="retChart" style="width:100%;display:block;height:160px"></canvas>
+          <div style="display:flex;gap:16px;font-size:11px;color:var(--mut);margin-top:6px">
+            <span><span style="display:inline-block;width:9px;height:9px;background:#2563eb;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Existing savings</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#7c3aed;border-radius:2px;vertical-align:middle;margin-right:3px"></span>New contributions</span>
+          </div>
         </div>
         </div><!-- /results-section -->
       </div>
@@ -278,6 +281,56 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 const $=id=>document.getElementById(id);
 const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
 
+function fmtAx(v){
+  if(v>=1e6)return '$'+(v/1e6).toFixed(1)+'M';
+  if(v>=1e3)return '$'+Math.round(v/1e3)+'K';
+  return '$0';
+}
+function drawBars(cvId,data,h){
+  var cv=document.getElementById(cvId);
+  if(!cv||!cv.getContext)return;
+  function render(){
+    var W=cv.offsetWidth;
+    if(!W){setTimeout(render,50);return;}
+    h=h||160;
+    var dpr=window.devicePixelRatio||1;
+    cv.width=W*dpr;cv.height=h*dpr;
+    var ctx=cv.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var pl=52,pr=8,pt=8,pb=22,cW=W-pl-pr,cH=h-pt-pb;
+    var maxV=0;
+    data.forEach(function(d){
+      var t=d.segs.reduce(function(s,x){return s+x.v;},0);
+      if(t>maxV)maxV=t;
+    });
+    if(!maxV)return;
+    ctx.lineWidth=1;
+    ctx.font='10px system-ui,sans-serif';
+    for(var t=0;t<=4;t++){
+      var gy=pt+cH-t/4*cH;
+      ctx.strokeStyle='#e5e7eb';
+      ctx.beginPath();ctx.moveTo(pl,gy);ctx.lineTo(pl+cW,gy);ctx.stroke();
+      ctx.textAlign='right';ctx.fillStyle='#9ca3af';
+      ctx.fillText(fmtAx(maxV*t/4),pl-4,gy+4);
+    }
+    var n=data.length,bGap=cW/n,bW=Math.min(bGap*0.65,48);
+    for(var i=0;i<n;i++){
+      var d=data[i],x=pl+i*bGap+(bGap-bW)/2,sy=pt+cH;
+      d.segs.forEach(function(seg){
+        if(seg.v<=0)return;
+        var bH=seg.v/maxV*cH;
+        sy-=bH;
+        ctx.fillStyle=seg.color;
+        ctx.fillRect(x,sy,bW,bH);
+      });
+      ctx.textAlign='center';ctx.fillStyle='#9ca3af';
+      ctx.font='10px system-ui,sans-serif';
+      ctx.fillText(d.label,pl+i*bGap+bGap/2,pt+cH+16);
+    }
+  }
+  cv.offsetWidth>0?render():setTimeout(render,50);
+}
+
 function calc(){
   const curAge=+$('curAge').value||35;
   const retAge=+$('retAge').value||65;
@@ -340,44 +393,28 @@ function calc(){
     if(r===0) extraPMT=gap/n;
     else extraPMT=gap*r/(Math.pow(1+r,n)-1);
     gapNote.style.display='block';
-    gapNote.innerHTML=`💡 You're projected to fall <b>${usd(gap)}</b> short of your goal. To close the gap, contribute an additional <b>${usd(extraPMT)}/month</b>.`;
+    gapNote.innerHTML=`\u{1F4A1} You're projected to fall <b>${usd(gap)}</b> short of your goal. To close the gap, contribute an additional <b>${usd(extraPMT)}/month</b>.`;
   } else {
     gapNote.style.display='none';
   }
 
-  // Build chart (10-year intervals)
-  const chartBars=$('chartBars');
-  const chartLabels=$('chartLabels');
-  chartBars.innerHTML='';
-  chartLabels.innerHTML='';
-
+  // Build Canvas chart
   const checkpoints=[];
-  for(let y=0;y<=years;y+=Math.max(Math.floor(years/8),1)){
-    checkpoints.push(y);
-  }
+  for(let y=0;y<=years;y+=Math.max(Math.floor(years/8),1)) checkpoints.push(y);
   if(checkpoints[checkpoints.length-1]!==years) checkpoints.push(years);
 
-  const vals=checkpoints.map(y=>{
+  const chartData=checkpoints.map(function(y){
     const ny=y*12;
     const fvs=pv*Math.pow(1+r,ny);
     let fvc=0;
     if(r===0) fvc=pmt*ny;
     else fvc=pmt*(Math.pow(1+r,ny)-1)/r;
-    return fvs+fvc;
+    return {
+      label:''+(curAge+y),
+      segs:[{v:fvs,color:'#2563eb'},{v:fvc,color:'#7c3aed'}]
+    };
   });
-
-  const maxVal=Math.max(...vals,1);
-  vals.forEach((v,i)=>{
-    const bar=document.createElement('div');
-    bar.className='chart-bar';
-    bar.style.height=(v/maxVal*100)+'%';
-    bar.title=`Age ${curAge+checkpoints[i]}: ${usd(v)}`;
-    chartBars.appendChild(bar);
-
-    const lbl=document.createElement('span');
-    lbl.textContent=curAge+checkpoints[i];
-    chartLabels.appendChild(lbl);
-  });
+  drawBars('retChart',chartData,160);
 }
 </script>
 </body></html>

@@ -144,8 +144,12 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         </div>
 
         <!-- Growth chart -->
-        <div class="chart" id="chartBars"></div>
-        <div class="chart-labels" id="chartLabels"></div>
+        <canvas id="ciChart" style="width:100%;display:block;height:160px;margin:14px 0 0"></canvas>
+        <div style="display:flex;gap:16px;font-size:11px;color:var(--mut);margin-top:6px">
+          <span><span style="display:inline-block;width:9px;height:9px;background:#4f46e5;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Principal</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#16a34a;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Contributions</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#c7cae0;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Interest earned</span>
+        </div>
 
         <div class="r72" id="r72box">
           ⚡ <b>Rule of 72:</b> At <span id="r72rate">7</span>% return, your money doubles every <b><span id="r72yrs">10.3</span> years</b>.
@@ -239,6 +243,56 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 const $=id=>document.getElementById(id);
 const usd=n=>isFinite(n)&&n>=0?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
 
+function fmtAx(v){
+  if(v>=1e6)return '$'+(v/1e6).toFixed(1)+'M';
+  if(v>=1e3)return '$'+Math.round(v/1e3)+'K';
+  return '$0';
+}
+function drawBars(cvId,data,h){
+  var cv=document.getElementById(cvId);
+  if(!cv||!cv.getContext)return;
+  function render(){
+    var W=cv.offsetWidth;
+    if(!W){setTimeout(render,50);return;}
+    h=h||160;
+    var dpr=window.devicePixelRatio||1;
+    cv.width=W*dpr;cv.height=h*dpr;
+    var ctx=cv.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var pl=52,pr=8,pt=8,pb=22,cW=W-pl-pr,cH=h-pt-pb;
+    var maxV=0;
+    data.forEach(function(d){
+      var t=d.segs.reduce(function(s,x){return s+x.v;},0);
+      if(t>maxV)maxV=t;
+    });
+    if(!maxV)return;
+    ctx.lineWidth=1;
+    ctx.font='10px system-ui,sans-serif';
+    for(var t=0;t<=4;t++){
+      var gy=pt+cH-t/4*cH;
+      ctx.strokeStyle='#e5e7eb';
+      ctx.beginPath();ctx.moveTo(pl,gy);ctx.lineTo(pl+cW,gy);ctx.stroke();
+      ctx.textAlign='right';ctx.fillStyle='#9ca3af';
+      ctx.fillText(fmtAx(maxV*t/4),pl-4,gy+4);
+    }
+    var n=data.length,bGap=cW/n,bW=Math.min(bGap*0.65,48);
+    for(var i=0;i<n;i++){
+      var d=data[i],x=pl+i*bGap+(bGap-bW)/2,sy=pt+cH;
+      d.segs.forEach(function(seg){
+        if(seg.v<=0)return;
+        var bH=seg.v/maxV*cH;
+        sy-=bH;
+        ctx.fillStyle=seg.color;
+        ctx.fillRect(x,sy,bW,bH);
+      });
+      ctx.textAlign='center';ctx.fillStyle='#9ca3af';
+      ctx.font='10px system-ui,sans-serif';
+      ctx.fillText(d.label,pl+i*bGap+bGap/2,pt+cH+16);
+    }
+  }
+  cv.offsetWidth>0?render():setTimeout(render,50);
+}
+
 function calc(){
   const P=+$('principal').value||0;
   const annualR=+$('rate').value||0;
@@ -270,67 +324,33 @@ function calc(){
   $('lC').textContent=usd(totalContrib);
   $('lI').textContent=usd(interest);
 
-  const tot=P+totalContrib+interest||1;
-  $('bar').children[0].style.width=(P/tot*100)+'%';
-  $('bar').children[1].style.width=(totalContrib/tot*100)+'%';
-  $('bar').children[2].style.width=(interest/tot*100)+'%';
-
-  // Rule of 72
-  const r72=annualR>0?(72/annualR).toFixed(1):'∞';
-  $('r72rate').textContent=annualR;
-  $('r72yrs').textContent=r72;
-
-  // Chart
-  const chartBars=$('chartBars');
-  const chartLabels=$('chartLabels');
-  chartBars.innerHTML='';chartLabels.innerHTML='';
-
+  // Canvas chart
   const steps=Math.min(years,10);
   const interval=Math.max(Math.floor(years/steps),1);
   const checkpoints=[];
   for(let y=0;y<=years;y+=interval) checkpoints.push(y);
   if(checkpoints[checkpoints.length-1]!==years) checkpoints.push(years);
 
-  const vals=checkpoints.map(y=>{
+  const ciData=checkpoints.map(function(y){
     const pp=y*n;
     const fl=P*Math.pow(1+r,pp);
     let fc=r===0?pmtPerPeriod*pp:pmtPerPeriod*(Math.pow(1+r,pp)-1)/r;
     const fvY=fl+fc;
     const contribY=pmt*12*y;
-    return {total:fvY,contrib:Math.min(contribY,fvY),principal:Math.min(P,fvY)};
+    const contrib=Math.min(contribY,fvY);
+    const principal=Math.min(P,fvY);
+    const intEarned=Math.max(fvY-contrib,0);
+    const contribExtra=Math.max(contrib-principal,0);
+    return {
+      label:'Yr'+y,
+      segs:[
+        {v:principal,color:'#4f46e5'},
+        {v:contribExtra,color:'#16a34a'},
+        {v:intEarned,color:'#c7cae0'}
+      ]
+    };
   });
-
-  const maxV=Math.max(...vals.map(v=>v.total),1);
-  vals.forEach((v,i)=>{
-    const wrap=document.createElement('div');
-    wrap.className='chart-bar-wrap';
-    wrap.style.height='100%';
-    wrap.style.display='flex';
-    wrap.style.flexDirection='column';
-    wrap.style.justifyContent='flex-end';
-
-    const pctH=v.total/maxV*100;
-    const pPct=v.principal/v.total*100;
-    const cPct=Math.max(v.contrib-v.principal,0)/v.total*100;
-    const iPct=100-pPct-cPct;
-
-    const seg=document.createElement('div');
-    seg.style.height=pctH+'%';
-    seg.style.width='100%';
-    seg.style.borderRadius='4px 4px 0 0';
-    seg.style.overflow='hidden';
-    seg.style.display='flex';
-    seg.style.flexDirection='column';
-    seg.title=`Year ${checkpoints[i]}: ${usd(v.total)}`;
-
-    seg.innerHTML=`<div style="background:#c7cae0;flex:${iPct}"></div><div style="background:#16a34a;flex:${cPct}"></div><div style="background:#4f46e5;flex:${pPct}"></div>`;
-    wrap.appendChild(seg);
-    chartBars.appendChild(wrap);
-
-    const lbl=document.createElement('span');
-    lbl.textContent='Yr '+checkpoints[i];
-    chartLabels.appendChild(lbl);
-  });
+  drawBars('ciChart',ciData,160);
 }
 </script>
 </body></html>

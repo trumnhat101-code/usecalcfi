@@ -161,6 +161,17 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
             </table>
           </div>
         </div>
+
+        <!-- Payment Breakdown Chart -->
+        <div id="mort-chart-section" style="display:none;margin-top:22px;border-top:1px solid var(--bd);padding-top:18px">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:2px">Payment Breakdown by Year</h3>
+          <p style="font-size:12px;color:var(--mut);margin-bottom:8px">How your payments shift from interest to principal over time</p>
+          <canvas id="mortChart" style="width:100%;display:block;height:180px"></canvas>
+          <div style="display:flex;gap:16px;font-size:11px;color:var(--mut);margin-top:6px">
+            <span><span style="display:inline-block;width:9px;height:9px;background:#4f46e5;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Principal</span>
+            <span><span style="display:inline-block;width:9px;height:9px;background:#a5b4fc;border-radius:2px;vertical-align:middle;margin-right:3px"></span>Interest</span>
+          </div>
+        </div>
       </div>
 
       <!-- ====== AFFILIATE CTA (ngay sau kết quả — chuyển đổi cao nhất) ====== -->
@@ -298,6 +309,56 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 const $=id=>document.getElementById(id);
 const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
 
+function fmtAx(v){
+  if(v>=1e6)return '$'+(v/1e6).toFixed(1)+'M';
+  if(v>=1e3)return '$'+Math.round(v/1e3)+'K';
+  return '$0';
+}
+function drawBars(cvId,data,h){
+  var cv=document.getElementById(cvId);
+  if(!cv||!cv.getContext)return;
+  function render(){
+    var W=cv.offsetWidth;
+    if(!W){setTimeout(render,50);return;}
+    h=h||160;
+    var dpr=window.devicePixelRatio||1;
+    cv.width=W*dpr;cv.height=h*dpr;
+    var ctx=cv.getContext('2d');
+    ctx.scale(dpr,dpr);
+    var pl=52,pr=8,pt=8,pb=22,cW=W-pl-pr,cH=h-pt-pb;
+    var maxV=0;
+    data.forEach(function(d){
+      var t=d.segs.reduce(function(s,x){return s+x.v;},0);
+      if(t>maxV)maxV=t;
+    });
+    if(!maxV)return;
+    ctx.lineWidth=1;
+    ctx.font='10px system-ui,sans-serif';
+    for(var t=0;t<=4;t++){
+      var gy=pt+cH-t/4*cH;
+      ctx.strokeStyle='#e5e7eb';
+      ctx.beginPath();ctx.moveTo(pl,gy);ctx.lineTo(pl+cW,gy);ctx.stroke();
+      ctx.textAlign='right';ctx.fillStyle='#9ca3af';
+      ctx.fillText(fmtAx(maxV*t/4),pl-4,gy+4);
+    }
+    var n=data.length,bGap=cW/n,bW=Math.min(bGap*0.65,48);
+    for(var i=0;i<n;i++){
+      var d=data[i],x=pl+i*bGap+(bGap-bW)/2,sy=pt+cH;
+      d.segs.forEach(function(seg){
+        if(seg.v<=0)return;
+        var bH=seg.v/maxV*cH;
+        sy-=bH;
+        ctx.fillStyle=seg.color;
+        ctx.fillRect(x,sy,bW,bH);
+      });
+      ctx.textAlign='center';ctx.fillStyle='#9ca3af';
+      ctx.font='10px system-ui,sans-serif';
+      ctx.fillText(d.label,pl+i*bGap+bGap/2,pt+cH+16);
+    }
+  }
+  cv.offsetWidth>0?render():setTimeout(render,50);
+}
+
 var amortData={months:[],years:[]};
 
 function buildAmort(loan,r,n,pi){
@@ -322,7 +383,7 @@ function showAmort(view){
   $('togYr').className='atog'+(view==='year'?' active':'');
   $('togMo').className='atog'+(view==='month'?' active':'');
   var head=$('amortHead'),body=$('amortBody'),rows='';
-  if(view==='year'){
+  if(view==='year'{
     head.innerHTML='<tr><th>Year</th><th>Principal</th><th>Interest</th><th>Ending Balance</th></tr>';
     amortData.years.forEach(function(y){
       rows+='<tr><td>Year '+y.yr+'</td><td>'+usd(y.principal)+'</td><td>'+usd(y.interest)+'</td><td>'+usd(y.balance)+'</td></tr>';
@@ -357,17 +418,15 @@ function calc(){
   buildAmort(loan,r,n,pi);
   $('amort-section').style.display='block';
   showAmort('year');
+
+  // Payment breakdown chart
+  $('mort-chart-section').style.display='block';
+  var step=Math.ceil(amortData.years.length/12);
+  var mortChartData=amortData.years
+    .filter(function(y,i){return i%step===0||i===amortData.years.length-1;})
+    .map(function(y){return {label:'Yr'+y.yr,segs:[{v:y.principal,color:'#4f46e5'},{v:y.interest,color:'#a5b4fc'}]};});
+  drawBars('mortChart',mortChartData,180);
 }
 calc();
 </script>
-<footer><div class="wrap" style="display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center">
-  <span>© 2026 UseCalcFi · Free financial calculators for Americans</span>
-  <a href="/" style="color:var(--mut);text-decoration:none">All Calculators</a>
-  <a href="/guides" style="color:var(--mut);text-decoration:none">Guides</a>
-  <a href="/about" style="color:var(--mut);text-decoration:none">About</a>
-  <a href="/contact" style="color:var(--mut);text-decoration:none">Contact</a>
-  <a href="/privacy-policy" style="color:var(--mut);text-decoration:none">Privacy Policy</a>
-  <a href="/disclaimer" style="color:var(--mut);text-decoration:none">Disclaimer</a>
-  <span>Not financial advice</span>
-</div></footer>
 </body></html>
