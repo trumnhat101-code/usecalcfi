@@ -261,6 +261,20 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 </main>
 
 
+<div style="max-width:1100px;margin:0 auto;padding:8px 16px 28px">
+<h2>Embed this calculator on your website</h2>
+<p style="color:#6b7280;font-size:14px;max-width:760px;margin:0 0 10px">Free to use — paste this code where you want the calculator to appear. Please keep the attribution link.</p>
+<textarea id="embedCode" readonly rows="5" onclick="this.select()" style="width:100%;max-width:760px;display:block;font-family:monospace;font-size:12px;line-height:1.5;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#1f2937;resize:vertical">&lt;iframe src="https://usecalcfi.com/embed/retirement-calculator" width="100%" height="480" style="border:1px solid #e5e7eb;border-radius:12px;max-width:440px" title="Retirement Calculator by UseCalcFi" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;p style="font:14px sans-serif"&gt;Retirement Calculator by &lt;a href="https://usecalcfi.com/retirement-calculator"&gt;UseCalcFi&lt;/a&gt;&lt;/p&gt;</textarea>
+<button onclick="copyEmbed()" style="margin-top:10px;background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer">Copy code</button>
+<span id="embedMsg" style="margin-left:10px;font-size:13px;color:#16a34a;font-weight:600"></span>
+</div>
+<script>
+function copyEmbed(){var t=document.getElementById('embedCode');t.focus();t.select();
+ var done=function(){var m=document.getElementById('embedMsg');m.textContent='\u2713 Copied!';setTimeout(function(){m.textContent='';},2500);};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t.value).then(done,function(){try{document.execCommand('copy');}catch(e){}done();});}
+ else{try{document.execCommand('copy');}catch(e){}done();}}
+</script>
 <div style="background:#f7f8fc;border-top:2px solid #e5e7eb;padding:28px 16px 40px">
   <div style="max-width:1100px;margin:0 auto">
     <h2 style="font-size:13px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.6px;margin:0 0 14px">📚 Related Guides</h2>

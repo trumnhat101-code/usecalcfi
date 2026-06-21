@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Loan Calculator Widget — UseCalcFi</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://usecalcfi.com/auto-loan-calculator">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+:root{--ac:#4f46e5;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);line-height:1.5;padding:14px}
+.w{max-width:440px;margin:0 auto;background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:18px}
+.hd{font-size:17px;font-weight:800;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600}
+input,select{width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:9px;font-size:15px;background:var(--card);color:var(--tx)}
+input:focus,select:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(79,70,229,.12)}
+.res{margin-top:14px;background:#eef0ff;border-radius:10px;padding:14px;text-align:center}
+.res .v{font-size:30px;font-weight:800;color:var(--ac);line-height:1}
+.res .l{font-size:12px;color:var(--mut);margin-top:4px}
+.sub{display:flex;gap:10px;margin-top:10px}
+.sub div{flex:1;background:var(--bg);border-radius:9px;padding:9px;text-align:center}
+.sub .v{font-size:15px;font-weight:700}
+.sub .l{font-size:11px;color:var(--mut)}
+.brand{display:block;text-align:center;margin-top:14px;font-size:12px;color:var(--mut);text-decoration:none}
+.brand b{color:var(--ac)}
+</style>
+</head>
+<body>
+<div class="w">
+  <div class="hd">Auto Loan Calculator</div>
+  <div class="grid">
+    <div><label>Loan amount ($)</label><input id="amt" type="number" value="30000"></div>
+    <div><label>Interest rate (% APR)</label><input id="rate" type="number" step="0.01" value="7"></div>
+    <div><label>Term</label>
+      <select id="term"><option value="36">36 months</option><option value="48">48 months</option><option value="60" selected>60 months</option><option value="72">72 months</option><option value="84">84 months</option></select>
+    </div>
+    <div><label>Down payment ($)</label><input id="down" type="number" value="0"></div>
+  </div>
+  <div class="res">
+    <div class="v" id="rPay">$0</div>
+    <div class="l">Estimated monthly payment</div>
+  </div>
+  <div class="sub">
+    <div><div class="v" id="rInt">$0</div><div class="l">Total interest</div></div>
+    <div><div class="v" id="rTot">$0</div><div class="l">Total cost</div></div>
+  </div>
+  <a class="brand" href="https://usecalcfi.com/auto-loan-calculator" target="_blank" rel="noopener"><b>Powered by UseCalcFi →</b> Free auto &amp; finance calculators</a>
+</div>
+<script>
+var $=function(id){return document.getElementById(id);};
+function usd(n){return isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';}
+function calc(){
+  var amt=+$('amt').value||0, down=+$('down').value||0, rate=+$('rate').value||0, n=+$('term').value||60;
+  var P=Math.max(amt-down,0), r=rate/100/12;
+  var pay=r>0?P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1):P/n;
+  var tot=pay*n;
+  $('rPay').textContent=usd(pay);
+  $('rInt').textContent=usd(tot-P);
+  $('rTot').textContent=usd(tot);
+}
+['amt','down','rate','term'].forEach(function(id){$(id).addEventListener('input',calc);});
+calc();
+</script>
+</body>
+</html>
