@@ -1,11 +1,11 @@
 # Cloudflare Pages redirects (301 permanent)
 /guides/retirement-savings-by-age-2026   /guides/average-retirement-savings-by-age   301
 
-# Block internal / dev files from public access (serve 404)
-/CLAUDE.md                                /404.html   404
-/00-PROJECT-BRIEF.md                      /404.html   404
-/KIEN-TRUC-TOOL-SITE.md                   /404.html   404
-/OUTREACH-KIT.md                          /404.html   404
-/Tool-Site-Finance-Calculators-US.xlsx   /404.html   404
-/validate.py                              /404.html   404
-/check-before-push.ps1                    /404.html   404
+# Block internal / dev files from public access (rewrite to the not-found page)
+/CLAUDE.md                                /404.html   200
+/00-PROJECT-BRIEF.md                      /404.html   200
+/KIEN-TRUC-TOOL-SITE.md                   /404.html   200
+/OUTREACH-KIT.md                          /404.html   200
+/Tool-Site-Finance-Calculators-US.xlsx   /404.html   200
+/validate.py                              /404.html   200
+/check-before-push.ps1                    /404.html   200
