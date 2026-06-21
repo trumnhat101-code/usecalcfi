@@ -3,4 +3,10 @@
 User-agent: *
 Allow: /
 
+# Internal / dev files — not for public crawling
+Disallow: /*.md$
+Disallow: /*.py$
+Disallow: /*.ps1$
+Disallow: /*.xlsx$
+
 Sitemap: https://usecalcfi.com/sitemap.xml

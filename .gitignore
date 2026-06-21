@@ -6,3 +6,6 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Internal docs (keep local — don't deploy publicly)
+OUTREACH-KIT.md
