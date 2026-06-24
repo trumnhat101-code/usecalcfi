@@ -125,6 +125,8 @@ tr:nth-child(even) td{background:#fafafa}
     <p style="font-size:14px;margin:8px 0 0;opacity:.9">By <a href="/authors/nathan-le" style="color:inherit;font-weight:600;text-decoration:underline">Nathan Le</a></p>
     <p class="sub">Federal Reserve benchmarks for average and median net worth at every age — plus why median matters more, and what moves the needle fastest.</p>
     <img src="/img/net-worth-by-age-2026.svg" alt="Infographic: average vs median net worth by age group in the United States (2026), based on Federal Reserve data" width="1000" height="1500" style="display:block;width:100%;max-width:460px;height:auto;margin:18px auto;border:1px solid #e5e7eb;border-radius:14px" loading="lazy">
+    <div style="margin:4px 0 16px;text-align:center"><button onclick="dlAgeCSV()" style="background:#4f46e5;color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer">&#11015; Download data (CSV) — free to use with credit</button></div>
+    <script>function dlAgeCSV(){var csv="Age group,Average net worth,Median net worth\nUnder 35,183000,39000\n35-44,549000,135000\n45-54,975000,247000\n55-64,1570000,364000\n65-74,1790000,410000\n75+,1720000,335000\n";var b=new Blob([csv],{type:'text/csv'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='net-worth-by-age-2026-usecalcfi.csv';document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(a.href);},100);}</script>
     <div class="meta">
       <span>📅 Updated June 2026</span>
       <span>⏱ 7 min read</span>
@@ -297,7 +299,7 @@ tr:nth-child(even) td{background:#fafafa}
 </div>
 <footer><div class="wrap">
   <span>© 2026 UseCalcFi · Free financial calculators for Americans</span>
-  <a href="/">All Calculators</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/authors">Authors</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/disclaimer">Disclaimer</a>
+  <a href="/">All Calculators</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/authors">Authors</a><a href="/research">Research</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy Policy</a><a href="/disclaimer">Disclaimer</a>
   <span>Not financial advice</span>
 </div></footer>
 <script>function toggleFaq(el){const a=el.nextElementSibling;const icon=el.querySelector('.faq-icon');a.classList.toggle('open');icon.textContent=a.classList.contains('open')?'−':'+'}</script>
