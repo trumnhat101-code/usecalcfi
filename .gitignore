@@ -12,3 +12,12 @@ OUTREACH-KIT.md
 SOCIAL-KIT.md
 PR-PITCHES.md
 OUTREACH-TRACKER.csv
+
+# Pinterest marketing assets (uploaded to Pinterest, not the site)
+pins/
+gen_pins.py
+convert_pins.py
+
+# Digital products (uploaded to Gumroad, not the site)
+products/
+gen_mortgage_tracker.py
