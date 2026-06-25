@@ -14,6 +14,7 @@ PR-PITCHES.md
 OUTREACH-TRACKER.csv
 GUMROAD-LISTING.md
 GUMROAD-LISTING-DEBT.md
+GUMROAD-LISTING-BUDGET.md
 
 # Pinterest marketing assets (uploaded to Pinterest, not the site)
 pins/
@@ -24,4 +25,5 @@ convert_pins.py
 products/
 gen_mortgage_tracker.py
 gen_debt_tracker.py
+gen_budget_tracker.py
 gen_gumroad_images.py

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>50/30/20 Budget Tracker — Google Sheets &amp; Excel Template | UseCalcFi</title>
+<meta name="description" content="A 50/30/20 budget tracker for Google Sheets & Excel. Enter your income and expenses to see your needs/wants/savings split, planned vs actual, savings rate, and a dashboard chart. Instant download.">
+<link rel="canonical" href="https://usecalcfi.com/budget-tracker">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://usecalcfi.com/budget-tracker">
+<meta property="og:title" content="50/30/20 Budget Tracker — Google Sheets & Excel Template">
+<meta property="og:description" content="See your needs/wants/savings split, planned vs actual, and savings rate. Google Sheets & Excel. Instant download.">
+<meta property="og:image" content="https://usecalcfi.com/og-image.svg">
+<meta property="og:site_name" content="UseCalcFi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="50/30/20 Budget Tracker — Google Sheets & Excel">
+<meta name="twitter:description" content="See your needs/wants/savings split, planned vs actual, and savings rate. Sheets & Excel.">
+<meta name="twitter:image" content="https://usecalcfi.com/og-image.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C7MQVPYVTN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C7MQVPYVTN');</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","@id":"https://usecalcfi.com/#organization","name":"UseCalcFi","url":"https://usecalcfi.com/","logo":{"@type":"ImageObject","url":"https://usecalcfi.com/og-image.svg"},"founder":{"@id":"https://usecalcfi.com/authors/nathan-le#person"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"50/30/20 Budget Tracker — Google Sheets & Excel Template","description":"A monthly budget tracker built on the 50/30/20 rule. Enter your income and expenses (planned vs actual) and see your needs/wants/savings split, savings rate, money left to assign, and a dashboard chart comparing your spending to the 50/30/20 target. Works in Google Sheets and Microsoft Excel.","brand":{"@type":"Brand","name":"UseCalcFi"},"category":"Personal finance template","offers":{"@type":"Offer","price":"15.00","priceCurrency":"USD","availability":"https://schema.org/InStock","url":"https://usecalcfi.com/budget-tracker"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"UseCalcFi","item":"https://usecalcfi.com/"},{"@type":"ListItem","position":2,"name":"Budget Tracker","item":"https://usecalcfi.com/budget-tracker"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the 50/30/20 rule?","acceptedAnswer":{"@type":"Answer","text":"The 50/30/20 rule splits your take-home pay into 50% needs, 30% wants, and 20% savings and debt payoff. This tracker shows how your real spending compares to those targets."}},
+{"@type":"Question","name":"Does it work in Google Sheets and Excel?","acceptedAnswer":{"@type":"Answer","text":"Yes. The file is an .xlsx that opens directly in Microsoft Excel, and you can upload or import it into Google Sheets in a few clicks. All formulas work in both."}},
+{"@type":"Question","name":"Can I customize the categories?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rename any category and add your own under Needs, Wants, or Savings. Totals and the dashboard update automatically."}}
+]}
+</script>
+
+<style>
+:root{--ac:#4f46e5;--bg:#f7f8fc;--card:#fff;--bd:#e5e7eb;--tx:#1f2937;--mut:#6b7280;--ok:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg);line-height:1.6;overflow-x:hidden;max-width:100%}
+header,footer{background:#fff;border-bottom:1px solid var(--bd)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:800;color:var(--ac);font-size:18px;text-decoration:none}
+nav a{color:var(--mut);text-decoration:none;margin-left:16px;font-size:14px}
+.breadcrumb{font-size:13px;color:var(--mut);margin:16px 0 0}
+.breadcrumb a{color:var(--mut);text-decoration:none}
+main{max-width:1000px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;margin:18px 0 8px}
+.hero h1{font-size:32px;line-height:1.2;margin:6px 0 12px}
+.hero .lead{color:var(--mut);font-size:17px;margin-bottom:18px}
+.tag{display:inline-block;background:#eef0ff;color:var(--ac);font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;padding:5px 12px;border-radius:20px}
+.buy{background:var(--ac);color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:15px 30px;border-radius:12px;display:inline-block}
+.price{font-size:30px;font-weight:800;margin-right:10px}
+.muted{color:var(--mut);font-size:14px}
+.heroimg{background:linear-gradient(135deg,#4f46e5,#7c3aed);border-radius:18px;padding:28px;color:#fff}
+.heroimg .split{display:flex;gap:10px;margin-top:6px}
+.heroimg .seg{flex:1;text-align:center;background:rgba(255,255,255,.14);border-radius:12px;padding:14px 8px}
+.heroimg .seg .pct{font-size:30px;font-weight:800}
+.heroimg .seg .nm{font-size:13px;opacity:.9}
+.heroimg .lbl{font-size:14px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:24px;margin:18px 0}
+h2{font-size:22px;margin:0 0 14px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.feat div{background:#fff;border:1px solid var(--bd);border-radius:12px;padding:16px}
+.feat b{display:block;margin-bottom:4px}
+.faq b{display:block;margin-top:14px}
+.rel{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.rel a{background:#f5f3ff;color:var(--ac);text-decoration:none;padding:7px 12px;border-radius:20px;font-size:13px}
+footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
+footer a{color:var(--mut);text-decoration:none}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.feat{grid-template-columns:1fr}}
+@media(max-width:640px){
+  header .wrap{height:auto;padding:8px 16px;flex-wrap:wrap;gap:0}
+  nav{width:100%;overflow-x:auto;white-space:nowrap;padding:6px 0 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  nav::-webkit-scrollbar{display:none}
+  nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
+  .hero h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="logo" href="/">💰 UseCalcFi</a>
+  <nav><a href="/mortgage-calculator">Mortgage</a><a href="/auto-loan-calculator">Auto Loan</a><a href="/paycheck-calculator">Paycheck</a><a href="/retirement-calculator">Retirement</a><a href="/guides">Guides</a></nav>
+</div></header>
+
+<main class="wrap">
+  <p class="breadcrumb"><a href="/">Home</a> › Budget Tracker</p>
+
+  <section class="hero">
+    <div>
+      <span class="tag">50/30/20 Rule · Google Sheets &amp; Excel</span>
+      <h1>50/30/20 Budget Tracker</h1>
+      <p class="lead">See exactly where your money goes. Enter your income and expenses, and watch your <strong>needs / wants / savings</strong> split, <strong>savings rate</strong>, and planned-vs-actual update in real time.</p>
+      <p style="margin-bottom:16px"><span class="price">$15</span><span class="muted">one-time · lifetime access · free updates</span></p>
+      <a class="buy" href="https://usecalcfi.gumroad.com/l/budget-tracker" rel="nofollow">Get the tracker →</a>
+      <p class="muted" style="margin-top:10px">Secure checkout via Gumroad. Works on Mac, Windows, and mobile.</p>
+    </div>
+    <div class="heroimg">
+      <div class="lbl">The 50/30/20 rule, automated</div>
+      <div class="split">
+        <div class="seg"><div class="pct">50%</div><div class="nm">Needs</div></div>
+        <div class="seg"><div class="pct">30%</div><div class="nm">Wants</div></div>
+        <div class="seg"><div class="pct">20%</div><div class="nm">Savings</div></div>
+      </div>
+      <div class="lbl" style="margin-top:16px;opacity:.85">Instantly see how your real spending compares to the target.</div>
+    </div>
+  </section>
+
+  <div class="card">
+    <h2>What's inside</h2>
+    <div class="feat">
+      <div><b>💵 Income &amp; expenses</b>Add multiple income sources and as many categories as you like.</div>
+      <div><b>📊 50/30/20 dashboard</b>Needs/wants/savings split vs the target, with a clear bar chart.</div>
+      <div><b>🆚 Planned vs actual</b>Set a plan, log what you really spent, see the difference per category.</div>
+      <div><b>📈 Savings rate</b>Know your savings rate and how to push it toward 20%.</div>
+      <div><b>🎯 Money left to assign</b>Give every dollar a job — balance your budget to zero.</div>
+      <div><b>✅ Works everywhere</b>Google Sheets and Microsoft Excel. Mac, Windows, mobile.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>See your money clearly</h2>
+    <p>Most people have no idea what their real budget split looks like. In the built-in example, a $5,000/month earner is spending <strong>54% on needs</strong>, only <strong>10% on savings</strong> (target 20%), with <strong>$990 left unassigned</strong> every month. The dashboard shows it at a glance — so you know exactly what to adjust.</p>
+  </div>
+
+  <div class="card">
+    <h2>How it works</h2>
+    <p>1. Download and open in Excel, or upload to Google Sheets (<em>File → Import</em>).<br>
+    2. On the <strong>Budget</strong> tab, enter your income and your planned + actual amounts.<br>
+    3. The <strong>Dashboard</strong> shows your 50/30/20 split, savings rate, and money left — automatically.</p>
+  </div>
+
+  <div class="card">
+    <h2>Want the free tools first?</h2>
+    <div class="rel">
+      <a href="/paycheck-calculator">Paycheck Calculator</a>
+      <a href="/guides/50-30-20-budget-rule">50/30/20 Budget Rule</a>
+      <a href="/budget-calculator">Budget Calculator</a>
+      <a href="/savings-calculator">Savings Calculator</a>
+      <a href="/guides/how-much-emergency-fund">Emergency Fund Guide</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <b>What is the 50/30/20 rule?</b>
+      Split your take-home pay into 50% needs, 30% wants, and 20% savings &amp; debt payoff. The tracker shows how your real spending compares.
+      <b>Can I customize the categories?</b>
+      Yes — rename any category and add your own under Needs, Wants, or Savings. Everything updates automatically.
+      <b>Does it work in Google Sheets and Excel?</b>
+      Yes. It's an .xlsx that opens in Excel and imports into Google Sheets in a few clicks. All formulas work in both.
+      <b>Is this financial advice?</b>
+      No. It's a budgeting tool for educational purposes only.
+      <b>Refunds?</b>
+      Because it's an instant digital download, all sales are final — but if anything doesn't work, email contact@usecalcfi.com and we'll make it right.
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:8px 0 26px">
+    <a class="buy" href="https://usecalcfi.gumroad.com/l/budget-tracker" rel="nofollow">Get the 50/30/20 Budget Tracker — $15</a>
+    <p class="muted" style="margin-top:10px">Instant download · Google Sheets &amp; Excel · by <a href="/authors/nathan-le" style="color:var(--mut)">Nathan Le</a>, UseCalcFi</p>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 UseCalcFi · Free financial calculators for Americans</span>
+  <a href="/">All Calculators</a>
+  <a href="/guides">Guides</a>
+  <a href="/about">About</a>
+  <a href="/authors">Authors</a>
+  <a href="/research">Research</a>
+  <a href="/contact">Contact</a>
+  <a href="/privacy-policy">Privacy Policy</a>
+  <a href="/disclaimer">Disclaimer</a>
+  <span>Not financial advice</span>
+</div></footer>
+
+</body></html>
