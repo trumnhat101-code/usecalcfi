@@ -1,0 +1,9 @@
+# Don't upload/serve internal, non-web files (assets directory is ".")
+wrangler.jsonc
+.assetsignore
+.gitignore
+CLAUDE.md
+*.md
+*.py
+*.ps1
+*.xlsx
