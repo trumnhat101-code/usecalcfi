@@ -16,3 +16,12 @@
 
 /og-image.svg
   Cache-Control: public, max-age=604800, immutable
+
+/og-image.png
+  Cache-Control: public, max-age=604800, immutable
+
+/img/*
+  Cache-Control: public, max-age=604800, immutable
+
+/authors/nathan-le.jpg
+  Cache-Control: public, max-age=604800, immutable
