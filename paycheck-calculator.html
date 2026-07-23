@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paycheck Calculator — Estimate Your Take-Home Pay (2025–2026)</title>
-<meta name="description" content="Free paycheck calculator. Estimate your net take-home pay after federal income tax, Social Security, Medicare, and state tax. Works for hourly and salary.">
+<title>Paycheck Calculator 2026 — Estimate Take-Home Pay</title>
+<meta name="description" content="Estimate your 2026 take-home pay by paycheck and year. Includes federal tax, Social Security, Medicare, state tax, and W-4 adjustments.">
 <link rel="canonical" href="https://usecalcfi.com/paycheck-calculator">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://usecalcfi.com/paycheck-calculator">
-<meta property="og:title" content="Paycheck Calculator — Estimate Your Take-Home Pay (2025–2026)">
-<meta property="og:description" content="Free paycheck calculator. Estimate your net take-home pay after federal income tax, Social Security, Medicare, and state tax. Works for hourly and salary.">
+<meta property="og:title" content="Paycheck Calculator 2026 — Estimate Take-Home Pay">
+<meta property="og:description" content="Estimate 2026 take-home pay by paycheck and year, including federal tax, FICA, state tax, and W-4 adjustments.">
 <meta property="og:image" content="https://usecalcfi.com/og-image.png">
 <meta property="og:site_name" content="UseCalcFi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Paycheck Calculator — Estimate Your Take-Home Pay (2025–2026)">
-<meta name="twitter:description" content="Free paycheck calculator. Estimate your net take-home pay after federal income tax, Social Security, Medicare, and state tax. Works for hourly and salary.">
+<meta name="twitter:title" content="Paycheck Calculator 2026 — Estimate Take-Home Pay">
+<meta name="twitter:description" content="Estimate 2026 take-home pay by paycheck and year, including federal tax, FICA, state tax, and W-4 adjustments.">
 <meta name="twitter:image" content="https://usecalcfi.com/og-image.png">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6004796759910209" crossorigin="anonymous"></script>
@@ -23,12 +23,12 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C7MQVPYVTN');</script><!-- TODO domain -->
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Paycheck Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Paycheck Calculator 2026","url":"https://usecalcfi.com/paycheck-calculator","description":"Estimate 2026 take-home pay by paycheck and year, including federal income tax, Social Security, Medicare, state tax, and W-4 adjustments.","applicationCategory":"FinanceApplication","operatingSystem":"Web","dateModified":"2026-07-23","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How is federal income tax withheld from my paycheck?","acceptedAnswer":{"@type":"Answer","text":"Federal income tax is calculated using progressive tax brackets on your annualized gross pay (minus the standard deduction). The result is divided by your number of pay periods. For 2025, the standard deduction is $15,000 (single) or $30,000 (married filing jointly)."}},
-{"@type":"Question","name":"What is FICA tax?","acceptedAnswer":{"@type":"Answer","text":"FICA stands for the Federal Insurance Contributions Act. It consists of Social Security tax (6.2% of wages up to $176,100 in 2025) and Medicare tax (1.45% of all wages, plus an additional 0.9% over $200,000 for single filers)."}},
+{"@type":"Question","name":"How is federal income tax estimated from my paycheck?","acceptedAnswer":{"@type":"Answer","text":"This calculator annualizes wages, subtracts eligible pre-tax deductions and the 2026 standard deduction, applies the 2026 federal tax brackets, then divides the estimate by the number of pay periods. W-4 Steps 3, 4(a), 4(b), and 4(c) can change the result."}},
+{"@type":"Question","name":"What is FICA tax in 2026?","acceptedAnswer":{"@type":"Answer","text":"Employee FICA consists of Social Security tax at 6.2% of wages up to $184,500 in 2026 and Medicare tax at 1.45% of wages. Employers also withhold an additional 0.9% Medicare tax from wages they pay above $200,000 in a calendar year."}},
 {"@type":"Question","name":"Why does my actual paycheck differ from the calculator?","acceptedAnswer":{"@type":"Answer","text":"This calculator provides estimates. Your actual paycheck may differ due to pre-tax deductions (401k, health insurance, HSA, FSA), additional withholding elected on Form W-4, local/city taxes, or other employer-specific deductions."}}
 ]}
 </script>
@@ -72,9 +72,22 @@ input:focus,select:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(79,70,
 .kpi.main{background:#fffbeb}.kpi.main .v{color:var(--ac)}
 .kpi.neg .v{color:#dc2626}
 .breakdown{margin-top:18px;border-top:1px solid var(--bd);padding-top:14px}
-.brow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:14px}
+.brow{display:grid;grid-template-columns:minmax(0,1fr) minmax(88px,auto) minmax(98px,auto);gap:12px;padding:7px 0;border-bottom:1px solid #f3f4f6;font-size:14px;text-align:right}
+.brow span:first-child{text-align:left}
+.brow.head{font-size:12px;color:var(--mut);font-weight:700}
 .brow:last-child{border-bottom:none;font-weight:700}
 .brow .neg{color:#dc2626}
+.error{display:none;background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:10px 14px;font-size:13px;margin:12px 0 0}
+.help{font-size:12px;color:var(--mut);margin:4px 0 0}
+details.w4{border:1px solid var(--bd);border-radius:10px;padding:10px 12px;margin-top:14px;background:#fafafa}
+details.w4 summary{cursor:pointer;font-weight:700;font-size:14px}
+details.w4 .grid2{margin-top:12px}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:right;padding:9px 10px;border-bottom:1px solid var(--bd);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{background:#f9fafb;font-size:12px;color:var(--mut)}
+.sources a,.content a{color:#4f46e5}
 .cta{display:block;background:linear-gradient(135deg,#d97706,#dc2626);color:#fff;text-decoration:none;border-radius:12px;padding:16px;text-align:center;font-weight:700;margin-bottom:8px}
 .cta small{display:block;font-weight:400;opacity:.9;font-size:12px;margin-top:3px}
 .ad{display:none;margin:0}.ad.box{display:none}
@@ -94,6 +107,7 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
   nav::-webkit-scrollbar{display:none}
   nav a{margin-left:0;margin-right:14px;font-size:13px;display:inline-block}
   .logo{font-size:17px}
+  .brow{grid-template-columns:minmax(0,1fr) 80px 88px;gap:7px;font-size:12px}
 }
 </style>
 <script type="application/ld+json">
@@ -108,9 +122,9 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
 </div></header>
 
 <main class="wrap">
-  <h1>Paycheck Calculator</h1>
-  <p style="font-size:12px;color:var(--mut);margin:-4px 0 14px">🗓️ Last reviewed: June 2026 · Source: IRS 2026 tax tables</p>
-  <p class="lead">Estimate your take-home pay after federal taxes, Social Security, Medicare, and state income tax. Enter your salary or hourly rate to see your net paycheck.</p>
+  <h1>Paycheck Calculator 2026</h1>
+  <p style="font-size:12px;color:var(--mut);margin:-4px 0 14px">🗓️ Last reviewed: July 23, 2026 · Sources: IRS Rev. Proc. 2025-32 and SSA</p>
+  <p class="lead">Estimate take-home pay for salary or hourly work using 2026 federal tax brackets, FICA rates, pay frequency, pre-tax deductions, and optional W-4 adjustments.</p>
 
   <div class="layout">
     <div>
@@ -124,12 +138,12 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
               <option value="hourly">Hourly wage</option>
             </select>
           </div>
-          <div id="salaryGroup"><label>Annual salary ($)</label><input id="salary" type="number" value="75000"></div>
+          <div id="salaryGroup"><label>Annual salary ($)</label><input id="salary" type="number" min="0" value="75000"></div>
           <div id="hourlyGroup" style="display:none">
-            <label>Hourly rate ($)</label><input id="hourly" type="number" step="0.01" value="25">
+            <label>Hourly rate ($)</label><input id="hourly" type="number" min="0" step="0.01" value="25">
           </div>
           <div id="hoursGroup" style="display:none">
-            <label>Hours per week</label><input id="hours" type="number" value="40">
+            <label>Hours per week</label><input id="hours" type="number" min="0" max="168" value="40">
           </div>
           <div>
             <label>Pay frequency</label>
@@ -148,10 +162,21 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
               <option value="hoh">Head of household</option>
             </select>
           </div>
-          <div><label>Pre-tax deductions (per period $)</label><input id="pretax" type="number" value="0" placeholder="401k, health ins…"></div>
-          <div><label>State income tax rate (%)</label><input id="statetax" type="number" step="0.1" value="5" placeholder="0 = no state tax"></div>
+          <div><label>Pre-tax deductions per paycheck ($)</label><input id="pretax" type="number" min="0" value="0" placeholder="401(k), health insurance"></div>
+          <div><label>Estimated state income tax rate (%)</label><input id="statetax" type="number" min="0" max="20" step="0.1" value="5" placeholder="0 = no state tax"><p class="help">Uses a flat-rate estimate; state rules vary.</p></div>
           <div class="full" style="display:flex;align-items:flex-end"><button class="btn" onclick="calc()">Calculate Paycheck</button></div>
         </div>
+
+        <details class="w4">
+          <summary>Optional W-4 adjustments</summary>
+          <div class="grid2">
+            <div><label>Step 3 credits (annual $)</label><input id="w4credits" type="number" min="0" value="0"><p class="help">Dependent and other credits entered on Step 3.</p></div>
+            <div><label>Step 4(a) other income (annual $)</label><input id="w4other" type="number" min="0" value="0"><p class="help">Income not already included in wages.</p></div>
+            <div><label>Step 4(b) deductions (annual $)</label><input id="w4deductions" type="number" min="0" value="0"><p class="help">Amount from the W-4 Deductions Worksheet.</p></div>
+            <div><label>Step 4(c) extra withholding per paycheck ($)</label><input id="w4extra" type="number" min="0" value="0"></div>
+          </div>
+        </details>
+        <div class="error" id="calcError" role="alert"></div>
 
         <div id="results-section" style="display:none">
         <div class="result">
@@ -159,19 +184,29 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
           <div class="kpi"><div class="v" id="rGross">$0</div><div class="l">Gross pay (per period)</div></div>
           <div class="kpi"><div class="v" id="rAnnualNet">$0</div><div class="l">Estimated annual take-home</div></div>
           <div class="kpi"><div class="v" id="rEffRate">0%</div><div class="l">Effective total tax rate</div></div>
+          <div class="kpi"><div class="v" id="rTakeHomePct">0%</div><div class="l">Take-home percentage</div></div>
+          <div class="kpi"><div class="v" id="rTaxable">$0</div><div class="l">Estimated federal taxable income</div></div>
         </div>
 
         <div class="breakdown" id="breakdownSection">
-          <div class="brow"><span>Gross pay</span><span id="bGross">$0</span></div>
-          <div class="brow"><span>Pre-tax deductions</span><span class="neg" id="bPretax">−$0</span></div>
-          <div class="brow"><span>Federal income tax</span><span class="neg" id="bFed">−$0</span></div>
-          <div class="brow"><span>Social Security (6.2%)</span><span class="neg" id="bSS">−$0</span></div>
-          <div class="brow"><span>Medicare (1.45%)</span><span class="neg" id="bMed">−$0</span></div>
-          <div class="brow"><span>State income tax</span><span class="neg" id="bState">−$0</span></div>
-          <div class="brow"><span><b>Net take-home pay</b></span><span><b id="bNet">$0</b></span></div>
+          <div class="brow head"><span>Breakdown</span><span>Per paycheck</span><span>Annual</span></div>
+          <div class="brow"><span>Gross pay</span><span id="bGross">$0</span><span id="aGross">$0</span></div>
+          <div class="brow"><span>Pre-tax deductions</span><span class="neg" id="bPretax">−$0</span><span class="neg" id="aPretax">−$0</span></div>
+          <div class="brow"><span>Federal income tax</span><span class="neg" id="bFed">−$0</span><span class="neg" id="aFed">−$0</span></div>
+          <div class="brow"><span>Social Security (6.2%)</span><span class="neg" id="bSS">−$0</span><span class="neg" id="aSS">−$0</span></div>
+          <div class="brow"><span>Medicare (1.45%)</span><span class="neg" id="bMed">−$0</span><span class="neg" id="aMed">−$0</span></div>
+          <div class="brow" id="addMedRow"><span>Additional Medicare (0.9%)</span><span class="neg" id="bAddMed">−$0</span><span class="neg" id="aAddMed">−$0</span></div>
+          <div class="brow"><span>State income tax estimate</span><span class="neg" id="bState">−$0</span><span class="neg" id="aState">−$0</span></div>
+          <div class="brow"><span><b>Net take-home pay</b></span><span><b id="bNet">$0</b></span><span><b id="aNet">$0</b></span></div>
         </div>
 
-        <div class="note">⚠️ <b>Estimate only.</b> Actual withholding depends on your W-4 elections, pre-tax benefits, local taxes, and employer payroll practices. Consult a payroll professional for exact figures.</div>
+        <p class="help" id="w4Summary"></p>
+        <h2 style="font-size:16px;margin:18px 0 6px">Take-home pay by frequency</h2>
+        <div class="table-wrap">
+          <table><thead><tr><th>Frequency</th><th>Gross</th><th>Estimated take-home</th></tr></thead><tbody id="freqBody"></tbody></table>
+        </div>
+
+        <div class="note">⚠️ <b>Estimate only.</b> This is an annualized tax-liability estimate, not an employer payroll calculation. Actual withholding can differ because of IRS Publication 15-T methods, multiple jobs, benefit tax treatment, local taxes, and employer settings.</div>
         </div><!-- /results-section -->
       </div>
 
@@ -187,28 +222,40 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
       <!-- ====== SEO CONTENT ====== -->
       <div class="content">
         <h2>How to use this paycheck calculator</h2>
-        <p>Select your pay type (salary or hourly), enter your pay frequency, and choose your filing status. Add any pre-tax deductions like 401(k) contributions or health insurance premiums. Enter your state's income tax rate (or 0 for states with no income tax). Click Calculate to see your estimated take-home pay and a full tax breakdown.</p>
+        <p>Select salary or hourly pay, enter your pay frequency, and choose your federal filing status. Add eligible pre-tax payroll deductions and a state tax rate estimate. If you want a closer federal estimate, open the W-4 section and enter the annual dollar amounts from Steps 3, 4(a), 4(b), or the extra amount per paycheck from Step 4(c).</p>
+        <p>The result shows each deduction per paycheck and per year, your estimated federal taxable income, effective tax rate, take-home percentage, and a pay-frequency comparison.</p>
 
-        <h2>How federal income tax is calculated</h2>
-        <p>Federal income tax uses <b>progressive brackets</b> — you pay a different rate on each portion of your income. For 2025:</p>
+        <h2>2026 federal tax brackets used</h2>
+        <p>Federal income tax uses <b>progressive brackets</b>: only the dollars inside a bracket are taxed at that bracket's rate. This calculator uses these 2026 taxable-income thresholds:</p>
         <ul>
-          <li>10% on income up to $11,925 (single) / $23,850 (married)</li>
-          <li>12% on $11,925–$48,475 (single) / $23,850–$96,950 (married)</li>
-          <li>22% on $48,475–$103,350 (single) / $96,950–$206,700 (married)</li>
-          <li>24% on $103,350–$197,300 (single) / $206,700–$394,600 (married)</li>
-          <li>32% on $197,300–$250,525 (single) / $394,600–$501,050 (married)</li>
-          <li>35% on $250,525–$626,350 (single) / $501,050–$751,600 (married)</li>
+          <li>10% up to $12,400 (single) / $24,800 (married filing jointly)</li>
+          <li>12% from $12,400–$50,400 (single) / $24,800–$100,800 (married)</li>
+          <li>22% from $50,400–$105,700 (single) / $100,800–$211,400 (married)</li>
+          <li>24% from $105,700–$201,775 (single) / $211,400–$403,550 (married)</li>
+          <li>32% from $201,775–$256,225 (single) / $403,550–$512,450 (married)</li>
+          <li>35% from $256,225–$640,600 (single) / $512,450–$768,700 (married)</li>
           <li>37% on income above those thresholds</li>
         </ul>
-        <p>The standard deduction ($15,000 single / $30,000 MFJ in 2025) is subtracted before applying brackets. Your pre-tax deductions (401k, HSA, etc.) further reduce your taxable income.</p>
+        <p>The 2026 standard deduction is $16,100 for single filers, $32,200 for married couples filing jointly, and $24,150 for heads of household. The calculator subtracts it before applying the brackets.</p>
 
-        <h2>What is FICA tax?</h2>
+        <h2>Social Security and Medicare taxes in 2026</h2>
         <p>FICA (Federal Insurance Contributions Act) funds Social Security and Medicare:</p>
         <ul>
-          <li><b>Social Security:</b> 6.2% on wages up to $176,100 (2025 wage base)</li>
-          <li><b>Medicare:</b> 1.45% on all wages (+ 0.9% Additional Medicare Tax over $200,000 for single filers)</li>
+          <li><b>Social Security:</b> 6.2% of employee wages up to the $184,500 wage base.</li>
+          <li><b>Medicare:</b> 1.45% of all employee wages, with no wage cap.</li>
+          <li><b>Additional Medicare withholding:</b> employers withhold another 0.9% from wages they pay above $200,000 in a calendar year.</li>
         </ul>
-        <p>Your employer matches these contributions — so the full FICA cost is actually 15.3% of your wages, split equally between you and your employer.</p>
+        <p>Your employer generally matches the 6.2% Social Security and 1.45% Medicare amounts. The employer match is not deducted from your pay. A traditional 401(k) contribution usually reduces federal taxable income but not Social Security or Medicare wages; some Section 125 benefits can reduce both.</p>
+
+        <h2>How the estimate is calculated</h2>
+        <ol style="padding-left:20px">
+          <li>Annualize salary or hourly wages and the selected pay frequency.</li>
+          <li>Subtract eligible pre-tax deductions and the 2026 standard deduction; include optional W-4 Step 4(a) income and Step 4(b) deductions.</li>
+          <li>Apply 2026 federal brackets, subtract Step 3 credits, and add Step 4(c) extra withholding.</li>
+          <li>Calculate employee Social Security and Medicare taxes, then add the flat state-rate estimate.</li>
+          <li>Subtract taxes and pre-tax payroll deductions from gross pay to estimate take-home pay.</li>
+        </ol>
+        <p>This method is useful for planning, but an employer may calculate withholding differently under IRS Publication 15-T. For two jobs, a working spouse, bonuses, or a midyear change, use the <a href="https://www.irs.gov/individuals/tax-withholding-estimator" rel="noopener" target="_blank">IRS Tax Withholding Estimator</a> and read our <a href="/guides/w4-withholding-guide">2026 W-4 guide</a>.</p>
 
         <div class="ad">AdSense — in-article</div>
 
@@ -216,12 +263,23 @@ footer .wrap{padding:18px 16px;color:var(--mut);font-size:13px}
         <p>If you live in Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, or Wyoming, enter <b>0%</b> for state tax. Note that some of these states have other taxes (sales, property) that may be higher to compensate.</p>
 
         <h2>Frequently asked questions</h2>
+        <h3>How is federal income tax estimated from my paycheck?</h3>
+        <p>The calculator annualizes wages, subtracts eligible pre-tax deductions and the 2026 standard deduction, applies the federal brackets, and divides the result across your pay periods. Optional W-4 dollar adjustments can raise or lower the estimate.</p>
+        <h3>What is FICA tax in 2026?</h3>
+        <p>Employee FICA is Social Security tax at 6.2% up to $184,500 of wages plus Medicare tax at 1.45% on all wages. Employers also withhold an additional 0.9% Medicare tax from wages they pay above $200,000 during the year.</p>
         <h3>What are pre-tax deductions?</h3>
-        <p>Pre-tax deductions are contributions taken from your gross pay before taxes are calculated — reducing your taxable income. Common examples include 401(k) or 403(b) contributions, employer-sponsored health/dental/vision insurance premiums, HSA contributions, and FSA contributions.</p>
+        <p>Pre-tax deductions are amounts taken from gross pay before certain taxes. Common examples include traditional 401(k) or 403(b) contributions, qualifying health premiums, HSA contributions, and FSA contributions. Their FICA treatment differs, so this calculator conservatively applies the entered amount to federal and state taxable income but not to Social Security or Medicare wages.</p>
         <h3>What is the difference between tax bracket and effective tax rate?</h3>
         <p>Your <b>marginal rate</b> is the bracket your highest dollar of income falls into. Your <b>effective rate</b> is the average across all brackets — always lower than your marginal rate. This calculator shows your effective total tax rate.</p>
         <h3>How can I increase my take-home pay?</h3>
-        <p>Maximize pre-tax contributions (401k, HSA, FSA) to reduce federal and state taxable income. Review your W-4 to ensure you're not over-withholding. If you consistently get a large refund, adjusting your W-4 allowances gives you that money in each paycheck instead.</p>
+        <p>Review eligible benefit contributions and your W-4 to avoid unnecessary over-withholding. The current W-4 no longer uses allowances; it uses dollar adjustments in Steps 3 and 4. Lower withholding can increase each paycheck but may reduce your refund or create a balance due.</p>
+
+        <h2>Primary sources</h2>
+        <ul class="sources">
+          <li><a href="https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" rel="noopener" target="_blank">IRS: 2026 tax inflation adjustments</a> and Revenue Procedure 2025-32</li>
+          <li><a href="https://www.ssa.gov/oact/cola/cbb.html" rel="noopener" target="_blank">Social Security Administration: 2026 contribution and benefit base</a></li>
+          <li><a href="https://www.irs.gov/pub/irs-pdf/p15t.pdf" rel="noopener" target="_blank">IRS Publication 15-T: Federal Income Tax Withholding Methods</a></li>
+        </ul>
 
         <h2>Related calculators</h2>
         <div class="rel">
@@ -272,23 +330,24 @@ const $=id=>document.getElementById(id);
 const usd=n=>isFinite(n)?n.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}):'$0';
 const pct=n=>isFinite(n)?(n*100).toFixed(1)+'%':'0%';
 
-// 2025 federal tax brackets (IRS Rev. Proc. 2024-40)
+// 2026 federal tax brackets and standard deductions (IRS Rev. Proc. 2025-32)
 const BRACKETS={
   single:[
-    [11925,0.10],[48475,0.12],[103350,0.22],[197300,0.24],
-    [250525,0.32],[626350,0.35],[Infinity,0.37]
+    [12400,0.10],[50400,0.12],[105700,0.22],[201775,0.24],
+    [256225,0.32],[640600,0.35],[Infinity,0.37]
   ],
   married:[
-    [23850,0.10],[96950,0.12],[206700,0.22],[394600,0.24],
-    [501050,0.32],[751600,0.35],[Infinity,0.37]
+    [24800,0.10],[100800,0.12],[211400,0.22],[403550,0.24],
+    [512450,0.32],[768700,0.35],[Infinity,0.37]
   ],
   hoh:[
-    [17000,0.10],[64850,0.12],[103350,0.22],[197300,0.24],
-    [250500,0.32],[626350,0.35],[Infinity,0.37]
+    [17700,0.10],[67450,0.12],[105700,0.22],[201750,0.24],
+    [256200,0.32],[640600,0.35],[Infinity,0.37]
   ]
 };
-const STD_DED={single:15000,married:30000,hoh:22500};
-const SS_LIMIT=176100, SS_RATE=0.062, MED_RATE=0.0145;
+const STD_DED={single:16100,married:32200,hoh:24150};
+const SS_LIMIT=184500, SS_RATE=0.062, MED_RATE=0.0145;
+const ADD_MED_THRESHOLD=200000, ADD_MED_RATE=0.009;
 
 function federalTax(taxableIncome,filing){
   const brackets=BRACKETS[filing];
@@ -312,56 +371,110 @@ function calc(){
   const paytype=$('paytype').value;
   const freq=+$('freq').value||26;
   const filing=$('filing').value;
-  const pretaxPerPeriod=+$('pretax').value||0;
-  const statePct=+$('statetax').value||0;
+  const nonnegative=id=>Math.max(0,+$(id).value||0);
+  const pretaxPerPeriod=nonnegative('pretax');
+  const statePct=Math.min(nonnegative('statetax'),20);
+  const w4Credits=nonnegative('w4credits');
+  const w4OtherIncome=nonnegative('w4other');
+  const w4Deductions=nonnegative('w4deductions');
+  const w4ExtraPerPeriod=nonnegative('w4extra');
+  const error=$('calcError');
 
   let annualGross;
   if(paytype==='hourly'){
-    const hrRate=+$('hourly').value||0;
-    const hpw=+$('hours').value||40;
+    const hrRate=nonnegative('hourly');
+    const hpw=nonnegative('hours');
     annualGross=hrRate*hpw*52;
   } else {
-    annualGross=+$('salary').value||0;
+    annualGross=nonnegative('salary');
   }
 
-  const annualPretax=pretaxPerPeriod*freq;
-  const annualTaxable=Math.max(annualGross-annualPretax-STD_DED[filing],0);
-
-  // Federal income tax (annual)
-  const annualFed=federalTax(annualTaxable,filing);
-
-  // FICA (on gross wages, not reduced by std deduction or pretax)
-  // Note: 401k reduces SS/Medicare wages; simplified here as applied to gross
-  const annualSS=Math.min(annualGross,SS_LIMIT)*SS_RATE;
-  const annualMed=annualGross*MED_RATE;
-
-  // State tax (flat estimate on taxable income)
-  const annualState=annualTaxable*(statePct/100);
-
-  const annualTotalTax=annualFed+annualSS+annualMed+annualState+annualPretax;
-  const annualNet=annualGross-annualFed-annualSS-annualMed-annualState-annualPretax;
+  if(!Number.isFinite(annualGross)||annualGross<=0){
+    error.textContent='Enter a salary or hourly wage greater than $0.';
+    error.style.display='block';
+    $('results-section').style.display='none';
+    return;
+  }
 
   const grossPP=annualGross/freq;
+  if(pretaxPerPeriod>grossPP){
+    error.textContent='Pre-tax deductions cannot be greater than gross pay per paycheck.';
+    error.style.display='block';
+    $('results-section').style.display='none';
+    return;
+  }
+  error.style.display='none';
+
+  const annualPretax=pretaxPerPeriod*freq;
+  const annualTaxable=Math.max(annualGross-annualPretax+w4OtherIncome-STD_DED[filing]-w4Deductions,0);
+
+  // Annual federal liability approximation with W-4 dollar adjustments.
+  const annualFedBeforeCredits=federalTax(annualTaxable,filing);
+  const annualFed=Math.max(annualFedBeforeCredits-w4Credits,0)+(w4ExtraPerPeriod*freq);
+
+  // Conservative FICA estimate on gross wages because generic pre-tax deductions
+  // do not all share the same Social Security and Medicare tax treatment.
+  const annualSS=Math.min(annualGross,SS_LIMIT)*SS_RATE;
+  const annualMed=annualGross*MED_RATE;
+  const annualAddMed=Math.max(annualGross-ADD_MED_THRESHOLD,0)*ADD_MED_RATE;
+
+  // Flat state estimate; it intentionally does not assume a state's deduction rules.
+  const annualState=Math.max(annualGross-annualPretax,0)*(statePct/100);
+
+  const annualTotalTax=annualFed+annualSS+annualMed+annualAddMed+annualState;
+  const annualNet=annualGross-annualTotalTax-annualPretax;
+
+  if(annualNet<0){
+    error.textContent='Estimated taxes and deductions exceed wages. Reduce W-4 extra withholding or review the entered adjustments.';
+    error.style.display='block';
+    $('results-section').style.display='none';
+    return;
+  }
+
   const fedPP=annualFed/freq;
   const ssPP=annualSS/freq;
   const medPP=annualMed/freq;
+  const addMedPP=annualAddMed/freq;
   const statePP=annualState/freq;
   const netPP=annualNet/freq;
-  const effRate=annualGross>0?(annualFed+annualSS+annualMed+annualState)/annualGross:0;
+  const effRate=annualTotalTax/annualGross;
+  const takeHomePct=annualNet/annualGross;
 
-  document.getElementById('results-section').style.display='block';
+  $('results-section').style.display='block';
   $('rNet').textContent=usd(netPP);
   $('rGross').textContent=usd(grossPP);
   $('rAnnualNet').textContent=usd(annualNet);
   $('rEffRate').textContent=pct(effRate);
+  $('rTakeHomePct').textContent=pct(takeHomePct);
+  $('rTaxable').textContent=usd(annualTaxable);
 
   $('bGross').textContent=usd(grossPP);
+  $('aGross').textContent=usd(annualGross);
   $('bPretax').textContent='−'+usd(pretaxPerPeriod);
+  $('aPretax').textContent='−'+usd(annualPretax);
   $('bFed').textContent='−'+usd(fedPP);
+  $('aFed').textContent='−'+usd(annualFed);
   $('bSS').textContent='−'+usd(ssPP);
+  $('aSS').textContent='−'+usd(annualSS);
   $('bMed').textContent='−'+usd(medPP);
+  $('aMed').textContent='−'+usd(annualMed);
+  $('bAddMed').textContent='−'+usd(addMedPP);
+  $('aAddMed').textContent='−'+usd(annualAddMed);
+  $('addMedRow').style.display=annualAddMed>0?'grid':'none';
   $('bState').textContent='−'+usd(statePP);
+  $('aState').textContent='−'+usd(annualState);
   $('bNet').textContent=usd(netPP);
+  $('aNet').textContent=usd(annualNet);
+
+  const hasW4=w4Credits+w4OtherIncome+w4Deductions+w4ExtraPerPeriod>0;
+  $('w4Summary').textContent=hasW4
+    ? 'W-4 adjustments applied: Step 3 credits '+usd(w4Credits)+', Step 4(a) income '+usd(w4OtherIncome)+', Step 4(b) deductions '+usd(w4Deductions)+', and Step 4(c) extra withholding '+usd(w4ExtraPerPeriod)+' per paycheck.'
+    : 'No optional W-4 adjustments were applied. Multiple jobs or a working spouse can materially change actual withholding.';
+
+  const frequencies=[['Weekly',52],['Biweekly',26],['Semimonthly',24],['Monthly',12]];
+  $('freqBody').innerHTML=frequencies.map(([label,periods])=>
+    '<tr><td>'+label+'</td><td>'+usd(annualGross/periods)+'</td><td>'+usd(annualNet/periods)+'</td></tr>'
+  ).join('');
 }
 </script>
 </body></html>
